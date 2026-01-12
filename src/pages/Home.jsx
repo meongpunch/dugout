@@ -99,6 +99,34 @@ const Home = () => {
       img: "/img/highlight-img_4.svg",
     },
   ];
+
+  const rankData = [
+    {
+      id: 1,
+      rank: 1,
+      name: "한화 이글스",
+      enName: "Hanwha Eagles",
+      logo: "/img/Hanwha_logo.svg", // 한화 로고 필요
+      state: "-", // 순위 변동 (유지)
+    },
+    {
+      id: 2,
+      rank: 2,
+      name: "엔씨 다이노스",
+      enName: "NC Dinos",
+      logo: "/img/NC_logo.svg", // NC 로고 필요
+      state: "up", // 상승
+    },
+    {
+      id: 3,
+      rank: 3,
+      name: "기아 타이거즈",
+      enName: "KIA TIGERS",
+      logo: "/img/KIA_logo.svg",
+      state: "up", // 상승
+    },
+  ];
+
   return (
     <div className="home-container">
       {/* Header */}
@@ -271,6 +299,97 @@ const Home = () => {
                 </div>
               </a>
             ))}
+          </div>
+        </div>
+      </section>
+      <section className="team-rank">
+        <div className="inner">
+          <h3 className="section-title">구단 순위</h3>
+          <div className="rank-card">
+            <div className="rank-hero">
+              <img
+                className="bg-img"
+                src="/img/kia-rank-img.svg"
+                alt="기아 타이거즈 대표 이미지"
+              />
+              <div className="hero-content">
+                <img
+                  src="/img/KIA_logo.svg"
+                  alt="기아 타이거즈 로고"
+                  className="top-logo"
+                />
+                <div className="big-rank">
+                  <p className="num">3</p>
+                  <span className="diff">
+                    1{" "}
+                    <img
+                      src="/img/up-icon.svg"
+                      alt="위를 바라보는 화살표"
+                      className="up"
+                    />
+                  </span>
+                </div>
+              </div>
+            </div>
+            <ul className="rank-list">
+              {/* 1위 */}
+              <li className="rank-item">
+                <div className="team-info">
+                  {/* 요청하신 50px img-box */}
+                  <div className="img-box logo-box">
+                    <img src="/img/Hanwha_logo.svg" alt="한화" />
+                  </div>
+                  <span className="rank-num">1</span>
+                  <div className="names">
+                    <p className="ko">한화 이글스</p>
+                    <p className="en">Hanwha Eagles</p>
+                  </div>
+                </div>
+                <div className="rank-change">
+                  <span className="dash">-</span>
+                </div>
+              </li>
+
+              {/* 2위 */}
+              <li className="rank-item">
+                <div className="team-info">
+                  <div className="img-box logo-box">
+                    <img src="/img/NC_logo.svg" alt="NC" />
+                  </div>
+                  <span className="rank-num">2</span>
+                  <div className="names">
+                    <p className="ko">엔씨 다이노스</p>
+                    <p className="en">NC Dinos</p>
+                  </div>
+                </div>
+                <div className="rank-change">
+                  <span className="up">▲</span>
+                </div>
+              </li>
+
+              {/* 3위 (내 팀 강조 클래스 my-team) */}
+              <li className="rank-item my-team">
+                <div className="team-info">
+                  <div className="img-box logo-box">
+                    <img src="/img/KIA_logo.svg" alt="KIA" />
+                  </div>
+                  <span className="rank-num">3</span>
+                  <div className="names">
+                    <p className="ko">기아 타이거즈</p>
+                    <p className="en">KIA TIGERS</p>
+                  </div>
+                </div>
+                <div className="rank-change">
+                  <span className="up">▲</span>
+                </div>
+              </li>
+            </ul>
+            <div className="more-btn-wrap">
+              {/* to="/rank" 처럼 이동할 주소를 적어주세요 */}
+              <Link to="/rank" className="more-btn">
+                더보기
+              </Link>
+            </div>
           </div>
         </div>
       </section>
