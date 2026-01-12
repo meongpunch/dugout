@@ -253,6 +253,9 @@ header {
 .highlight-card a {
   display: block;
 }
+.highlight-grid > a:nth-child(even) {
+  transform: translateY(50px);
+}
 .highlight-card .img-box {
   width: 100%;
   height: 100%;
