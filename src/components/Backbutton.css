@@ -1,0 +1,42 @@
+/* src/components/BackButton.css */
+
+/* 전체 헤더 컨테이너 */
+.back-header-container {
+  display: flex;
+  justify-content: space-between; /* 좌-중-우 배치 */
+  align-items: center;
+  margin-top: 80px;
+  height: auto;
+  position: relative; /* 타이틀 정중앙 배치를 위한 기준 */
+}
+
+/* 뒤로가기 버튼 영역 */
+.back-btn {
+  cursor: pointer;
+  display: flex; /* 이미지 중앙 정렬 */
+  z-index: 10; /* 타이틀보다 위에 오도록 */
+}
+
+/* 화살표 이미지 */
+.back-icon-img {
+  width: 24px; /* 화살표 크기 */
+  height: 24px;
+  display: block;
+}
+
+/* 중앙 타이틀 (구단순위 등) */
+.header-title {
+  position: absolute; /* 무조건 화면 정중앙 고정 */
+  left: 50%;
+  transform: translateX(-50%);
+
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* 오른쪽 빈 공간 (균형 맞추기용) */
+.empty-space {
+  width: 24px; /* 버튼 크기만큼 공간 확보 */
+}

@@ -44,8 +44,10 @@ header {
   text-align: center;
 }
 .hero-info .team-name {
-  font-size: 40px;
+  font-size: 100px;
+  letter-spacing: 2.5px;
   margin-bottom: 56px;
+  font-weight: 500;
 }
 .player-role {
   font-size: 14px;
