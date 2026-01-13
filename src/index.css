@@ -23,6 +23,9 @@ a {
   position: relative;
   color: #fff;
 }
+li {
+  list-style: none;
+}
 /* 공통요소 */
 .inner {
   width: 100%;
@@ -32,9 +35,11 @@ section {
   margin-bottom: 72px;
 }
 /* 폰트 */
-
-.point {
+@font-face {
   font-family: "PonitenFont";
-  letter-spacing: 1.5px;
+  src: url("font/aBlackLives.ttf") format("truetype");
+}
+.point {
+  font-family: "Humane", sans-serif;
   line-height: 100%;
 }
