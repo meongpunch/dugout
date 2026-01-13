@@ -106,16 +106,16 @@ const Home = () => {
       rank: 1,
       name: "한화 이글스",
       enName: "Hanwha Eagles",
-      logo: "/img/Hanwha_logo.svg", // 한화 로고 필요
-      state: "-", // 순위 변동 (유지)
+      logo: "/img/Hanwha_logo.svg",
+      state: "-",
     },
     {
       id: 2,
       rank: 2,
       name: "엔씨 다이노스",
       enName: "NC Dinos",
-      logo: "/img/NC_logo.svg", // NC 로고 필요
-      state: "up", // 상승
+      logo: "/img/NC_logo.svg",
+      state: "up",
     },
     {
       id: 3,
@@ -123,7 +123,7 @@ const Home = () => {
       name: "기아 타이거즈",
       enName: "KIA TIGERS",
       logo: "/img/KIA_logo.svg",
-      state: "up", // 상승
+      state: "up",
     },
   ];
 
@@ -132,8 +132,12 @@ const Home = () => {
       {/* Header */}
       <header>
         <div className="innerHeader">
-          <h1 className="logo">LOGO</h1>
-          <div className="icon-box noti-icon"></div>
+          <h1 className="logo">
+            <img src="/img/header-logo.svg" alt="" />
+          </h1>
+          <div className="icon-box noti-icon">
+            <img src="/img/noti-icon.svg" alt="" />
+          </div>
         </div>
       </header>
       {/* hero section */}
@@ -159,7 +163,6 @@ const Home = () => {
             spaceBetween={"70"}
             initialSlide={0}
             loop={true}
-            loopedSlides={2}
             observer={true}
             coverflowEffect={{
               rotate: 0,
@@ -203,8 +206,8 @@ const Home = () => {
             className="comment-swiper"
             allowTouchMove={true}
           >
-            {commentsTop.map((comment) => (
-              <SwiperSlide key={comment.id} className="comment-slide">
+            {commentsTop.map((comment, index) => (
+              <SwiperSlide key={`top-${index}`} className="comment-slide">
                 <div className="comment-bubble">
                   <div className="profile-circle">
                     <img src={comment.user} alt="user" />
@@ -269,7 +272,7 @@ const Home = () => {
               <a
                 href="https://www.tving.com/sports/kbo?n_media=27758&n_query=%ED%8B%B0%EB%B9%99%ED%94%84%EB%A1%9C%EC%95%BC%EA%B5%AC&n_rank=1&n_ad_group=grp-a001-01-000000040965984&n_ad=nad-a001-01-000000304649436&n_keyword_id=nkw-a001-01-000006209738999&n_keyword=%ED%8B%B0%EB%B9%99%ED%94%84%EB%A1%9C%EC%95%BC%EA%B5%AC&n_campaign_type=1&n_ad_group_type=1&n_match=1&NaPm=ct%3Dlxu4x8vk%7Cci%3D0yq0001stlDAQEDawuZ3%7Ctr%3Dsa%7Chk%3D042b634c63c901280f5dc010bed047eea6dd624b%7Cnacn%3DfCfnEwAeI5wuG&gad_source=1&gad_campaignid=23411707576&gbraid=0AAAAAC1p3XT_j6qAvWxWCs4XTOziQc-4Y&gclid=Cj0KCQiAyP3KBhD9ARIsAAJLnnaqqc3jVSwCRjGb7h5iBTQf-V_vdM7JO1I6ObWRBba35HR56mspBK0aAkzAEALw_wcB"
                 target="blank"
-                className="tving-btn"
+                className="tving-btn btn"
               >
                 TVING 바로가기
               </a>
@@ -305,7 +308,7 @@ const Home = () => {
       <section className="team-rank">
         <div className="inner">
           <h3 className="section-title">구단 순위</h3>
-          <div className="rank-card">
+          <div className="rank-card box">
             <div className="rank-hero">
               <img
                 className="bg-img"
@@ -313,86 +316,49 @@ const Home = () => {
                 alt="기아 타이거즈 대표 이미지"
               />
               <div className="hero-content">
-                <img
-                  src="/img/KIA_logo.svg"
-                  alt="기아 타이거즈 로고"
-                  className="top-logo"
-                />
-                <div className="big-rank">
-                  <p className="num">3</p>
+                <img className="top-logo" src="/img/KIA_logo.svg" alt="로고" />
+                <div className="big-rank-col">
+                  <span className="num">3</span>
                   <span className="diff">
-                    1{" "}
-                    <img
-                      src="/img/up-icon.svg"
-                      alt="위를 바라보는 화살표"
-                      className="up"
-                    />
+                    1<span className="arrow">▲</span>
                   </span>
                 </div>
               </div>
             </div>
-            <ul className="rank-list">
-              {/* 1위 */}
-              <li className="rank-item">
-                <div className="team-info">
-                  {/* 요청하신 50px img-box */}
-                  <div className="img-box logo-box">
-                    <img src="/img/Hanwha_logo.svg" alt="한화" />
-                  </div>
-                  <span className="rank-num">1</span>
-                  <div className="names">
-                    <p className="ko">한화 이글스</p>
-                    <p className="en">Hanwha Eagles</p>
-                  </div>
-                </div>
-                <div className="rank-change">
-                  <span className="dash">-</span>
-                </div>
-              </li>
-
-              {/* 2위 */}
-              <li className="rank-item">
-                <div className="team-info">
-                  <div className="img-box logo-box">
-                    <img src="/img/NC_logo.svg" alt="NC" />
-                  </div>
-                  <span className="rank-num">2</span>
-                  <div className="names">
-                    <p className="ko">엔씨 다이노스</p>
-                    <p className="en">NC Dinos</p>
-                  </div>
-                </div>
-                <div className="rank-change">
-                  <span className="up">▲</span>
-                </div>
-              </li>
-
-              {/* 3위 (내 팀 강조 클래스 my-team) */}
-              <li className="rank-item my-team">
-                <div className="team-info">
-                  <div className="img-box logo-box">
-                    <img src="/img/KIA_logo.svg" alt="KIA" />
-                  </div>
-                  <span className="rank-num">3</span>
-                  <div className="names">
-                    <p className="ko">기아 타이거즈</p>
-                    <p className="en">KIA TIGERS</p>
-                  </div>
-                </div>
-                <div className="rank-change">
-                  <span className="up">▲</span>
-                </div>
-              </li>
-            </ul>
-            <div className="more-btn-wrap">
-              {/* to="/rank" 처럼 이동할 주소를 적어주세요 */}
-              <Link to="/rank" className="more-btn">
-                더보기
-              </Link>
-            </div>
           </div>
+          <ul className="rank-list">
+            {rankData.map((team) => (
+              <li
+                key={team.id}
+                className={`rank-item ${team.isMyTeam ? "my-team" : ""}`}
+              >
+                <div className="img-box logo-box">
+                  <img src={team.logo} alt={team.name} />
+                </div>
+                <div className="rightBox">
+                  <div className="rank-col">
+                    <span className="num">{team.rank}</span>
+                    <div className="diff">
+                      {team.state === "up" && <span className="up">▲</span>}
+                      {team.state === "-" && <span className="dash">-</span>}
+                      {team.state === "down" && <span className="down">▼</span>}
+                    </div>
+                  </div>
+                  <div className="name-col">
+                    <p className="ko">{team.name}</p>
+                    <p className="en">{team.enName}</p>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <div className="gradient-box"></div>
+          <Link to={"/teamrank"} className="more btn">
+            더보기
+          </Link>
         </div>
       </section>
+      <section className="TodayQuiz"></section>
     </div>
   );
 };

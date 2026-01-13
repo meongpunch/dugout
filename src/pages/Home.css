@@ -28,10 +28,19 @@ header {
   align-items: center;
 }
 .logo {
-  font-size: 24px;
+  display: flex;
+  align-items: center;
 }
 .icon-box {
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
   margin-bottom: 0;
+  cursor: pointer;
+}
+.icon-box img {
+  width: 100%;
+  height: 100%;
 }
 /* hero-section */
 .hero {
@@ -106,6 +115,15 @@ header {
 .box {
   border-radius: 6px;
   overflow: hidden;
+}
+.btn {
+  font-size: 14px;
+  padding: 10px 30px;
+  background: #aa0000;
+  border-radius: 20px;
+  width: 154px;
+  text-align: center;
+  display: block;
 }
 
 /* comment-section */
@@ -230,12 +248,6 @@ header {
   font-size: 16px;
   color: #ddd;
 }
-.tving-btn {
-  font-size: 14px;
-  padding: 10px 30px;
-  background: #aa0000;
-  border-radius: 20px;
-}
 
 /* highlight-section */
 .highlight-grid {
@@ -283,4 +295,140 @@ header {
 .text-overlay p {
   font-size: 16px;
   font-weight: 500;
+}
+
+/* team-rank section */
+.team-rank .inner {
+  position: relative;
+}
+.rank-card {
+  border-radius: 6px 6px 0 0;
+}
+.rank-hero {
+  position: relative;
+  width: 100%;
+  height: 267px;
+}
+.rank-hero .bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 24px 17px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.top-logo {
+  width: 50px;
+  height: 50px;
+}
+
+.big-rank-col {
+  margin-left: 9px;
+  display: flex;
+  flex-direction: column;
+  /* 왼쪽 정렬 */
+}
+.big-rank-col .num {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1;
+  color: #fff;
+}
+.big-rank-col .diff {
+  font-size: 14px;
+  font-weight: 700;
+  align-items: center;
+  margin: 4px 0 0 4px;
+  display: flex;
+  justify-content: space-between;
+  width: 24px;
+}
+.big-rank-col .diff .arrow {
+  color: #f14036;
+  margin-left: 5px;
+  display: block;
+}
+.rank-list {
+  background: red;
+  width: 100%;
+}
+.rank-item {
+  background: #28282a;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+}
+.logo-box {
+  width: 50px;
+  height: 50px;
+}
+.logo-box img {
+  width: 100%;
+  height: 100%;
+}
+.rightBox {
+  display: flex;
+  align-items: center;
+  width: 80%;
+}
+.rank-col {
+  height: 100%;
+  margin-right: 36px;
+}
+.rank-col .num {
+  font-size: 24px;
+  font-weight: bold;
+}
+.diff {
+  font-size: 10px;
+  text-align: center;
+}
+.diff .up {
+  color: #f14036;
+  margin-top: 3px;
+  display: block;
+}
+.diff .down {
+  color: #3561ff;
+  margin-top: 3px;
+  display: block;
+}
+.diff .dash {
+  font-size: 24px;
+  line-height: 90%;
+}
+.gradient-box {
+  position: absolute;
+  background: linear-gradient(
+    to bottom,
+    rgba(17, 17, 17, 0) 0%,
+    rgba(17, 17, 17, 1) 100%
+  );
+  width: 398px;
+  height: 260px;
+  bottom: 0;
+}
+.more {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.name-col .ko {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+.name-col .en {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
 }

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Lockerroom = () => {
-  return (
-    <div>Lockerroom</div>
-  )
-}
+  return <div>Lockerroom</div>;
+};
 
-export default Lockerroom
+export default Lockerroom;

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Stadium = () => {
-  return (
-    <div>Stadium</div>
-  )
-}
+  return <div>Stadium</div>;
+};
 
-export default Stadium
+export default Stadium;

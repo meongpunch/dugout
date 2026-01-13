@@ -1,17 +1,17 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
-import Gnb from './Gnb'
-import './Layout.css'
+import React from "react";
+import { Outlet } from "react-router-dom";
+import Gnb from "./Gnb";
+import "./Layout.css";
 
 const Layout = () => {
   return (
-    <div className='layout'>
+    <div className="layout">
       <main>
-          <Outlet />
+        <Outlet />
       </main>
       <Gnb />
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

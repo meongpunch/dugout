@@ -34,11 +34,7 @@ li {
 section {
   margin-bottom: 72px;
 }
-/* 폰트 */
-@font-face {
-  font-family: "PonitenFont";
-  src: url("font/aBlackLives.ttf") format("truetype");
-}
+
 .point {
   font-family: "Humane", sans-serif;
   line-height: 100%;
