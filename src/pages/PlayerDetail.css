@@ -1,0 +1,168 @@
+.player-hero-box-cont-txt {
+  font-size: 100px;
+  letter-spacing: 8px;
+}
+
+/* PlayerDetail.css */
+.detail-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #111;
+  background-color: #111; /* Home과 비슷한 어두운 배경 */
+  color: #fff;
+  padding: 0 auto;
+  box-sizing: border-box;
+}
+.detail-header {
+  height: 80px;
+}
+.back-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: color 0.3s;
+}
+
+.back-btn:hover {
+  color: #fff;
+}
+
+.detail-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.detail-img-box {
+  width: 280px;
+  height: 380px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(228, 0, 43, 0.2); /* 타이거즈 레드 글로우 */
+  margin-bottom: 30px;
+  background-color: #222;
+}
+
+.detail-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detail-info {
+  width: 100%;
+  max-width: 400px;
+}
+
+.detail-role {
+  color: #e4002b; /* KIA Red */
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.detail-name {
+  font-size: 2.5rem;
+  margin: 0 0 15px 0;
+  font-weight: 800;
+}
+
+.detail-tags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.detail-tags .tag {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #ddd;
+}
+
+.detail-desc {
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+.stats-box {
+  background: #222;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+
+.stats-box h3 {
+  margin: 0 0 15px 0;
+  font-size: 1rem;
+  color: #888;
+  border-bottom: 1px solid #333;
+  padding-bottom: 10px;
+}
+
+.stats-grid {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.stats-grid div span {
+  display: block;
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-bottom: 5px;
+}
+
+.stats-grid div strong {
+  display: block;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.action-area {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.cheer-btn {
+  width: 100%;
+  padding: 18px;
+  border: none;
+  border-radius: 15px;
+  background: linear-gradient(90deg, #e4002b, #8a001a);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(228, 0, 43, 0.4);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 로딩 화면 */
+.loading {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
