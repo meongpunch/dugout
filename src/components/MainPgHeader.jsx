@@ -1,15 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./MainPgHeader.css";
 
-const MainPgHeader = ({ btnType }) => {
+const MainPgHeader = ({ logoType, btnType }) => {
+  const navigate = useNavigate();
   return (
     <header>
       <div className="innerHeader">
         <h1 className="logo">
-          <Link to="/home">
-            <img src="/img/header-logo.svg" alt="DUGOUT" />
-          </Link>
+          {logoType === "logo" && (
+            <Link to="/home">
+              <img src="/img/header-logo.svg" alt="DUGOUT" />
+            </Link>
+          )}
+          {logoType === "back" && (
+            <button onClick={() => navigate(-1)} className="back-btn">
+              <img src="/img/chevron-left.svg" alt="뒤로가기" />
+            </button>
+          )}
         </h1>
 
         <div className="icon-box">

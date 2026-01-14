@@ -130,7 +130,7 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      <MainPgHeader btnType="alarm" />
+      <MainPgHeader logoType="logo" btnType="alarm" />
       {/* hero section */}
       <section className="hero">
         <div className="hero-info">

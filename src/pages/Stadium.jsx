@@ -168,7 +168,7 @@ const Stadium = () => {
         if (stadiumOpen) setStadiumOpen(false);
       }}
     >
-      <MainPgHeader btnType="ticket" />{" "}
+      <MainPgHeader logoType="logo" btnType="ticket" />{" "}
       <div className="stadium-bg">
         <div className="inner">
           <div className="stadium-topbar" onClick={(e) => e.stopPropagation()}>
