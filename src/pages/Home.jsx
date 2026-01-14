@@ -349,7 +349,12 @@ const Home = () => {
           </Link>
         </div>
       </section>
-      <section className="TodayQuiz"></section>
+      <section className="TodayQuiz">
+        <div className="img-box">
+          <img src="/img/home-today-quiz.svg" alt="" />
+        </div>
+        <div className="quiz-content"></div>
+      </section>
     </div>
   );
 };
