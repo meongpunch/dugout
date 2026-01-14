@@ -13,8 +13,7 @@ header {
   height: 80px;
 }
 .logo {
-  display: flex;
-  align-items: center;
+  line-height: 32px;
 }
 .icon-box {
   width: 24px;
