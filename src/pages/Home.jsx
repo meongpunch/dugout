@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Autoplay } from "swiper/modules";
+import MainPgHeader from "../components/MainPgHeader";
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -129,17 +130,7 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      {/* Header */}
-      <header>
-        <div className="innerHeader">
-          <h1 className="logo">
-            <img src="/img/header-logo.svg" alt="" />
-          </h1>
-          <div className="icon-box noti-icon">
-            <img src="/img/noti-icon.svg" alt="" />
-          </div>
-        </div>
-      </header>
+      <MainPgHeader />
       {/* hero section */}
       <section className="hero">
         <div className="hero-info">

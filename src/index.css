@@ -28,8 +28,8 @@ li {
 }
 /* 공통요소 */
 .inner {
-  width: 100%;
-  padding: 0 16px;
+  width: 93%;
+  margin: 0 auto;
 }
 section {
   margin-bottom: 72px;
