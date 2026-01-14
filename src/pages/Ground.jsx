@@ -4,7 +4,7 @@ import MainPgHeader from "../components/MainPgHeader";
 const Ground = () => {
   return (
     <div className="ground-container">
-      <MainPgHeader />
+      <MainPgHeader btnType="alarm" />
       <section className="Ground">
         <div className="inner">
           <div className="ground_content">
