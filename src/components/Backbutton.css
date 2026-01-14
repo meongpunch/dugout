@@ -1,41 +1,32 @@
-/* src/components/BackButton.css */
-
-/* 전체 헤더 컨테이너 */
 .back-header-container {
+  width: 100%;
   display: flex;
-  justify-content: space-between; /* 좌-중-우 배치 */
   align-items: center;
+  justify-content: space-between; /* 양쪽 끝 배분 */
   height: 80px;
-  position: relative; /* 타이틀 정중앙 배치를 위한 기준 */
+  padding: 0 16px;
 }
 
-/* 뒤로가기 버튼 영역 */
-.back-btn {
-  cursor: pointer;
-  display: flex; /* 이미지 중앙 정렬 */
-  z-index: 10; /* 타이틀보다 위에 오도록 */
-}
-
-/* 화살표 이미지 */
-.back-icon-img {
-  width: 24px; /* 화살표 크기 */
-  height: 24px;
-  display: block;
-}
-
-/* 중앙 타이틀 (구단순위 등) */
+/* title 글자크기 */
 .header-title {
-  position: absolute; /* 무조건 화면 정중앙 고정 */
-  left: 50%;
-  transform: translateX(-50%);
-
-  color: #fff;
   font-size: 24px;
   font-weight: bold;
-  margin: 0;
 }
 
-/* 오른쪽 빈 공간 (균형 맞추기용) */
+/* 왼쪽 버튼 */
+.back-btn {
+  width: 40px; /* 고정 너비 지정 추천 */
+  display: flex;
+  /* ... */
+}
+
+/* 오른쪽 빈 공간 (왼쪽과 동일한 너비) */
 .empty-space {
-  width: 24px; /* 버튼 크기만큼 공간 확보 */
+  width: 40px; /* back-btn과 똑같은 너비여야 정확히 중앙이 됨 */
+}
+
+/* 중앙 타이틀 영역 */
+.title-area {
+  flex-grow: 1; /* 가운데 빈 공간을 모두 차지함 */
+  text-align: center; /* 그 안에서 글자 가운데 정렬 */
 }

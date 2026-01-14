@@ -17,6 +17,26 @@ const PlayerDetail = () => {
       img: "/img/card_yang.svg",
       desc: "타이거즈의 영원한 에이스, 대투수 양현종. 마운드 위에서의 존재감은 타의 추종을 불허한다.",
       stats: { era: "3.54", win: 12, so: 140 },
+      detailStats: [
+        { title: "WINS", value: "186", bg: "/img/player-detail-statbg1.png" },
+        { title: "GAMES", value: "543", bg: "/img/player-detail-statbg2.png" },
+        { title: "ERA", value: "3.90", bg: "/img/player-detail-statbg3.png" },
+        {
+          title: "INNINGS",
+          value: "2,500",
+          bg: "/img/player-detail-statbg4.png",
+        }, // 186은 너무 적어서 임의 수정
+        {
+          title: "KOREAN SERIES",
+          value: "3",
+          bg: "/img/player-detail-statbg5.png",
+        },
+        {
+          title: "STRIKEOUTS",
+          value: "2,185",
+          bg: "/img/player-detail-statbg6.png",
+        },
+      ],
     },
     {
       id: 2,
@@ -83,6 +103,24 @@ const PlayerDetail = () => {
             </div>
             <p className="player-hero-box-desc-txt">"기아를 지켜온 에이스"</p>
           </div>
+        </div>
+      </section>
+      <section className="player-stat">
+        <div className="stat-grid">
+          {player.detailStats &&
+            player.detailStats.map((stat, index) => (
+              <div
+                key={index}
+                className="stat-box"
+                // 배경 이미지가 있으면 넣고, 없으면 검정색(#111)이 되도록 처리
+                style={{
+                  backgroundImage: stat.bg ? `url('${stat.bg}')` : "none",
+                }}
+              >
+                <span className="stat-box-title">{stat.title}</span>
+                <span className="stat-box-value">{stat.value}</span>
+              </div>
+            ))}
         </div>
       </section>
     </div>

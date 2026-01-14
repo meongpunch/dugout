@@ -45,7 +45,7 @@ header {
 .hero {
   width: 100%;
   height: 648px;
-  margin-top: 54px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,7 +54,7 @@ header {
 .hero-info .team-name {
   font-size: 100px;
   letter-spacing: 2.5px;
-  margin-bottom: 56px;
+  margin-bottom: 28px;
   font-weight: 500;
 }
 .player-role {
@@ -430,4 +430,152 @@ header {
   font-size: 12px;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.7);
+}
+/* todat-Quiz section */
+.TodayQuiz .inner {
+  position: relative;
+}
+.TodayQuiz .img-box {
+  width: 100%;
+  height: 100%;
+}
+.TodayQuiz .img-box img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.quiz-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 30px 20px;
+}
+.quiz-content .topBox {
+  display: flex;
+  justify-content: space-between;
+}
+.quiz-content .topBox .left {
+}
+.quiz-content .topBox .left .con-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.quiz-content .topBox .left .con-text {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.quiz-content .topBox .left .time {
+  font-size: 14px;
+}
+.quiz-content .topBox .left .time .bold {
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 4px;
+}
+.quiz-content .topBox .right {
+  width: 118px;
+}
+.quiz-content .topBox .right img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.quiz-content .btn {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+/* MD section */
+.MD {
+}
+.MD .list {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.MD .list li {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+.MD .list li.active {
+  background: #aa0000;
+  border: none;
+}
+.Thumbnail {
+  position: relative;
+  margin-bottom: 16px;
+  display: block;
+}
+.MD .img-box {
+  border-radius: 6px;
+  overflow: hidden;
+  width: 100%;
+  height: 398px;
+}
+.MD .img-box img {
+  width: 100%;
+  height: 100%;
+}
+.MD .text-box {
+  position: absolute;
+  bottom: 42px;
+  left: 20px;
+}
+.MD .text-box .text {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+.MD .text-box .title {
+  font-size: 20px;
+  font-weight: bold;
+}
+.MD .product {
+  display: flex;
+  gap: 18px;
+}
+.MD .product .left {
+  width: 142px;
+  height: 146px;
+}
+.MD .product .left img {
+  width: 100%;
+  height: 100%;
+}
+.MD .product .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 60%;
+}
+.MD .product .right .top .title-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.MD .product .right .top .title-box .title {
+  font-size: 18px;
+  font-weight: 500;
+}
+.MD .product .right .top .title-box .subtit {
+  font-size: 16px;
+}
+.MD .product .right .price {
+  font-size: 18px;
+  font-weight: 500;
+}
+.MD .product .right .txt {
+  font-size: 12px;
+}
+.MD .product .right .txt span {
+  margin-left: 4px;
 }
