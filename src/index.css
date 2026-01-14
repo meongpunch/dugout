@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
 }
+
 body {
   display: flex;
   justify-content: center;
@@ -10,11 +11,12 @@ body {
   font-family: "Pretendard", sans-serif;
   letter-spacing: -2%;
 }
-/* overflow: hidden; */
+
 a {
   text-decoration: none;
   color: inherit;
 }
+
 #root {
   width: 100%;
   max-width: 430px;
@@ -23,6 +25,7 @@ a {
   position: relative;
   color: #fff;
 }
+
 li {
   list-style: none;
 }
