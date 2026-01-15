@@ -20,6 +20,27 @@
   -webkit-user-drag: none;
 }
 
+.onboarding-container::after{
+  pointer-events: none;
+}
+
+.backbtn{
+  position:absolute;
+  top:80px;
+  left:16px;
+  z-index:5;
+  background:transparent;
+  border:0;
+  padding:0;
+  cursor:pointer;
+}
+
+.backbtn img{
+  width:8px;
+  height:16px;
+  display:block;
+}
+
 .skip {
   position: absolute;
   top: 80px;
@@ -46,6 +67,7 @@
   justify-content: center;
   text-align: center;
   transform: translateY(-770px);
+  pointer-events: none;
 }
 .content h2 {
   margin: 0;
@@ -68,7 +90,7 @@
   left: 0;
   right: 0;
   bottom: 80px;
-  z-index: 1;
+  z-index: 5;
   padding: 0 16px;
 }
 
@@ -78,6 +100,8 @@
   justify-content: center;
   gap: 8px;
   margin-bottom: 30px;
+  position: relative;
+  z-index: 999;
 }
 .dot {
   width: 6px;
