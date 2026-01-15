@@ -24,7 +24,7 @@
   width: 25%;
   cursor: pointer;
   color: #bec0c2;
-  transition: all 0.2s;
+  transition: 0.2s;
 }
 .gnb-item.active {
   color: #fff;

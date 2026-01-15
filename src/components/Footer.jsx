@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom"; // Link랑 useLocation 사용
-import "./Gnb.css";
+import "./Footer.css";
 
 const Gnb = () => {
   const location = useLocation();
