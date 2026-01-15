@@ -21,7 +21,7 @@
 }
 
 .ground_title {
-  font-size: 110px;
+  font-size: 118px;
   font-weight: 500;
   letter-spacing: 2.5px;
 }
@@ -33,8 +33,8 @@
 }
 
 .ground_actions a {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,7 +48,7 @@
 }
 
 .ground_infobar {
-  width: 2px;
+  width: 4px;
   height: 14px;
   background: #aa0000;
   display: inline-block;
@@ -57,4 +57,89 @@
 .ground_infoLabel {
   color: #aa0000;
   font-weight: 700;
+}
+
+/* ground_sns */
+.sns-swiper {
+  overflow: hidden;
+}
+
+.sns-swiper .swiper-slide {
+  width: 243px;
+  flex: 0 0 auto;
+}
+
+.sns-card-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.sns-card {
+  background: #1d1d1d;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 243px;
+  height: 373px;
+}
+
+.sns-thumb {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sns-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sns-body {
+  padding: 12px;
+  color: #fff;
+  min-height: 110px;
+}
+
+.sns-badge {
+  display: inline-block;
+  margin-bottom: 6px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.sns-title {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.sns-desc {
+  font-size: 14px;
+}
+
+.sns-footer {
+  margin-top: auto;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.sns-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sns-profile-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
 }

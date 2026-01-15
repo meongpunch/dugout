@@ -11,41 +11,12 @@
   background-position: top center;
   background-repeat: no-repeat;
 }
-/* header */
-header {
-  width: 100%;
-  height: 80px;
-  display: flex;
-  align-items: center;
-}
-.innerHeader {
-  width: 93%;
-  margin: 0 auto;
-  z-index: 10;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.logo {
-  display: flex;
-  align-items: center;
-}
-.icon-box {
-  width: 24px;
-  height: 24px;
-  overflow: hidden;
-  margin-bottom: 0;
-  cursor: pointer;
-}
-.icon-box img {
-  width: 100%;
-  height: 100%;
-}
+
 /* hero-section */
 .hero {
   width: 100%;
   height: 648px;
-  margin-top: 54px;
+  margin: 50px 0 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,7 +25,7 @@ header {
 .hero-info .team-name {
   font-size: 100px;
   letter-spacing: 2.5px;
-  margin-bottom: 56px;
+  margin-bottom: 28px;
   font-weight: 500;
 }
 .player-role {
