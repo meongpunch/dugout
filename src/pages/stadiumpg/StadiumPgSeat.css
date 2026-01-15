@@ -1,0 +1,88 @@
+.stadium-title {
+  font-size: 22px;
+  display: block;
+  padding: 8px 16px;
+  border-radius: 30px;
+  color: #fff;
+  margin-bottom: 0px;
+}
+
+.stadium-title .caption {
+  font-size: 14px;
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.stadium-seat {
+  background: #000;
+  margin-bottom: 0;
+}
+
+.seat-map {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.seat-map img {
+  width: 100%;
+  height: 546px;
+  object-fit: cover;
+  display: block;
+}
+
+.seat-content {
+  padding: 20px;
+}
+
+.summary .seat-info {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.summary .price {
+  font-size: 16px;
+}
+.section-hit {
+  position: absolute;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+/* ⚠️ 아래 값은 너 이미지에 맞춰 "조금"만 조절하면 딱 맞음
+   (percent라서 반응형에도 따라감) */
+
+/* 222 (맨 위) */
+.hit-222 {
+  left: 22%;
+  top: 22%;
+  width: 30%;
+  height: 11.5%;
+}
+
+/* 221 */
+.hit-221 {
+  left: 26%;
+  top: 35%;
+  width: 54%;
+  height: 11.5%;
+}
+
+/* 220 */
+.hit-220 {
+  left: 30%;
+  top: 48%;
+  width: 56%;
+  height: 13.5%;
+}
+
+/* 219 (맨 아래) */
+.hit-219 {
+  left: 34%;
+  top: 64%;
+  width: 58%;
+  height: 16%;
+}
