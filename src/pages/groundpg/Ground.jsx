@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Ground.css";
-import MainPgHeader from "../../components/MainPgHeader";
+import MainPgHeader from "../components/MainPgHeader";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -55,15 +55,15 @@ const popularTopics = [
     id: 1,
     coverImg: "/img/ground_topic_main.jpg",
     profileImg: "/img/ground_topic_profile.jpg", // 원형 프로필
-    nickname: "남양주일찐김의성🌶️",
+    nickname: "남양주일찐 김의성🌶️",
     title: "내가 먹어본 야구장 최고 야푸는!?",
     timeAgo: "15시간 전",
     reactions: [
       { icon: "🍗", count: 1528 },
-      { icon: "💪", count: 1020 },
+      { icon: "🌭", count: 1020 },
       { icon: "☕", count: 985 },
       { icon: "🥡", count: 852 },
-      { icon: "🍿", count: 521 },
+      { icon: "🍱", count: 521 },
       { icon: "🍟", count: 57 },
     ],
   },
@@ -71,6 +71,9 @@ const popularTopics = [
 
 const Ground = () => {
   const [activeReactions, setActiveReactions] = useState([]);
+  const [reactionCounts, setReactionCounts] = useState(
+    popularTopics[0].reactions.map((r) => r.count)
+  );
   return (
     <div className="ground-container">
       <MainPgHeader logoType="logo" btnType="alarm" />
@@ -152,7 +155,6 @@ const Ground = () => {
           </Swiper>
         </div>
       </section>
-
       {/* ground_topic */}
       <section className="ground-topic">
         <div className="inner">
@@ -197,18 +199,28 @@ const Ground = () => {
                               className={`topic-chip ${
                                 isActive ? "is-active" : ""
                               }`}
-                              onClick={() => {
-                                setActiveReactions(
-                                  (prev) =>
-                                    prev.includes(idx)
-                                      ? prev.filter((i) => i !== idx) // 다시 누르면 OFF
-                                      : [...prev, idx] // 누르면 ON
-                                );
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setActiveReactions((prev) => {
+                                  const isActive = prev.includes(idx);
+
+                                  // 숫자 증가/감소
+                                  setReactionCounts((counts) =>
+                                    counts.map((c, i) =>
+                                      i === idx ? (isActive ? c - 1 : c + 1) : c
+                                    )
+                                  );
+
+                                  // 토글 처리
+                                  return isActive
+                                    ? prev.filter((i) => i !== idx)
+                                    : [...prev, idx];
+                                });
                               }}
                             >
                               <span className="topic-chip-ic">{r.icon}</span>
                               <span className="topic-chip-count">
-                                {r.count.toLocaleString()}
+                                {reactionCounts[idx].toLocaleString()}
                               </span>
                             </span>
                           );
@@ -221,6 +233,29 @@ const Ground = () => {
             ))}
           </div>
         </div>
+      </section>
+      {/* ground-banner */}
+      <section className="ground-banner">
+        <a
+          href="#"
+          className="ground-banner_link"
+          onClick={(e) => e.preventDefault()}
+        >
+          {/* 배경 이미지 */}
+          <div className="ground-banner_bg">
+            <img src="/img/ground_banner.jpg" alt="" />
+          </div>
+          <div className="ground-banner__content">
+            <p className="ground-banner__title">2025 KBO 리그 올스타전</p>
+            <p className="ground-banner__sub">티빙 단독 생중계</p>
+
+            <p className="ground-banner__meta">
+              <span className="ground-banner__date">7/18(토)</span>
+              <span className="ground-banner__time">6 PM</span>
+              <span className="ground-banner__live">LIVE</span>
+            </p>
+          </div>
+        </a>
       </section>
     </div>
   );
