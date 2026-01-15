@@ -135,13 +135,24 @@ const RankListItem = ({ item }) => {
         </div>
 
         <div className="rankTopRight">
-          <span
-            className={`rankDelta ${
-              item.delta === "▲" ? "up" : item.delta === "▼" ? "down" : "same"
-            }`}
-          >
-            {item.delta}
-          </span>
+          <div className="rankDelta">
+            {item.delta === "—" ? (
+              <img
+                src="/img/rank-minus.svg"
+                alt="변동없음"
+                className="rankDeltaIcon"
+              />
+            ) : (
+              <span
+                className={
+                  item.delta === "▲" ? "rankDeltaText up" : "rankDeltaText down"
+                }
+              >
+                {item.delta}
+              </span>
+            )}
+          </div>
+
           <span className="rankNum">{item.rank}</span>
           <span className="rankUnit">위</span>
         </div>

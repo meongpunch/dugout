@@ -233,25 +233,35 @@
   flex: 0 0 auto;
 }
 
+/* ===== Rank Delta (변동 아이콘 영역) ===== */
 .rankDelta {
-  font-size: 14px;
-  font-weight: 800;
-  margin-right: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px; /* ▲ ▼ 이미지/문자 공통 폭 */
+  height: 22px;
 }
 
-/* 상승 */
-.rankDelta.up {
+/* ▲ ▼ 텍스트 */
+.rankDeltaText {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.rankDeltaText.up {
   color: #ff5151;
 }
 
-/* 하락 (예시: 파랑 계열) */
-.rankDelta.down {
-  color: #3561ff;
+.rankDeltaText.down {
+  color: #4a8cff;
 }
 
-/* 변동 없음 */
-.rankDelta.same {
-  color: #d9d9d9;
+/* — 이미지 */
+.rankDeltaIcon {
+  width: 16px; /* 피그마 기준에 맞게 조절 */
+  height: 4px; /* 실제 마이너스 두께 */
+  object-fit: contain;
 }
 
 .rankNum {
