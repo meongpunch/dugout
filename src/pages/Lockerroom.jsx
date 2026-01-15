@@ -4,7 +4,7 @@ import MainPgHeader from "../components/MainPgHeader";
 const Lockerroom = () => {
   return (
     <div>
-      <MainPgHeader />
+      <MainPgHeader logoType="logo" btnType="setting" />
     </div>
   );
 };

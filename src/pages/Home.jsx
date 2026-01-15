@@ -18,42 +18,42 @@ const Home = () => {
       role: "투수 | 에이스",
       name: "양현종",
       tags: ["#올스타", "#팀의상징", "#홈런 23"],
-      img: "/img/card_yang.svg",
+      img: "/img/Home-card_yang.jpg",
     },
     {
       id: 2,
       role: "내야수 | 슈퍼스타",
       name: "김도영",
       tags: ["#30-30", "#도니살", "#MVP"],
-      img: "/img/card_park.svg",
+      img: "/img/Home-card_kim.jpg",
     },
     {
       id: 3,
       role: "외야수 | 거포",
       name: "오선우",
       tags: ["#파워히터", "#한방있는", "#해결사"],
-      img: "/img/card_oh.svg",
+      img: "/img/Home-card_oh.jpg",
     },
     {
       id: 1,
       role: "투수 | 에이스",
       name: "양현종",
       tags: ["#올스타", "#팀의상징", "#홈런 23"],
-      img: "/img/card_yang.svg",
+      img: "/img/Home-card_yang.jpg",
     },
     {
       id: 2,
       role: "내야수 | 슈퍼스타",
       name: "김도영",
       tags: ["#30-30", "#도니살", "#MVP"],
-      img: "/img/card_park.svg",
+      img: "/img/Home-card_kim.jpg",
     },
     {
       id: 3,
       role: "외야수 | 거포",
       name: "오선우",
       tags: ["#파워히터", "#한방있는", "#해결사"],
-      img: "/img/card_oh.svg",
+      img: "/img/Home-card_oh.jpg",
     },
   ];
   // 응원 댓극 데이터
@@ -130,7 +130,7 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      <MainPgHeader />
+      <MainPgHeader logoType="logo" btnType="alarm" />
       {/* hero section */}
       <section className="hero">
         <div className="hero-info">
@@ -173,7 +173,10 @@ const Home = () => {
               <SwiperSlide key={player.id} className="hero-slide">
                 {/* 카드 클릭 시 상세 페이지 이동 */}
                 <Link to={`/player/${player.id}`} className="card-link">
-                  <div className="img-box card-img">
+                  <div
+                    className="img-box card-img box
+                  "
+                  >
                     <img src={player.img} alt={player.name} />
                   </div>
                 </Link>
@@ -349,7 +352,78 @@ const Home = () => {
           </Link>
         </div>
       </section>
-      <section className="TodayQuiz"></section>
+      <section className="TodayQuiz">
+        <div className="inner">
+          <div className="img-box">
+            <img src="/img/home-today-quiz.svg" alt="그라데이션 박스" />
+          </div>
+          <div className="quiz-content">
+            <div className="topBox">
+              <div className="left">
+                <p className="con-title">오늘의 QUIZ</p>
+                <p className="con-text">지금 바로 참여하세요 🔥</p>
+                <p className="time">
+                  <span>
+                    <img src="/img/clock.svg" alt="시계아이콘" />
+                    <span className="bold">01:11:37</span> 후 종료
+                  </span>
+                </p>
+              </div>
+              <div className="right">
+                <img src="/img/KIA_logo.svg" alt="기아 타이거즈 로고" />
+              </div>
+            </div>
+            <Link to={"/Quiz"} className="btn">
+              내 생각 남기기
+            </Link>
+          </div>
+        </div>
+      </section>
+      <section className="MD">
+        <div className="inner">
+          <h3 className="section-title">MD</h3>
+          <ul className="list">
+            <li className="active">#직관룩 Best5</li>
+            <li>#입덕용 굿즈 모음</li>
+            <li>#시즌 한정 굿즈</li>
+          </ul>
+          <Link to={"/shop"} className="Thumbnail">
+            <div className="img-box">
+              <img src="/img/home-MD-img.jpg" alt="하랑이 봉제 인형 썸네일" />
+            </div>
+            <div className="text-box">
+              <p className="text">귀여움도 팬심도 놓칠 수 없다면</p>
+              <p className="title">입덕템 1순위 하랑이 봉제 인형</p>
+            </div>
+          </Link>
+          <Link to={"/shop"} className="product">
+            <div className="left box">
+              <img
+                src="/img/home-product-img.jpg"
+                alt="하랑이 봉제 인형 썸네일"
+              />
+            </div>
+            <div className="right">
+              <div className="top">
+                <div className="title-box">
+                  <p className="title">입덕템 아스코트 봉제인형</p>
+                  <img src="/img/heart-icon.svg" alt="하트" />
+                </div>
+                <p className="subtit">팬심 소장템 🎁</p>
+              </div>
+              <div className="bottom">
+                <p className="price">27,000</p>
+                <p className="txt">
+                  응원 만족도
+                  <span>
+                    <img src="/img/star-img.svg" alt="별" /> 4.8
+                  </span>
+                </p>
+              </div>
+            </div>
+          </Link>
+        </div>
+      </section>
     </div>
   );
 };

@@ -4,12 +4,25 @@
   height: calc(100vh - 106px);
   overflow: hidden;
 }
+
+.stadium-topbar {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100vw, 430px);
+  padding: 10px 16px 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .stadium-bg {
   position: absolute;
   inset: 0;
-  background: url("/img/stadium-main-image.svg") no-repeat center/cover;
+  background: url("/img/stadium-main-image.jpg") no-repeat center/cover;
   z-index: 0;
-  height: 100vh;
 }
 
 .stadium-bg .inner {
@@ -28,9 +41,12 @@
 }
 
 .topbar-location {
-  font-size: 24px;
+  font-size: 22px;
   display: flex;
   align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 8px 16px;
+  border-radius: 30px;
 }
 
 .chevron-icon {
@@ -42,25 +58,25 @@
 
 .stadium-dropdown {
   position: absolute;
-  top: 70%;
+  top: 110%;
   left: 0;
-  width: 220px;
-  padding: 10px;
-  border-radius: 14px;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(10px);
+  width: 200px;
+  padding: 20px 10px 0;
+  border-radius: 6px;
+  background: #151515;
   z-index: 50;
+  margin: 0 16px;
 }
 
 .stadium-option {
   width: 100%;
+  font-size: 18px;
+  padding-bottom: 20px;
   border: 0;
   background: transparent;
   text-align: left;
-  padding: 10px 10px;
-  border-radius: 10px;
   cursor: pointer;
-  color: rgba(255, 255, 255, 0.75);
+  color: #fff;
 }
 
 .topbar-location.is-open .chevron-icon {
@@ -72,29 +88,42 @@
   height: 32px;
 }
 
-.bottom-box {
-  height: 31%;
+.bottom-fixed {
+  width: min(100vw, 430px);
   position: fixed;
-  left: 0;
-  right: 0;
+  left: 50%;
   bottom: 0;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.bottom-box {
+  width: 100%;
+  height: 30vh;
+  min-height: 257px;
   padding: 0 16px;
   background: #151515;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  z-index: 3;
   will-change: transform;
+  overflow: hidden;
+  z-index: 10;
 }
 
 .bottom-box.open {
-  transform: translateY(0);
-  height: calc(100vh - 20vh);
+  height: calc(100vh - 8vh);
   overflow-y: auto;
 }
 
 .bottom-box.open .sheet-body {
-  max-height: calc(78vh - 260px);
+  max-height: calc(90vh - 260px);
   overflow-y: auto;
+}
+
+.sheet-head {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
 }
 
 .bottom-box .handle {
@@ -115,4 +144,100 @@
 .bottom-box .desc {
   font-size: 16px;
   color: #a8a8a8;
+}
+
+.bottom-box .sheet-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.bottom-box,
+.sheet-body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE, Edge */
+}
+
+.bottom-box::-webkit-scrollbar,
+.sheet-body::-webkit-scrollbar {
+  display: none; /* Chrome */
+}
+
+.sheet-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.sheet-grid:first-of-type {
+  margin-bottom: 30px;
+}
+
+.chip {
+  width: 126px;
+  height: 81px;
+  border-radius: 6px;
+  background: #1f1f1f;
+  color: #eaeaea;
+  font-size: 14px;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.2;
+  padding: 0 10px;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.chip:hover {
+  background: #262626;
+  transform: translateY(-1px);
+}
+
+.chip:active {
+  transform: translateY(0);
+}
+
+.chip.active {
+  background: #aa0000;
+  color: #fff;
+}
+
+.sheet-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.confirm {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 154px;
+  height: 38px;
+  min-height: 38px;
+  line-height: 38px;
+  margin: 50px auto 28px;
+  border-radius: 20px;
+  border: none;
+  background: #1f1f1f;
+  color: #ddd;
+  font-size: 14px;
+}
+
+.confirm:not(:disabled) {
+  background: #aa0000;
+  color: #fff;
+  cursor: pointer;
+}
+
+.confirm:not(:disabled):active {
+  transform: scale(0.98);
+}
+
+/* 포커스 테두리 제거(모바일용) */
+.confirm:focus {
+  outline: none;
 }

@@ -1,8 +1,12 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Gnb from "../components/Gnb";
 import "./Stadium.css";
+import MainPgHeader from "../components/MainPgHeader";
 
 const Stadium = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -32,6 +36,13 @@ const Stadium = () => {
   const [seatType, setSeatType] = useState(null);
   const [zone, setZone] = useState(null);
 
+  useEffect(() => {
+    if (sheetOpen) {
+      setSeatType(null);
+      setZone(null);
+    }
+  }, [sheetOpen]);
+
   const seatTypeOptions = [
     "프리미엄석",
     "테이블석",
@@ -48,19 +59,18 @@ const Stadium = () => {
 
   const toggle = () => {
     if (sheetOpen) {
-      setSheetOpen(false); // 닫을 땐 바로 닫기
+      setSheetOpen(false);
     } else {
-      openSheetSmoothly(); // 🔥 열 땐 JS로 천천히
+      openSheetSmoothly();
     }
   };
 
-  // ===== Bottom sheet drag =====
   const startYRef = useRef(0);
-  const draggingRef = useRef(false); // ✅ 추가
+  const draggingRef = useRef(false);
 
   const sheetRef = useRef(null);
 
-  const targetYRef = useRef(0); // ✅ 추가
+  const targetYRef = useRef(0);
   const currentYRef = useRef(0);
   const rafRef = useRef(null);
 
@@ -85,7 +95,6 @@ const Stadium = () => {
     const y = "touches" in e ? e.touches[0].clientY : e.clientY;
     const delta = y - startYRef.current;
 
-    // 목표 위치만 업데이트
     targetYRef.current = delta * DAMP;
   };
 
@@ -99,7 +108,6 @@ const Stadium = () => {
     if (delta < -THRESHOLD) setSheetOpen(true);
     else if (delta > THRESHOLD) setSheetOpen(false);
 
-    // ✅ 드래그 끝나면 JS 제어 해제(중요)
     targetYRef.current = 0;
     currentYRef.current = 0;
     if (sheetRef.current) sheetRef.current.style.transform = "";
@@ -142,8 +150,15 @@ const Stadium = () => {
   }, []);
 
   const handleConfirm = () => {
-    if (!seatType) return;
+    if (!seatType || !zone) return;
     setSheetOpen(false);
+    navigate("/stadium/seat", {
+      state: {
+        stadiumName,
+        seatType,
+        zone,
+      },
+    });
   };
 
   return (
@@ -153,9 +168,10 @@ const Stadium = () => {
         if (stadiumOpen) setStadiumOpen(false);
       }}
     >
+      <MainPgHeader logoType="logo" btnType="ticket" />{" "}
       <div className="stadium-bg">
         <div className="inner">
-          <div className="top-bar">
+          <div className="stadium-topbar" onClick={(e) => e.stopPropagation()}>
             <a
               href="#"
               className={`topbar-location ${stadiumOpen ? "is-open" : ""}`}
@@ -175,17 +191,6 @@ const Stadium = () => {
               />
             </a>
 
-            <a
-              href="#"
-              className="topbar-icon"
-              aria-label="티켓인증"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-              }}
-            >
-              <img src="/img/stadium-ticket-icon.svg" alt="티켓인증" />
-            </a>
             {stadiumOpen && (
               <div
                 className="stadium-dropdown"
@@ -213,66 +218,70 @@ const Stadium = () => {
             )}
           </div>
 
-          <div
-            ref={sheetRef}
-            className={`bottom-box ${sheetOpen ? "open" : "closed"}`}
-          >
+          <div className="bottom-fixed">
             <div
-              className="sheet-head"
-              onClick={toggle}
-              onMouseDown={onDragStart}
-              onMouseMove={onDragMove}
-              onMouseUp={onDragEnd}
-              onMouseLeave={onDragEnd}
-              onTouchStart={onDragStart}
-              onTouchMove={onDragMove}
-              onTouchEnd={onDragEnd}
+              ref={sheetRef}
+              className={`bottom-box ${sheetOpen ? "open" : "closed"}`}
             >
-              <div className="handle" />
-              <h2 className="title">구역찾기</h2>
-              <p className="desc">원하는 필터를 선택하세요.</p>
-            </div>
-
-            {sheetOpen && (
-              <div className="sheet-body">
-                <h3 className="sheet-title">좌석</h3>
-                <div className="sheet-grid">
-                  {seatTypeOptions.map((opt) => (
-                    <button
-                      key={opt}
-                      type="button"
-                      className={`chip ${seatType === opt ? "active" : ""}`}
-                      onClick={() => setSeatType(opt)}
-                    >
-                      {opt}
-                    </button>
-                  ))}
-                </div>
-
-                <h3 className="sheet-title">구역</h3>
-                <div className="sheet-grid small">
-                  {zoneOptions.map((opt) => (
-                    <button
-                      key={opt}
-                      type="button"
-                      className={`chip ${zone === opt ? "active" : ""}`}
-                      onClick={() => setZone(opt)}
-                    >
-                      {opt}
-                    </button>
-                  ))}
-                </div>
-
-                <button
-                  type="button"
-                  className="confirm"
-                  onClick={handleConfirm}
-                  disabled={!seatType}
-                >
-                  확인
-                </button>
+              <div
+                className="sheet-head"
+                onClick={toggle}
+                onMouseDown={onDragStart}
+                onMouseMove={onDragMove}
+                onMouseUp={onDragEnd}
+                onMouseLeave={onDragEnd}
+                onTouchStart={onDragStart}
+                onTouchMove={onDragMove}
+                onTouchEnd={onDragEnd}
+              >
+                <div className="handle" />
+                <h2 className="title">구역찾기</h2>
+                <p className="desc">원하는 필터를 선택하세요.</p>
               </div>
-            )}
+
+              {sheetOpen && (
+                <div className="sheet-body">
+                  <h3 className="sheet-title">구역별</h3>
+                  <div className="sheet-grid">
+                    {seatTypeOptions.map((opt) => (
+                      <button
+                        key={opt}
+                        type="button"
+                        className={`chip ${seatType === opt ? "active" : ""}`}
+                        onClick={() => setSeatType(opt)}
+                      >
+                        {opt}
+                      </button>
+                    ))}
+                  </div>
+
+                  <h3 className="sheet-title">좌석별</h3>
+                  <div className="sheet-grid small">
+                    {zoneOptions.map((opt) => (
+                      <button
+                        key={opt}
+                        type="button"
+                        className={`chip ${zone === opt ? "active" : ""}`}
+                        onClick={() =>
+                          setZone((prev) => (prev === opt ? null : opt))
+                        }
+                      >
+                        {opt}
+                      </button>
+                    ))}
+                  </div>
+
+                  <button
+                    type="button"
+                    className="confirm"
+                    onClick={handleConfirm}
+                    disabled={!seatType || !zone}
+                  >
+                    확인
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

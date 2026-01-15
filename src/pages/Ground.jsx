@@ -52,7 +52,7 @@ const snsCards = [
 const Ground = () => {
   return (
     <div className="ground-container">
-      <MainPgHeader />
+      <MainPgHeader logoType="logo" btnType="alarm" />
       <section className="Ground">
         <div className="inner">
           <div className="ground_content">
