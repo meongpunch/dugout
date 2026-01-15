@@ -15,29 +15,17 @@ const PlayerDetail = () => {
   const cards = [
     {
       id: 1,
-<<<<<<< HEAD
-      image: "https://placehold.co/300x450/red/white?text=YANG+1",
-=======
       image: "/img/player-detail-photo1.png",
->>>>>>> 386365e3d9946b51940a70343c400e71b5f37549
       name: "양현종 1",
     },
     {
       id: 2,
-<<<<<<< HEAD
-      image: "https://placehold.co/300x450/black/white?text=YANG+2",
-=======
       image: "/img/player-detail-photo2.png",
->>>>>>> 386365e3d9946b51940a70343c400e71b5f37549
       name: "양현종 2",
     },
     {
       id: 3,
-<<<<<<< HEAD
-      image: "https://placehold.co/300x450/red/white?text=YANG+3",
-=======
       image: "/img/player-detail-photo3.png",
->>>>>>> 386365e3d9946b51940a70343c400e71b5f37549
       name: "양현종 3",
     },
   ];
@@ -189,17 +177,8 @@ const PlayerDetail = () => {
         <div className="inner">
           <h2 className="section-title card">PHOTO CARD</h2>
           <Swiper
-<<<<<<< HEAD
-            spaceBetween={16}
-            slidesPerView={2.2}
-            breakpoints={{
-              640: { slidesPerView: 3.2 },
-              1024: { slidesPerView: 4.2 },
-            }}
-=======
             spaceBetween={12}
             slidesPerView={2.2}
->>>>>>> 386365e3d9946b51940a70343c400e71b5f37549
             className="photo-card-swiper"
           >
             {cards.map((card) => (
