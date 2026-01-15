@@ -1,0 +1,242 @@
+/* PlayerDetail.css */
+section.player-hero {
+  margin-top: 50px;
+  min-height: 708px;
+}
+.detail-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #111; /* Home과 비슷한 어두운 배경 */
+  color: #fff;
+  padding: 0 auto;
+  box-sizing: border-box;
+}
+.detail-header {
+  height: 80px;
+}
+.back-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.player-hero-box-cont-txt {
+  font-size: 100px;
+  letter-spacing: 6.5px;
+  line-height: 0.9;
+  margin: 74px 0 0 22px;
+}
+
+.player-hero-box-red {
+  position: relative;
+  height: 49px;
+}
+
+.player-red-bg {
+  position: absolute;
+}
+
+.player-detail-red-txt {
+  position: absolute;
+  font-size: 18px;
+  font-weight: bold;
+  top: 50%;
+  left: 7%;
+  transform: translateY(-50%);
+}
+
+.player-hero-box-desc {
+  margin-top: 150px;
+}
+
+.player-hero-box-desc-txt {
+  width: 93%;
+  margin: 18px auto 0;
+}
+
+/* 1. 전체를 감싸는 부모 박스: 기준점이 됨 */
+.player-hero-box {
+  position: relative; /* 자식 요소들의 기준점이 되기 위해 필수! */
+  width: 100%;
+  height: auto; /* 높이는 디자인에 맞게 조절 (혹은 auto) */
+}
+
+/* 2. 배경 이미지 영역: 부모 기준으로 꽉 채우기 */
+.player-hero-box-bg {
+  position: absolute; /* 붕 띄워서 배치 */
+  top: 0;
+  left: 0;
+  z-index: 0; /* 제일 아래에 깔기 */
+}
+.player-hero-box-cont-img {
+  position: absolute;
+  right: 0;
+  height: 100%;
+}
+/* 배경 이미지 자체 스타일 (꽉 차게 보이도록) */
+.player-hero-box-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 비율 유지하면서 꽉 채우기 (중요!) */
+}
+
+/* 3. 컨텐츠(글씨+선수) 영역: 배경 위에 올라오기 */
+.player-hero-box-cont {
+  position: relative; /* absolute 위로 올라오려면 relative가 안전 */
+  z-index: 1; /* 배경(0)보다 높은 숫자면 무조건 위에 뜸 */
+
+  /* 여기서부터는 배치 스타일 (Flex 등) */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0 20px;
+}
+
+/* 6개 박스를 감싸는 그리드 컨테이너 */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    minmax(0, 1fr)
+  ); /* 1fr 1fr 1fr (3등분) minmax(0,1fr)을 쓰면 글자가 길어도 박스가 안 늘어난다고 함 */
+  gap: 10px; /* 박스 사이 간격 */
+  margin-top: 24px; /* 윗쪽 설명글과의 간격 */
+  padding: 0 20px; /* 좌우 여백 */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 개별 박스 디자인 */
+.stat-box {
+  background-color: #1a1a1a; /* 이미지가 없을 때 기본 배경색 (어두운 회색) */
+  border-radius: 8px; /* 둥근 모서리 */
+  aspect-ratio: 1 / 1; /* 정사각형 비율 유지 (원하면 height: 100px; 로 고정 가능) */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* 타이틀은 위, 숫자는 아래로 찢기 */
+  padding: 12px;
+
+  /* 배경 이미지 관련 설정 */
+  background-size: cover;
+  background-position: center;
+  border: 0.5px solid rgba(255, 255, 255, 0.1); /* 살짝 테두리 */
+}
+
+/* 작은 제목 (WINS, ERA...) */
+.stat-box-title {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 큰 숫자 (186, 3.90...) */
+.stat-box-value {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 300;
+  text-align: right; /* 오른쪽 정렬 */
+}
+
+/* --- LEGEND SCALE 그래프 스타일 (통합본) --- */
+
+/* 전체 섹션 배경 및 설정 */
+.legend-scale-section {
+  background-color: #0d0d0d;
+  color: #ffffff;
+  font-family: "Pretendard", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* 내부 너비 조정용 (필요시 사용) */
+.scale-inner {
+  width: 93%;
+  margin: 0 auto;
+}
+
+.text-group {
+  margin-bottom: 40px;
+}
+
+/* 타이틀 스타일 */
+.text-group .section-title {
+  margin: 0;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 0;
+  line-height: 1.32;
+}
+
+/* 서브 설명 텍스트 */
+.sub-description {
+  color: #fff;
+  font-size: 14px;
+  margin-top: 4px;
+  line-height: 1.32;
+  letter-spacing: -0.02rem;
+}
+
+/* 그래프 컨테이너 */
+.chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* 바닥 기준 정렬 */
+  gap: 12px; /* 피그마 스펙: 막대 사이 간격 */
+  height: 100px; /* 전체 그래프 높이 */
+  width: 100%;
+}
+
+/* 개별 막대 스타일 */
+.bar {
+  flex: none; /* 반응형 끄기 (고정 너비 사용을 위해) */
+  width: 30px; /* 피그마 스펙: 막대 너비 */
+
+  background-color: #8a0000;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  height: 0%; /* 애니메이션 시작점 */
+  animation: growUp 1s ease-out forwards;
+  position: relative;
+}
+
+/* 마지막 강조 막대 스타일 */
+.bar.highlight {
+  background-color: #ff0000;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.6); /* 빛나는 효과 */
+  z-index: 1;
+}
+
+/* 66% 텍스트 라벨 */
+.percent-label {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ffffff;
+  font-size: 14px;
+  white-space: nowrap;
+
+  opacity: 0;
+  animation: fadeIn 0.5s 0.8s forwards;
+}
+
+/* 애니메이션 정의 */
+@keyframes growUp {
+  to {
+    height: var(--h);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}

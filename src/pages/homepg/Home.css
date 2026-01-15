@@ -1,0 +1,552 @@
+.home-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #111;
+  color: #fff;
+  position: relative;
+  overflow-x: hidden;
+  /* 그라데이션 이미지 삽입 */
+  background-image: url("/img/hero_top_bg.svg");
+  background-size: auto;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+/* hero-section */
+.hero {
+  width: 100%;
+  height: 648px;
+  margin: 50px 0 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.hero-info .team-name {
+  font-size: 100px;
+  letter-spacing: 2.5px;
+  margin-bottom: 28px;
+  font-weight: 500;
+}
+.player-role {
+  font-size: 14px;
+  color: #ddd;
+  margin-bottom: 4px;
+}
+.player-name {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.tags {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.tags span {
+  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 8px 14px;
+  border-radius: 20px;
+}
+/* 선수 카드 swiper */
+.hero-swiper-wrap {
+  width: 100%;
+}
+.mySwiper {
+  width: 100%;
+}
+.hero-slide {
+  width: 260px;
+  height: 400px;
+}
+.card-img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0.7;
+}
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.swiper-slide-active .card-img {
+  opacity: 1;
+}
+
+/* 공통요소 */
+.section-title {
+  font-size: 28px;
+  margin-bottom: 28px;
+  font-weight: bold;
+}
+.box {
+  border-radius: 6px;
+  overflow: hidden;
+}
+.btn {
+  font-size: 14px;
+  padding: 10px 30px;
+  background: #aa0000;
+  border-radius: 20px;
+  width: 154px;
+  text-align: center;
+  display: block;
+}
+
+/* comment-section */
+.comment {
+  width: 100%;
+}
+.comment-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.comment-slide {
+  width: auto;
+}
+.comment-bubble {
+  display: flex;
+  align-items: center;
+  background: #111;
+  border: 1px rgba(255, 255, 255, 0.5) solid;
+  padding: 8px 14px;
+  margin-right: 12px;
+  border-radius: 30px;
+}
+.profile-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+.profile-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.comment-text {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* todaymatch-section */
+.today-match {
+  width: 100%;
+}
+.match-card {
+  width: 100%;
+  height: 533px;
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.img img {
+  width: 100%;
+  height: 100%;
+}
+.live-badge {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background: #fff;
+  color: #111;
+  display: flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 132%;
+}
+.live-badge .circle {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: #aa0000;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.match-content {
+  position: absolute;
+  bottom: 24px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.score-board {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  width: 310px;
+  height: 93px;
+  margin-bottom: 35px;
+}
+.team-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+.score-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.score-info .score {
+  font-size: 48px;
+  font-weight: bold;
+}
+.score-info .inning {
+  font-size: 16px;
+  color: #ddd;
+}
+
+/* highlight-section */
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 190px);
+  justify-content: center;
+  column-gap: 18px;
+  row-gap: 25px;
+  padding-bottom: 50px;
+}
+.highlight-card {
+  position: relative;
+  overflow: hidden;
+  width: 190px;
+  height: 220px;
+}
+.highlight-card a {
+  display: block;
+}
+.highlight-grid > a:nth-child(even) {
+  transform: translateY(50px);
+}
+.highlight-card .img-box {
+  width: 100%;
+  height: 100%;
+}
+.highlight-card .img-box img {
+  width: 100%;
+  height: 100%;
+}
+.play-icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.text-overlay {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top: 1px rgba(255, 255, 255, 0.3) solid;
+  width: 164px;
+  padding-top: 10px;
+}
+.text-overlay p {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* team-rank section */
+.team-rank .inner {
+  position: relative;
+}
+.rank-card {
+  border-radius: 6px 6px 0 0;
+}
+.rank-hero {
+  position: relative;
+  width: 100%;
+  height: 267px;
+}
+.rank-hero .bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 24px 17px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.top-logo {
+  width: 50px;
+  height: 50px;
+}
+
+.big-rank-col {
+  margin-left: 9px;
+  display: flex;
+  flex-direction: column;
+  /* 왼쪽 정렬 */
+}
+.big-rank-col .num {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1;
+  color: #fff;
+}
+.big-rank-col .diff {
+  font-size: 14px;
+  font-weight: 700;
+  align-items: center;
+  margin: 4px 0 0 4px;
+  display: flex;
+  justify-content: space-between;
+  width: 24px;
+}
+.big-rank-col .diff .arrow {
+  color: #f14036;
+  margin-left: 5px;
+  display: block;
+}
+.rank-list {
+  background: red;
+  width: 100%;
+}
+.rank-item {
+  background: #28282a;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+}
+.logo-box {
+  width: 50px;
+  height: 50px;
+}
+.logo-box img {
+  width: 100%;
+  height: 100%;
+}
+.rightBox {
+  display: flex;
+  align-items: center;
+  width: 80%;
+}
+.rank-col {
+  height: 100%;
+  margin-right: 36px;
+}
+.rank-col .num {
+  font-size: 24px;
+  font-weight: bold;
+}
+.diff {
+  font-size: 10px;
+  text-align: center;
+}
+.diff .up {
+  color: #f14036;
+  margin-top: 3px;
+  display: block;
+}
+.diff .down {
+  color: #3561ff;
+  margin-top: 3px;
+  display: block;
+}
+.diff .dash {
+  font-size: 24px;
+  line-height: 90%;
+}
+.gradient-box {
+  position: absolute;
+  background: linear-gradient(
+    to bottom,
+    rgba(17, 17, 17, 0) 0%,
+    rgba(17, 17, 17, 1) 100%
+  );
+  width: 398px;
+  height: 260px;
+  bottom: 0;
+}
+.more {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.name-col .ko {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+.name-col .en {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+}
+/* todat-Quiz section */
+.TodayQuiz .inner {
+  position: relative;
+}
+.TodayQuiz .img-box {
+  width: 100%;
+  height: 100%;
+}
+.TodayQuiz .img-box img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.quiz-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 30px 20px;
+}
+.quiz-content .topBox {
+  display: flex;
+  justify-content: space-between;
+}
+.quiz-content .topBox .left {
+}
+.quiz-content .topBox .left .con-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.quiz-content .topBox .left .con-text {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.quiz-content .topBox .left .time {
+  font-size: 14px;
+}
+.quiz-content .topBox .left .time .bold {
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 4px;
+}
+.quiz-content .topBox .right {
+  width: 118px;
+}
+.quiz-content .topBox .right img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.quiz-content .btn {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+/* MD section */
+.MD {
+}
+.MD .list {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.MD .list li {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+.MD .list li.active {
+  background: #aa0000;
+  border: none;
+}
+.Thumbnail {
+  position: relative;
+  margin-bottom: 16px;
+  display: block;
+}
+.MD .img-box {
+  border-radius: 6px;
+  overflow: hidden;
+  width: 100%;
+  height: 398px;
+}
+.MD .img-box img {
+  width: 100%;
+  height: 100%;
+}
+.MD .text-box {
+  position: absolute;
+  bottom: 28px;
+  left: 20px;
+}
+.MD .text-box .text {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+.MD .text-box .title {
+  font-size: 20px;
+  font-weight: bold;
+}
+.MD .product {
+  display: flex;
+  gap: 18px;
+}
+.MD .product .left {
+  width: 142px;
+  height: 146px;
+}
+.MD .product .left img {
+  width: 100%;
+  height: 100%;
+}
+.MD .product .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 60%;
+}
+.MD .product .right .top .title-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.MD .product .right .top .title-box .title {
+  font-size: 18px;
+  font-weight: 500;
+}
+.MD .product .right .top .title-box .subtit {
+  font-size: 16px;
+}
+.MD .product .right .price {
+  font-size: 18px;
+  font-weight: 500;
+}
+.MD .product .right .txt {
+  font-size: 12px;
+}
+.MD .product .right .txt span {
+  margin-left: 4px;
+}
