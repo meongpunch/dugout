@@ -18,42 +18,42 @@ const Home = () => {
       role: "투수 | 에이스",
       name: "양현종",
       tags: ["#올스타", "#팀의상징", "#홈런 23"],
-      img: "/img/card_yang.svg",
+      img: "/img/Home-card_yang.jpg",
     },
     {
       id: 2,
       role: "내야수 | 슈퍼스타",
       name: "김도영",
       tags: ["#30-30", "#도니살", "#MVP"],
-      img: "/img/card_park.svg",
+      img: "/img/Home-card_kim.jpg",
     },
     {
       id: 3,
       role: "외야수 | 거포",
       name: "오선우",
       tags: ["#파워히터", "#한방있는", "#해결사"],
-      img: "/img/card_oh.svg",
+      img: "/img/Home-card_oh.jpg",
     },
     {
       id: 1,
       role: "투수 | 에이스",
       name: "양현종",
       tags: ["#올스타", "#팀의상징", "#홈런 23"],
-      img: "/img/card_yang.svg",
+      img: "/img/Home-card_yang.jpg",
     },
     {
       id: 2,
       role: "내야수 | 슈퍼스타",
       name: "김도영",
       tags: ["#30-30", "#도니살", "#MVP"],
-      img: "/img/card_park.svg",
+      img: "/img/Home-card_kim.jpg",
     },
     {
       id: 3,
       role: "외야수 | 거포",
       name: "오선우",
       tags: ["#파워히터", "#한방있는", "#해결사"],
-      img: "/img/card_oh.svg",
+      img: "/img/Home-card_oh.jpg",
     },
   ];
   // 응원 댓극 데이터
@@ -173,7 +173,10 @@ const Home = () => {
               <SwiperSlide key={player.id} className="hero-slide">
                 {/* 카드 클릭 시 상세 페이지 이동 */}
                 <Link to={`/player/${player.id}`} className="card-link">
-                  <div className="img-box card-img">
+                  <div
+                    className="img-box card-img box
+                  "
+                  >
                     <img src={player.img} alt={player.name} />
                   </div>
                 </Link>
