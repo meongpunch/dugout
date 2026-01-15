@@ -240,7 +240,7 @@
 
 .topic-title {
   margin: 0;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 800;
 }
 
@@ -263,6 +263,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  font-weight: 400;
 
   height: 34px;
   padding: 8px 16px;
@@ -281,6 +282,11 @@
   transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.08s ease;
 }
 
+.topic-chip-count {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
 .topic-chip.is-active {
   background: linear-gradient(180deg, #aa0000 0%, #aa0000 100%);
   border-color: #bb3333;
@@ -288,4 +294,64 @@
 
 .topic-chip:active {
   transform: scale(0.96);
+}
+
+/* ground_banner */
+.ground-banner_link {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  text-decoration: none;
+  color: #fff;
+}
+
+.ground-banner_bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.ground-banner_bg img {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ground-banner__content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 18px 40px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+
+.ground-banner__title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.ground-banner__sub {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+.ground-banner__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ground-banner__date,
+.ground-banner__time {
+  opacity: 0.9;
 }
