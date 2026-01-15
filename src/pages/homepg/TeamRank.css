@@ -1,0 +1,317 @@
+/* ================= Base ================= */
+.teamRank-container {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  padding-bottom: 90px;
+
+  /* 배경 이미지 */
+  background: url("/img/rank-baseball-bg.png") no-repeat left -160px top -70px;
+  background-size: 580px auto;
+}
+
+/* 오버레이(가독성) */
+.teamRank-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.6));
+}
+
+.teamRank-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ================= DateNavigator ================= */
+.date-navigator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 48px;
+  margin-bottom: 56px;
+}
+
+.nav-btn {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.nav-btn img {
+  width: 12px;
+  height: 12px;
+  opacity: 0.95;
+}
+
+.date-text {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.32;
+  letter-spacing: -0.02em;
+  opacity: 0.95;
+}
+
+/* ================= Top3Podium ================= */
+.top3Podium {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 16px;
+  padding: 0 16px;
+  min-height: 220px;
+  margin-bottom: 40px;
+}
+
+.podiumCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  width: 118px;
+  border-radius: 6px;
+  padding: 18px 10px;
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+.podiumCard.second {
+  height: 186px;
+  opacity: 0.92;
+}
+
+.podiumCard.center {
+  width: 130px;
+  height: 222px;
+  background: linear-gradient(
+    180deg,
+    rgba(160, 0, 0, 0.95),
+    rgba(120, 0, 0, 0.95)
+  );
+}
+
+.podiumCard.third {
+  height: 150px;
+  opacity: 0.92;
+}
+
+.podiumLogo {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+.podiumKo {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.23;
+  letter-spacing: -0.02em;
+}
+
+.podiumEn {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.23;
+  letter-spacing: 0.04em;
+  opacity: 0.7;
+}
+
+/* ================= RankList ================= */
+.rankList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0 16px 40px;
+}
+
+/* 카드 (피그마 398 x 183) */
+.rankItem {
+  position: relative;
+  width: 100%;
+  height: 183px;
+  border-radius: 6px;
+  padding: 18px 18px 16px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+/* 우측 원형 하이라이트(피그마 느낌) */
+.rankItem::after {
+  content: "";
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  width: 206px;
+  height: 206px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(250, 193, 9, 0.18),
+    rgba(250, 193, 9, 0)
+  );
+  filter: blur(24px);
+  pointer-events: none;
+}
+
+.rankItem > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Top 영역 ===== */
+.rankTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.rankTopLeft {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  min-width: 0;
+}
+
+.rankLogo {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.rankTitleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.rankTitle {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rankSub {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.95;
+}
+
+.streakIcon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.streakText {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* 우측 (▲/▼/— + 1 위) */
+.rankTopRight {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 6px;
+  flex: 0 0 auto;
+}
+
+.rankDelta {
+  font-size: 22px;
+  font-weight: 700;
+  opacity: 0.9;
+}
+
+.rankNum {
+  font-size: 44px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.rankUnit {
+  font-size: 24px;
+  font-weight: 700;
+  opacity: 0.95;
+}
+
+/* ===== Bottom 영역 ===== */
+.rankBottom {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 30px;
+  margin-top: 22px;
+}
+
+.statCol {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.statRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 라벨 */
+.statKey {
+  font-size: 20px;
+  font-weight: 500;
+  opacity: 0.65;
+  min-width: 44px;
+}
+
+/* 구분선(라벨 | 값) - 문자 대신 선 */
+.statSep {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+}
+
+/* 값 */
+.statVal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* 승패무 숫자 */
+.statNum {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* 승패무 내부 구분선(숫자 | 숫자 | 숫자) */
+.statPipe {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+}
