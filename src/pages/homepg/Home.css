@@ -427,8 +427,7 @@
   display: flex;
   justify-content: space-between;
 }
-.quiz-content .topBox .left {
-}
+
 .quiz-content .topBox .left .con-title {
   font-size: 30px;
   font-weight: bold;
@@ -462,8 +461,7 @@
   transform: translateX(-50%);
 }
 /* MD section */
-.MD {
-}
+
 .MD .list {
   display: flex;
   gap: 10px;
@@ -527,6 +525,12 @@
   justify-content: space-between;
   width: 60%;
 }
+
+.MD .product .right .bottom {
+  position: static;
+  padding: 0;
+}
+
 .MD .product .right .top .title-box {
   display: flex;
   justify-content: space-between;
@@ -549,4 +553,14 @@
 }
 .MD .product .right .txt span {
   margin-left: 4px;
+}
+.heart-btn {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+.heart-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }

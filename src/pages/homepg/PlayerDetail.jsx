@@ -1,13 +1,35 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"; // useNavigate는 BackButton 내부에 있다면 여기서 제거 가능
-import BackButton from "../../components/Backbutton"; // 1. BackButton 컴포넌트 불러오기
-import "./PlayerDetail.css";
+import { useParams } from "react-router-dom";
+// Swiper 관련 임포트
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+
+import BackButton from "../../components/Backbutton";
+import "./PlayerDetail.css"; // CSS 파일 임포트 확인!
 
 const PlayerDetail = () => {
   const { id } = useParams();
   const [player, setPlayer] = useState(null);
 
-  // 데이터 (기존과 동일)
+  // 1. 포토카드에 들어갈 데이터 (실제 데이터로 나중에 교체)
+  const cards = [
+    {
+      id: 1,
+      image: "/img/player-detail-photo1.png",
+      name: "양현종 1",
+    },
+    {
+      id: 2,
+      image: "/img/player-detail-photo2.png",
+      name: "양현종 2",
+    },
+    {
+      id: 3,
+      image: "/img/player-detail-photo3.png",
+      name: "양현종 3",
+    },
+  ];
+
   const playersData = [
     {
       id: 1,
@@ -27,7 +49,7 @@ const PlayerDetail = () => {
           title: "INNINGS",
           value: "2,500",
           bg: "/img/player-detail-statbg4.png",
-        }, // 186은 너무 적어서 임의 수정
+        },
         {
           title: "KOREAN SERIES",
           value: "3",
@@ -71,7 +93,6 @@ const PlayerDetail = () => {
 
   return (
     <div className="detail-container">
-      {/* 2. 뒤로가기 헤더 수정: 기존 button 태그를 BackButton 컴포넌트로 교체 */}
       <header className="detail-header">
         <BackButton title="선수보기" />
       </header>
@@ -107,6 +128,7 @@ const PlayerDetail = () => {
           </div>
         </div>
       </section>
+
       <section className="player-stat">
         <div className="stat-grid">
           {player.detailStats &&
@@ -114,7 +136,6 @@ const PlayerDetail = () => {
               <div
                 key={index}
                 className="stat-box"
-                // 배경 이미지가 있으면 넣고, 없으면 검정색(#111)이 되도록 처리
                 style={{
                   backgroundImage: stat.bg ? `url('${stat.bg}')` : "none",
                 }}
@@ -126,8 +147,7 @@ const PlayerDetail = () => {
         </div>
       </section>
 
-      {/* 🔥 [추가된 부분] LEGEND SCALE 그래프 섹션 🔥 */}
-      {/* 데이터가 있는 경우에만 렌더링 (양현종만 뜨게 됨) */}
+      {/* LEGEND SCALE 그래프 섹션 */}
       {player.graphData && (
         <section className="legend-scale-section">
           <div className="scale-inner">
@@ -137,16 +157,13 @@ const PlayerDetail = () => {
             </div>
 
             <div className="chart-container">
-              {/* 일반 막대들 반복 */}
               {player.graphData.map((height, index) => (
                 <div
                   key={index}
                   className="bar"
-                  style={{ "--h": `${height}%` }} // React 스타일 문법 주의!
+                  style={{ "--h": `${height}%` }}
                 ></div>
               ))}
-
-              {/* 마지막 강조 막대 */}
               <div className="bar highlight" style={{ "--h": "80%" }}>
                 <span className="percent-label">{player.lastGraphValue}</span>
               </div>
@@ -154,6 +171,30 @@ const PlayerDetail = () => {
           </div>
         </section>
       )}
+
+      {/* 2. 포토카드 Swiper 섹션 (CSS 클래스 적용됨) */}
+      <section className="photo-card-section">
+        <div className="inner">
+          <h2 className="section-title card">PHOTO CARD</h2>
+          <Swiper
+            spaceBetween={12}
+            slidesPerView={2.2}
+            className="photo-card-swiper"
+          >
+            {cards.map((card) => (
+              <SwiperSlide key={card.id}>
+                <div className="photo-card-wrapper">
+                  <img
+                    src={card.image}
+                    alt={card.name}
+                    className="photo-card-image"
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </section>
     </div>
   );
 };

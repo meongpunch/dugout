@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Gnb from "../../components/Gnb";
+
 import "./Stadium.css";
 import MainPgHeader from "../../components/MainPgHeader";
 

@@ -240,3 +240,60 @@ section.player-hero {
     opacity: 1;
   }
 }
+
+/* photo card */
+/* --- 포토카드 섹션 스타일 --- */
+.photo-card-section {
+  /* 위아래 여백 */
+  color: #fff;
+  font-family: sans-serif;
+}
+
+<<<<<<< HEAD
+.photo-card-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding-left: 5px;
+  color: #fff;
+}
+
+.photo-card-swiper {
+  padding-bottom: 20px;
+}
+
+.photo-card-wrapper {
+=======
+
+.photo-card-swiper {
+  padding-bottom: 20px;
+  width: 100%;
+}
+
+/* ⭐ [핵심] slidesPerView='auto'일 때 카드가 찌그러지지 않게 하는 필수 코드 */
+.photo-card-swiper .swiper-slide {
+  width: auto !important; /* 내용물(카드) 크기만큼만 잡히게 강제 설정 */
+  /* 간격(gap)은 JSX의 spaceBetween={12}에서 처리되므로 여기선 안 줘도 됨 */
+}
+
+.photo-card-wrapper {
+  width: 160px;
+  height: 250px;
+>>>>>>> 386365e3d9946b51940a70343c400e71b5f37549
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  aspect-ratio: 2 / 3; /* 포토카드 비율 (가로:세로 = 2:3) */
+  background-color: #333;
+}
+
+.photo-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+<<<<<<< HEAD
+=======
+s
+>>>>>>> 386365e3d9946b51940a70343c400e71b5f37549
+  display: block;
+}

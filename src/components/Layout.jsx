@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Gnb from "./Gnb";
+import Footer from "./Footer";
 import "./Layout.css";
 
 const Layout = () => {
@@ -9,7 +9,7 @@ const Layout = () => {
       <main>
         <Outlet />
       </main>
-      <Gnb />
+      <Footer />
     </div>
   );
 };

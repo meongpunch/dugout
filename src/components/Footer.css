@@ -1,9 +1,10 @@
 .gnb {
   position: fixed;
   bottom: 0;
+
   width: 100%;
   max-width: 430px;
-  height: 106px;
+  height: 104px;
   background-color: #111;
   display: flex;
   justify-content: space-around;
@@ -11,25 +12,31 @@
   z-index: 1000;
   padding-bottom: 20px;
   border-top: 1px rgba(255, 255, 255, 0.3) solid;
+  box-sizing: border-box;
 }
 .gnb-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-decoration: none;
-  opacity: 0.7;
+
   width: 25%;
   cursor: pointer;
+  color: #bec0c2;
+  transition: 0.2s;
 }
 .gnb-item.active {
-  opacity: 1;
+  color: #fff;
+}
+.gnb-item.active .text {
+  font-weight: bold;
 }
 .gnb .icon-box {
   width: 24px;
   height: 24px;
   margin-bottom: 12px;
   opacity: 0.7;
-  background-color: #fff;
 }
 .gnb-item.active .icon-box {
   opacity: 1;

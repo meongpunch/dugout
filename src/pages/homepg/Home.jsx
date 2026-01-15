@@ -127,6 +127,12 @@ const Home = () => {
       state: "up",
     },
   ];
+  const [isLiked, setIsLiked] = useState(false);
+
+  const toggleLike = (e) => {
+    e.preventDefault();
+    setIsLiked(!isLiked);
+  };
 
   return (
     <div className="home-container">
@@ -407,7 +413,18 @@ const Home = () => {
               <div className="top">
                 <div className="title-box">
                   <p className="title">입덕템 아스코트 봉제인형</p>
-                  <img src="/img/heart-icon.svg" alt="하트" />
+                  {/* 하트 버튼 부분 */}
+                  <div className="heart-btn" onClick={toggleLike}>
+                    <img
+                      // isLiked가 true면 빨간 하트, false면 빈 하트
+                      src={
+                        isLiked
+                          ? "/img/heart-icon-onclick.svg"
+                          : "/img/heart-icon.svg"
+                      }
+                      alt="좋아요"
+                    />
+                  </div>
                 </div>
                 <p className="subtit">팬심 소장템 🎁</p>
               </div>
