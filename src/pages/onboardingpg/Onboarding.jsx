@@ -38,6 +38,7 @@ const Onboarding = () => {
   const commonProps = {
     page,
     goNext,
+    goPrev,
     goTo,
     handleTouchStart,
     handleTouchEnd,
@@ -58,7 +59,10 @@ const Dots = ({ page, goTo }) => (
         key={i}
         type="button"
         className={`dot ${page === i ? "active" : ""}`}
-        onClick={() => goTo(i)}
+        onClick={() => {
+          console.log("DOT CLICK", i);
+          goTo(i);
+        }}
         aria-label={`${i + 1}번째 온보딩`}
       />
     ))}
@@ -133,6 +137,7 @@ const Onboarding1 = ({
 const Onboarding2 = ({
   page,
   goNext,
+  goPrev,
   goTo,
   handleTouchStart,
   handleTouchEnd,
@@ -146,6 +151,9 @@ const Onboarding2 = ({
     handleMouseUp={handleMouseUp}
   >
     <img className="bg" src="/img/onboarding-2.jpg" alt="" />
+    <button className="backbtn" type="button" onClick={goPrev}>
+      <img src="/img/onboarding-back-icon.svg" alt="뒤로가기" />
+    </button>
     <button className="skip" type="button">
       {" "}
       건너뛰기{" "}
@@ -172,6 +180,7 @@ const Onboarding3 = ({
   page,
   goNext,
   goTo,
+  goPrev,
   handleTouchStart,
   handleTouchEnd,
   handleMouseDown,
@@ -184,6 +193,9 @@ const Onboarding3 = ({
     handleMouseUp={handleMouseUp}
   >
     <img className="bg" src="/img/onboarding-3.jpg" alt="" />
+    <button className="backbtn" type="button" onClick={goPrev}>
+      <img src="/img/onboarding-back-icon.svg" alt="뒤로가기" />
+    </button>
     <button className="skip" type="button">
       건너뛰기
     </button>
@@ -203,7 +215,7 @@ const Onboarding3 = ({
 
       <div className="bubble bubble-left">
         <span className="bubble-dot" />
-        덕아웃 폼 미쳤다
+        김도영 폼 미쳤다
       </div>
     </div>
     <Bottom page={page} goNext={goNext} goTo={goTo} />
@@ -215,6 +227,7 @@ const Onboarding4 = ({
   page,
   goNext,
   goTo,
+  goPrev,
   handleTouchStart,
   handleTouchEnd,
   handleMouseDown,
@@ -227,6 +240,9 @@ const Onboarding4 = ({
     handleMouseUp={handleMouseUp}
   >
     <img className="bg" src="/img/onboarding-4.jpg" alt="" />
+    <button className="backbtn" type="button" onClick={goPrev}>
+      <img src="/img/onboarding-back-icon.svg" alt="뒤로가기" />
+    </button>
     <button className="skip" type="button">
       {" "}
       건너뛰기{" "}
