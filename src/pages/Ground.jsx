@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Ground.css";
 import MainPgHeader from "../components/MainPgHeader";
 
@@ -49,7 +49,28 @@ const snsCards = [
   },
 ];
 
+// 인기 vs 토픽 데이터
+const popularTopics = [
+  {
+    id: 1,
+    coverImg: "/img/ground_topic_main.jpg",
+    profileImg: "/img/ground_topic_profile.jpg", // 원형 프로필
+    nickname: "남양주일찐김의성🌶️",
+    title: "내가 먹어본 야구장 최고 야푸는!?",
+    timeAgo: "15시간 전",
+    reactions: [
+      { icon: "🍗", count: 1528 },
+      { icon: "💪", count: 1020 },
+      { icon: "☕", count: 985 },
+      { icon: "🥡", count: 852 },
+      { icon: "🍿", count: 521 },
+      { icon: "🍟", count: 57 },
+    ],
+  },
+];
+
 const Ground = () => {
+  const [activeReactions, setActiveReactions] = useState([]);
   return (
     <div className="ground-container">
       <MainPgHeader logoType="logo" btnType="alarm" />
@@ -129,6 +150,76 @@ const Ground = () => {
               </SwiperSlide>
             ))}
           </Swiper>
+        </div>
+      </section>
+
+      {/* ground_topic */}
+      <section className="ground-topic">
+        <div className="inner">
+          <div className="ground-topic-head">
+            <h3 className="section-title">인기 vs 토픽</h3>
+            <a href="#" className="ground-topic-more">
+              더보기
+            </a>
+          </div>
+
+          <div className="ground-topic-list">
+            {popularTopics.map((item) => (
+              <article key={item.id} className="topic-card">
+                <a href="#" className="topic-card-link">
+                  {/* 배경이미지 */}
+                  <div className="topic-card-bg">
+                    <img src={item.coverImg} alt="" />
+                  </div>
+
+                  {/* 오버레이 */}
+                  <div className="topic-card-overlay">
+                    {/* 상단: 프로필 + 닉네임 */}
+                    <div className="topic-card-top">
+                      <div className="topic-profile">
+                        <img src={item.profileImg} alt={item.nickname} />
+                      </div>
+                      <p className="topic-nickname">{item.nickname}</p>
+                    </div>
+
+                    {/* 하단: 제목 + 시간 + 반응칩 */}
+                    <div className="topic-card-bottom">
+                      <h4 className="topic-title">{item.title}</h4>
+                      <p className="topic-time">{item.timeAgo}</p>
+
+                      <div className="topic-reactions">
+                        {item.reactions.map((r, idx) => {
+                          const isActive = activeReactions.includes(idx);
+
+                          return (
+                            <span
+                              key={idx}
+                              className={`topic-chip ${
+                                isActive ? "is-active" : ""
+                              }`}
+                              onClick={() => {
+                                setActiveReactions(
+                                  (prev) =>
+                                    prev.includes(idx)
+                                      ? prev.filter((i) => i !== idx) // 다시 누르면 OFF
+                                      : [...prev, idx] // 누르면 ON
+                                );
+                              }}
+                            >
+                              <span className="topic-chip-ic">{r.icon}</span>
+                              <span className="topic-chip-count">
+                                {r.count.toLocaleString()}
+                              </span>
+                            </span>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
     </div>
