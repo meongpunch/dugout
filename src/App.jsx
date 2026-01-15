@@ -11,12 +11,14 @@ import Lockerroom from "./pages/lockerroompg/Lockerroom";
 import PlayerDetail from "./pages/homepg/PlayerDetail";
 import TeamRank from "./pages/homepg/TeamRank";
 import StadiumSeatDetail from "./pages/stadiumpg/StadiumSeatDetail";
+import Login from "./pages/onboardingpg/Login";
 
 const App = () => {
   return (
     <Routes>
       <Route path="/splash" element={<Splash />} />
       <Route path="/onboarding" element={<Onboarding />} />
+      <Route path="/login" element={<Login />} />
 
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
