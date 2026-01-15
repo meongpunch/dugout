@@ -1,5 +1,5 @@
 import React from "react";
-import MainPgHeader from "../components/MainPgHeader";
+import MainPgHeader from "../../components/MainPgHeader";
 
 const Lockerroom = () => {
   return (

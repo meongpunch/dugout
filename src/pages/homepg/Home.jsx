@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Autoplay } from "swiper/modules";
-import MainPgHeader from "../components/MainPgHeader";
+import MainPgHeader from "../../components/MainPgHeader";
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";

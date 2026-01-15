@@ -1,6 +1,6 @@
 import React from "react";
 import "./Ground.css";
-import MainPgHeader from "../components/MainPgHeader";
+import MainPgHeader from "../../components/MainPgHeader";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";

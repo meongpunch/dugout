@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 import "./Splash.css";
 
 const Splash = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     navigate("/onboarding");
-  //   }, 3000); // 3초 뒤 이동
-  //   return () => clearTimeout(timer);
-  // }, [navigate]);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate("/onboarding");
+    }, 3000); // 3초 뒤 이동
+    return () => clearTimeout(timer);
+  }, [navigate]);
 
   return (
     <div className="splash-container">

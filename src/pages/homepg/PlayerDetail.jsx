@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"; // useNavigate는 BackButton 내부에 있다면 여기서 제거 가능
-import BackButton from "../components/Backbutton"; // 1. BackButton 컴포넌트 불러오기
+import BackButton from "../../components/Backbutton"; // 1. BackButton 컴포넌트 불러오기
 import "./PlayerDetail.css";
 
 const PlayerDetail = () => {

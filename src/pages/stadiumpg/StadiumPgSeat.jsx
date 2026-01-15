@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./StadiumPgSeat.css";
-import MainPgHeader from "../components/MainPgHeader";
-import BackButton from "../components/Backbutton";
+import MainPgHeader from "../../components/MainPgHeader";
+import BackButton from "../../components/Backbutton";
 
 const stadiumOptions = [
   "서울 잠실야구장",

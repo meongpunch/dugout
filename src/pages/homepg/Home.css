@@ -6,7 +6,7 @@
   position: relative;
   overflow-x: hidden;
   /* 그라데이션 이미지 삽입 */
-  background-image: url("img/hero_top_bg.svg");
+  background-image: url("/img/hero_top_bg.svg");
   background-size: auto;
   background-position: top center;
   background-repeat: no-repeat;
