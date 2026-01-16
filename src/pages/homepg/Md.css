@@ -1,0 +1,284 @@
+/* 페이지 기본 */
+.sub-md {
+  background: #000;
+  color: #fff;
+  padding: 16px;
+  /* 하단 버튼 공간 */
+  box-sizing: border-box;
+}
+
+/* ===== 헤더 ===== */
+.sub-md-header {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 48px;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.header-btn {
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.header-btn img {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+/* 바구니 + 뱃지 */
+.basket-btn {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #ff2d2d;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* ===== 이미지/캐러셀(기존 유지 가능) ===== */
+.image-area {
+  position: relative;
+  background: #f2f2f2;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.main-image {
+  width: 100%;
+  display: block;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+
+  background: rgba(17, 17, 17, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav img {
+  width: auto;
+  display: block;
+  object-fit: contain;
+  opacity: 1;
+  filter: none;
+}
+
+.nav.left {
+  left: 12px;
+}
+.nav.right {
+  right: 12px;
+}
+
+.nav:hover {
+  background: rgba(17, 17, 17, 0.18);
+}
+
+.nav:active {
+  transform: translateY(-50%) scale(0.96);
+}
+/* ===== 상품 정보 ===== */
+.info-area {
+  margin-top: 16px;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1.32;
+  letter-spacing: -0.02rem;
+}
+
+.like.title-like {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.like.title-like img {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.rating {
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rating-text {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.32;
+  letter-spacing: -0.02rem;
+  color: #bec0c2;
+}
+
+.stars {
+  height: 14px;
+  width: auto;
+  display: block;
+}
+
+.price {
+  margin-top: 16px;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1.32;
+  letter-spacing: -0.02rem;
+}
+.price span {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.32;
+  letter-spacing: -0.02rem;
+}
+
+.desc {
+  margin-top: 28px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 1.32;
+  letter-spacing: 0.02rem;
+}
+
+.desc p {
+  margin-bottom: 4px;
+  font-style: 16px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.32;
+  letter-spacing: 0.02rem;
+}
+
+/* ===== 하단 고정 버튼 ===== */
+.bottom-bar {
+  margin-top: 28px; /* 필요 없으면 지워도 됨 */
+  display: flex;
+  justify-content: center; /* 가운데 정렬 */
+}
+
+.cart-btn {
+  color: #fff;
+  border: none;
+}
+/* .cart-btn {
+  width: 398px;
+  height: 66px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 6px;
+  background: #aa0000;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.32;
+  letter-spacing: 0.02rem;
+  cursor: pointer;
+
+  font-family: "Pretendard", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+/* 화면이 398보다 작을 때 깨지지 않게 */
+@media (max-width: 420px) {
+  .cart-btn {
+    width: calc(100% - 32px); /* 좌우 16px 여백 느낌 */
+  }
+}
+
+.cart-btn:active {
+  transform: scale(0.99);
+}
+
+/* ===== 토스트 ===== */
+.toast {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  padding: 17px 81px; /* 피그마 그대로 */
+  height: 33px;
+  box-sizing: border-box;
+
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.32;
+  letter-spacing: -0.02rem;
+  white-space: nowrap;
+
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999;
+
+  /* 살짝 부드럽게 */
+  animation: toast-fade 0.25s ease-out;
+}

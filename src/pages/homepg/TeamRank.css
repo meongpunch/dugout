@@ -47,7 +47,6 @@
   font-weight: 400;
   line-height: 1.32;
   letter-spacing: -0.02em;
-  opacity: 0.95;
 }
 
 /* ================= Top3Podium ================= */
@@ -78,7 +77,7 @@
 .podiumCard.second {
   height: 186px;
   opacity: 0.92;
-  justify-content: flex-start; /* 중앙 → 위 기준 */
+  justify-content: flex-start;
   padding-top: 18px;
 }
 
@@ -90,14 +89,14 @@
     rgba(160, 0, 0, 0.95),
     rgba(120, 0, 0, 0.95)
   );
-  justify-content: flex-start; /* 중앙 → 위 기준 */
+  justify-content: flex-start;
   padding-top: 20px;
 }
 
 .podiumCard.third {
   height: 150px;
   opacity: 0.92;
-  justify-content: flex-start; /* 중앙 → 위 기준 */
+  justify-content: flex-start;
   padding-top: 14px;
 }
 
@@ -110,16 +109,15 @@
 
 .podiumKo {
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.23;
   letter-spacing: -0.02em;
 }
 
 .podiumEn {
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 200;
   line-height: 1.23;
-  letter-spacing: 0.04em;
   opacity: 0.7;
 }
 
@@ -140,16 +138,14 @@
   padding: 20px 30px;
   overflow: hidden;
 
-  /* ✅ bg 이미지는 JSX inline style로 주고, 여기서는 공통 옵션만 */
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 
-  /* 이미지 위 가독성 살짝 올리기(필요하면 유지) */
   box-shadow: 0 18px 34px rgba(0, 0, 0, 0.35);
 }
 
-/* ✅ 카드 bg 이미지 위에 살짝 어둡게 덮기 (텍스트 가독성 고정) */
+/* bg 위 가독성 오버레이 */
 .rankItem::before {
   content: "";
   position: absolute;
@@ -214,14 +210,15 @@
 }
 
 .streakIcon {
-  font-size: 18px;
+  font-size: 14px;
   line-height: 1;
 }
 
 .streakText {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.02em;
+  line-height: 1.32;
 }
 
 /* 우측 (▲/▼/— + 1 위) */
@@ -238,13 +235,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 22px; /* ▲ ▼ 이미지/문자 공통 폭 */
+  width: 22px;
   height: 22px;
 }
 
-/* ▲ ▼ 텍스트 */
 .rankDeltaText {
-  font-size: 22px;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1;
 }
@@ -257,10 +253,9 @@
   color: #4a8cff;
 }
 
-/* — 이미지 */
 .rankDeltaIcon {
-  width: 16px; /* 피그마 기준에 맞게 조절 */
-  height: 4px; /* 실제 마이너스 두께 */
+  width: 16px;
+  height: 4px;
   object-fit: contain;
 }
 
@@ -272,9 +267,11 @@
 }
 
 .rankUnit {
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 600;
   opacity: 0.95;
+  letter-spacing: -0.02em;
+  line-height: 1.32;
 }
 
 /* ===== Bottom 영역 ===== */
@@ -291,26 +288,27 @@
   gap: 11px;
 }
 
-/* 오른쪽 statCol(두 번째 컬럼) 안에서 값은 가운데 */
-.statCol:last-child .statVal {
-  margin-left: auto;
-  margin-right: auto; /* ✅ 가운데 */
-  justify-content: center;
-  text-align: center;
-}
-
+/* ✅ 여기부터 핵심: |(statSep) 위치 고정 + 값만 가운데 정렬 */
 .statRow {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-/* 라벨 */
+/* 라벨 폭 고정(= | 위치 고정) */
 .statKey {
+  width: 56px; /* 필요하면 52~60 사이로 미세조정 */
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 200;
   opacity: 0.7;
-  min-width: 44px;
+  letter-spacing: -0.02em;
+  line-height: 1.32;
+  text-align: left;
+}
+
+/* ✅ 오른쪽 컬럼(승패무/승차) 라벨만 가운데 느낌으로 */
+.statCol:last-child .statKey {
+  text-align: center;
 }
 
 /* 구분선(라벨 | 값) */
@@ -318,30 +316,37 @@
   width: 1px;
   height: 20px;
   background: rgba(255, 255, 255, 0.4);
-  flex-shrink: 0;
+  flex: 0 0 1px;
 }
 
-/* 값 */
+/* ✅ 값은 남은 공간을 다 먹고, 그 안에서 가운데 정렬 */
 .statVal {
+  flex: 1;
+  min-width: 0;
+
   display: flex;
   align-items: center;
+  justify-content: center; /* ✅ 숫자만 가운데 */
   gap: 10px;
+
   font-size: 16px;
   font-weight: 700;
   letter-spacing: -0.02em;
+  line-height: 1.32;
 }
 
-/* 승패무 숫자 */
+/* 승패무 내부 숫자 */
 .statNum {
   font-size: 16px;
   font-weight: 700;
   letter-spacing: -0.02em;
+  line-height: 1.32;
 }
 
-/* 승패무 내부 구분선 */
+/* 승패무 내부 구분선(숫자 | 숫자 | 숫자) */
 .statPipe {
   width: 1px;
   height: 20px;
   background: rgba(255, 255, 255, 0.4);
-  flex-shrink: 0;
+  flex: 0 0 1px;
 }
