@@ -254,7 +254,10 @@ const Home = () => {
               <div className="score-board">
                 <div className="team">
                   <div className="logo-circle samsung">
-                    <img src="/img/samsung_logo.svg" alt="상성 라이온즈 로고" />
+                    <img
+                      src="/img/Home_highlight_samsung_logo.svg"
+                      alt="상성 라이온즈 로고"
+                    />
                   </div>
                   <span className="team-name">SAMSUNG</span>
                 </div>
@@ -264,7 +267,10 @@ const Home = () => {
                 </div>
                 <div className="team">
                   <div className="logo-circle samsung">
-                    <img src="/img/KIA_logo.svg" alt="상성 라이온즈 로고" />
+                    <img
+                      src="/img/Home_highlight_KiA_logo.svg"
+                      alt="상성 라이온즈 로고"
+                    />
                   </div>
                   <span className="team-name">KIA</span>
                 </div>

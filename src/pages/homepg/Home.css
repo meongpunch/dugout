@@ -547,6 +547,7 @@
 .MD .product .right .price {
   font-size: 18px;
   font-weight: 500;
+  margin-bottom: 6px;
 }
 .MD .product .right .txt {
   font-size: 12px;
