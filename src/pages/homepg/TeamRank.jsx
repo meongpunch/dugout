@@ -113,7 +113,12 @@ const RankListItem = ({ item }) => {
   const icon = getStreakIcon(item.streakType);
 
   return (
-    <article className="rankItem">
+    <article
+      className="rankItem"
+      style={{
+        backgroundImage: `url(/img/rank-bg-${item.teamKey}.png)`,
+      }}
+    >
       {/* ===== Top ===== */}
       <div className="rankTop">
         <div className="rankTopLeft">
@@ -130,7 +135,24 @@ const RankListItem = ({ item }) => {
         </div>
 
         <div className="rankTopRight">
-          <span className="rankDelta">{item.delta}</span>
+          <div className="rankDelta">
+            {item.delta === "—" ? (
+              <img
+                src="/img/rank-minus.svg"
+                alt="변동없음"
+                className="rankDeltaIcon"
+              />
+            ) : (
+              <span
+                className={
+                  item.delta === "▲" ? "rankDeltaText up" : "rankDeltaText down"
+                }
+              >
+                {item.delta}
+              </span>
+            )}
+          </div>
+
           <span className="rankNum">{item.rank}</span>
           <span className="rankUnit">위</span>
         </div>
@@ -191,6 +213,7 @@ const TeamRank = () => {
     {
       rank: 1,
       teamNameKo: "한화 이글스",
+      teamKey: "hanwha",
       logo: "/img/rank_Hanwha_logo.svg",
       streakType: "win",
       streak: "2승",
@@ -205,6 +228,7 @@ const TeamRank = () => {
     {
       rank: 2,
       teamNameKo: "NC 다이노스",
+      teamKey: "nc",
       logo: "/img/rank_NC_logo.svg",
       streakType: "lose",
       streak: "2패",
@@ -219,6 +243,7 @@ const TeamRank = () => {
     {
       rank: 3,
       teamNameKo: "기아 타이거즈",
+      teamKey: "kia",
       logo: "/img/rank_KIA_logo.svg",
       streakType: "win",
       streak: "4승",
@@ -233,6 +258,7 @@ const TeamRank = () => {
     {
       rank: 4,
       teamNameKo: "두산 베어스",
+      teamKey: "doosan",
       logo: "/img/rank_Doosan_logo.svg",
       streakType: "win",
       streak: "2승",
@@ -247,6 +273,7 @@ const TeamRank = () => {
     {
       rank: 5,
       teamNameKo: "LG 트윈스",
+      teamKey: "lg",
       logo: "/img/rank_LG_logo.svg",
       streakType: "lose",
       streak: "2패",
@@ -261,6 +288,7 @@ const TeamRank = () => {
     {
       rank: 6,
       teamNameKo: "롯데 자이언츠",
+      teamKey: "lotte",
       logo: "/img/rank_Lotte_logo.svg",
       streakType: "lose",
       streak: "6패",
@@ -275,6 +303,7 @@ const TeamRank = () => {
     {
       rank: 7,
       teamNameKo: "삼성 라이온즈",
+      teamKey: "samsung",
       logo: "/img/rank_Samsung_logo.svg",
       streakType: "win",
       streak: "3승",
@@ -289,6 +318,7 @@ const TeamRank = () => {
     {
       rank: 8,
       teamNameKo: "KT Wiz",
+      teamKey: "kt",
       logo: "/img/rank_KT_logo.svg",
       streakType: "win",
       streak: "2승",
@@ -303,6 +333,7 @@ const TeamRank = () => {
     {
       rank: 9,
       teamNameKo: "SSG 랜더스",
+      teamKey: "ssg",
       logo: "/img/rank_SSG_logo.svg",
       streakType: "win",
       streak: "2승",
@@ -317,6 +348,7 @@ const TeamRank = () => {
     {
       rank: 10,
       teamNameKo: "키움 히어로즈",
+      teamKey: "kiwoom",
       logo: "/img/rank_Kiwoom_logo.svg",
       streakType: "lose",
       streak: "2패",
