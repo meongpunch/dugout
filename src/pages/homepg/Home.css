@@ -104,6 +104,12 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  overflow: hidden;
+}
+.comment-swiper {
+  margin-left: 16px;
+
+  overflow: visible !important;
 }
 .comment-slide {
   width: auto;
