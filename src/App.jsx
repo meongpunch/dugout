@@ -19,7 +19,9 @@ import Login from "./pages/onboardingpg/Login";
 import TeamChoice from "./pages/onboardingpg/TeamChoice";
 
 const App = () => {
-  return (
+  return ( 
+    <>
+    <ScrollToTop />
     <Routes>
       <Route path="/splash" element={<Splash />} />
       <Route path="/onboarding" element={<Onboarding />} />
