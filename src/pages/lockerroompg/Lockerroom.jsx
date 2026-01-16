@@ -90,7 +90,7 @@ const csMenus = [
               <p className="user-name">냉철한 야구분석가</p>
             </div>
             <div className="edit">
-              <Link to={"/LockrroomEditProfile"} >
+              <Link to={"/lockerroom/edit"} >
                 <img src="/img/lockerroom-edit.svg" alt="" />
               </Link>
             </div>
