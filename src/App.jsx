@@ -11,25 +11,24 @@ import Lockerroom from "./pages/lockerroompg/Lockerroom";
 import PlayerDetail from "./pages/homepg/PlayerDetail";
 import TeamRank from "./pages/homepg/TeamRank";
 import StadiumSeatDetail from "./pages/stadiumpg/StadiumSeatDetail";
-import Login from "./pages/onboardingpg/Login";
+import TodayQuiz from "./pages/homepg/TodayQuiz";
 
 const App = () => {
   return (
     <Routes>
       <Route path="/splash" element={<Splash />} />
       <Route path="/onboarding" element={<Onboarding />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="stadium" element={<Stadium />} />
-      <Route path="stadium/seat" element={<StadiumPgSeat />} />
-      <Route path="/stadium/seat/section" element={<StadiumSeatDetail />} />
 
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
+        <Route path="stadium" element={<Stadium />} />
+        <Route path="stadium/seat" element={<StadiumPgSeat />} />
+        <Route path="/stadium/seat/section" element={<StadiumSeatDetail />} />
         <Route path="ground" element={<Ground />} />
         <Route path="lockerroom" element={<Lockerroom />} />
         <Route path="player/:id" element={<PlayerDetail />} />
         <Route path="teamrank" element={<TeamRank />} />
-        <Route path="/" element={<Splash />} />
+        <Route path="Quiz" element={<TodayQuiz />} />
       </Route>
     </Routes>
   );

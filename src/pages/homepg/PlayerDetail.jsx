@@ -160,11 +160,11 @@ const PlayerDetail = () => {
               {player.graphData.map((height, index) => (
                 <div
                   key={index}
-                  className="bar"
+                  className="legend-bar"
                   style={{ "--h": `${height}%` }}
                 ></div>
               ))}
-              <div className="bar highlight" style={{ "--h": "80%" }}>
+              <div className="legend-bar highlight" style={{ "--h": "80%" }}>
                 <span className="percent-label">{player.lastGraphValue}</span>
               </div>
             </div>
