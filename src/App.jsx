@@ -19,18 +19,17 @@ const App = () => {
       <Route path="/splash" element={<Splash />} />
       <Route path="/onboarding" element={<Onboarding />} />
       <Route path="/login" element={<Login />} />
+      <Route path="stadium" element={<Stadium />} />
+      <Route path="stadium/seat" element={<StadiumPgSeat />} />
+      <Route path="/stadium/seat/section" element={<StadiumSeatDetail />} />
 
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="stadium" element={<Stadium />} />
-        <Route path="stadium/seat" element={<StadiumPgSeat />} />
-        <Route path="/stadium/seat/section" element={<StadiumSeatDetail />} />
         <Route path="ground" element={<Ground />} />
         <Route path="lockerroom" element={<Lockerroom />} />
         <Route path="player/:id" element={<PlayerDetail />} />
         <Route path="teamrank" element={<TeamRank />} />
-         <Route path="/" element={<Splash />} />
-
+        <Route path="/" element={<Splash />} />
       </Route>
     </Routes>
   );

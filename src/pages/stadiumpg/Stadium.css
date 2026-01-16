@@ -3,6 +3,7 @@
   width: 100%;
   height: calc(100vh - 106px);
   overflow: hidden;
+  padding: 0;
 }
 
 .stadium-topbar {
