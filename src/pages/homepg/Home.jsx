@@ -58,7 +58,7 @@ const Home = () => {
   ];
   // 응원 댓극 데이터
   const rawCommentsTop = [
-    { id: 1, text: "양현종 없으면 야구 안 봄", user: "/img/user_1.svg" },
+    { id: 1, text: "가을야구 확정!", user: "/img/user_1.svg" },
     { id: 2, text: "타이거즈는 이름부터 다름", user: "/img/user_2.svg" },
     { id: 3, text: "V13 가자 제발", user: "/img/user_3.svg" },
     { id: 4, text: "레스고~", user: "/img/user_4.svg" },
@@ -66,12 +66,12 @@ const Home = () => {
   ];
 
   const rawCommentsBottom = [
-    { id: 6, text: "가을야구 확정!", user: "/img/user_6.svg" },
+    { id: 6, text: "양현종 없으면 야구 안 봄", user: "/img/user_6.svg" },
     { id: 7, text: "니땜시살어야", user: "/img/user_7.svg" },
     { id: 8, text: "오선우 파이팅", user: "/img/user_8.svg" },
     {
       id: 9,
-      text: "승리하라 최강기아 열광하라 타이거즈",
+      text: "열광하라 타이거즈",
       user: "/img/user_9.svg",
     },
     { id: 10, text: "최강기아 타이거즈", user: "/img/user_10.svg" },
@@ -211,9 +211,10 @@ const Home = () => {
         <div className="comment-container">
           <Swiper
             modules={[Autoplay]}
-            spaceBetween={10}
+            spaceBetween={8}
             slidesPerView={"auto"}
             loop={true}
+            loopedSlides={10}
             speed={1000}
             autoplay={{ delay: 2500, disableOnInteraction: false }}
             className="comment-swiper"
@@ -232,9 +233,10 @@ const Home = () => {
           </Swiper>
           <Swiper
             modules={[Autoplay]}
-            spaceBetween={10}
+            spaceBetween={8}
             slidesPerView={"auto"}
             loop={true}
+            loopedSlides={10}
             speed={1000}
             autoplay={{ delay: 2500, disableOnInteraction: false }}
             className="comment-swiper row-2"
