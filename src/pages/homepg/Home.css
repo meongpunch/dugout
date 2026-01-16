@@ -54,10 +54,10 @@
 .hero-swiper-wrap {
   width: 100%;
 }
-.mySwiper {
+.hero-swiper-wrap .mySwiper {
   width: 100%;
 }
-.hero-slide {
+.hero-swiper-wrap .mySwiper .hero-slide {
   width: 260px;
   height: 400px;
 }
