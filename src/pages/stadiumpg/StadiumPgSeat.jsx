@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "./StadiumPgSeat.css";
 import MainPgHeader from "../../components/MainPgHeader";
 import Footer from "../../components/Footer";
+
 const StadiumSeat = () => {
   const navigate = useNavigate();
   const { state } = useLocation();

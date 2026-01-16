@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./Stadium.css";
 import MainPgHeader from "../../components/MainPgHeader";
 import Footer from "../../components/Footer";
+
 const Stadium = () => {
   const navigate = useNavigate();
 
@@ -156,13 +157,13 @@ const Stadium = () => {
 
   return (
     <>
+      <MainPgHeader logoType="logo" btnType="ticket" />
       <section
         className="stadium-main"
         onClick={() => {
           if (stadiumOpen) setStadiumOpen(false);
         }}
       >
-        <MainPgHeader logoType="logo" btnType="ticket" />{" "}
         <div className="stadium-bg">
           <div className="inner">
             <div
