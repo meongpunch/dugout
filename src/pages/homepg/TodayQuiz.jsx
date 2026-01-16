@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import confetti from "canvas-confetti"; // 1. 라이브러리 임포트
+import confetti from "canvas-confetti";
 import "./TodayQuiz.css";
 
 const TodayQuiz = () => {
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState(null);
+
+  // 토스트 상태
+  const [toastOpen, setToastOpen] = useState(false);
 
   const quizData = {
     question:
@@ -23,22 +26,31 @@ const TodayQuiz = () => {
     correct: "/img/quiz_kim_heart.jpg",
   };
 
-  // 2. 폭죽 터뜨리는 함수
+  // 1.6초 뒤 토스트 자동 닫기
+  useEffect(() => {
+    if (!toastOpen) return;
+    const t = setTimeout(() => setToastOpen(false), 700);
+    return () => clearTimeout(t);
+  }, [toastOpen]);
+
   const triggerConfetti = () => {
     confetti({
-      particleCount: 150, // 종이 조각 개수
-      spread: 70, // 퍼지는 각도
-      origin: { y: 0.6 }, // 시작 위치 (0.6은 화면 중간보다 약간 아래)
-      colors: ["#C3000F", "#ffffff", "#EFFF33"], // 기아 타이거즈 색상 (빨강, 흰색, 형광노랑)
+      particleCount: 150,
+      spread: 70,
+      origin: { y: 0.6 },
+      colors: ["#C3000F", "#ffffff", "#EFFF33"],
     });
   };
 
   const handleOptionClick = (id) => {
-    setSelectedOption(id);
-
-    // 3. 김도영(id: 2)을 눌렀을 때만 폭죽 실행
     if (id === 2) {
+      setSelectedOption(id);
       triggerConfetti();
+      setToastOpen(false);
+    } else {
+      // 오답일 때 토스트 열기
+      setToastOpen(true);
+      setSelectedOption(null);
     }
   };
 
@@ -92,17 +104,17 @@ const TodayQuiz = () => {
                 selectedOption === option.id ? "active" : ""
               }`}
               onClick={() => handleOptionClick(option.id)}
+              disabled={isCorrectSelected} //정답 맞췄으면 버튼 비활성화됨
             >
               <span className="option-text">{option.name}</span>
-              {option.id === 2 &&
-                !isCorrectSelected &&
-                selectedOption === null && <span className="hint-dot"></span>}
+              {option.id === 2 && !isCorrectSelected && (
+                <span className="hint-dot"></span>
+              )}
             </button>
           ))}
         </div>
 
-        {/* 확인 버튼: 보기를 선택했을 때만 나타남 */}
-        {selectedOption && (
+        {isCorrectSelected && (
           <div className="confirm-area">
             <button className="confirm-btn btn" onClick={() => navigate("/")}>
               확인
@@ -110,6 +122,9 @@ const TodayQuiz = () => {
           </div>
         )}
       </div>
+
+      {/* 토스트 메시지 UI */}
+      {toastOpen && <div className="toast-msg">아웃! 다시 도전하세요!</div>}
     </div>
   );
 };

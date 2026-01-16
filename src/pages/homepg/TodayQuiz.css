@@ -35,6 +35,7 @@
   overflow: hidden;
   margin-top: 10px;
   margin-bottom: 20px;
+  border-radius: 6px;
 }
 
 .quiz-img-box img {
@@ -46,11 +47,12 @@
 
 /* 질문 텍스트 */
 .quiz-question {
-  font-size: 18px;
-  line-height: 1.5;
-  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.32;
+  font-weight: 300;
   margin-bottom: 30px;
   white-space: pre-line; /* 줄바꿈 적용 */
+  padding-left: 4px;
 }
 
 /* 보기 버튼 컨테이너 */
@@ -67,8 +69,8 @@
   background-color: #242424; /* 기본 회색 배경 */
   border: 1px solid transparent;
   border-radius: 6px;
-  color: #b0b0b0;
-  font-size: 16px;
+  color: #fff;
+  font-size: 18px;
   font-weight: 500;
   text-align: left;
   cursor: pointer;
@@ -77,6 +79,7 @@
   justify-content: space-between;
   align-items: center;
   transition: all 0.2s ease;
+  line-height: 1.32;
 }
 
 /* 선택된 상태 (공통) */
@@ -133,6 +136,52 @@
   }
   to {
     transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ... 기존 코드 아래에 ... */
+
+/* 토스트 메시지 스타일 (MD 페이지 스타일 적용) */
+.toast-msg {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); /* 정확히 정중앙 배치 */
+
+  /* 패딩은 글자 길이에 맞춰 적절히 조정 (원본: 17px 81px) */
+  padding: 17px 40px;
+  box-sizing: border-box;
+
+  /* 반투명 검정 배경 + 블러 효과 */
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.32;
+  letter-spacing: -0.02rem;
+  white-space: nowrap;
+
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999;
+
+  /* 등장 애니메이션 */
+  animation: toast-fade 0.25s ease-out;
+}
+
+@keyframes toast-fade {
+  from {
+    opacity: 0;
+  }
+  to {
     opacity: 1;
   }
 }
