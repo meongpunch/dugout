@@ -195,7 +195,7 @@ section.player-hero {
 }
 
 /* 개별 막대 스타일 */
-.bar {
+.legend-bar {
   flex: none; /* 반응형 끄기 (고정 너비 사용을 위해) */
   width: 30px; /* 피그마 스펙: 막대 너비 */
 
@@ -208,7 +208,7 @@ section.player-hero {
 }
 
 /* 마지막 강조 막대 스타일 */
-.bar.highlight {
+.legend-bar.highlight {
   background-color: #ff0000;
   box-shadow: 0 0 20px rgba(255, 0, 0, 0.6); /* 빛나는 효과 */
   z-index: 1;
@@ -249,22 +249,6 @@ section.player-hero {
   font-family: sans-serif;
 }
 
-<<<<<<< HEAD
-.photo-card-title {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  padding-left: 5px;
-  color: #fff;
-}
-
-.photo-card-swiper {
-  padding-bottom: 20px;
-}
-
-.photo-card-wrapper {
-=======
-
 .photo-card-swiper {
   padding-bottom: 20px;
   width: 100%;
@@ -279,7 +263,6 @@ section.player-hero {
 .photo-card-wrapper {
   width: 160px;
   height: 250px;
->>>>>>> 386365e3d9946b51940a70343c400e71b5f37549
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -291,9 +274,5 @@ section.player-hero {
   width: 100%;
   height: 100%;
   object-fit: cover;
-<<<<<<< HEAD
-=======
-s
->>>>>>> 386365e3d9946b51940a70343c400e71b5f37549
   display: block;
 }
