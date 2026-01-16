@@ -1,3 +1,7 @@
+main {
+  padding: 0;
+}
+
 .seat-detail {
   background: #000;
   min-height: 100vh;

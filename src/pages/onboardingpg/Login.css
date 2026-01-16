@@ -1,11 +1,24 @@
-.login-container{position: relative; max-height: 100vh; overflow: hidden;}
+.login-container {
+  position: relative;
+  max-height: 100vh;
+  overflow: hidden;
+}
 
-.login{ position: relative; height: 100vh; overflow: hidden; background: #000; color: #fff;}
+.login {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+}
 
-.login h2 {color: fff;}
-.point {font-size: 75px; letter-spacing: 1.2px;}
+.login-tit {
+  color: fff;
+  font-size: 75px;
+  letter-spacing: 1.2px;
+}
 
-.login-bg{
+.login-bg {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -17,7 +30,7 @@
   z-index: 0;
 }
 
-.login-logoBox{
+.login-logoBox {
   position: absolute;
   top: 180px;
   left: 0;
@@ -25,11 +38,12 @@
   display: flex;
   justify-content: center;
   z-index: 2;
-  display: flex; display: block;
+  display: flex;
+  display: block;
   text-align: center;
 }
 
-.login-logo{
+.login-logo {
   width: 170px;
   height: auto;
 }
@@ -49,7 +63,7 @@
 }
 
 .login-btn {
-  position: relative; 
+  position: relative;
   height: 52px;
   border-radius: 10px;
   border: 0;
@@ -69,25 +83,37 @@
   height: 18px;
 }
 
-.login-btn.kakao{ background: #F6DE02; color: #111; }
-.login-btn.google{ background: #fff; color: #111; }
-.login-btn.apple{background: rgba(0,0,0,0.35); color: #fff; border: 1px solid rgba(255,255,255,0.35);}
+.login-btn.kakao {
+  background: #f6de02;
+  color: #111;
+}
+.login-btn.google {
+  background: #fff;
+  color: #111;
+}
+.login-btn.apple {
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
 
-.login-links{
+.login-links {
   margin-top: 15px;
   display: flex;
   justify-content: center;
   gap: 10px;
   font-size: 14px;
-  font-weight: 100 ;
-  color: rgba(255,255,255,0.75);
+  font-weight: 100;
+  color: rgba(255, 255, 255, 0.75);
 }
 
-.login-links .bar{ opacity: 0.6; }
+.login-links .bar {
+  opacity: 0.6;
+}
 
 .bar {
-  background: none;     /* ❗ */
+  background: none; /* ❗ */
   width: auto;
   height: auto;
-  color: rgba(255,255,255,0.3);
+  color: rgba(255, 255, 255, 0.3);
 }

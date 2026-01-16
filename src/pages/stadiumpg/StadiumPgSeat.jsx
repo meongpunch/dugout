@@ -23,7 +23,7 @@ const StadiumSeat = () => {
         stadiumName: selectedStadium,
         seatType,
         zone,
-        section, // ✅ 클릭한 219~222
+        section, // 클릭한 219~222
       },
     });
   };
@@ -36,7 +36,7 @@ const StadiumSeat = () => {
 
       <div className="stadium-title">
         {selectedStadium}
-        <p className="caption">구역을 선택해주세요.</p>
+        <p className="caption">원하는 구역을 선택해주세요.</p>
       </div>
 
       <div className="seat-map">
