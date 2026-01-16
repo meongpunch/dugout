@@ -1,21 +1,23 @@
 .profile {
   margin: 16px;
-  position: relative;
 }
 .profile .inner {
-  margin: 0;
+  margin: 0 auto;
+  padding: 31px 0;
   width: 100%;
-  position: relative;
+  background-image: url(/img/lockerroom-bg.png) ;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .profile .profile-top-text {
-  position: absolute;
-  left: 16px;
-  top: 30px;
+  margin: 0 auto 28px;
+  padding: 0 16px ;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 366px;
+
 }
 .profile .profile-top-text .edit {
   position: relative;
@@ -26,32 +28,36 @@
   height: 4px;
   background: #f2ff43;
   display: inline-block;
-  position: absolute;
   right: -4px;
   top: 0;
   border-radius: 50%;
+  position: absolute;
 }
 .profile .profile-top-text .user-profile {
   display: flex;
   text-align: center;
   align-items: center;
 }
+.profile .profile-top-text .user-name{
+  font-size: 18px;
+  font-weight: 600;
+}
+
 .profile .profile-top-text .user-profile .profile-img {
   padding-right: 12px;
 }
 
 .profile .profile-bottom-text {
-  position: absolute;
-  left: 16px;
-  bottom: 30px;
-  width: 366px;
+  padding: 0 16px;
 }
+
 .profile .profile-bottom-text .data {
   display: flex;
   justify-content: space-between;
+  text-align: center; 
   padding: 0 28px;
-  text-align: center;
 }
+
 .profile .profile-bottom-text .data .label {
   font-size: 18px;
   font-weight: 600;
@@ -63,62 +69,120 @@
 }
 
 /* 캘린더 섹션 */
-.calendar {
-  margin: 24px 16px 0;
-  color: #fff;
+.calendar .title{
+  font-size: 28px;
+  margin: 0 16px 32px;
 }
 
-.calendar-title {
-  margin: 0 0 14px;
-  font-size: 24px;
-  font-weight: 800;
+/* slidesPerView="auto" 필수 */
+.tiltSwiper .hero-slide {
+  width: 230px;
 }
 
-/* ✅ 양옆 슬라이드가 밖으로 보이게 */
-.calendar-swiper {
-  overflow: visible;
-  padding-bottom: 20px;
-}
-
-/* ✅ slidesPerView="auto"일 때 슬라이드 폭을 CSS로 결정 */
-.calendar-slide {
-  width: 280px; /* 260~320 사이로 취향 조절 */
-}
-
-/* ✅ 카드: height 고정하지 말고 비율로(이미지 크기/비율 따라가게) */
-.calendar-card {
-  width: 100%;
-  aspect-ratio: 3 / 4; /* 세로 카드 느낌 (원하면 4/5로 더 길게) */
-  border-radius: 18px;
-  overflow: hidden;
-  position: relative;
+/* ✅ 카드 박스 크기 고정 */
+.tiltSwiper .img-box {
+  width: 230px;
+  height: 265px;
+  border-radius: 6px;
+  overflow: hidden;     /* 🔥 이게 제일 중요 */
   background: #111;
-
-  /* 기본은 옆 카드처럼 */
-  opacity: 0.35;
-  transform: scale(0.92);
-  transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-.calendar-card img {
+/* ✅ 이미지는 박스에 맞춰서 잘리게 */
+.tiltSwiper .img-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-/* 가운데 카드 강조 */
-.calendar-swiper .swiper-slide-active .calendar-card {
-  opacity: 1;
-  transform: scale(1);
+.hero-swiper-wrap{ padding: 0; overflow: visible; position: relative;}
+.tiltSwiper .swiper-slide{
+  margin: 0 12px;   
 }
 
-/* 옆 카드 살짝 기울기 (두번째 이미지 느낌) */
-.calendar-swiper .swiper-slide-prev .calendar-card {
-  opacity: 0.45;
-  transform: scale(0.92) rotate(-8deg);
+.tiltSwiper .swiper-slide-prev{
+  transform: translateY(10px) rotate(-8deg) scale(.9);transition: all 0.2s ease;
 }
-.calendar-swiper .swiper-slide-next .calendar-card {
-  opacity: 0.45;
-  transform: scale(0.92) rotate(8deg);
+.tiltSwiper .swiper-slide-next{
+  transform: translateY(10px) rotate(8deg) scale(.9); transition: all 0.2s ease;
+}
+
+/* Swiper 컨테이너(파란 박스) 높이 맞추기 */
+.hero-swiper-wrap .swiper {
+  height: 320px;   /* ✅ 265 * 1.07 ≈ 284 + 위/아래 여유 */
+}
+
+/*  페이지네이션: 카드 아래 중앙 고정 */
+.cal-pagination{
+  position: absolute;
+  left: 50%;
+  bottom: 14px;              /* 필요하면 10~18로 조절 */
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  z-index: 20;
+
+  /* 한 줄 유지 */
+  white-space: nowrap;
+
+  /* 색/크기 */
+  color: rgba(255,255,255,0.9);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* 화살표 버튼 */
+.cal-arrow{
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: rgba(255,255,255,0.85);
+  font-size: 28px;
+  line-height: 22px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.cal-arrow img{
+  width: 100%;
+  opacity: 0.7;
+}
+.cal-arrow.next img{
+  transform: rotate(180deg);
+}
+
+.cal-arrow:active{
+  transform: scale(0.95);
+}
+
+/* 숫자 부분 */
+.cal-page{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.95;
+}
+
+.cal-page .divider{
+  opacity: 0.55;
+  font-size: 14px;
+}
+
+/* 현재 페이지 숫자 */
+.cal-page .now{
+  font-size: 14px;        /* ✅ 더 크게 */
+  font-weight: 500;
+}
+
+
+/* 전체 페이지 숫자 */
+.cal-page .total{
+  font-size: 14px;
+  opacity: 0.8;
 }
