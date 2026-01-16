@@ -29,6 +29,10 @@ section.player-hero {
   margin: 74px 0 0 22px;
 }
 
+.player-hero-box-bg img {
+  opacity: 15%;
+}
+
 .player-hero-box-red {
   position: relative;
   height: 49px;

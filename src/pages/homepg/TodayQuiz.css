@@ -1,0 +1,138 @@
+/* 전체 페이지 배경 및 기본 설정 */
+.quiz-page {
+  background-color: #121212; /* 다크 모드 배경 */
+  min-height: 100vh;
+  color: white;
+  font-family: "Pretendard", sans-serif; /* 폰트는 프로젝트 설정에 따름 */
+  padding-bottom: 80px; /* 하단 버튼 공간 확보 */
+}
+
+/* 헤더 */
+.quiz-header {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #121212;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* 본문 영역 */
+
+/* 이미지 박스 */
+.quiz-img-box {
+  width: 100%;
+  aspect-ratio: 16 / 10; /* 이미지 비율 유지 */
+
+  overflow: hidden;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.quiz-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease; /* 이미지 변경 시 부드럽게 */
+}
+
+/* 질문 텍스트 */
+.quiz-question {
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 600;
+  margin-bottom: 30px;
+  white-space: pre-line; /* 줄바꿈 적용 */
+}
+
+/* 보기 버튼 컨테이너 */
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 보기 버튼 스타일 */
+.option-btn {
+  width: 100%;
+  padding: 13px 20px;
+  background-color: #242424; /* 기본 회색 배경 */
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: #b0b0b0;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+/* 선택된 상태 (공통) */
+.option-btn.active {
+  color: white;
+  font-weight: 700;
+}
+
+/* 김도영 등 정답 선택 시 빨간색 배경 (두번째 이미지) */
+/* 만약 오답일 경우 다른 색을 원하면 로직 추가 필요, 현재는 선택시 무조건 빨강으로 처리 */
+.option-btn.active {
+  background-color: #c3000f; /* 기아 타이거즈 레드 */
+  border-color: #c3000f;
+}
+
+/* 힌트 점 (첫번째 이미지의 김도영 옆 노란 점) */
+.hint-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #efff33; /* 형광 노랑 */
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(239, 255, 51, 0.5);
+}
+
+/* 하단 확인 버튼 영역 */
+.confirm-area {
+  box-sizing: border-box;
+  animation: slideUp 0.3s ease-out;
+  margin: 0 auto;
+}
+.confirm-btn {
+  margin: 0 auto;
+  border: none;
+  color: #fff;
+  margin-top: 16px;
+}
+/* .confirm-btn {
+  padding: 10px 30px;
+  background-color: #c3000f;
+  color: white;
+  border: none;
+  border-radius: 30px; 
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+} */
+
+/* 버튼 등장 애니메이션 */
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
