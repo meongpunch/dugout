@@ -1,14 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Splash.css";
 
 const Splash = () => {
   const navigate = useNavigate();
+  const ranRef = useRef(false);
 
   useEffect(() => {
+    if (ranRef.current) return;
+    ranRef.current = true;
+
     const timer = setTimeout(() => {
       navigate("/onboarding");
-    }, 3000); // 3초 뒤 이동
+    }, 3000);
+
     return () => clearTimeout(timer);
   }, [navigate]);
 

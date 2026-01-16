@@ -1,0 +1,247 @@
+/* =========================
+   Page Layout
+========================= */
+.TeamChoice-container {
+  height: 100vh;
+  overflow: hidden; /* ✅ 전체 페이지는 스크롤 금지 */
+}
+
+.inner{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 390px;  
+  margin: 0 auto;      
+  box-sizing: border-box;
+   overflow: hidden;
+}
+/* =========================
+   Header (fixed area)
+========================= */
+.TeamchoiceHeader {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 80px;
+}
+
+.TeamchoiceHeader .innerHeader {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: block;
+  padding: 0;
+}
+
+/* =========================
+   Scroll Area (ONLY here scrolls)
+========================= */
+.scrollArea{
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scrollArea::-webkit-scrollbar{ display:none; }
+.scrollArea::after{
+  content: "";
+  display: block;
+  height: calc(56px + 85px + 1px + env(safe-area-inset-bottom));
+}
+
+.scroll-spacer{
+  height: calc(56px + 85px + 16px + env(safe-area-inset-bottom));
+}
+
+/* =========================
+   Title
+========================= */
+.contents {
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.contents h2 {
+  font-size: 32px;
+  line-height: 1.25;
+  font-weight: bold;
+  margin: 0;
+}
+
+.contents h3 {
+  margin: 12px 0 0;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+}
+
+/* =========================
+   Grid
+========================= */
+.choice-box {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.team-card {
+  background: #212126;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 12px 10px;
+  cursor: pointer;
+  transition: 0.15s ease;
+  position: relative;
+}
+
+/* hover는 선택되지 않은 카드만 */
+.team-card:not(.selected):hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-1px);
+}
+
+/* 선택 상태 */
+.team-card.selected {
+  border-color: #aa0000;
+  background: rgba(255, 255, 255, 0.12);
+  transform: none;
+}
+
+/* 키보드 접근성 */
+.team-card:focus {
+  outline: none;
+}
+.team-card:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.25);
+  outline-offset: 2px;
+}
+
+/* 로고 영역 */
+.team-logo-wrap {
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-logo {
+  height: 95px;
+  width: 100%;
+  max-width: 95px;
+  object-fit: contain;
+  display: block;
+}
+
+/* 팀명 */
+.team-name {
+  margin: 8px 0 0;
+  font-size: 14px;
+  font-weight: 430;
+  color: #ddd;
+  text-align: center;
+}
+
+/* hover 팀명(선택 안 된 카드만) */
+.team-card:not(.selected):hover .team-name {
+  font-weight: 400;
+  color: #fff;
+}
+
+/* 선택된 팀명 */
+.team-card.selected .team-name {
+  font-weight: 500;
+  color: #fff;
+}
+
+/* =========================
+   Fixed CTA (floating)
+========================= */
+/* ===== CTA: 프레임(390) 기준 + 좌우 16px + 위로 띄움 ===== */
+.cta-fixed{
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(420px, 100vw);
+  padding: 0 16px;
+
+  bottom: 85px;
+  z-index: 9999;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+/* ✅ 버튼 바로 위 그라데이션(프레임 폭 안에서만) */
+.cta-fixed::before{
+  content: "";
+  position: absolute;
+  left: 16px;     /* padding과 동일 */
+  right: 16px;
+  top: -40px;
+  height: 40px;
+  background: linear-gradient(to top, rgba(0,0,0,0.92), rgba(0,0,0,0));
+  pointer-events: none;
+}
+
+/* ✅ 버튼은 진짜로 꽉 차게 */
+.cta-fixed .start-btn{
+  display: block;
+  width: 100% !important;
+  max-width: none !important;
+
+  height: 56px;
+  border-radius: 6px;
+  border: none;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  background: #1D1D1F;
+  color: rgba(255,255,255,0.4);
+  cursor: not-allowed;
+
+  pointer-events: auto;
+}
+
+.cta-fixed .start-btn.active{
+  background: #aa0000;
+  color: rgba(255,255,255,0.85);
+  cursor: pointer;
+}
+
+
+/* ✅ sticky CTA */
+.cta-sticky{
+  position: sticky;
+  bottom: 16px;               /* ← 여기만 조절하면 됨 */
+  margin-top: 24px;
+  padding: 0 16px;
+  z-index: 10;
+}
+
+.start-btn{
+  display: block;
+  width: 100% !important;
+  max-width: none !important;
+  height: 56px;
+  border-radius: 6px;
+  border: none;
+  background: #1D1D1F;
+}
+
+.start-btn.active {
+  background: #aa0000;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+}
+
+
