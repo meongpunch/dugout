@@ -57,7 +57,7 @@ const Home = () => {
     },
   ];
   // 응원 댓극 데이터
-  const commentsTop = [
+  const rawCommentsTop = [
     { id: 1, text: "양현종 없으면 야구 안 봄", user: "/img/user_1.svg" },
     { id: 2, text: "타이거즈는 이름부터 다름", user: "/img/user_2.svg" },
     { id: 3, text: "V13 가자 제발", user: "/img/user_3.svg" },
@@ -65,7 +65,7 @@ const Home = () => {
     { id: 5, text: "이겨보자", user: "/img/user_5.svg" },
   ];
 
-  const commentsBottom = [
+  const rawCommentsBottom = [
     { id: 6, text: "가을야구 확정!", user: "/img/user_6.svg" },
     { id: 7, text: "니땜시살어야", user: "/img/user_7.svg" },
     { id: 8, text: "오선우 파이팅", user: "/img/user_8.svg" },
@@ -75,6 +75,19 @@ const Home = () => {
       user: "/img/user_9.svg",
     },
     { id: 10, text: "최강기아 타이거즈", user: "/img/user_10.svg" },
+  ];
+
+  const commentsTop = [
+    ...rawCommentsTop,
+    ...rawCommentsTop,
+    ...rawCommentsTop,
+    ...rawCommentsTop,
+  ];
+  const commentsBottom = [
+    ...rawCommentsBottom,
+    ...rawCommentsBottom,
+    ...rawCommentsBottom,
+    ...rawCommentsBottom,
   ];
   const [activePlayer, setActivePlayer] = useState(players[0]);
 
