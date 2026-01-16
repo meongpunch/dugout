@@ -1,4 +1,180 @@
 .editCover{
-    background: #fff;
-    width: 200px;
+    margin-bottom: 0;
+}
+.editCover .inner{
+    background-image: url(/img/editProfile-bg.png);
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.editCover .inner .editCover-top{
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+}
+
+.editCover .inner .editCover-top .back{
+    position: relative;
+}
+.editCover .inner .editCover-top .back::after{
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #f2ff43;
+    right:-4px;
+    top: 0;
+    border-radius: 50%;
+}
+.editCover .inner .editCover-top .editCover-btn{
+    cursor: pointer;
+}
+
+.edit-info{
+    width: 100%;
+    position: relative;
+    padding: 66px 16px 0;
+}
+
+.avatar{
+    background: rgba(17, 17, 17, 1);
+    display: inline-block;
+    position: absolute;
+    padding: 8px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    left: 32px;
+    top: 0;
+}
+
+.avatar .edit-photo{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+}
+
+.avatar .avatar-img{
+    width: 80px;
+    height: 80px;
+}
+
+.settingGroup{
+  margin-bottom: 12px;
+}
+
+.settingGroup:last-child{
+  margin-bottom: 0;
+}
+
+.settingGroup.nickname{
+  margin-bottom: 24px;
+}
+
+
+.settingTitle {
+    font-size: 14px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 8px;
+}
+
+/* 카드 박스 */
+.settingCard {
+    background: rgba(255,255,255,0.06);
+    border-radius: 6px;
+    padding: 12px 16px;
+}
+
+/* 한 줄 row */
+.settingRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* 라벨 텍스트 */
+.settingLabel {
+    font-size: 16px;
+    color: #fff;
+}
+
+/* 우측 아이콘 */
+.settingIcon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+
+.edit-info .inner{
+    width: 100%;
+}
+.edit-info .inner .change-team{
+    background: url(/img/editProfile-changeteam.png);
+    height: 180px;
+    padding: 26px 28px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.edit-info .inner .change-team .top-box{
+    display: flex;
+    align-items: center;
+}
+
+.edit-info .inner .change-team .top-box .logo-img{
+    height: 52px;
+    margin-right: 20px;
+}
+
+.edit-info .inner .change-team .top-box .player-name{
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.edit-info .inner .change-team .change-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-info .inner .change-team .change-box a{
+    flex: 1;
+    text-align: center;
+    font-size: 16px;           
+    font-weight: 500;
+    margin: 0;
+    position: relative;
+    padding: 14px 0;      
+}
+
+.edit-info .inner .change-team .change-box a:first-child::after{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 28px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 10px;
+}
+
+.edit-info .inner .change-team .change-box a:first-child::before{
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    right: 44px;
+    top: 8px;
+    background: #f2ff43;
+    border-radius: 50%;
 }
