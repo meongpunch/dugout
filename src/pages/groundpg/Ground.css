@@ -285,6 +285,8 @@
 .topic-chip-count {
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum";
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .topic-chip.is-active {
@@ -355,3 +357,135 @@
 .ground-banner__time {
   opacity: 0.9;
 }
+
+/* ground_moment */
+.moment-swiper {
+  overflow: visible;
+}
+
+.moment-swiper .swiper-slide {
+  width: 382px;
+}
+
+/* 카드 링크 */
+.moment-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.moment-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.moment-thumb img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.moment-title {
+  font-size: 18px;
+}
+
+.moment-card-link:active {
+  transform: scale(0.999);
+}
+
+/*  ground-post */
+.ground-post-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  min-height: 37px;
+}
+
+.ground-post-head h3 {
+  margin: 0;
+  line-height: 1;
+}
+
+.ground-post-more {
+  font-size: 14px;
+  color: #888;
+  line-height: 1;
+}
+
+.ground-post-cols {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.ground-post-col {
+  flex: 1;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.post-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.post-thumb {
+  position: relative;
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #111;
+}
+
+.post-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.post-dim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 45%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+}
+
+.post-title {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 14px;
+  margin: 0;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-top: 1px solid rgba(255, 255, 255, 0.5); /* ← 오파시티 */
+  padding-top: 10px;
+}
+
+/* ✅ size별 높이 (원하는대로 조절) */
+.post-thumb.is-xs {
+  height: 117px;
+}
+.post-thumb.is-sm {
+  height: 117px;
+} /* 너가 원하던 sm=117px */
+.post-thumb.is-md {
+  height: 234px;
+}
+
+/* ground-mdzon */

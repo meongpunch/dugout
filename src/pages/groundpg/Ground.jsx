@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Ground.css";
 import MainPgHeader from "../../components/MainPgHeader";
 
@@ -66,6 +67,96 @@ const popularTopics = [
       { icon: "🍱", count: 521 },
       { icon: "🍟", count: 57 },
     ],
+  },
+];
+
+//  인기 게시글
+const popularPosts = [
+  {
+    id: 1,
+    img: "/img/ground_post_1.jpg",
+    title: "호민아 잘 성장하고 있다!! 내...",
+    size: "sm",
+  },
+  {
+    id: 2,
+    img: "/img/ground_post_5.jpg",
+    title: "나 진짜 우리직 까까가 자랑...",
+    size: "md",
+  },
+  {
+    id: 3,
+    img: "/img/ground_post_2.jpg",
+    title: "나 진짜 우리직 까까가 자랑...",
+    size: "md",
+  },
+  {
+    id: 4,
+    img: "/img/ground_post_6.jpg",
+    title: "꽃기냥겹갈아햄병",
+    size: "xs",
+  },
+  {
+    id: 5,
+    img: "/img/ground_post_3.jpg",
+    title: "ㅋㅋㅋ 이러라 야웃거운 거...",
+    size: "sm",
+  },
+  {
+    id: 6,
+    img: "/img/ground_post_7.jpg",
+    title: "호령아 오늘은 너 덕분에 웃...",
+    size: "md",
+  },
+  {
+    id: 7,
+    img: "/img/ground_post_4.jpg",
+    title: "왠필 시구 큰 사람.. 내 다해...",
+    size: "sm",
+  },
+];
+
+//굿즈존 데이터
+const mdZonItems = [
+  {
+    id: 1,
+    img: "/img/ground_mdzon_1.jpg",
+    type: "나눔",
+    title: "22일 경기 오후 5시",
+    price: "무료",
+    to: "/mdzon/1",
+  },
+  {
+    id: 2,
+    img: "/img/ground_mdzon_2.jpg",
+    type: "판매",
+    title: "오픈 : 23일 오후 12시",
+    price: "500원",
+    to: "/mdzon/2",
+  },
+  {
+    id: 3,
+    img: "/img/ground_mdzon_3.jpg",
+    type: "판매",
+    title: "오픈 : 23일 오후 12시",
+    price: "18,000원",
+    to: "/mdzon/3",
+  },
+  {
+    id: 4,
+    img: "/img/ground_mdzon_4.jpg",
+    type: "판매",
+    title: "오픈 : 23일 오후 12시",
+    price: "18,000원",
+    to: "/mdzon/3",
+  },
+  {
+    id: 5,
+    img: "/img/ground_mdzon_5.jpg",
+    type: "판매",
+    title: "오픈 : 23일 오후 12시",
+    price: "18,000원",
+    to: "/mdzon/3",
   },
 ];
 
@@ -160,15 +251,15 @@ const Ground = () => {
         <div className="inner">
           <div className="ground-topic-head">
             <h3 className="section-title">인기 vs 토픽</h3>
-            <a href="#" className="ground-topic-more">
+            <Link to={"/topic"} className="ground-topic-more">
               더보기
-            </a>
+            </Link>
           </div>
 
           <div className="ground-topic-list">
             {popularTopics.map((item) => (
               <article key={item.id} className="topic-card">
-                <a href="#" className="topic-card-link">
+                <Link to={"/topic"} className="topic-card-link">
                   {/* 배경이미지 */}
                   <div className="topic-card-bg">
                     <img src={item.coverImg} alt="" />
@@ -228,7 +319,7 @@ const Ground = () => {
                       </div>
                     </div>
                   </div>
-                </a>
+                </Link>
               </article>
             ))}
           </div>
@@ -237,9 +328,10 @@ const Ground = () => {
       {/* ground-banner */}
       <section className="ground-banner">
         <a
-          href="#"
+          href="https://www.tving.com/sports/kbo?n_media=27758&n_query=%ED%8B%B0%EB%B9%99%ED%94%84%EB%A1%9C%EC%95%BC%EA%B5%AC&n_rank=1&n_ad_group=grp-a001-01-000000040965984&n_ad=nad-a001-01-000000304649436&n_keyword_id=nkw-a001-01-000006209738999&n_keyword=%ED%8B%B0%EB%B9%99%ED%94%84%EB%A1%9C%EC%95%BC%EA%B5%AC&n_campaign_type=1&n_ad_group_type=1&n_match=1&NaPm=ct%3Dlxu4x8vk%7Cci%3D0yq0001stlDAQEDawuZ3%7Ctr%3Dsa%7Chk%3D042b634c63c901280f5dc010bed047eea6dd624b%7Cnacn%3DfCfnEwAeI5wuG&gad_source=1&gad_campaignid=23411707576&gbraid=0AAAAAC1p3XT_j6qAvWxWCs4XTOziQc-4Y&gclid=Cj0KCQiAyP3KBhD9ARIsAAJLnnaqqc3jVSwCRjGb7h5iBTQf-V_vdM7JO1I6ObWRBba35HR56mspBK0aAkzAEALw_wcB"
           className="ground-banner_link"
-          onClick={(e) => e.preventDefault()}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           {/* 배경 이미지 */}
           <div className="ground-banner_bg">
@@ -256,6 +348,143 @@ const Ground = () => {
             </p>
           </div>
         </a>
+      </section>
+      {/* ground-moment */}
+      <section className="ground-moment">
+        <div className="inner">
+          <h3 className="section-title">플레이 모먼트</h3>
+          <Swiper
+            className="moment-swiper"
+            spaceBetween={14}
+            slidesPerView="auto"
+            slidesOffsetBefore={0}
+            slidesOffsetAfter={14}
+          >
+            <SwiperSlide>
+              <a
+                href="#"
+                className="moment-card-link"
+                onClick={(e) => e.preventDefault()}
+              >
+                <article className="moment-card">
+                  {/* 썸네일 */}
+                  <div className="moment-thumb">
+                    <img src="/img/ground_moment.jpg" alt="" />
+                  </div>
+                  {/* 제목 */}
+                  <p className="moment-title">
+                    최연소 30-30 달성 기아 타이거즈 김도영
+                  </p>
+                </article>
+              </a>
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <a
+                href="#"
+                className="moment-card-link"
+                onClick={(e) => e.preventDefault()}
+              >
+                <article className="moment-card">
+                  <div className="moment-thumb">
+                    <img src="/img/ground_moment2.jpg" alt="" />
+                  </div>
+
+                  <p className="moment-title">
+                    펜스를 넘어 그라운드로 나간 고양이
+                  </p>
+                </article>
+              </a>
+            </SwiperSlide>
+          </Swiper>
+        </div>
+      </section>
+      {/* ground-post */}
+      <section className="ground-post">
+        <div className="inner">
+          <div className="ground-post-head">
+            <h3 className="section-title">인기 게시글</h3>
+            <Link to="/post" className="ground-post-more">
+              더보기
+            </Link>
+          </div>
+
+          <div className="ground-post-cols">
+            {/* 왼쪽 */}
+            <ul className="ground-post-col">
+              {popularPosts
+                .filter((_, idx) => idx % 2 === 0)
+                .map((item) => (
+                  <li key={item.id}>
+                    <Link to={`/post/${item.id}`} className="post-card">
+                      <div className={`post-thumb is-${item.size}`}>
+                        <img src={item.img} alt={item.title} />
+                        <div className="post-dim" />
+                        <p className="post-title">{item.title}</p>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+            </ul>
+
+            {/* 오른쪽 */}
+            <ul className="ground-post-col">
+              {popularPosts
+                .filter((_, idx) => idx % 2 === 1)
+                .map((item) => (
+                  <li key={item.id}>
+                    <Link to={`/post/${item.id}`} className="post-card">
+                      <div className={`post-thumb is-${item.size}`}>
+                        <img src={item.img} alt={item.title} />
+                        <div className="post-dim" />
+                        <p className="post-title">{item.title}</p>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+      {/* ground-mdzon */}
+      <section className="ground-mdzon">
+        <div className="inner">
+          <div className="ground-mdzon-head">
+            <h3 className="section-title">굿즈존</h3>
+            <a href="/mdzon" className="ground-mdzon-more">
+              더보기
+            </a>
+          </div>
+
+          <Swiper
+            className="mdzon-swiper"
+            spaceBetween={12}
+            slidesPerView="auto"
+            slidesOffsetBefore={16}
+            slidesOffsetAfter={16}
+            centeredSlides={false}
+          >
+            {mdZonItems.map((item) => (
+              <SwiperSlide key={item.id} className="mdzon-slide">
+                <Link
+                  to={`/mdzon/${item.id}`}
+                  className="mdzon-card"
+                  onClick={(e) => e.preventDefault()} // 라우트 연결 전이면 유지
+                >
+                  <div className="mdzon-thumb">
+                    <img src={item.img} alt="" />
+                  </div>
+
+                  <div className="mdzon-body">
+                    <span className="mdzon-type">{item.type}</span>
+                    <p className="mdzon-title">{item.title}</p>
+                    <p className="mdzon-price">{item.price}</p>
+                  </div>
+                </Link>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </section>
     </div>
   );
