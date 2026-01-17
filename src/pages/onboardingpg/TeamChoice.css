@@ -6,7 +6,7 @@
   overflow: hidden; /* ✅ 전체 페이지는 스크롤 금지 */
 }
 
-.inner{
+.TeamChoice-container .inner{
   height: 100%;
   display: flex;
   flex-direction: column;
