@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -56,7 +56,7 @@ const Home = () => {
       img: "/img/Home-card_oh.jpg",
     },
   ];
-  // 응원 댓극 데이터
+  // 응원 댓글 데이터
   const rawCommentsTop = [
     { id: 1, text: "가을야구 확정!", user: "/img/user_1.svg" },
     { id: 2, text: "타이거즈는 이름부터 다름", user: "/img/user_2.svg" },
@@ -145,6 +145,29 @@ const Home = () => {
   const toggleLike = (e) => {
     e.preventDefault();
     setIsLiked(!isLiked);
+  };
+
+// Quiz 타이머
+  const [timeLeft, setTimeLeft] = useState(4297);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prevTime) => (prevTime > 0 ? prevTime - 1 : 0)); 
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (seconds) => {
+    const h = Math.floor(seconds / 3600); // 시간 계산
+    const m = Math.floor((seconds % 3600) / 60); // 분 계산
+    const s = seconds % 60; // 초 계산
+
+    const hh = String(h).padStart(2, "0");
+    const mm = String(m).padStart(2, "0");
+    const ss = String(s).padStart(2, "0");
+
+    return `${hh}:${mm}:${ss}`;
   };
 
   return (
@@ -392,7 +415,8 @@ const Home = () => {
                 <p className="time">
                   <span>
                     <img src="/img/clock.svg" alt="시계아이콘" />
-                    <span className="bold">01:11:37</span> 후 종료
+                    {/* ⭐️ 4. 여기에 만든 함수 적용! */}
+                    <span className="bold">{formatTime(timeLeft)}</span> 후 종료
                   </span>
                 </p>
               </div>
