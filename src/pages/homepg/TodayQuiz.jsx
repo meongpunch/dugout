@@ -33,12 +33,33 @@ const TodayQuiz = () => {
     return () => clearTimeout(t);
   }, [toastOpen]);
 
-  const triggerConfetti = () => {
-    confetti({
-      particleCount: 150,
+const triggerConfetti = () => {
+    // 1. 이모지 모양 정의
+    const baseball = confetti.shapeFromText({ text: '⚾', scalar: 3 });
+    const party = confetti.shapeFromText({ text: '🎉', scalar: 3 });
+
+    // 공통 설정값
+    const defaults = {
       spread: 70,
       origin: { y: 0.6 },
-      colors: ["#C3000F", "#ffffff", "#EFFF33"],
+      colors: ["#C3000F", "#ffffff", "#EFFF33"], // 기아 컬러
+      ticks: 200,
+    };
+
+    // 💥 1탄: 주인공들 (야구공, 폭죽) - 많이, 크게!
+    confetti({
+      ...defaults,
+      particleCount: 80, // 이모지 개수를 100개로 넉넉하게!
+      shapes: [baseball, party], 
+      scalar: 2, // 이모지는 커야 잘 보입니다
+    });
+
+    // 🎊 2탄: 배경 효과 (동그라미, 네모) - 적당히, 작게!
+    confetti({
+      ...defaults,
+      particleCount: 30, // 배경은 50개 정도만
+      shapes: ['circle', 'square'],
+      scalar: 1, // 배경은 작게
     });
   };
 
@@ -104,7 +125,7 @@ const TodayQuiz = () => {
                 selectedOption === option.id ? "active" : ""
               }`}
               onClick={() => handleOptionClick(option.id)}
-              disabled={isCorrectSelected} //정답 맞췄으면 버튼 비활성화됨
+              disabled={isCorrectSelected && option.id !== 2} 
             >
               <span className="option-text">{option.name}</span>
               {option.id === 2 && !isCorrectSelected && (
