@@ -473,11 +473,11 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  border-top: 1px solid rgba(255, 255, 255, 0.5); /* ← 오파시티 */
+  border-top: 1px solid rgba(255, 255, 255, 0.5); 
   padding-top: 10px;
 }
 
-/* ✅ size별 높이 (원하는대로 조절) */
+/* size별 높이 (원하는대로 조절) */
 .post-thumb.is-xs {
   height: 117px;
 }
@@ -489,3 +489,73 @@
 }
 
 /* ground-mdzon */
+.ground-mdzon-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  min-height: 37px;
+}
+
+.ground-mdzon-head h3 {
+  margin: 0;
+  line-height: 1;
+}
+
+.ground-mdzon-more {
+  font-size: 14px;
+  color: #888;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.mdzon-swiper {
+  overflow: visible;
+}
+
+.mdzon-slide {
+  width: 180px;
+}
+
+.mdzon-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.mdzon-thumb {
+  height:230px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.mdzon-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mdzon-body {
+  padding-top: 12px;
+}
+
+.mdzon-type {
+  display: block;
+  font-size: 14px;
+  color: #9d9d9d;
+  margin-bottom: 6px;
+}
+
+.mdzon-title {
+  margin: 0;
+  font-size: 16px;
+  color: #e7e7e7;
+}
+
+.mdzon-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin: 6px 0 0;
+}

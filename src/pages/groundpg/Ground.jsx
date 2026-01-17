@@ -81,7 +81,7 @@ const popularPosts = [
   {
     id: 2,
     img: "/img/ground_post_5.jpg",
-    title: "나 진짜 우리직 까까가 자랑...",
+    title: "이 자식 오늘 홈런 하나 칠 컨디션인 게 분명함",
     size: "md",
   },
   {
@@ -93,25 +93,25 @@ const popularPosts = [
   {
     id: 4,
     img: "/img/ground_post_6.jpg",
-    title: "꽃기냥겹갈아햄병",
+    title: "쫓기는것같아황성빈",
     size: "xs",
   },
   {
     id: 5,
     img: "/img/ground_post_3.jpg",
-    title: "ㅋㅋㅋ 이러라 야웃거운 거...",
+    title: "ㅋㅋㅋ 이의리 아웃카운트 겨우 잡고 좋아하는 거 웃기고 귀여움",
     size: "sm",
   },
   {
     id: 6,
     img: "/img/ground_post_7.jpg",
-    title: "호령아 오늘은 너 덕분에 웃...",
+    title: "호령아 올해는 너 덕분에 웃고 울었다 진짜 멋있었다",
     size: "md",
   },
   {
     id: 7,
     img: "/img/ground_post_4.jpg",
-    title: "왠필 시구 큰 사람.. 내 다해...",
+    title: "원필 시구 본 사람.. 너 다 해라 김원필",
     size: "sm",
   },
 ];
@@ -145,17 +145,17 @@ const mdZonItems = [
   {
     id: 4,
     img: "/img/ground_mdzon_4.jpg",
-    type: "판매",
-    title: "오픈 : 23일 오후 12시",
-    price: "18,000원",
+    type: "나눔",
+    title: "24일 경기 오후 1시",
+    price: "무료",
     to: "/mdzon/3",
   },
   {
     id: 5,
     img: "/img/ground_mdzon_5.jpg",
     type: "판매",
-    title: "오픈 : 23일 오후 12시",
-    price: "18,000원",
+    title: "오픈 : 23일 오후 6시",
+    price: "25,000원",
     to: "/mdzon/3",
   },
 ];
@@ -215,7 +215,9 @@ const Ground = () => {
           >
             {snsCards.map((card) => (
               <SwiperSlide key={card.id}>
-                <a href="#" className="sns-card-link">
+                <a href="#" className="sns-card-link"
+                onClick={(e) => e.preventDefault()}
+                >
                   <article className="sns-card">
                     {/* 이미지 */}
                     <div className="sns-thumb">
@@ -404,9 +406,13 @@ const Ground = () => {
         <div className="inner">
           <div className="ground-post-head">
             <h3 className="section-title">인기 게시글</h3>
-            <Link to="/post" className="ground-post-more">
+            <a
+              href="#"
+              className="ground-post-more"
+              onClick={(e) => e.preventDefault()}
+            >
               더보기
-            </Link>
+            </a>
           </div>
 
           <div className="ground-post-cols">
@@ -415,15 +421,19 @@ const Ground = () => {
               {popularPosts
                 .filter((_, idx) => idx % 2 === 0)
                 .map((item) => (
-                  <li key={item.id}>
-                    <Link to={`/post/${item.id}`} className="post-card">
-                      <div className={`post-thumb is-${item.size}`}>
-                        <img src={item.img} alt={item.title} />
-                        <div className="post-dim" />
-                        <p className="post-title">{item.title}</p>
-                      </div>
-                    </Link>
-                  </li>
+                <li key={item.id}>
+                  <a
+                    href="#"
+                    className="post-card"
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    <div className={`post-thumb is-${item.size}`}>
+                      <img src={item.img} alt={item.title} />
+                      <div className="post-dim" />
+                      <p className="post-title">{item.title}</p>
+                    </div>
+                  </a>
+                </li>
                 ))}
             </ul>
 
@@ -433,13 +443,17 @@ const Ground = () => {
                 .filter((_, idx) => idx % 2 === 1)
                 .map((item) => (
                   <li key={item.id}>
-                    <Link to={`/post/${item.id}`} className="post-card">
+                    <a
+                      href="#"
+                      className="post-card"
+                      onClick={(e) => e.preventDefault()}
+                    >
                       <div className={`post-thumb is-${item.size}`}>
                         <img src={item.img} alt={item.title} />
                         <div className="post-dim" />
                         <p className="post-title">{item.title}</p>
                       </div>
-                    </Link>
+                    </a>
                   </li>
                 ))}
             </ul>
@@ -451,25 +465,27 @@ const Ground = () => {
         <div className="inner">
           <div className="ground-mdzon-head">
             <h3 className="section-title">굿즈존</h3>
-            <a href="/mdzon" className="ground-mdzon-more">
+            <a href="#" className="ground-mdzon-more"
+            onClick={(e) => e.preventDefault()}
+            >
               더보기
             </a>
           </div>
 
           <Swiper
             className="mdzon-swiper"
-            spaceBetween={12}
+            spaceBetween={16}
             slidesPerView="auto"
-            slidesOffsetBefore={16}
+            slidesOffsetBefore={0}
             slidesOffsetAfter={16}
             centeredSlides={false}
           >
             {mdZonItems.map((item) => (
               <SwiperSlide key={item.id} className="mdzon-slide">
-                <Link
-                  to={`/mdzon/${item.id}`}
+                <a
+                  href="#"
                   className="mdzon-card"
-                  onClick={(e) => e.preventDefault()} // 라우트 연결 전이면 유지
+                  onClick={(e) => e.preventDefault()}
                 >
                   <div className="mdzon-thumb">
                     <img src={item.img} alt="" />
@@ -480,7 +496,7 @@ const Ground = () => {
                     <p className="mdzon-title">{item.title}</p>
                     <p className="mdzon-price">{item.price}</p>
                   </div>
-                </Link>
+                </a>
               </SwiperSlide>
             ))}
           </Swiper>
