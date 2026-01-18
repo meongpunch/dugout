@@ -6,6 +6,14 @@
   padding: 0;
 }
 
+.stadium-headerOverlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+}
+
 .stadium-topbar {
   position: fixed;
   top: 80px;
@@ -43,6 +51,7 @@
 
 .topbar-location {
   font-size: 22px;
+  font-weight: 600;
   display: flex;
   align-items: center;
   background: rgba(0, 0, 0, 0.2);
@@ -145,6 +154,7 @@
 .bottom-box .desc {
   font-size: 16px;
   color: #a8a8a8;
+  margin-top: 0;
 }
 
 .bottom-box .sheet-title {

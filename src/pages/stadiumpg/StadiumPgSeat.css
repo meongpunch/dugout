@@ -42,6 +42,7 @@
 
 .summary .price {
   font-size: 16px;
+  font-weight: normal;
   color: rgba(255, 255, 255, 0.6);
 }
 
@@ -53,9 +54,6 @@
   cursor: pointer;
   border-radius: 12px;
 }
-
-/* ⚠️ 아래 값은 너 이미지에 맞춰 "조금"만 조절하면 딱 맞음
-   (percent라서 반응형에도 따라감) */
 
 /* 222 (맨 위) */
 .hit-222 {

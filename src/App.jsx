@@ -18,6 +18,7 @@ import LockerroomEditProfile from "./pages/lockerroompg/LockerroomEditProfile";
 import Login from "./pages/onboardingpg/Login";
 import TeamChoice from "./pages/onboardingpg/TeamChoice";
 import GroundTopic from "./pages/groundpg/GroundTopic";
+import StadiumPgReview from "./pages/stadiumpg/StadiumPgReview";
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/stadium" element={<Stadium />} />
         <Route path="/stadium/seat" element={<StadiumPgSeat />} />
         <Route path="/stadium/seat/section" element={<StadiumSeatDetail />} />
+        <Route path="/stadium/seat/review" element={<StadiumPgReview />} />
 
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />

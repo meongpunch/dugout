@@ -1,28 +1,19 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./StadiumSeatDetail.css";
 import MainPgHeader from "../../components/MainPgHeader";
 import Footer from "../../components/Footer";
 
-/** ✅ 좌석 더미 (원본 이미지 px 기준 좌표) */
-const SEATS = [
-  { no: 194, x: 520, y: 640, w: 52, h: 52 },
-  { no: 193, x: 580, y: 640, w: 52, h: 52 },
-  { no: 195, x: 460, y: 640, w: 52, h: 52 },
-];
-
 const StadiumSeatDetail = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
 
-  // ✅ 좌석 선택 상태
   const [selectedSeat, setSelectedSeat] = useState(null);
 
-  // refs
   const baseScaleRef = useRef(1);
-
+  const svgRef = useRef(null);
   const viewportRef = useRef(null);
-  const stageRef = useRef(null); // ✅ 누락되어 있던 ref
+  const stageRef = useRef(null);
   const minimapRef = useRef(null);
   const rectRef = useRef(null);
 
@@ -31,25 +22,17 @@ const StadiumSeatDetail = () => {
   const movedRef = useRef(false);
   const infoSwiperRef = useRef(null);
 
-  useEffect(() => {
-    if (!state) navigate("/stadium", { replace: true });
-  }, [state, navigate]);
-
-  if (!state) return null;
-
-  const { stadiumName, seatType, section } = state;
-
-  const getImgSize = () => {
+  const getImgSize = useCallback(() => {
     const viewport = viewportRef.current;
-    const img = viewport?.querySelector(".mapContent");
-    if (!img) return null;
+    const svg = viewport?.querySelector("svg");
+    if (!svg) return null;
 
-    const iw = img.naturalWidth || img.clientWidth;
-    const ih = img.naturalHeight || img.clientHeight;
-    return { iw, ih, img };
-  };
+    const iw = svg.viewBox?.baseVal?.width || 430;
+    const ih = svg.viewBox?.baseVal?.height || 574;
+    return { iw, ih, img: svg };
+  }, []);
 
-  const clampToBounds = (x, y) => {
+  const clampToBounds = useCallback((x, y) => {
     const viewport = viewportRef.current;
     const size = getImgSize();
     if (!viewport || !size) return { x, y };
@@ -75,9 +58,9 @@ const StadiumSeatDetail = () => {
     }
 
     return { x, y };
-  };
+  }, [getImgSize]);
 
-  const syncMini = () => {
+  const syncMini = useCallback(() => {
     const viewport = viewportRef.current;
     const minimap = minimapRef.current;
     const rect = rectRef.current;
@@ -109,9 +92,9 @@ const StadiumSeatDetail = () => {
     rect.style.width = `${rectW}px`;
     rect.style.height = `${rectH}px`;
     rect.style.transform = `translate(${left}px, ${top}px)`;
-  };
+  }, [getImgSize]);
 
-  const applyTransform = (x, y) => {
+  const applyTransform = useCallback((x, y) => {
     const stage = stageRef.current;
     if (!stage) return;
 
@@ -119,9 +102,9 @@ const StadiumSeatDetail = () => {
     stage.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${s})`;
     posRef.current = { x, y };
     syncMini();
-  };
+  }, [syncMini]);
 
-  const fitToViewport = () => {
+  const fitToViewport = useCallback(() => {
     const viewport = viewportRef.current;
     const size = getImgSize();
     if (!viewport || !size) return;
@@ -147,14 +130,13 @@ const StadiumSeatDetail = () => {
     applyTransform(clamped.x, clamped.y);
 
     setSelectedSeat(null);
-  };
+  }, [getImgSize, clampToBounds, applyTransform]);
 
-  const zoomToClientPoint = (clientX, clientY) => {
+  const zoomToClientPoint = useCallback((clientX, clientY) => {
     const viewport = viewportRef.current;
     const stage = stageRef.current;
     if (!viewport || !stage) return;
 
-    // ✅ transition은 transform 대상(stage)에 걸어야 함
     stage.classList.add("zooming");
 
     const vw = viewport.clientWidth;
@@ -182,22 +164,138 @@ const StadiumSeatDetail = () => {
     const clamped = clampToBounds(nextX, nextY);
     applyTransform(clamped.x, clamped.y);
 
-    // ✅ 줌이 풀리면 선택 초기화(원하면 제거 가능)
+    // 줌이 풀리면 선택 초기화
     if (targetScale <= base + 0.01) setSelectedSeat(null);
 
     window.setTimeout(() => {
       stage.classList.remove("zooming");
     }, 260);
-  };
+  }, [clampToBounds, applyTransform]);
 
-  // ✅ 좌석 선택
-  const onSeatClick = (seat, e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setSelectedSeat(seat);
-  };
+  // 좌석 선택
+  const onSeatClick = useCallback((seatNo) => {
+    console.log("seat", seatNo);
+    setSelectedSeat(seatNo);
+  }, []);
 
-  // ✅ Drag + click zoom (PC 마우스 포함 동일 동작)
+  useEffect(() => {
+    if (!state) navigate("/stadium", { replace: true });
+  }, [state, navigate]);
+
+  // SVG 로드 및 삽입
+  useEffect(() => {
+    const container = svgRef.current;
+    if (!container) return;
+
+    // SVG 파일을 fetch로 로드
+    fetch('/img/stadium-seating-detail-interactive.svg')
+      .then((response) => response.text())
+      .then((svgText) => {
+        container.innerHTML = svgText;
+
+        // SVG 로드 완료 후 fitToViewport 호출
+        const svg = container.querySelector('svg');
+        if (svg) {
+          console.log('SVG 로드 완료');
+
+          // SVG 내의 모든 좌석 그룹 찾기
+          const seatGroups = svg.querySelectorAll('[id^="seat-"]');
+
+          const handleSeatClick = (e) => {
+            // 줌 상태 확인 - 줌 인 상태에서만 좌석 선택 가능
+            const currentScale = scaleRef.current;
+            const baseScale = baseScaleRef.current;
+
+            if (currentScale <= baseScale + 0.01) {
+              // 줌 아웃 상태 - 클릭 이벤트 무시
+              return;
+            }
+
+            // 줌 인 상태 - 좌석 선택
+            e.stopPropagation();
+            const seatGroup = e.currentTarget;
+            const seatId = seatGroup.id.replace('seat-', '');
+            console.log('좌석 클릭:', seatId);
+            onSeatClick(parseInt(seatId));
+          };
+
+          // 각 좌석에 클릭 이벤트 및 스타일 추가
+          seatGroups.forEach((group) => {
+            group.addEventListener('click', handleSeatClick);
+
+            // 호버 효과 - 줌 인 상태에서만 표시
+            group.addEventListener('mouseenter', () => {
+              const currentScale = scaleRef.current;
+              const baseScale = baseScaleRef.current;
+
+              if (currentScale > baseScale + 0.01 && !group.classList.contains('selected')) {
+                group.style.cursor = 'pointer';
+              }
+            });
+            group.addEventListener('mouseleave', () => {
+              group.style.cursor = '';
+              group.style.opacity = '1';
+            });
+          });
+
+          fitToViewport();
+        }
+      })
+      .catch((error) => {
+        console.error('SVG 로드 실패:', error);
+      });
+  }, [fitToViewport, onSeatClick]);
+
+  // 선택된 좌석 스타일 업데이트
+  useEffect(() => {
+    const container = svgRef.current;
+    if (!container) return;
+
+    const svg = container.querySelector('svg');
+    if (!svg) return;
+
+    const seatGroups = svg.querySelectorAll('[id^="seat-"]');
+    if (seatGroups.length === 0) return;
+
+    seatGroups.forEach((group) => {
+      const seatId = parseInt(group.id.replace('seat-', ''));
+
+      if (seatId === selectedSeat) {
+        group.classList.add('selected');
+        // 선택된 좌석 스타일
+        const paths = group.querySelectorAll('path');
+        paths.forEach((path, index) => {
+          if (index === 0) {
+            // 첫 번째 path는 좌석 배경 - 색상 변경
+            const originalFill = path.getAttribute('fill');
+            if (originalFill && !path.hasAttribute('data-original-fill')) {
+              path.setAttribute('data-original-fill', originalFill);
+            }
+            path.style.fill = '#aa0000'; // 선택 시 빨간색
+          }
+        });
+      } else {
+        group.classList.remove('selected');
+        const paths = group.querySelectorAll('path');
+        paths.forEach((path, index) => {
+          if (index === 0) {
+            // 원래 색상으로 복원
+            const originalFill = path.getAttribute('data-original-fill');
+            if (originalFill) {
+              path.style.fill = originalFill;
+            } else {
+              path.style.fill = '';
+            }
+          }
+          path.style.stroke = '';
+          path.style.strokeWidth = '';
+          path.style.filter = '';
+        });
+      }
+    });
+  }, [selectedSeat]);
+
+  // Drag + click zoom (PC 마우스 포함 동일 동작)
   useEffect(() => {
     const viewport = viewportRef.current;
     if (!viewport) return;
@@ -208,10 +306,24 @@ const StadiumSeatDetail = () => {
     let baseX = 0;
     let baseY = 0;
 
-    const isSeatPointer = (e) => !!e.target.closest?.(".seatHit");
+    const isSeatPointer = (e) => {
+      // 줌 인 상태에서만 좌석 감지
+      const currentScale = scaleRef.current;
+      const baseScale = baseScaleRef.current;
+
+      if (currentScale <= baseScale + 0.01) {
+        // 줌 아웃 상태 - 좌석 무시
+        return false;
+      }
+
+      // 줌 인 상태 - SVG 좌석 그룹이나 그 안의 요소인지 확인
+      const target = e.target;
+      const seatGroup = target.closest('[id^="seat-"]');
+      return !!seatGroup;
+    };
 
     const onDown = (e) => {
-      // ✅ 좌석 위에서 시작한 포인터는 지도 로직이 먹지 않게
+      // 줌 인 상태에서 좌석 위에서 시작한 포인터는 지도 로직이 먹지 않게
       if (isSeatPointer(e)) return;
 
       isDown = true;
@@ -241,13 +353,15 @@ const StadiumSeatDetail = () => {
     };
 
     const onUp = (e) => {
-      // ✅ 좌석 위에서 끝난 건 줌 토글도 막기
+      // 좌석 위에서 끝난 건 줌 토글도 막기
       if (isSeatPointer(e)) {
         isDown = false;
         viewport.classList.remove("dragging");
         try {
           viewport.releasePointerCapture(e.pointerId);
-        } catch {}
+        } catch (error) {
+          // Ignore errors
+        }
         return;
       }
 
@@ -257,7 +371,9 @@ const StadiumSeatDetail = () => {
       viewport.classList.remove("dragging");
       try {
         viewport.releasePointerCapture(e.pointerId);
-      } catch {}
+      } catch (error) {
+        // Ignore errors
+      }
     };
 
     viewport.addEventListener("pointerdown", onDown);
@@ -277,7 +393,7 @@ const StadiumSeatDetail = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // ✅ info swiper 관성(네가 원래 쓰던 그대로 유지)
+  // info swiper 관성
   useEffect(() => {
     const el = infoSwiperRef.current;
     if (!el) return;
@@ -316,7 +432,7 @@ const StadiumSeatDetail = () => {
     };
 
     const onDown = (e) => {
-      // ✅ 마우스/펜만(모바일은 기본 스크롤이 제일 자연스러움)
+      // 마우스/펜만(모바일은 기본 스크롤로 제일 자연스럽게)
       if (e.pointerType === "touch") return;
 
       isDown = true;
@@ -379,6 +495,10 @@ const StadiumSeatDetail = () => {
     };
   }, []);
 
+  if (!state) return null;
+
+  const { stadiumName, seatType, section } = state;
+
   return (
     <>
       <section className="seat-detail">
@@ -392,39 +512,20 @@ const StadiumSeatDetail = () => {
 
         <div className="detail-map-wrap">
           <div className="mapViewport" ref={viewportRef}>
-            <div className="mapStage" ref={stageRef}>
-              <img
-                className="mapContent"
-                src="/img/stadium-seating-detail.svg"
-                alt={`${section} 구역 좌석 배치도`}
-                onLoad={fitToViewport}
-                draggable={false}
+            <div
+              className="mapStage"
+              ref={stageRef}
+              style={{ transformOrigin: '0 0' }}
+            >
+              <div
+                ref={svgRef}
+                className="mapContent svg-container"
+                style={{ pointerEvents: 'auto', display: 'inline-block' }}
               />
-
-              <div className="seatLayer">
-                {SEATS.map((seat) => (
-                  <button
-                    key={seat.no}
-                    type="button"
-                    className={`seatHit ${
-                      selectedSeat?.no === seat.no ? "active" : ""
-                    }`}
-                    style={{
-                      left: seat.x,
-                      top: seat.y,
-                      width: seat.w,
-                      height: seat.h,
-                    }}
-                    onPointerDown={(e) => e.stopPropagation()}
-                    onPointerUp={(e) => onSeatClick(seat, e)}
-                    aria-label={`${seat.no}번 좌석 선택`}
-                  />
-                ))}
-              </div>
             </div>
           </div>
 
-          {/* ✅ 미니맵은 map-wrap 내부에 있어야 absolute가 정상 */}
+          {/* 미니맵은 map-wrap 내부에 있어야 absolute가 정상 */}
           <div className="minimap" ref={minimapRef} aria-hidden="true">
             <img
               className="minimapImg"
@@ -439,69 +540,89 @@ const StadiumSeatDetail = () => {
         <div className="detail-bottom">
           <p className="seat-info">
             {seatType} {section}구역
+            {selectedSeat && ` ${selectedSeat}번 좌석`}
           </p>
           <p className="price">금액 주중: 18,000원 / 주말 : 20,000원</p>
-
-          <div className="tag-row">
-            <button type="button" className="tag">
-              #온가족이 함께
+          {selectedSeat ? (
+            <>
+            <button
+              type="button"
+              className="confirm"
+              onClick={() => navigate('/stadium/seat/review', {
+                state: {
+                  stadiumName,
+                  seatType,
+                  section,
+                  seatNumber: selectedSeat
+                }
+              })}
+            >
+              선택하기
             </button>
-            <button type="button" className="tag">
-              #스탠딩모드
-            </button>
-            <button type="button" className="tag">
-              #뉴비환영
-            </button>
-          </div>
-
-          <h3 className="info-title">구역 정보</h3>
-
-          <ul className="info-swiper" ref={infoSwiperRef} role="list">
-            <li className="info-slide">
-              <div className="info-card">
-                <div className="ico">📏</div>
-                <div>
-                  <p className="card-title">1열 단차</p>
-                  <p className="card-desc-1">
-                    단차 높이 <br />
-                    51cm로 꽤 높아요
-                  </p>
-                  <p className="card-desc-2">무릎 공간은 여유 있어요</p>
-                </div>
+            </>
+          ) :  (
+            <>
+              <div className="tag-row">
+                <button type="button" className="tag">
+                  #온가족이 함께
+                </button>
+                <button type="button" className="tag">
+                  #스탠딩모드
+                </button>
+                <button type="button" className="tag">
+                  #뉴비환영
+                </button>
               </div>
-            </li>
 
-            <li className="info-slide">
-              <div className="info-card">
-                <div className="ico">📐</div>
-                <div>
-                  <p className="card-title">2~21열 단차</p>
-                  <p className="card-desc-1">단차 높이 33~39cm</p>
-                  <p className="card-desc-2">
-                    무릎 공간은 <br />
-                    조금 좁아요 (약 30cm)
-                  </p>
-                </div>
-              </div>
-            </li>
+              <h3 className="info-title">구역 정보</h3>
 
-            <li className="info-slide">
-              <div className="info-card">
-                <div className="ico">👀</div>
-                <div>
-                  <p className="card-title">시야 참고</p>
-                  <p className="card-desc-1">
-                    단차 높이 <br />
-                    51cm로 꽤 높아요
-                  </p>
-                  <p className="card-desc-2">무릎 공간은 여유 있어요</p>
-                </div>
-              </div>
-            </li>
-          </ul>
+              <ul className="info-swiper" ref={infoSwiperRef} role="list">
+                <li className="info-slide">
+                  <div className="info-card">
+                    <div className="ico">📏</div>
+                    <div>
+                      <p className="card-title">1열 단차</p>
+                      <p className="card-desc-1">
+                        단차 높이 <br />
+                        51cm로 꽤 높아요
+                      </p>
+                      <p className="card-desc-2">무릎 공간은 여유 있어요</p>
+                    </div>
+                  </div>
+                </li>
+
+                <li className="info-slide">
+                  <div className="info-card">
+                    <div className="ico">📐</div>
+                    <div>
+                      <p className="card-title">2~21열 단차</p>
+                      <p className="card-desc-1">단차 높이 33~39cm</p>
+                      <p className="card-desc-2">
+                        무릎 공간은 <br />
+                        조금 좁아요 (약 30cm)
+                      </p>
+                    </div>
+                  </div>
+                </li>
+
+                <li className="info-slide">
+                  <div className="info-card">
+                    <div className="ico">👀</div>
+                    <div>
+                      <p className="card-title">시야 참고</p>
+                      <p className="card-desc-1">
+                        단차 높이 <br />
+                        51cm로 꽤 높아요
+                      </p>
+                      <p className="card-desc-2">무릎 공간은 여유 있어요</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </>
+          )}
         </div>
       </section>
-
       <Footer />
     </>
   );

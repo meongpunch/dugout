@@ -4,9 +4,8 @@
   color: #fff;
 }
 
-/* 상단 타이틀 */
 .detail-title {
-  padding: 10px 16px 64px;
+  padding: 0px 16px 30px;
 }
 
 .stadium-name {
@@ -14,13 +13,11 @@
   font-weight: bold;
 }
 
-/* 지도 영역 */
 .detail-map-wrap {
   position: relative;
   padding: 0 16px;
 }
 
-/* 스크롤 뷰포트 */
 .mapViewport {
   width: 100%;
   height: 520px;
@@ -36,7 +33,6 @@
   cursor: grabbing;
 }
 
-/* ✅ transform 대상: mapStage */
 .mapStage {
   position: relative;
   transform-origin: 0 0;
@@ -47,7 +43,6 @@
   transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* 이미지 */
 .mapContent {
   display: block;
   max-width: none;
@@ -58,7 +53,6 @@
   user-select: none;
 }
 
-/* 좌석 레이어 */
 .seatLayer {
   position: absolute;
   left: 0;
@@ -71,8 +65,9 @@
 .seatHit {
   pointer-events: auto;
   position: absolute;
-  background: transparent;
-  border: 0;
+  border: 2px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.08);
+  border-radius: 12px;
   cursor: pointer;
 }
 
@@ -80,9 +75,14 @@
   outline: 2px solid rgba(255, 255, 255, 0.95);
   box-shadow: 0 0 0 4px rgba(170, 0, 0, 0.55);
   border-radius: 10px;
+  border-color: #ff3b3b;
+  background: rgba(255,59,59,0.12);
 }
 
-/* 미니맵 */
+.mapStage.zooming{
+  transition: transform 260ms ease;
+}
+
 .minimap {
   position: absolute;
   top: 14px;
@@ -114,10 +114,8 @@
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.25);
 }
 
-/* 하단 정보 */
 .detail-bottom {
   padding: 14px 16px 110px;
-  /* ❌ overflow:hidden; (스와이퍼 씹힐 수 있음) */
 }
 
 .seat-info {
@@ -128,6 +126,7 @@
 
 .detail-bottom .price {
   font-size: 16px;
+  font-weight: normal;
   color: rgba(255, 255, 255, 0.6);
   margin-bottom: 28px;
 }
@@ -148,14 +147,12 @@
   font-size: 14px;
 }
 
-/* 구역 정보 */
 .info-title {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 28px;
 }
 
-/* UL: 가로 스와이프 트랙 */
 .info-swiper {
   list-style: none;
   margin: 0;
@@ -176,13 +173,11 @@
   display: none;
 }
 
-/* LI */
 .info-slide {
   flex: 0 0 auto;
   scroll-snap-align: start;
 }
 
-/* 카드 */
 .info-card {
   background: #1d1d1d;
   border-radius: 14px;
@@ -216,5 +211,21 @@
 }
 
 .card-desc-2 {
+  font-size: 14px;
+}
+
+.confirm {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  width: 154px;
+  height: 38px;
+  min-height: 38px;
+  line-height: 38px;
+  margin: 50px auto 28px;
+  border-radius: 20px;
+  border: none;
+  background: #aa0000;
+  color: #fff;
   font-size: 14px;
 }

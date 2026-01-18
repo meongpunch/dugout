@@ -156,14 +156,17 @@ const Stadium = () => {
   };
 
   return (
-    <>
+<>
+  <section
+    className="stadium-main"
+    onClick={() => {
+      if (stadiumOpen) setStadiumOpen(false);
+    }}
+  >
+    {/* 헤더를 이미지 위로 올리는 래퍼 */}
+    <div className="stadium-headerOverlay" onClick={(e) => e.stopPropagation()}>
       <MainPgHeader logoType="logo" btnType="ticket" />
-      <section
-        className="stadium-main"
-        onClick={() => {
-          if (stadiumOpen) setStadiumOpen(false);
-        }}
-      >
+    </div>
         <div className="stadium-bg">
           <div className="inner">
             <div
