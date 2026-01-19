@@ -247,3 +247,18 @@
 .confirm:focus {
   outline: none;
 }
+
+@media (max-width: 393px) {
+  .chip {
+    width: 113px;
+    height: 85px;
+  }
+
+  .bottom-box.open {
+    height: calc(100vh - 10vh);
+  }
+
+  .bottom-box.open .sheet-body {
+    max-height: calc(90vh - 275px);
+  }
+}
