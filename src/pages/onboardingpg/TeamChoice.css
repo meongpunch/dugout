@@ -1,3 +1,4 @@
+
 /* =========================
    Page Layout
 ========================= */
@@ -5,6 +6,9 @@
   height: 100dvh; /* 모바일 주소창 대응 */
   overflow: hidden; /* 페이지 자체 스크롤 금지 */
   background: #111111; /* ✅ 전체 배경 톤 통일 */
+    --cta-h: 56px;                 /* 버튼 높이 */
+  --cta-gap: 16px;               /* 버튼 위/아래 여유 */
+  --cta-bottom: clamp(12px, 2.2vh, 20px); /* 작은폰에서 내려가는 여백 최소화 */
 }
 
 .TeamChoice-container .inner {
@@ -17,6 +21,7 @@
   box-sizing: border-box;
   overflow: hidden;
   position: relative;
+  
 }
 
 /* =========================
@@ -64,37 +69,16 @@
    - #111 기반으로 톤 통일
    - blur로 경계 이질감 완화
 */
-.scrollArea::after {
-  content: '';
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(390px, 100vw);
-  padding: 0 16px;
-  box-sizing: border-box;
 
-  bottom: calc(85px + env(safe-area-inset-bottom));
-  height: 170px;
-
-  pointer-events: none;
-  z-index: 5;
-
-  background: linear-gradient(
-    to top,
-    rgba(17, 17, 17, 0.98) 0%,
-    rgba(17, 17, 17, 0.85) 35%,
-    rgba(17, 17, 17, 0.45) 65%,
-    rgba(17, 17, 17, 0) 100%
-  );
-}
 
 /* ✅ CTA에 가리지 않게 하는 스페이서 (하나만 유지)
    - 마지막 스크롤 끝 여백 조절하고 싶으면 50px만 수정
 */
 .scroll-spacer {
-  height: calc(56px + 85px + 50px + env(safe-area-inset-bottom));
+  height: calc(
+    var(--cta-h) + 140px + var(--cta-gap) + env(safe-area-inset-bottom)
+  );
 }
-
 /* =========================
    Title
 ========================= */
@@ -207,10 +191,31 @@
   padding: 0 16px;
   box-sizing: border-box;
 
+  /* ✅ 기본(430 기준) 원래 위치로 복귀 */
   bottom: calc(85px + env(safe-area-inset-bottom));
-  z-index: 10;
 
-  pointer-events: none; /* 컨테이너는 클릭 막고 */
+  z-index: 10;
+  pointer-events: none;
+}
+
+.cta-fixed::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+
+  bottom: var(--cta-h);
+  height: 140px;                 /* ✅ 170 -> 140으로 줄여 작은 폰 확보 */
+  pointer-events: none;
+  z-index: 0;
+
+  background: linear-gradient(
+    to top,
+    rgba(17, 17, 17, 0.98) 0%,
+    rgba(17, 17, 17, 0.85) 35%,
+    rgba(17, 17, 17, 0.45) 65%,
+    rgba(17, 17, 17, 0) 100%
+  );
 }
 
 /* ✅ CTA쪽 그라데이션(40px) / sticky CTA 등 중복 요소는 제거한 최종본 */
@@ -232,10 +237,58 @@
   cursor: not-allowed;
 
   pointer-events: auto; /* 버튼만 클릭 가능 */
+  z-index: 1;
 }
 
 .cta-fixed .start-btn.active {
   background: #aa0000;
   color: rgba(255, 255, 255, 0.85);
   cursor: pointer;
+}
+
+
+
+@media (max-height: 740px) {
+  /* 타이틀 영역 살짝 압축 */
+  .contents {
+    margin-top: 18px;
+    margin-bottom: 14px;
+  }
+
+  .contents h2 { font-size: 28px; }
+  .contents h3 { font-size: 14px; }
+
+  /* 그리드 간격 줄이기 */
+  .choice-box { gap: 10px; }
+
+  /* 카드 자체 높이 줄이기 */
+  .team-card { padding: 10px 8px; }
+
+  /* 로고 영역 축소 (핵심) */
+  .team-logo-wrap { height: 62px; }
+  .team-logo { max-width: 82px; height: 82px; }
+
+  /* 스크롤 끝 여백도 살짝 줄이기 (겹침 방지용 최소치) */
+  .scroll-spacer {
+    height: calc(56px + 85px + 18px + env(safe-area-inset-bottom));
+  }
+
+  @media (max-height: 740px) {
+  .choice-box {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .team-logo-wrap {
+    height: 72px;
+  }
+
+  .team-logo {
+    max-width: 90px;
+    height: 90px;
+  }
+
+  .scroll-spacer {
+    height: calc(56px + 85px + 24px + env(safe-area-inset-bottom));
+  }
+}
 }
