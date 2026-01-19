@@ -56,7 +56,7 @@ const popularTopics = [
     id: 1,
     coverImg: "/img/ground_topic_main.jpg",
     profileImg: "/img/ground_topic_profile.jpg", // 원형 프로필
-    nickname: "남양주일찐 김의성🌶️",
+    nickname: "남양주일찐김의성",
     title: "내가 먹어본 야구장 최고 야푸는!?",
     timeAgo: "15시간 전",
     reactions: [
@@ -188,14 +188,26 @@ const Ground = () => {
 
                 {/* sns버튼 */}
                 <div className="ground_actions">
-                  <a href="#">
-                    <img src="/img/ground_sns_icon1.svg" alt="sns아이콘" />
+                  <a
+                    href="https://www.youtube.com/channel/UCKp8knO8a6tSI1oaLjfd9XA/videos"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src="/img/ground_sns_icon1.svg" alt="sns유튜브" />
                   </a>
-                  <a href="#">
-                    <img src="/img/ground_sns_icon2.svg" alt="sns아이콘2" />
+                  <a
+                    href="https://x.com/Kiatigers"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src="/img/ground_sns_icon2.svg" alt="snsX" />
                   </a>
-                  <a href="#">
-                    <img src="/img/ground_sns_icon3.svg" alt="sns아이콘3" />
+                  <a
+                    href="https://www.instagram.com/always_kia_tigers/#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src="/img/ground_sns_icon3.svg" alt="sns인스타그램" />
                   </a>
                 </div>
 
