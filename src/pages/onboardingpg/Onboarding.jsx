@@ -5,6 +5,7 @@ import OnboardingTopBar from "../../components/OnboardingTopBar";
 
 const Onboarding = () => {
   const navigate = useNavigate();
+  
 
   const [page, setPage] = useState(0);
 
@@ -98,7 +99,7 @@ const Bottom = ({ page, goNext, goTo }) => (
 const Container = ({
   children,
   page,
-  goPrev, // ✅ 추가
+  goPrev,
   handleSkip,
   handleTouchStart,
   handleTouchEnd,
@@ -113,22 +114,19 @@ const Container = ({
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
     >
-      {/* ✅ back은 스플래쉬로 가지 않게 goPrev로 */}
-      <OnboardingTopBar
-        iconType="back"
-        skipType="skip"
-        hideBack={page === 0}
-        onBack={goPrev}        // ✅ 핵심 수정
-        onSkip={handleSkip}    // ✅ /login
-        outerClassName="onboardingHeader"
-        innerClassName="onboardingInnerHeader"
-      />
+<OnboardingTopBar
+  iconType={page === 0 ? "none" : "back"}   // ✅ 핵심
+  skipType="skip"                           // ✅ 항상 있음
+  onBack={goPrev}
+  onSkip={handleSkip}
+  outerClassName="onboardingHeader"
+  innerClassName="onboardingInnerHeader"
+/>
 
       {children}
     </div>
   );
 };
-
 // Onboarding 1
 const Onboarding1 = ({
   page,
