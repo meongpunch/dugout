@@ -88,3 +88,9 @@
   width: 58%;
   height: 16%;
 }
+
+@media (max-width: 393px) {
+  .seat-map img {
+    height: 470px;
+  }
+}

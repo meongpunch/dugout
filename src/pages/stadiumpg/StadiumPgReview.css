@@ -361,3 +361,9 @@
   scroll-behavior: auto;
   scroll-snap-type: none; /* 드래그 중 스냅 방해 제거 */
 }
+
+@media (max-width: 393px) {
+  .sr-hero {
+    height: 585px;
+  }
+}
