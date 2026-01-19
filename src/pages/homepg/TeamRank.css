@@ -5,7 +5,6 @@
   overflow: hidden;
   color: #fff;
 
-
   background: url("/img/rank-baseball-bg.png") no-repeat left 0px top 246px;
   background-size: 364px auto;
 }
@@ -280,7 +279,7 @@
 .rankBottom {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
-  gap: 30px;
+  gap: 7%;
   margin: 22px auto 0;
 }
 
@@ -305,11 +304,6 @@
   opacity: 0.7;
   letter-spacing: -0.02em;
   line-height: 1.32;
-  text-align: left;
-}
-
-/* ✅ 오른쪽 컬럼(승패무/승차) 라벨만 가운데 느낌으로 */
-.statCol:last-child .statKey {
   text-align: center;
 }
 
@@ -319,6 +313,7 @@
   height: 20px;
   background: rgba(255, 255, 255, 0.4);
   flex: 0 0 1px;
+  text-align: center;
 }
 
 /* ✅ 값은 남은 공간을 다 먹고, 그 안에서 가운데 정렬 */
