@@ -32,11 +32,11 @@ const Lockerroom = () => {
 
   const slides = [
     { id: 1, img: "/img/lockerroom-calendar.png", name: "game1" },
-    { id: 2, img: "/img/lockerroom-calendar.png", name: "game2" },
-    { id: 3, img: "/img/lockerroom-calendar.png", name: "game3" },
-    { id: 4, img: "/img/lockerroom-calendar.png", name: "game4" },
-    { id: 5, img: "/img/lockerroom-calendar.png", name: "game5" },
-    { id: 6, img: "/img/lockerroom-calendar.png", name: "game6" },
+    { id: 2, img: "/img/lockerroom-calendar-2.png", name: "game2" },
+    { id: 3, img: "/img/lockerroom-calendar-3.png", name: "game3" },
+    { id: 4, img: "/img/lockerroom-calendar-4.png", name: "game4" },
+    { id: 5, img: "/img/lockerroom-calendar-5.png", name: "game5" },
+    { id: 6, img: "/img/lockerroom-calendar-6.png", name: "game6" },
   ];
 
   const quickMenus = [
@@ -135,7 +135,7 @@ const csMenus = [
           >
           {slides.map((s) => (
             <SwiperSlide key={s.id} className="hero-slide">
-              <Link to="">
+              <Link to="/lockerroom/calendar">
                 <div className="img-box">
                   <img src={s.img} alt={s.name} />
                 </div>

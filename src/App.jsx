@@ -20,6 +20,7 @@ import TeamChoice from "./pages/onboardingpg/TeamChoice";
 import GroundTopic from "./pages/groundpg/GroundTopic";
 import StadiumPgReview from "./pages/stadiumpg/StadiumPgReview";
 import OnboardingTopBar from "./components/OnboardingTopBar";
+import Calendar from "./pages/lockerroompg/Calendar";
 
 const App = () => {
   return (
@@ -49,6 +50,7 @@ const App = () => {
           <Route path="/Quiz" element={<TodayQuiz />} />
           <Route path="/shop" element={<Md />} />
           <Route path="/lockerroom/edit" element={<LockerroomEditProfile />} />
+          <Route path="/lockerroom/calendar" element={<Calendar />} />
         </Route>
       </Routes>
     </>
