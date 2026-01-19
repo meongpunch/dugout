@@ -163,45 +163,63 @@ const mdZonItems = [
 const Ground = () => {
   const [activeReactions, setActiveReactions] = useState([]);
   const [reactionCounts, setReactionCounts] = useState(
-    popularTopics[0].reactions.map((r) => r.count)
+    popularTopics[0].reactions.map((r) => r.count),
   );
+
   return (
     <div className="ground-container">
-      <MainPgHeader logoType="logo" btnType="alarm" />
-      <section className="Ground">
-        <div className="inner">
-          <div className="ground_content">
-            <h1 className="ground_title point">KIA TIGERS</h1>
+      {/* ★ 중요 변경점: [상단 인트로 영역] 생성 
+        헤더 + 첫 번째 섹션(Ground) + 비디오를 이 div 안에 가뒀습니다.
+      */}
+      <div className="ground-intro">
+        {/* 1. 배경 비디오 (이 영역 안에서만 꽉 참) */}
+        <video className="ground-video-bg" autoPlay loop muted playsInline>
+          <source src="/img/groundvideo.mp4" type="video/mp4" />
+        </video>
 
-            {/* sns버튼 */}
-            <div className="ground_actions">
-              <a href="#">
-                <img src="/img/ground_sns_icon1.svg" alt="sns아이콘" />
-              </a>
-              <a href="#">
-                <img src="/img/ground_sns_icon2.svg" alt="sns아이콘2" />
-              </a>
-              <a href="#">
-                <img src="/img/ground_sns_icon3.svg" alt="sns아이콘3" />
-              </a>
+        {/* 2. 비디오 위 콘텐츠 래퍼 (헤더 + 타이틀) */}
+        <div className="ground-intro-content">
+          <MainPgHeader logoType="logo" btnType="alarm" />
+
+          <section className="Ground">
+            <div className="inner">
+              <div className="ground_content">
+                <h1 className="ground_title point">KIA TIGERS</h1>
+
+                {/* sns버튼 */}
+                <div className="ground_actions">
+                  <a href="#">
+                    <img src="/img/ground_sns_icon1.svg" alt="sns아이콘" />
+                  </a>
+                  <a href="#">
+                    <img src="/img/ground_sns_icon2.svg" alt="sns아이콘2" />
+                  </a>
+                  <a href="#">
+                    <img src="/img/ground_sns_icon3.svg" alt="sns아이콘3" />
+                  </a>
+                </div>
+
+                {/* 하단 안내 문구 */}
+                <p className="ground__info">
+                  <span className="ground_infobar"></span>
+                  <span className="ground_infoLabel">멤버십</span>
+                  <span className="ground_infoText">
+                    (월) 12:00 2026년 시즌권 오픈
+                  </span>
+                </p>
+              </div>
             </div>
-
-            {/* 하단 안내 문구 */}
-            <p className="ground__info">
-              <span className="ground_infobar"></span>
-              <span className="ground_infoLabel">멤버십</span>
-              <span className="ground_infoText">
-                (월) 12:00 2026년 시즌권 오픈
-              </span>
-            </p>
-          </div>
+          </section>
         </div>
-      </section>
+      </div>
+      {/* ▲▲▲ 상단 인트로 끝 (여기서 비디오가 잘림) ▲▲▲ */}
+
+      {/* ▼▼▼ 여기서부터는 검은 배경 (영상 없음) ▼▼▼ */}
+
       {/* ground-sns */}
       <section className="ground-sns">
         <div className="inner">
           <h3 className="section-title">구단 SNS</h3>
-
           <Swiper
             className="sns-swiper"
             spaceBetween={16}
@@ -215,23 +233,20 @@ const Ground = () => {
           >
             {snsCards.map((card) => (
               <SwiperSlide key={card.id}>
-                <a href="#" className="sns-card-link"
-                onClick={(e) => e.preventDefault()}
+                <a
+                  href="#"
+                  className="sns-card-link"
+                  onClick={(e) => e.preventDefault()}
                 >
                   <article className="sns-card">
-                    {/* 이미지 */}
                     <div className="sns-thumb">
                       <img src={card.img} alt={card.title} />
                     </div>
-
-                    {/* 텍스트 */}
                     <div className="sns-body">
                       <span className="sns-badge">{card.badge}</span>
                       <p className="sns-title">{card.title}</p>
                       <p className="sns-desc">{card.desc}</p>
                     </div>
-
-                    {/* 하단 */}
                     <div className="sns-footer">
                       <div className="sns-profile">
                         <img src={card.profileImg} alt={card.profileName} />
@@ -248,6 +263,7 @@ const Ground = () => {
           </Swiper>
         </div>
       </section>
+
       {/* ground_topic */}
       <section className="ground-topic">
         <div className="inner">
@@ -262,14 +278,10 @@ const Ground = () => {
             {popularTopics.map((item) => (
               <article key={item.id} className="topic-card">
                 <Link to={"/topic"} className="topic-card-link">
-                  {/* 배경이미지 */}
                   <div className="topic-card-bg">
                     <img src={item.coverImg} alt="" />
                   </div>
-
-                  {/* 오버레이 */}
                   <div className="topic-card-overlay">
-                    {/* 상단: 프로필 + 닉네임 */}
                     <div className="topic-card-top">
                       <div className="topic-profile">
                         <img src={item.profileImg} alt={item.nickname} />
@@ -277,7 +289,6 @@ const Ground = () => {
                       <p className="topic-nickname">{item.nickname}</p>
                     </div>
 
-                    {/* 하단: 제목 + 시간 + 반응칩 */}
                     <div className="topic-card-bottom">
                       <h4 className="topic-title">{item.title}</h4>
                       <p className="topic-time">{item.timeAgo}</p>
@@ -285,7 +296,6 @@ const Ground = () => {
                       <div className="topic-reactions">
                         {item.reactions.map((r, idx) => {
                           const isActive = activeReactions.includes(idx);
-
                           return (
                             <span
                               key={idx}
@@ -296,15 +306,15 @@ const Ground = () => {
                                 e.preventDefault();
                                 setActiveReactions((prev) => {
                                   const isActive = prev.includes(idx);
-
-                                  // 숫자 증가/감소
                                   setReactionCounts((counts) =>
                                     counts.map((c, i) =>
-                                      i === idx ? (isActive ? c - 1 : c + 1) : c
-                                    )
+                                      i === idx
+                                        ? isActive
+                                          ? c - 1
+                                          : c + 1
+                                        : c,
+                                    ),
                                   );
-
-                                  // 토글 처리
                                   return isActive
                                     ? prev.filter((i) => i !== idx)
                                     : [...prev, idx];
@@ -327,6 +337,7 @@ const Ground = () => {
           </div>
         </div>
       </section>
+
       {/* ground-banner */}
       <section className="ground-banner">
         <a
@@ -335,14 +346,12 @@ const Ground = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          {/* 배경 이미지 */}
           <div className="ground-banner_bg">
             <img src="/img/ground_banner.jpg" alt="" />
           </div>
           <div className="ground-banner__content">
             <p className="ground-banner__title">2025 KBO 리그 올스타전</p>
             <p className="ground-banner__sub">티빙 단독 생중계</p>
-
             <p className="ground-banner__meta">
               <span className="ground-banner__date">7/18(토)</span>
               <span className="ground-banner__time">6 PM</span>
@@ -351,6 +360,7 @@ const Ground = () => {
           </div>
         </a>
       </section>
+
       {/* ground-moment */}
       <section className="ground-moment">
         <div className="inner">
@@ -369,18 +379,15 @@ const Ground = () => {
                 onClick={(e) => e.preventDefault()}
               >
                 <article className="moment-card">
-                  {/* 썸네일 */}
                   <div className="moment-thumb">
                     <img src="/img/ground_moment.jpg" alt="" />
                   </div>
-                  {/* 제목 */}
                   <p className="moment-title">
                     최연소 30-30 달성 기아 타이거즈 김도영
                   </p>
                 </article>
               </a>
             </SwiperSlide>
-
             <SwiperSlide>
               <a
                 href="#"
@@ -391,7 +398,6 @@ const Ground = () => {
                   <div className="moment-thumb">
                     <img src="/img/ground_moment2.jpg" alt="" />
                   </div>
-
                   <p className="moment-title">
                     펜스를 넘어 그라운드로 나간 고양이
                   </p>
@@ -401,6 +407,7 @@ const Ground = () => {
           </Swiper>
         </div>
       </section>
+
       {/* ground-post */}
       <section className="ground-post">
         <div className="inner">
@@ -414,30 +421,26 @@ const Ground = () => {
               더보기
             </a>
           </div>
-
           <div className="ground-post-cols">
-            {/* 왼쪽 */}
             <ul className="ground-post-col">
               {popularPosts
                 .filter((_, idx) => idx % 2 === 0)
                 .map((item) => (
-                <li key={item.id}>
-                  <a
-                    href="#"
-                    className="post-card"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <div className={`post-thumb is-${item.size}`}>
-                      <img src={item.img} alt={item.title} />
-                      <div className="post-dim" />
-                      <p className="post-title">{item.title}</p>
-                    </div>
-                  </a>
-                </li>
+                  <li key={item.id}>
+                    <a
+                      href="#"
+                      className="post-card"
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      <div className={`post-thumb is-${item.size}`}>
+                        <img src={item.img} alt={item.title} />
+                        <div className="post-dim" />
+                        <p className="post-title">{item.title}</p>
+                      </div>
+                    </a>
+                  </li>
                 ))}
             </ul>
-
-            {/* 오른쪽 */}
             <ul className="ground-post-col">
               {popularPosts
                 .filter((_, idx) => idx % 2 === 1)
@@ -460,18 +463,20 @@ const Ground = () => {
           </div>
         </div>
       </section>
+
       {/* ground-mdzon */}
       <section className="ground-mdzon">
         <div className="inner">
           <div className="ground-mdzon-head">
             <h3 className="section-title">굿즈존</h3>
-            <a href="#" className="ground-mdzon-more"
-            onClick={(e) => e.preventDefault()}
+            <a
+              href="#"
+              className="ground-mdzon-more"
+              onClick={(e) => e.preventDefault()}
             >
               더보기
             </a>
           </div>
-
           <Swiper
             className="mdzon-swiper"
             spaceBetween={16}
@@ -490,7 +495,6 @@ const Ground = () => {
                   <div className="mdzon-thumb">
                     <img src={item.img} alt="" />
                   </div>
-
                   <div className="mdzon-body">
                     <span className="mdzon-type">{item.type}</span>
                     <p className="mdzon-title">{item.title}</p>
