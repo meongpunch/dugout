@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Onboarding.css";
 import { useNavigate } from "react-router-dom";
+import OnboardingTopBar from "../../components/OnboardingTopBar";
 
 const Onboarding = () => {
   const navigate = useNavigate();
@@ -11,22 +12,22 @@ const Onboarding = () => {
   const [isDown, setIsDown] = useState(false);
   const threshold = 60;
 
-
+  // ✅ 건너뛰기: login으로
   const handleSkip = () => {
-    navigate("/Login");
+    navigate("/login");
   };
-
 
   const goNext = () => {
     setPage((prev) => {
       if (prev >= 3) {
-        navigate("/Login");
+        navigate("/login");
         return prev;
       }
       return prev + 1;
     });
   };
 
+  // ✅ 온보딩 내부 페이지 뒤로
   const goPrev = () => setPage((prev) => (prev > 0 ? prev - 1 : prev));
   const goTo = (i) => setPage(i);
 
@@ -71,26 +72,6 @@ const Onboarding = () => {
   return <Onboarding4 {...commonProps} />;
 };
 
-const OnboardingHeader = ({ page, goPrev, onSkip }) => (
-  <div className="TeamchoiceHeader onboardingHeader">
-    <div className="innerHeader onboardingInnerHeader">
-      <button
-        className="back-btn"
-        type="button"
-        onClick={goPrev}
-        aria-label="뒤로가기"
-        style={{ visibility: page === 0 ? "hidden" : "visible" }}
-      >
-        <img src="/img/onboarding-back-icon.svg" alt="" />
-      </button>
-
-      <button className="skip-btn" type="button" onClick={onSkip}>
-        건너뛰기
-      </button>
-    </div>
-  </div>
-);
-
 const Dots = ({ page, goTo }) => (
   <div className="dots">
     {[0, 1, 2, 3].map((i) => (
@@ -117,31 +98,43 @@ const Bottom = ({ page, goNext, goTo }) => (
 const Container = ({
   children,
   page,
-  goPrev,
-  onSkip,
+  goPrev, // ✅ 추가
+  handleSkip,
   handleTouchStart,
   handleTouchEnd,
   handleMouseDown,
   handleMouseUp,
-}) => (
-  <div
-    className="onboarding-container"
-    onTouchStart={handleTouchStart}
-    onTouchEnd={handleTouchEnd}
-    onMouseDown={handleMouseDown}
-    onMouseUp={handleMouseUp}
-  >
-    <OnboardingHeader page={page} goPrev={goPrev} onSkip={onSkip} />
-    {children}
-  </div>
-);
+}) => {
+  return (
+    <div
+      className="onboarding-container"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+    >
+      {/* ✅ back은 스플래쉬로 가지 않게 goPrev로 */}
+      <OnboardingTopBar
+        iconType="back"
+        skipType="skip"
+        hideBack={page === 0}
+        onBack={goPrev}        // ✅ 핵심 수정
+        onSkip={handleSkip}    // ✅ /login
+        outerClassName="onboardingHeader"
+        innerClassName="onboardingInnerHeader"
+      />
+
+      {children}
+    </div>
+  );
+};
 
 // Onboarding 1
 const Onboarding1 = ({
   page,
   goNext,
-  goPrev,
   goTo,
+  goPrev,
   handleSkip,
   handleTouchStart,
   handleTouchEnd,
@@ -150,8 +143,8 @@ const Onboarding1 = ({
 }) => (
   <Container
     page={page}
-    goPrev={goPrev}
-    onSkip={handleSkip}
+    goPrev={goPrev} // ✅ 추가
+    handleSkip={handleSkip}
     handleTouchStart={handleTouchStart}
     handleTouchEnd={handleTouchEnd}
     handleMouseDown={handleMouseDown}
@@ -179,8 +172,8 @@ const Onboarding1 = ({
 const Onboarding2 = ({
   page,
   goNext,
-  goPrev,
   goTo,
+  goPrev,
   handleSkip,
   handleTouchStart,
   handleTouchEnd,
@@ -189,8 +182,8 @@ const Onboarding2 = ({
 }) => (
   <Container
     page={page}
-    goPrev={goPrev}
-    onSkip={handleSkip}
+    goPrev={goPrev} // ✅ 추가
+    handleSkip={handleSkip}
     handleTouchStart={handleTouchStart}
     handleTouchEnd={handleTouchEnd}
     handleMouseDown={handleMouseDown}
@@ -213,6 +206,7 @@ const Onboarding2 = ({
     <Bottom page={page} goNext={goNext} goTo={goTo} />
   </Container>
 );
+
 // Onboarding 3
 const Onboarding3 = ({
   page,
@@ -227,8 +221,8 @@ const Onboarding3 = ({
 }) => (
   <Container
     page={page}
-    goPrev={goPrev}
-    onSkip={handleSkip}
+    goPrev={goPrev} // ✅ 추가
+    handleSkip={handleSkip}
     handleTouchStart={handleTouchStart}
     handleTouchEnd={handleTouchEnd}
     handleMouseDown={handleMouseDown}
@@ -250,7 +244,7 @@ const Onboarding3 = ({
         <span className="bubble-avatar">
           <img src="/img/onboarding-bubble-1.jpg" alt="" />
         </span>
-        이 선수 때문에 야구 보기 시작함
+        김호령 때문에 야구 보기 시작함
       </div>
 
       <div className="bubble bubble-left">
@@ -279,8 +273,8 @@ const Onboarding4 = ({
 }) => (
   <Container
     page={page}
-    goPrev={goPrev}
-    onSkip={handleSkip}
+    goPrev={goPrev} // ✅ 추가
+    handleSkip={handleSkip}
     handleTouchStart={handleTouchStart}
     handleTouchEnd={handleTouchEnd}
     handleMouseDown={handleMouseDown}
