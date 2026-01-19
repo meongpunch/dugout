@@ -1,23 +1,106 @@
-.ground-container {
+/* .ground-container {
   width: 100%;
   min-height: 100vh;
   background-color: #111;
   color: #fff;
   position: relative;
-  overflow-x: hidden;
-  /* 그라데이션 이미지 삽입 */
-  background-image: url("/img/ground_main_img.jpg");
+  overflow-x: hidden; */
+/* 그라데이션 이미지 삽입 */
+/* background-image: url("/img/ground_main_img.jpg");
   background-size: auto;
   background-position: top center;
   background-repeat: no-repeat;
+} */
+
+.ground-container {
+  width: 100%;
+  /* min-height: 100vh; <- 제거하거나 auto로 변경 */
+  background-color: #111;
+  color: #fff;
+  position: relative;
+  overflow-x: hidden;
 }
 
+/* ▼▼▼ [필수 추가] 상단 인트로 영역 (영상과 헤더 감싸는 곳) ▼▼▼ */
+.ground-intro {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden; /* 영상이 이 영역 밖으로 튀어 나가지 않도록 자름 */
+}
+
+/* ▼▼▼ [수정] 비디오 스타일: 상단 인트로 안에 꽉 차게 ▼▼▼ */
+.ground-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* ▼▼▼ [필수 추가] 인트로 내부 콘텐츠 (헤더, 타이틀) 래퍼 ▼▼▼ */
+.ground-intro-content {
+  position: relative;
+  z-index: 2; /* 비디오 위에 올라오도록 */
+  width: 100%;
+}
+
+/* 기존 스타일 유지 */
 .Ground {
   position: relative;
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  margin-top: 280px;
+  margin-top: 0; /* 필요시 조정 */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* 타이틀을 아래쪽으로 내림 */
+}
+
+/* Ground.css */
+
+/* ... 기존 .ground-intro 스타일 하단에 추가 ... */
+
+/* ▼▼▼ [신규 추가] 비디오 위 그라데이션 오버레이 ▼▼▼ */
+.ground-intro::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  /* 그라데이션 설정 */
+  /* 방향: 위에서 아래로 (to bottom) */
+  /* 0% ~ 55% 구간: 투명 (rgba(17, 17, 17, 0)) */
+  /* 100% 지점: #111111 (rgba(17, 17, 17, 1)) */
+  background: linear-gradient(
+    to bottom,
+    rgba(17, 17, 17, 0) 55%,
+    rgba(17, 17, 17, 1) 100%
+  );
+
+  /* z-index 설정: 비디오(0)와 같지만, 가상요소라 그 위에 그려짐. 콘텐츠(1)보다는 아래. */
+  z-index: 1;
+
+  /* 마우스 이벤트가 통과되도록 설정 (혹시 모를 클릭 방지) */
+  pointer-events: none;
+}
+
+/* (참고) 기존 코드들과의 관계 확인용 */
+.ground-video-bg {
+  /* ... 기존 속성 ... */
+  z-index: 0; /* 오버레이가 이 위에 올라옵니다 */
+}
+
+.ground-intro-content {
+  /* ... 기존 속성 ... */
+  z-index: 5; /* 텍스트는 오버레이보다 위에 있어야 함 */
+}
+
+.ground_content {
+  margin-top: 246px;
 }
 
 .ground_title {
@@ -279,7 +362,10 @@
 
 .topic-chip {
   cursor: pointer;
-  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.08s ease;
+  transition:
+    background 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.08s ease;
 }
 
 .topic-chip-count {
@@ -473,7 +559,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  border-top: 1px solid rgba(255, 255, 255, 0.5); 
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
   padding-top: 10px;
 }
 
@@ -484,9 +570,6 @@
 .post-thumb.is-sm {
   height: 117px;
 } /* 너가 원하던 sm=117px */
-.post-thumb.is-md {
-  height: 234px;
-}
 
 /* ground-mdzon */
 .ground-mdzon-head {
@@ -524,7 +607,7 @@
 }
 
 .mdzon-thumb {
-  height:230px;
+  height: 230px;
   border-radius: 6px;
   overflow: hidden;
 }
