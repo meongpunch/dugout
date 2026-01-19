@@ -218,6 +218,25 @@
   color: #fff;
   border: none;
 }
+/* .cart-btn {
+  width: 398px;
+  height: 66px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 6px;
+  background: #aa0000;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.32;
+  letter-spacing: 0.02rem;
+  cursor: pointer;
+
+  font-family: "Pretendard", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
 
 /* 화면이 398보다 작을 때 깨지지 않게 */
 @media (max-width: 420px) {
