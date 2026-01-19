@@ -22,11 +22,13 @@ import StadiumPgReview from "./pages/stadiumpg/StadiumPgReview";
 import OnboardingTopBar from "./components/OnboardingTopBar";
 import Calendar from "./pages/lockerroompg/Calendar";
 import Review from "./pages/lockerroompg/Review";
+import ChatbotWidget from "./components/ChatbotWidget";
 
 const App = () => {
   return (
     <>
       <ScrollToTop />
+      <ChatbotWidget />
       <Routes>
         <Route path="/splash" element={<Splash />} />
         <Route path="/onboarding" element={<Onboarding />} />
@@ -55,6 +57,7 @@ const App = () => {
           <Route path="/lockerroom/calendar" element={<Calendar />} />
         </Route>
       </Routes>
+
     </>
   );
 };
