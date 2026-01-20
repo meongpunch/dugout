@@ -1,7 +1,7 @@
 .stadium-main {
   position: relative;
   width: 100%;
-  height: calc(100vh - 106px);
+  height: calc(124vh - 43vh);
   overflow: hidden;
   padding: 0;
   margin: 0;
@@ -80,11 +80,12 @@
 .stadium-option {
   width: 100%;
   text-align: left;
-  padding-bottom: 16px;
+  padding-bottom: 20px;
+  padding-left: 12px;
   background: transparent;
   border: 0;
   color: rgb(255, 255, 255, 0.7);
-  font-size: 16px;
+  font-size: 18px;
   cursor: pointer;
 }
 
@@ -218,6 +219,7 @@
   transition:
     background 0.18s ease,
     transform 0.18s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .chip:hover {

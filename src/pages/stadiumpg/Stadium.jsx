@@ -20,22 +20,22 @@ const Stadium = () => {
   const [stadiumOpen, setStadiumOpen] = useState(false);
   const [stadiumName, setStadiumName] = useState("광주 챔피언스필드");
 
-  // ✅ 1) 맵을 먼저 선언 (stadiumBg가 이걸 쓰기 때문)
+  // 맵을 먼저 선언 (stadiumBg가 이걸 쓰기 때문)
   const stadiumBgMap = {
-    "광주 챔피언스필드": "/img/stadium-main-image-default.jpg",
-    "서울 잠실야구장": "/img/힘냅시다.jpg",
-    "고척 스카이돔": "/img/stadium-main-image-3.jpg",
-    "대구 라이온즈파크": "/img/stadium-main-image-2.jpg",
-    "대전 한화생명 볼파크": "/img/stadium-main-image-3.jpg",
-    "부산 사직야구장": "/img/stadium-main-image-2.jpg",
-    "수원 KT위즈파크": "/img/stadium-main-image-3.jpg",
-    "인천 랜더스필드": "/img/stadium-main-image-2.jpg",
-    "창원 NC파크": "/img/stadium-main-image-3.jpg",
+    "광주 챔피언스필드": "/img/stadium-main-image-gwangju.jpg",
+    "서울 잠실야구장": "/img/stadium-main-image-seoul.jpg",
+    "고척 스카이돔": "/img/stadium-main-image-gocheock.jpg",
+    "대구 라이온즈파크": "/img/stadium-main-image-deagu.jpg",
+    "대전 한화생명 볼파크": "/img/stadium-main-image-deajeon.jpg",
+    "부산 사직야구장": "/img/stadium-main-image-busan.jpg",
+    "수원 KT위즈파크": "/img/stadium-main-image-suwon.jpg",
+    "인천 랜더스필드": "/img/stadium-main-image-incheon.jpg",
+    "창원 NC파크": "/img/stadium-main-image-changwon.jpg",
   };
 
-  // ✅ 2) 그 다음에 배경 계산
+  // 배경 계산
   const stadiumBg =
-    stadiumBgMap[stadiumName] ?? "/img/stadium-main-image-default.jpg";
+    stadiumBgMap[stadiumName] ?? "/img/stadium-main-image-gwangju.jpg";
 
   const stadiumOptions = [
     "광주 챔피언스필드",
@@ -187,7 +187,7 @@ const Stadium = () => {
           <MainPgHeader logoType="logo" btnType="ticket" />
         </div>
 
-        {/* ✅ 배경은 여기에서만! (CSS에 background 고정값 있으면 제거) */}
+        {/* 배경은 여기에서만! (CSS에 background 고정값 있으면 제거) */}
         <div
           className="stadium-bg"
           style={{ backgroundImage: `url(${stadiumBg})` }}
