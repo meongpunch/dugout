@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "./ChatbotWidget.css";
 
 const QUICK = ["실시간 스코어", "경기 결과", "경기 일정", "선수 기록", "팀 순위"];
@@ -339,6 +340,8 @@ const FAQ_RULES = [
 ];
 
 export default function ChatbotWidget() {
+    const location = useLocation();
+
     const [open, setOpen] = useState(false);
     const [closing, setClosing] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
@@ -448,6 +451,12 @@ export default function ChatbotWidget() {
     const cancelEndChat = () => {
         setShowEndChatModal(false);
     };
+
+    // 온보딩 페이지에서는 챗봇 숨기기
+    const hiddenRoutes = ['/splash', '/onboarding', '/login', '/teamchoice'];
+    if (hiddenRoutes.includes(location.pathname)) {
+        return null;
+    }
 
     return (
         <div className="wrap">
