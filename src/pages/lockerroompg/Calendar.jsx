@@ -55,15 +55,15 @@ export default function Calendar({
   events = {
     "2026-07-11": {
       imageUrl: "/img/lockerroom-calendar-bg-1.png",
-      link: "/lockerroom/ticket",
+      link: "/lockerroom/calendar/ticket",
     },
     "2026-06-15": {
       imageUrl: "/img/lockerroom-calendar-bg-2.png",
-      link: "/lockerroom/ticket",
+      link: "/lockerroom/calendar/ticket",
     },
     "2026-07-05": {
       imageUrl: "/img/lockerroom-calendar-bg-3.png",
-      link: "/lockerroom/ticket",
+      link: "/lockerroom/calendar/ticket",
     },
   },
 }) {

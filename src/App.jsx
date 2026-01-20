@@ -39,7 +39,7 @@ const App = () => {
         <Route path="/onboardingtopbar" element={<OnboardingTopBar iconType="back" skipType="skip" />} />
         <Route path="/lockerroom/review/:id" element={<Review />} />
         <Route path="/lockerroom/review/complete" element={<ReviewComplete />} />
-        <Route path="/lockerroom/ticket" element={<Ticket />} />
+        <Route path="/lockerroom/calendar/ticket" element={<Ticket />} />
 
 
         <Route path="/stadium" element={<Stadium />} />
