@@ -12,7 +12,8 @@ const Footer = () => {
     if (path.startsWith("/stadium")) return "stadium";
 
     // 2. 그라운드 식구들
-    if (path.startsWith("/ground")) return "ground";
+    if (path.startsWith("/ground") ||
+      path.startsWith("/topic")) return "ground";
 
     // 3. 라커룸 식구들
     if (path.startsWith("/lockerroom")) return "lockerroom";
@@ -35,12 +36,28 @@ const Footer = () => {
 
   const activeTab = getActiveTab(); // 지금 켜져야 할 탭 이름 ('home', 'stadium' 등)
 
+  const handleTabClick = (e, targetPath) => {
+    // 현재 보고 있는 페이지(=path)가 누르려는 링크(=targetPath)와 같을 때만
+    // 스크롤을 맨 위로 올리고, 이동은 막습니다.
+    if (path === targetPath) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+    // 그 외(예: 서브 페이지에서 메인 아이콘 클릭)에는
+    // 그냥 두면 Link가 알아서 해당 페이지로 이동시켜 줍니다.
+    // 이동하면 ScrollToTop.jsx가 작동해서 맨 위로 가게 됩니다.
+  };
+
   return (
     <nav className="gnb">
       {/* 1. 홈 */}
       <Link
         to="/"
         className={`gnb-item ${activeTab === "home" ? "active" : ""}`}
+        onClick={(e) => handleTabClick(e, "/")}
       >
         <div className="icon-box">
           <img
@@ -59,6 +76,7 @@ const Footer = () => {
       <Link
         to="/stadium"
         className={`gnb-item ${activeTab === "stadium" ? "active" : ""}`}
+        onClick={(e) => handleTabClick(e, "/stadium")}
       >
         <div className="icon-box">
           <img
@@ -77,6 +95,7 @@ const Footer = () => {
       <Link
         to="/ground"
         className={`gnb-item ${activeTab === "ground" ? "active" : ""}`}
+        onClick={(e) => handleTabClick(e, "/ground")}
       >
         <div className="icon-box">
           <img
@@ -95,6 +114,7 @@ const Footer = () => {
       <Link
         to="/lockerroom"
         className={`gnb-item ${activeTab === "lockerroom" ? "active" : ""}`}
+        onClick={(e) => handleTabClick(e, "/lockerroom")}
       >
         <div className="icon-box">
           <img
