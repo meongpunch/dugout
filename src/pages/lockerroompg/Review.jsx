@@ -403,7 +403,7 @@ const onChangeReview = (e) => {
       </div>
 
     <Link
-    to="/lockerroom/review/complete"
+    to={`/lockerroom/review/complete/${id}`}
     className="reviewSubmit"
     onClick={() => {
         console.log("리뷰 저장:", reviewText);

@@ -1,0 +1,70 @@
+.review-done{
+    background: url(/img/review-complete-bg.png) center/cover no-repeat;
+    height: 293px;
+    margin-bottom: 0;
+}
+.inner{
+    height: 100%;
+}
+.review-done .review-container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.review-done .colse-btn{
+    height: 80px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-end;
+}
+.review-done .colse-btn .colse-btn-img{
+    cursor: pointer;
+}
+
+.review-done .review-tit-box{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.review-done .review-tit-box .title {
+    text-align: center;
+}
+
+
+
+/* 카드 */
+.done-card{
+  margin: 0 auto;
+  width: 100%;
+  padding: 30px 16px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.06);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* 안내 문구 */
+.done-desc{
+  margin: 0 0 18px;
+  color: rgba(255,255,255,0.92);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+/* 좌석 칩 */
+.seat-chip{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.25);
+  color: rgba(255,255,255,0.9);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.1px;
+}
