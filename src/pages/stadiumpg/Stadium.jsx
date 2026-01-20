@@ -23,7 +23,7 @@ const Stadium = () => {
   // ✅ 1) 맵을 먼저 선언 (stadiumBg가 이걸 쓰기 때문)
   const stadiumBgMap = {
     "광주 챔피언스필드": "/img/stadium-main-image-default.jpg",
-    "서울 잠실야구장": "/img/hye-feature.jpg",
+    "서울 잠실야구장": "/img/힘냅시다.jpg",
     "고척 스카이돔": "/img/stadium-main-image-3.jpg",
     "대구 라이온즈파크": "/img/stadium-main-image-2.jpg",
     "대전 한화생명 볼파크": "/img/stadium-main-image-3.jpg",
