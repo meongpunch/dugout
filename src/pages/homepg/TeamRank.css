@@ -136,7 +136,7 @@
   border-radius: 6px;
   padding: 5.1% 7.7%;
   overflow: hidden;
-
+  border: 1px solid rgba(255, 255, 255, 0.1);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -228,7 +228,6 @@
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  margin-top: 6px;
   flex: 0 0 auto;
 }
 
