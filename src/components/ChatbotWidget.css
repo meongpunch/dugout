@@ -52,7 +52,7 @@
     /* Fixed height as requested */
     z-index: 2147483647;
 
-    background: #262626;
+    background: #282828;
     /* User requested transparent */
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 14px;
