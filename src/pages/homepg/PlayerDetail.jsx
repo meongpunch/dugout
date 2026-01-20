@@ -176,24 +176,26 @@ const PlayerDetail = () => {
       <section className="photo-card-section">
         <div className="inner">
           <h2 className="section-title card">PHOTO CARD</h2>
-          <Swiper
-            spaceBetween={12}
-            slidesPerView={2.2}
-            className="photo-card-swiper"
-          >
-            {cards.map((card) => (
-              <SwiperSlide key={card.id}>
-                <div className="photo-card-wrapper">
-                  <img
-                    src={card.image}
-                    alt={card.name}
-                    className="photo-card-image"
-                  />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
         </div>
+        <Swiper
+          spaceBetween={12}
+          slidesPerView={2.2}
+          slidesOffsetBefore={16}
+          className="photo-card-swiper"
+        >
+          {cards.map((card) => (
+            <SwiperSlide key={card.id}>
+              <div className="photo-card-wrapper">
+                <img
+                  src={card.image}
+                  alt={card.name}
+                  className="photo-card-image"
+                />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
       </section>
     </div>
   );

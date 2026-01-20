@@ -63,6 +63,46 @@ KIA 5 : 4 삼성 (승리 🏆)
 
 const FAQ_RULES = [
     {
+        test: /(김도영|도영).*(응원가|노래)/i,
+        reply: `🎵 김도영 선수 응원가 🎵\n\n` +
+            `(빰빰 빰빰빰) 기~아의 김도영!\n` +
+            `힘차게 날려라~ (안타!)\n` +
+            `기~아의 김도영~ 승리를 위하여~ (안타!)\n` +
+            `오오오~ 오오오~ (김! 도! 영!) 🐯`
+    },
+    {
+        test: /(양현종|현종|대투수).*(응원가|노래)/i,
+        reply: `🎵 양현종 선수 응원가 🎵\n\n` +
+            `오오오오오~ 양현종! (양현종!)\n` +
+            `오오오오오~ 양현종! (양현종!)\n` +
+            `최강기아 양현종~ 승리를 위하여~ ⚾️\n` +
+            `*(사랑한다 기아타이거즈~ 떼창 준비!)*`
+    },
+    {
+        test: /(오선우|선우).*(응원가|노래)/i,
+        reply: `🎵 오선우 선수 응원가 🎵\n\n` +
+            `오오~ KIA 오선우~ 🎵\n` +
+            `나나나나나 나나~ (오! 선! 우!)\n` +
+            `안타 날려라~ 홈런 날려라~\n` +
+            `승리를 위해~ 오오 KIA 오선우! 💪`
+    },
+    {
+        test: /(나성범|성범).*(응원가|노래)/i,
+        reply: `🎵 나성범 선수 응원가 🎵\n\n` +
+            `기아의 나성범~ (헤이!) 🐯\n` +
+            `기아의 나성범~ (헤이!) 🐯\n` +
+            `너와 나의 가슴 속에~ (으랏차차!)\n` +
+            `우리의 나성범~ (화이팅!) 💪`
+    },
+    {
+        test: /(최강|기아|팀).*(응원가|노래)|라인업송/i,
+        reply: `🎵 라인업 송 (영원하라)🎵\n\n` +
+            `워어어~ 최강기아 타이거즈~\n` +
+            `워어어~ 미치도록 사랑해요~\n` +
+            `최~강~기~아~ 타이거즈! 오오오~\n` +
+            `영원하라~ 기아~ 타이거즈~! ❤️🖤`
+    },
+    {
 
         test: /(기아|KIA|타이거즈).*(응원가|노래|가사)|응원가/i,
 
@@ -91,10 +131,10 @@ const FAQ_RULES = [
 
                 // 4. 나성범 응원가
                 `🎵 나성범 선수 응원가 🎵\n\n` +
-                `기아의 나성범~ (헤이!) 🐯\n` +
-                `기아의 나성범~ (헤이!) 🐯\n` +
-                `너와 나의 가슴 속에~ (으랏차차!)\n` +
-                `우리의 나성범~ (화이팅!) 💪`,
+                `타이거즈~ 나성범 안타~ 🐯\n` +
+                `안타 날려라 날려라 나성범 🐯\n` +
+                `타이거즈 나성범 안타~\n` +
+                `오오오~ 오오오~ 💪`,
 
                 // 5. 팀 응원가 (남행열차 느낌)
                 `🎵 라인업 송 (영원하라) 🎵\n\n` +
@@ -159,7 +199,7 @@ const FAQ_RULES = [
             `🛠️ 기획부터 디자인, 프론트엔드 개발까지 
             열정을 쏟아부었답니다. 
             덕분에 우리가 이렇게 대화할 수 있는 거죠!⚾\n` +
-            `사용자 경험을 위해 밤낮으로 고민한 제작자입니다\n\n` +
+            `사용자 경험을 위해 밤낮으로 고민한 제작자입니다.\n\n` +
             `올라운더 UXUI 디자이너니까 믿고 쓰셔도 됩니다! 🔥`,
     },
     // 1. 김도영 기록 질문
@@ -264,7 +304,7 @@ const FAQ_RULES = [
 
     // 3. [인사] 안녕, 하이
     {
-        test: /(안녕|하이|반가|ㅎㅇ)/i,
+        test: /(안녕|하이|반가|ㅎㅇ|hello|hi)/i,
         reply: `🐯 어흥! 안녕하세요!\n\n` +
             `오늘도 승리 요정이 오셨군요! ✨\n` +
             `저랑 같이 목 터져라 응원할 준비 되셨나요? 
@@ -316,6 +356,8 @@ export default function ChatbotWidget() {
             setClosing(false);
             setView("chat"); // 닫을 때 채팅 뷰로 리셋
             setShowEmoji(false);
+            setShowMenu(false); // 메뉴도 닫기
+            setShowEndChatModal(false); // 종료 모달도 닫기
         }, 300);
     };
     const [input, setInput] = useState("");
@@ -369,6 +411,7 @@ export default function ChatbotWidget() {
         if (!t) return;
         setInput("");
         setShowEmoji(false);
+        setShowMenu(false); // 메시지 전송 시 메뉴 닫기
         setMessages((prev) => [...prev, { role: "user", text: t }]);
         const reply = getReply(t);
         setTimeout(() => {
@@ -384,6 +427,26 @@ export default function ChatbotWidget() {
         const days = ['일', '월', '화', '수', '목', '금', '토'];
         const dayName = days[today.getDay()];
         return `${year}.${month}.${day} (${dayName})`;
+    };
+
+    const [showEndChatModal, setShowEndChatModal] = useState(false);
+
+    const askEndChat = () => {
+        setShowMenu(false);
+        setShowEndChatModal(true);
+    };
+
+    const confirmEndChat = () => {
+        // 대화 내용을 초기화하고 메뉴/모달 닫고, 위젯 자체도 닫음
+        setMessages(INITIAL_MESSAGES);
+        setShowEndChatModal(false);
+        setShowMenu(false);
+        setOpen(false);
+        setView("chat");
+    };
+
+    const cancelEndChat = () => {
+        setShowEndChatModal(false);
     };
 
     return (
@@ -417,6 +480,9 @@ export default function ChatbotWidget() {
                                             <button onClick={handleRecentChats}>
                                                 <span className="cb-menu-icon"><img src="/img/chatbot-clock.svg" alt="" /></span> 최근 대화한 채팅
                                             </button>
+                                            <button onClick={askEndChat}>
+                                                <span className="cb-menu-icon"><img src="/img/chatbot-close.svg" alt="" /></span> 채팅 종료하기
+                                            </button>
                                         </div>
                                     )}
                                 </div>
@@ -445,7 +511,7 @@ export default function ChatbotWidget() {
                             <div className="cb-footer-container">
                                 {showNotice && (
                                     <div className="cb-notice">
-                                        <span>언제든 이야기 걸어주세요 ⚾</span>
+                                        <span>언제든 이야기 걸어주세요 ⚾️</span>
                                         <button className="cb-notice-close" onClick={() => setShowNotice(false)}>✕</button>
                                     </div>
                                 )}
@@ -486,11 +552,10 @@ export default function ChatbotWidget() {
                         <>
                             <div className="cb-head">
                                 <button className="cb-back" onClick={() => setView("chat")}>
-                                    <span className="cb-back-icon"><img src="/img/chatbot-back.svg" alt="" /></span>Chat
+                                    <span className="cb-back-icon"><img src="/img/chatbot-back.svg" alt="back" /></span>Chat
                                 </button>
-                                {/* Hidden "More" button to ensure exact same height/padding as the main header */}
                                 <button className="cb-more" style={{ visibility: "hidden" }}>
-                                    <img src="/img/chatbot-more.svg" alt="" />
+                                    <img src="/img/chatbot-more.svg" alt="more" />
                                 </button>
                             </div>
 
@@ -502,6 +567,22 @@ export default function ChatbotWidget() {
                                 </div>
                             </div>
                         </>
+                    )}
+
+                    {/* === End Chat Modal === */}
+                    {showEndChatModal && (
+                        <div className="cb-modal-overlay">
+                            <div className="cb-modal">
+                                <div className="cb-modal-content">
+                                    <p className="cb-modal-title">대화를 종료하시겠습니까?</p>
+                                    <p className="cb-modal-desc">종료 시 모든 대화 내용이 삭제됩니다.</p>
+                                </div>
+                                <div className="cb-modal-actions">
+                                    <button className="cb-modal-btn cancel" onClick={cancelEndChat}>취소</button>
+                                    <button className="cb-modal-btn confirm" onClick={confirmEndChat}>종료하기</button>
+                                </div>
+                            </div>
+                        </div>
                     )}
                 </div>
             )}
