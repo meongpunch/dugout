@@ -16,23 +16,9 @@ const TIMELINE_ITEMS = [
     time: "14:00",
     meta: "2차전 • 96번째 경기",
     seat: "3루 블루석 116블록 4열 40번",
-    reviewLink: "/lockerroom/review",
   },
   {
     id: "2",
-    date: "2026-07-11",
-    day: "토",
-    teamLogo: "/img/lockerroom-calendar-team-kia.png",
-    homeTeam: "기아 타이거즈",
-    awayTeam: "삼성 라이온즈",
-    stadium: "서울 잠실 야구장",
-    time: "14:00",
-    meta: "2차전 • 96번째 경기",
-    seat: "3루 블루석 116블록 4열 40번",
-    reviewLink: "/lockerroom/review",
-  },
-  {
-    id: "3",
     date: "2026-07-05",
     day: "일",
     teamLogo: "/img/lockerroom-calendar-team-kia.png",
@@ -40,9 +26,20 @@ const TIMELINE_ITEMS = [
     awayTeam: "LG 트윈스",
     stadium: "서울 잠실 야구장",
     time: "18:30",
-    meta: "2차전 • 96번째 경기",
-    seat: "1루 테이블석 10블록 2열 5번",
-    reviewLink: "/lockerroom/review",
+    meta: "2차전 • 94번째 경기",
+    seat: "1루 레드석 210블록 7열 12번",
+  },
+  {
+    id: "3",
+    date: "2026-06-15",
+    day: "토",
+    teamLogo: "/img/lockerroom-calendar-team-kia.png",
+    homeTeam: "SSG 랜더스",
+    awayTeam: "기아 타이거즈",
+    stadium: "인천 SSG랜더스필드",
+    time: "19:00",
+    meta: "1차전 • 70번째 경기",
+    seat: "외야 필드석 108B구역 B열 22번",
   },
 ];
 
@@ -58,15 +55,15 @@ export default function Calendar({
   events = {
     "2026-07-11": {
       imageUrl: "/img/lockerroom-calendar-bg-1.png",
-      link: "/game/2026-07-11",
+      link: "/lockerroom/calendar/ticket",
     },
     "2026-06-15": {
       imageUrl: "/img/lockerroom-calendar-bg-2.png",
-      link: "/concert/2026-07-15",
+      link: "/lockerroom/calendar/ticket",
     },
     "2026-07-05": {
       imageUrl: "/img/lockerroom-calendar-bg-3.png",
-      link: "/match/2026-07-22",
+      link: "/lockerroom/calendar/ticket",
     },
   },
 }) {
@@ -243,7 +240,7 @@ export default function Calendar({
         </div>
       </section>
 
-      {/* ✅ 타임라인 (날짜별 묶기 X / 카드 1개씩 그대로 나열) */}
+      {/* ✅ 타임라인 */}
 <section className="timeline">
   <div className="inner">
     <h2 className="title">타임라인</h2>
@@ -291,9 +288,9 @@ export default function Calendar({
                     <p className="timeline-seat">{it.seat}</p>
 
                     <div className="timeline-actions">
-                    <Link to={it.reviewLink} className="timeline-review">
-                        <img src="/img/lockerroom-calendar-review.svg" alt="" />
-                        리뷰 쓰기
+                    <Link to={`/lockerroom/review/${it.id}`} className="timeline-review">
+                      <img src="/img/lockerroom-calendar-review.svg" alt="" />
+                      리뷰 쓰기
                     </Link>
                     </div>
                 </div>
