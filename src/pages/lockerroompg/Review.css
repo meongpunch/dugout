@@ -266,7 +266,7 @@
 
 .addedCard{
   position: relative;
-  border-radius: 10px;
+  border-radius: 6px;
   overflow: hidden;
   background: rgba(36,36,36,0.7);
   aspect-ratio: 1 / 1;
@@ -294,8 +294,8 @@
 /* 삭제 X */ 
 .removeBtn{
     position: absolute; 
-    right: 10px; 
-    top: 10px; 
+    right: 8px; 
+    top: 8px; 
     width: 24px; 
     height: 24px; 
     border-radius: 50%; 
