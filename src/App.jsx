@@ -23,6 +23,8 @@ import OnboardingTopBar from "./components/OnboardingTopBar";
 import Calendar from "./pages/lockerroompg/Calendar";
 import Review from "./pages/lockerroompg/Review";
 import ChatbotWidget from "./components/ChatbotWidget";
+import ReviewComplete from "./pages/lockerroompg/ReviewComplete";
+import Ticket from"./pages/lockerroompg/Ticket";
 
 const App = () => {
   return (
@@ -35,7 +37,9 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/TeamChoice" element={<TeamChoice />} />
         <Route path="/onboardingtopbar" element={<OnboardingTopBar iconType="back" skipType="skip" />} />
-        <Route path="/lockerroom/review" element={<Review />} />
+        <Route path="/lockerroom/review/:id" element={<Review />} />
+        <Route path="/lockerroom/review/complete" element={<ReviewComplete />} />
+        <Route path="/lockerroom/ticket" element={<Ticket />} />
 
 
         <Route path="/stadium" element={<Stadium />} />

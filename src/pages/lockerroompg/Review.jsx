@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Review.css";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
 
 // ✅ Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -8,6 +8,40 @@ import "swiper/css";
 
 const Review = () => {
    const navigate = useNavigate();
+   const { id } = useParams();
+
+// ✅ 캘린더 TIMELINE_ITEMS랑 같은 데이터(지금은 임시로 Review에도 둠)
+const TIMELINE_ITEMS = [
+  {
+    id: "1",
+    homeTeam: "기아 타이거즈",
+    awayTeam: "삼성 라이온즈",
+    stadium: "서울 잠실 야구장",
+    time: "14:00",
+    seatZone: "3루 블루석 116블록",
+    seatNumber: "4열 40번",
+  },
+  {
+    id: "2",
+    homeTeam: "기아 타이거즈",
+    awayTeam: "LG 트윈스",
+    stadium: "서울 잠실 야구장",
+    time: "18:30",
+    seatZone: "1루 레드석 210블록",
+    seatNumber: "7열 12번",
+  },
+  {
+    id: "3",
+    homeTeam: "SSG 랜더스",
+    awayTeam: "기아 타이거즈",
+    stadium: "인천 SSG랜더스필드",
+    time: "19:00",
+    seatZone: "외야 필드석 108B구역",
+    seatNumber: "B열 22번",
+  },
+];
+
+const match = TIMELINE_ITEMS.find((m) => m.id === id);
 
   // ✅ 스크롤 시 헤더 접힘 상태
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -120,53 +154,55 @@ const onChangeReview = (e) => {
   setReviewText(next);
 };
 
-  return (
-    <div className="reviewPg">
-      {/* ===== 상단 ===== */}
-      <div className="review-head-spacer"></div>
-      <section className={`review-head ${isCollapsed ? "is-collapsed" : ""}`}>
-        <div className="inner">
-          <div className="review-top">
-            <div className="review-left">
-              <div className="thumb">
-                <img src="/img/review-top.png" alt="" />
-              </div>
-              <div className="reviewTop-txt">
-                <p className="season">2026 시즌</p>
-                <p className="count">벌써 12번째 직관이네요</p>
-              </div>
-            </div>
 
-            <div className="review-close" onClick={() => navigate(-1)}>
-              <img src="/img/lockerroom-x-close.svg" alt="닫기" />
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* ===== 매치 카드 ===== */}
-      <section className="matchCard">
+    return (
+        <div className="reviewPg">
+        {/* ===== 상단 ===== */}
+        <div className="review-head-spacer"></div>
+        <section className={`review-head ${isCollapsed ? "is-collapsed" : ""}`}>
+            <div className="inner">
+            <div className="review-top">
+                <div className="review-left">
+                <div className="thumb">
+                    <img src="/img/review-top.png" alt="" />
+                </div>
+                <div className="reviewTop-txt">
+                    <p className="season">2026 시즌</p>
+                    <p className="count">벌써 12번째 직관이네요</p>
+                </div>
+                </div>
+
+                <div className="review-close" onClick={() => navigate(-1)}>
+                <img src="/img/lockerroom-x-close.svg" alt="닫기" />
+                </div>
+            </div>
+            </div>
+        </section>
+
+        {/* ===== 매치 카드 ===== */}
+        <section className="matchCard">
         <div className="inner">
-          <div className="match-info">
+            <div className="match-info">
             <div className="match-team">
-              <p className="team-name">기아 타이거즈</p>
-              <p className="vs">vs</p>
-              <p className="team-name">삼성 라이온즈</p>
+                <p className="team-name">{match.homeTeam}</p>
+                <p className="vs">vs</p>
+                <p className="team-name">{match.awayTeam}</p>
             </div>
 
             <div className="overview">
-              <div className="meta">
-                <p className="place">서울 잠실 야구장</p>
-                <p className="match-time">14:00</p>
-              </div>
-              <div className="seat">
-                <p className="zone">3루 블루석 116블록</p>
-                <p className="number">4열 40번</p>
-              </div>
+                <div className="meta">
+                <p className="place">{match.stadium}</p>
+                <p className="match-time">{match.time}</p>
+                </div>
+                <div className="seat">
+                <p className="zone">{match.seatZone}</p>
+                <p className="number">{match.seatNumber}</p>
+                </div>
             </div>
-          </div>
+            </div>
         </div>
-      </section>
+        </section>
 
       {/* ===== 좋은 키워드 ===== */}
       <section className="seatKeyword">
@@ -367,7 +403,7 @@ const onChangeReview = (e) => {
       </div>
 
     <Link
-    to=""
+    to="/lockerroom/review/complete"
     className="reviewSubmit"
     onClick={() => {
         console.log("리뷰 저장:", reviewText);
