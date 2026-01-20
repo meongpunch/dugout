@@ -316,9 +316,10 @@
 /* 구분선(라벨 | 값) */
 .statSep {
   width: 1px;
-  height: 20px;
+  height: 15px;
   background: rgba(255, 255, 255, 0.4);
   flex: 0 0 1px;
+  border-radius: 2px;
 }
 
 /* ✅ 값은 남은 공간을 다 먹고, 그 안에서 가운데 정렬 */
@@ -348,12 +349,12 @@
 /* 승패무 내부 구분선(숫자 | 숫자 | 숫자) */
 .statPipe {
   width: 1px;
-  height: 20px;
-  background: rgba(255, 255, 255, 0.4);
+  height: 13px;
+  background: #d6d4d3;
   flex: 0 0 1px;
 }
 
-@media (max-width: 390px) {
+@media (max-width: 400px) {
   .rankBottom {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
