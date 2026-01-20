@@ -295,7 +295,7 @@ const onChangeReview = (e) => {
         <Swiper
           className="mediaReco-swiper"
           slidesPerView={"auto"}
-          spaceBetween={12}
+          spaceBetween={8}
         >
           {RECOMMENDED_MEDIA.map((m) => {
             const order = picked.indexOf(m.id) + 1;
