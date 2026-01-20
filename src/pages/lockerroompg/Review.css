@@ -1,98 +1,127 @@
-.review-head {margin: 60px 0 36px ;}
-.review-head .review-top {display: flex; justify-content: space-between; align-items: center;}
-.review-head .review-top .review-left {display: flex; justify-content: space-between; align-items: center;}
-.review-head .review-top .review-left .thumb {width: 56px;height: 56px; border-radius: 6px; margin-right: 8px; overflow: hidden; box-sizing: border-box;}
+.review-head { margin: 60px 0 36px; }
+.review-head .review-top { display: flex; justify-content: space-between; align-items: center; }
+.review-head .review-top .review-left { display: flex; align-items: center; }
+.review-head .review-top .review-left .thumb {
+  width: 56px;
+  height: 56px;
+  border-radius: 6px;
+  margin-right: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.review-head .review-top .review-left .thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .review-head .review-top .review-left .reviewTop-txt .season{
-    font-size: 24px; 
-    font-weight: 600;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 4px;
 }
 .review-head .review-top .review-left .reviewTop-txt .count{
-    font-size: 18px; 
-    font-weight: 500;
-}
-.review-head .review-top .review-close{
-    cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
 }
 
-.matchCard{
-    margin-bottom: 40px;
+.review-head .review-top .review-close{
+  cursor: pointer;
 }
+.review-head .review-top .review-close img{
+  display:block;
+}
+
+/* =========================
+   매치카드
+========================= */
+.matchCard{ margin-bottom: 40px; }
 
 .match-info{
-    padding: 30px 16px;
-    background: #242424;
-    border-radius: 6px;
-    margin-bottom: 40px;
+  padding: 30px 16px;
+  background: #242424;
+  border-radius: 6px;
+  margin-bottom: 40px;
 }
+
 .matchCard .match-team{
-    display: flex;
-    align-items: center;
-    margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
 }
+
 .matchCard .match-team .team-name{
-    font-size: 20px;
-    font-weight: 600;
-    margin: 0;
-    color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  color: #fff;
 }
+
 .matchCard .match-team .vs{
-    font-size: 20px;
-    font-weight: 500;
-    margin: 0 12px;
-    color:rgba(255,255,255,0.7)
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0 12px;
+  color: rgba(255,255,255,0.7);
 }
 
 .matchCard .meta{
-    display: flex;
-    font-size: 16px;
-    margin-bottom: 8px;
+  display: flex;
+  font-size: 16px;
+  margin-bottom: 8px;
 }
+
+.matchCard .meta p,
+.matchCard .seat p{
+  margin: 0;
+}
+
 .matchCard .meta .match-time{
-    margin-left: 12px;
-    color: rgba(255,255,255,0.7);
+  margin-left: 12px;
+  color: rgba(255,255,255,0.7);
 }
 
 .matchCard .seat{
-    display: flex;
-    font-size: 16px;
+  display: flex;
+  font-size: 16px;
 }
+
 .matchCard .seat .number{
-    margin-left: 12px;
+  margin-left: 12px;
 }
 
-
-.seatKeyword{
-    margin-bottom: 42px;
-}
+/* =========================
+   키워드 박스
+========================= */
+.seatKeyword{ margin-bottom: 42px; }
 
 .seatKeyword-box{
   background: #2a2a2a;
-  border-radius: 10px;
+  border-radius: 6px;
   padding: 18px 16px;
 }
 
 .seatKeyword-title{
-  margin-bottom: 8px;
+  margin: 0 0 8px;
   font-size: 24px;
   font-weight: 600;
   color: #fff;
 }
 
 .seatKeyword-sub{
-  margin-bottom: 28px;
+  margin: 0 0 28px;
   font-size: 16px;
   font-weight: 400;
   color: rgba(255,255,255,0.6);
 }
 
-/* ====== 리스트 ====== */
 .seatKeyword-list{
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
 }
 
-/* ====== span 칩 ====== */
 .seatKeyword-chip{
   cursor: pointer;
   display: inline-flex;
@@ -101,33 +130,395 @@
   font-weight: 400;
   height: 34px;
   padding: 8px 14px;
-  border-radius: 999px;
+  border-radius: 100px;
 
-  border: 2px solid rgba(255,255,255,0.25);
-  background: rgba(255,255,255,0.08);   /* ✅ 기본 배경(살짝 어두운 회색 톤) */
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.08);
   color: #fff;
 
   transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.08s ease;
 }
 
-.seatKeyword-chip-txt{
-    font-size: 14px;
+.seatKeyword-chip:hover{
+  border: 1px solid rgba(255,255,255,0.3);
 }
 
-.seatKeyword-chip-ic{
-    font-size: 14px;
-}
+.seatKeyword-chip-txt{ font-size: 14px; }
+.seatKeyword-chip-ic{ font-size: 14px; }
 
-/* 선택된 상태 */
 .seatKeyword-chip.is-active{
-  background: #aa0000;                 /* ✅ 단색 */
-  border-color: #bb3333;;               /* ✅ 테두리도 같이 */
+  background: #aa0000;
+  border-color: #bb3333;
   box-shadow: 0 6px 16px rgba(0,0,0,0.35);
 }
 
-/* hover */
 .seatKeyword-chip:active{
   transform: scale(0.98);
 }
 
+/* =========================
+   미디어 섹션
+========================= */
+.review-media { margin-bottom: 42px; }
 
+.review-media .notice{
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.review-media .notice .notice-img{
+  margin-right: 4px;
+  opacity: 0.6;
+}
+
+.review-media .notice .notice-txt{
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.4);
+  margin: 0;
+}
+
+.review-media .notice .notice-txt em{
+  font-style: normal;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+}
+
+.review-media .upload-box{
+  background: rgba(36, 36, 36, 0.7);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 46px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.review-media .upload-box .upload-txt{
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0 0 20px;
+}
+
+.review-media .upload-box .plus{
+  margin: 0;
+}
+
+/* =========================
+   미디어 섹션
+========================= */
+.review-media { margin-bottom: 42px; }
+
+.review-media .notice{
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.review-media .notice .notice-img{
+  margin-right: 4px;
+  opacity: 0.6;
+}
+
+.review-media .notice .notice-txt{
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.4);
+  margin: 0;
+}
+
+.review-media .notice .notice-txt em{
+  font-style: normal;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+}
+
+/* ✅ 추가 전: 큰 업로드 박스 */
+.review-media .upload-box{
+  background: rgba(36, 36, 36, 0.7);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 46px;
+  margin-bottom: 12px;
+}
+
+.review-media .upload-box .upload-txt{
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0 0 20px;
+}
+
+.review-media .upload-box .plus{
+  margin: 0;
+}
+
+/* ✅ 추가 후: 2열 그리드(대표/삭제/+버튼) */
+.addedGrid{
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.addedCard{
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(36,36,36,0.7);
+  aspect-ratio: 1 / 1;
+}
+
+.addedImg{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 대표 배지 */
+.coverBadge{
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  background: #aa0000;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 100px;
+}
+
+/* 삭제 X */
+.removeBtn{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 0;
+  background: inherit;
+  cursor: pointer;
+}
+
+/* =========================
+   추천 영역 텍스트
+========================= */
+.mediaRec-box{
+  /* Swiper가 밖으로 넘어가도 다음 아이템 hint는 보이되,
+     섹션 바깥(다른 영역)으로 새지 않게 */
+  overflow: hidden;
+}
+
+.mediaRec-box .mediaReco-txt .top-txt-box{
+  display: flex;
+  margin-bottom: 4px;
+  opacity: 0.8;
+  align-items: center;
+}
+
+.mediaRec-box .mediaReco-txt .top-txt-box .reco-txt{
+  margin: 0 4px 0 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.mediaRec-box .mediaReco-txt .bottom-txt-box{
+  font-size: 14px;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+.mediaRec-box .mediaReco-txt .bottom-txt-box p{
+  margin: 0;
+}
+
+/* =========================
+   Swiper (추천 사진/영상)
+========================= */
+.mediaReco-swiperClip{
+  margin-top: 16px;
+  overflow: hidden;
+}
+
+.mediaReco-swiper{
+  width: 100%;
+}
+
+/* 슬라이드 폭 auto */
+.mediaReco-slide{
+  width: auto !important;
+}
+
+/* 썸네일 */
+.mediaReco-thumb{
+  position: relative;
+  width: 90px;
+  height: 90px;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-sizing: border-box;
+}
+
+.mediaReco-thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 우측 상단 링(미선택) */
+.mediaReco-badge{
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 100px;
+
+  border: 2px solid rgba(255,255,255,0.95);
+  background: transparent;
+
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: #fff;
+}
+
+/* 선택: #aa0000 테두리 + 배지 */
+.mediaReco-thumb.is-picked{
+  border: 2px solid #aa0000;
+}
+
+.mediaReco-badge.is-picked{
+  background: #aa0000;
+  border-color: #aa0000;
+}
+
+/* =========================
+   하단 "N 추가하기" 버튼
+========================= */
+.mediaReco-addBar{
+  margin-top: 14px;
+}
+
+.mediaReco-addBtn{
+  width: 100%;
+  height: 56px;
+  border: none;
+  border-radius: 6px;
+  background: #aa0000;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mediaReco-addBtn:active{
+  transform: translateY(1px);
+}
+
+
+
+
+.reviewText { margin-bottom: 48px; }
+
+.reviewText-box{
+  background: rgba(36,36,36,0.7);
+  border-radius: 6px;
+  padding: 30px 16px;
+}
+
+/* 제목 */
+.reviewText-title{
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  display:flex;
+  align-items:center;
+}
+.reviewText-ic{margin-right: 8px; }
+
+/* textarea 래퍼(카운터 위치용) */
+.reviewText-area{
+  position: relative;
+}
+
+.reviewText-input{
+  width:100%;
+  min-height: 160px;
+  resize: none;
+  border: 0;
+  outline: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  overflow-y: auto;
+  scrollbar-width: none;  
+  font-family: inherit;
+  margin-bottom: 10px;
+}
+
+.reviewText-input::-webkit-scrollbar{
+  display: none;
+}
+
+/* placeholder 스타일 */
+.reviewText-input::placeholder{
+  color: rgba(255,255,255,0.45);
+  white-space: pre-line; /* ✅ \n 줄바꿈 보이게 */
+}
+
+/* 우측하단 카운터 */
+.reviewText-count{
+    font-size: 12px;
+    text-align: right;
+}
+.reviewText-count .total{
+  color: rgba(255,255,255,0.5); /* ← 기존 느낌 유지 */
+}
+
+.review-guidelines{
+    margin: 12px 4px 0;
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.4;
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+    display: inline-block;
+    padding-bottom: 4px;
+    cursor: pointer;
+
+}
+
+
+/* 등록 버튼(스샷 느낌) — Link 버전 */
+.reviewSubmit{
+  width: 100%;
+  height: 58px;
+  border-radius: 6px;
+  margin-top: 14px;
+  background: #b30000;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;  
+  box-sizing: border-box;
+}
+/* 클릭 피드백 (선택) */
+.reviewSubmit:active{
+  transform: translateY(1px);
+}
