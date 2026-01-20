@@ -572,3 +572,50 @@
   height: 100%;
   object-fit: contain;
 }
+
+
+/* 여기부터 */
+.comment-input-wrap {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.comment-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+
+  color: #fff;
+  font-size: 14px;
+}
+
+.comment-input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.comment-send-btn {
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+
+  background: rgba(31,31,31);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comment-send-btn img {
+  width: 18px;
+  height: 18px;
+}

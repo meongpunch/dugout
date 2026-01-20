@@ -56,26 +56,35 @@ const Home = () => {
       img: "/img/Home-card_oh.jpg",
     },
   ];
-  // 응원 댓글 데이터
-  const rawCommentsTop = [
-    { id: 1, text: "가을야구 확정!", user: "/img/user_1.svg" },
-    { id: 2, text: "타이거즈는 이름부터 다름", user: "/img/user_2.svg" },
-    { id: 3, text: "V13 가자 제발", user: "/img/user_3.svg" },
-    { id: 4, text: "레스고~", user: "/img/user_4.svg" },
-    { id: 5, text: "이겨보자", user: "/img/user_5.svg" },
-  ];
 
-  const rawCommentsBottom = [
-    { id: 6, text: "양현종 없으면 야구 안 봄", user: "/img/user_6.svg" },
-    { id: 7, text: "니땜시살어야", user: "/img/user_7.svg" },
-    { id: 8, text: "오선우 파이팅", user: "/img/user_8.svg" },
-    {
-      id: 9,
-      text: "열광하라 타이거즈",
-      user: "/img/user_9.svg",
-    },
-    { id: 10, text: "최강기아 타이거즈", user: "/img/user_10.svg" },
-  ];
+// ✅ 응원 댓글 데이터 (state로 관리)
+const DEFAULT_TOP = [
+  { id: 1, text: "가을야구 확정!", user: "/img/user_1.svg" },
+  { id: 2, text: "타이거즈는 이름부터 다름", user: "/img/user_2.svg" },
+  { id: 3, text: "V13 가자 제발", user: "/img/user_3.svg" },
+  { id: 4, text: "레스고~", user: "/img/user_4.svg" },
+  { id: 5, text: "이겨보자", user: "/img/user_5.svg" },
+];
+
+const DEFAULT_BOTTOM = [
+  { id: 6, text: "양현종 없으면 야구 안 봄", user: "/img/user_6.svg" },
+  { id: 7, text: "니땜시살어야", user: "/img/user_7.svg" },
+  { id: 8, text: "오선우 파이팅", user: "/img/user_8.svg" },
+  { id: 9, text: "열광하라 타이거즈", user: "/img/user_9.svg" },
+  { id: 10, text: "최강기아 타이거즈", user: "/img/user_10.svg" },
+];
+
+// ✅ localStorage에서 불러와 초기값 세팅
+const [rawCommentsTop, setRawCommentsTop] = useState(() => {
+  const saved = localStorage.getItem("commentsTop");
+  return saved ? JSON.parse(saved) : DEFAULT_TOP;
+});
+
+const [rawCommentsBottom, setRawCommentsBottom] = useState(() => {
+  const saved = localStorage.getItem("commentsBottom");
+  return saved ? JSON.parse(saved) : DEFAULT_BOTTOM;
+});
+//여기까지
 
   const commentsTop = [
     ...rawCommentsTop,
@@ -90,6 +99,38 @@ const Home = () => {
     ...rawCommentsBottom,
   ];
   const [activePlayer, setActivePlayer] = useState(players[0]);
+
+  //여기부터
+  // ✅ 댓글 입력 state
+const [commentInput, setCommentInput] = useState("");
+
+useEffect(() => {
+  localStorage.setItem("commentsTop", JSON.stringify(rawCommentsTop));
+}, [rawCommentsTop]);
+
+useEffect(() => {
+  localStorage.setItem("commentsBottom", JSON.stringify(rawCommentsBottom));
+}, [rawCommentsBottom]);
+
+// ✅ 댓글 등록(전송) 함수: 작성하면 윗줄(top)에 맨 앞에 추가
+const handleSubmitComment = (e) => {
+  e.preventDefault();
+
+  const text = commentInput.trim();
+  if (!text) return;
+
+  const newComment = {
+    id: Date.now(),
+    text,
+    user: "/img/lockerroom-profile.svg", // 원하는 내 프로필 이미지로 바꿔도 됨
+  };
+
+  // ✅ 윗줄(top)에 반영
+  setRawCommentsTop((prev) => [newComment, ...prev]);
+
+  setCommentInput("");
+};
+//여기까지
 
   const highlights = [
     {
@@ -189,6 +230,7 @@ const Home = () => {
         {/* swpier 선수카드 */}
         <div className="hero-swiper-wrap">
           <Swiper
+          key={rawCommentsTop.length}
             effect={"coverflow"}
             grabCursor={true}
             centeredSlides={true}
@@ -236,6 +278,7 @@ const Home = () => {
         </div>
         <div className="comment-container">
           <Swiper
+          key={rawCommentsTop.length}
             modules={[Autoplay]}
             spaceBetween={8}
             slidesPerView={"auto"}
@@ -277,6 +320,20 @@ const Home = () => {
               </SwiperSlide>
             ))}
           </Swiper>
+          {/* 여기부터 */}
+          <form className="comment-input-wrap" onSubmit={handleSubmitComment}>
+  <input
+    className="comment-input"
+    value={commentInput}
+    onChange={(e) => setCommentInput(e.target.value)}
+    placeholder="응원 댓글을 남겨주세요."
+    maxLength={40}
+  />
+  <button className="comment-send-btn" type="submit" aria-label="send">
+    <img src="/img/chatbot-send.svg" alt="send" />
+  </button>
+</form>
+{/* 여기까지 */}
         </div>
       </section>
       <section className="today-match">
