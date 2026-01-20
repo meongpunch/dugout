@@ -1,6 +1,31 @@
-.review-head { margin: 60px 0 36px; }
-.review-head .review-top { display: flex; justify-content: space-between; align-items: center; }
-.review-head .review-top .review-left { display: flex; align-items: center; }
+/* ✅ 기본 헤더 → sticky로 변경 */
+.review-head-spacer{height: 60px;}
+
+.review-head {
+  position: sticky;
+  top: 0px;
+  z-index: 50;
+  background: rgba(18, 18, 18, 0.92);
+  backdrop-filter: blur(12px);
+  transition: box-shadow 0.2s ease, height 0.2s ease;
+  margin-bottom: 38px;
+}
+
+/* 내부 레이아웃 */
+.review-head .review-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px; /* 펼쳐진 상태 높이 */
+}
+
+/* 왼쪽(썸네일 + 텍스트) */
+.review-head .review-top .review-left {
+  display: flex;
+  align-items: center;
+}
+
+/* 썸네일 */
 .review-head .review-top .review-left .thumb {
   width: 56px;
   height: 56px;
@@ -9,34 +34,65 @@
   overflow: hidden;
   box-sizing: border-box;
 }
-.review-head .review-top .review-left .thumb img{
+
+.review-head .review-top .review-left .thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.review-head .review-top .review-left .reviewTop-txt .season{
+/* 텍스트 */
+.review-head .review-top .review-left .reviewTop-txt .season {
   font-size: 24px;
   font-weight: 600;
   margin: 0 0 4px;
 }
-.review-head .review-top .review-left .reviewTop-txt .count{
+
+.review-head .review-top .review-left .reviewTop-txt .count {
   font-size: 18px;
   font-weight: 500;
   margin: 0;
 }
 
-.review-head .review-top .review-close{
+/* 닫기 버튼 */
+.review-head .review-top .review-close {
   cursor: pointer;
-}
-.review-head .review-top .review-close img{
-  display:block;
+  width: 44px;   /* 터치 영역 확보 */
+  height: 44px;
+  display: grid;
+  place-items: center;
 }
 
-/* =========================
-   매치카드
-========================= */
+.review-head .review-top .review-close img {
+  display: block;
+}
+
+
+/* 스크롤 시 접힌 상태 */
+
+
+
+.review-head.is-collapsed .review-top {
+  height: 100px;
+  overflow: hidden;
+}
+
+.review-head.is-collapsed .thumb {
+  display: none;
+}
+
+/* 접혔을 때 텍스트 크기 살짝 축소(자연스럽게) */
+.review-head.is-collapsed .reviewTop-txt .season {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.review-head.is-collapsed .reviewTop-txt .count {
+  font-size: 14px;
+}
+
+
 .matchCard{ margin-bottom: 40px; }
 
 .match-info{
@@ -91,9 +147,7 @@
   margin-left: 12px;
 }
 
-/* =========================
-   키워드 박스
-========================= */
+
 .seatKeyword{ margin-bottom: 42px; }
 
 .seatKeyword-box{
@@ -156,9 +210,6 @@
   transform: scale(0.98);
 }
 
-/* =========================
-   미디어 섹션
-========================= */
 .review-media { margin-bottom: 42px; }
 
 .review-media .notice{
@@ -193,7 +244,6 @@
   align-items: center;
   padding: 46px;
   margin-bottom: 12px;
-  cursor: pointer;
 }
 
 .review-media .upload-box .upload-txt{
@@ -206,57 +256,6 @@
   margin: 0;
 }
 
-/* =========================
-   미디어 섹션
-========================= */
-.review-media { margin-bottom: 42px; }
-
-.review-media .notice{
-  display: flex;
-  margin-bottom: 12px;
-}
-
-.review-media .notice .notice-img{
-  margin-right: 4px;
-  opacity: 0.6;
-}
-
-.review-media .notice .notice-txt{
-  font-size: 14px;
-  font-weight: 400;
-  color: rgba(255,255,255,0.4);
-  margin: 0;
-}
-
-.review-media .notice .notice-txt em{
-  font-style: normal;
-  font-weight: 600;
-  color: rgba(255,255,255,0.6);
-}
-
-/* ✅ 추가 전: 큰 업로드 박스 */
-.review-media .upload-box{
-  background: rgba(36, 36, 36, 0.7);
-  border-radius: 6px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 46px;
-  margin-bottom: 12px;
-}
-
-.review-media .upload-box .upload-txt{
-  font-size: 22px;
-  font-weight: 500;
-  margin: 0 0 20px;
-}
-
-.review-media .upload-box .plus{
-  margin: 0;
-}
-
-/* ✅ 추가 후: 2열 그리드(대표/삭제/+버튼) */
 .addedGrid{
   position: relative;
   display: grid;
@@ -280,7 +279,6 @@
   display: block;
 }
 
-/* 대표 배지 */
 .coverBadge{
   position: absolute;
   left: 8px;
@@ -293,25 +291,8 @@
   border-radius: 100px;
 }
 
-/* 삭제 X */
-.removeBtn{
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 0;
-  background: inherit;
-  cursor: pointer;
-}
 
-/* =========================
-   추천 영역 텍스트
-========================= */
 .mediaRec-box{
-  /* Swiper가 밖으로 넘어가도 다음 아이템 hint는 보이되,
-     섹션 바깥(다른 영역)으로 새지 않게 */
   overflow: hidden;
 }
 
@@ -338,9 +319,7 @@
   margin: 0;
 }
 
-/* =========================
-   Swiper (추천 사진/영상)
-========================= */
+
 .mediaReco-swiperClip{
   margin-top: 16px;
   overflow: hidden;
@@ -350,7 +329,7 @@
   width: 100%;
 }
 
-/* 슬라이드 폭 auto */
+
 .mediaReco-slide{
   width: auto !important;
 }
@@ -376,7 +355,7 @@
   display: block;
 }
 
-/* 우측 상단 링(미선택) */
+
 .mediaReco-badge{
   position: absolute;
   top: 4px;
@@ -395,7 +374,7 @@
   color: #fff;
 }
 
-/* 선택: #aa0000 테두리 + 배지 */
+
 .mediaReco-thumb.is-picked{
   border: 2px solid #aa0000;
 }
@@ -405,9 +384,7 @@
   border-color: #aa0000;
 }
 
-/* =========================
-   하단 "N 추가하기" 버튼
-========================= */
+
 .mediaReco-addBar{
   margin-top: 14px;
 }
@@ -439,7 +416,7 @@
   padding: 30px 16px;
 }
 
-/* 제목 */
+
 .reviewText-title{
   margin-bottom: 10px;
   font-size: 18px;
@@ -449,7 +426,7 @@
 }
 .reviewText-ic{margin-right: 8px; }
 
-/* textarea 래퍼(카운터 위치용) */
+
 .reviewText-area{
   position: relative;
 }
@@ -474,19 +451,19 @@
   display: none;
 }
 
-/* placeholder 스타일 */
+
 .reviewText-input::placeholder{
   color: rgba(255,255,255,0.45);
-  white-space: pre-line; /* ✅ \n 줄바꿈 보이게 */
+  white-space: pre-line;
 }
 
-/* 우측하단 카운터 */
+
 .reviewText-count{
     font-size: 12px;
     text-align: right;
 }
 .reviewText-count .total{
-  color: rgba(255,255,255,0.5); /* ← 기존 느낌 유지 */
+  color: rgba(255,255,255,0.5); 
 }
 
 .review-guidelines{
@@ -502,7 +479,7 @@
 }
 
 
-/* 등록 버튼(스샷 느낌) — Link 버전 */
+/* 등록 버튼*/
 .reviewSubmit{
   width: 100%;
   height: 58px;

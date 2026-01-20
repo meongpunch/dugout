@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Review.css";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -7,7 +7,20 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 const Review = () => {
-  const navigate = useNavigate();
+   const navigate = useNavigate();
+
+  // ✅ 스크롤 시 헤더 접힘 상태
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setIsCollapsed(window.scrollY > 40); // 기준값(원하면 조절)
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const SEAT_KEYWORDS = [
     { id: 1, icon: "👀", label: "시야가 좋아요" },
@@ -110,7 +123,8 @@ const onChangeReview = (e) => {
   return (
     <div className="reviewPg">
       {/* ===== 상단 ===== */}
-      <section className="review-head">
+      <div className="review-head-spacer"></div>
+      <section className={`review-head ${isCollapsed ? "is-collapsed" : ""}`}>
         <div className="inner">
           <div className="review-top">
             <div className="review-left">
