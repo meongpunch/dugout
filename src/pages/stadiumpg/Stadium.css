@@ -1,10 +1,10 @@
 .stadium-main {
-  margin-bottom: 0;
   position: relative;
   width: 100%;
   height: calc(100vh - 106px);
   overflow: hidden;
   padding: 0;
+  margin: 0;
 }
 
 .stadium-headerOverlay {
@@ -35,7 +35,6 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  transition: opacity 0.25s ease;
 }
 
 .stadium-bg .inner {
@@ -47,32 +46,28 @@
 
 .top-bar {
   position: relative;
-  height: 110px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .topbar-location {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 24px;
+  font-weight: bold;
   display: flex;
   align-items: center;
-  background: rgba(0, 0, 0, 0.2);
-  padding: 8px 16px;
-  border-radius: 30px;
 }
 
 .chevron-icon {
-  width: 20px;
-  height: 20px;
+  width: 28px;
+  height: 28px;
   margin-left: 10px;
   transition: transform 0.2s ease;
 }
 
 .stadium-dropdown {
   position: absolute;
-  top: 105%;
+  top: 106%;
   left: 0;
   width: 200px;
   padding: 20px 10px 0;
@@ -95,7 +90,7 @@
 
 .stadium-option.active {
   color: #fff;
-  font-weight: 700;
+  font-weight: bold;
 }
 
 /* hover된 것만 강조 */
@@ -133,15 +128,18 @@
   will-change: transform;
   overflow: hidden;
   z-index: 10;
+  max-height: 100svh; /* iOS/모바일에서 안전한 viewport */
+  max-height: 100dvh; /* 최신 브라우저 대응(동적 viewport) */
+  overflow: hidden;
 }
 
 .bottom-box.open {
-  height: calc(100vh - 5vh);
+  height: calc(100vh - 7vh);
   overflow-y: auto;
 }
 
 .bottom-box.open .sheet-body {
-  max-height: calc(90vh - 260px);
+  max-height: calc(90vh - 180px);
   overflow-y: auto;
 }
 
@@ -193,7 +191,7 @@
 .sheet-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+  gap: clamp(8px, 2.2vw, 10px);
   margin-bottom: 51px;
 }
 
@@ -202,13 +200,21 @@
 }
 
 .chip {
-  width: 126px;
-  height: 81px;
+  width: 100%;
+  height: clamp(72px, 18vw, 81px);
   border-radius: 6px;
   background: #1d1d1d;
   color: #ffffff;
-  font-size: 16px;
+  font-size: clamp(14px, 3.6vw, 16px);
   border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   transition:
     background 0.18s ease,
     transform 0.18s ease;
@@ -231,6 +237,12 @@
 .sheet-body {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  /* '확인' 버튼에 가리지 않게 여유 공간 확보 */
+  padding-bottom: calc(90px + env(safe-area-inset-bottom));
+  /* (90px은 버튼 영역 높이 + 여백 느낌으로 잡은 값) */
 }
 
 .confirm:not(:disabled) {
@@ -246,19 +258,4 @@
 /* 포커스 테두리 제거(모바일용) */
 .confirm:focus {
   outline: none;
-}
-
-@media (max-width: 393px) {
-  .chip {
-    width: 113px;
-    height: 85px;
-  }
-
-  .bottom-box.open {
-    height: calc(100vh - 10vh);
-  }
-
-  .bottom-box.open .sheet-body {
-    max-height: calc(90vh - 275px);
-  }
 }

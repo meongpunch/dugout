@@ -60,7 +60,7 @@ const StadiumSeatDetail = () => {
 
       return { x, y };
     },
-    [getImgSize]
+    [getImgSize],
   );
 
   const syncMini = useCallback(() => {
@@ -107,7 +107,7 @@ const StadiumSeatDetail = () => {
       posRef.current = { x, y };
       syncMini();
     },
-    [syncMini]
+    [syncMini],
   );
 
   const fitToViewport = useCallback(() => {
@@ -178,7 +178,7 @@ const StadiumSeatDetail = () => {
         stage.classList.remove("zooming");
       }, 260);
     },
-    [clampToBounds, applyTransform]
+    [clampToBounds, applyTransform],
   );
 
   // 좌석 선택
@@ -379,9 +379,6 @@ const StadiumSeatDetail = () => {
       seatIdOnDown = null;
 
       viewport.classList.remove("dragging");
-      try {
-        viewport.releasePointerCapture(e.pointerId);
-      } catch {}
     };
 
     viewport.addEventListener("pointerdown", onDown);
