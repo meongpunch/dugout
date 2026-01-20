@@ -555,16 +555,27 @@ const StadiumSeatDetail = () => {
               <button
                 type="button"
                 className="confirm"
-                onClick={() =>
-                  navigate("/stadium/seat/review", {
-                    state: {
+                onClick={() => {
+                  // 1️⃣ 새로고침 대비: localStorage 저장
+                  localStorage.setItem(
+                    "seatReviewSelection",
+                    JSON.stringify({
                       stadiumName,
                       seatType,
                       section,
                       seatNumber: selectedSeat,
-                    },
-                  })
-                }
+                    }),
+                  );
+
+                  // 2️⃣ URL에 쿼리로 전달 (공유/새로고침 유지)
+                  navigate(
+                    `/stadium/seat/review?stadium=${encodeURIComponent(
+                      stadiumName,
+                    )}&seatType=${encodeURIComponent(
+                      seatType,
+                    )}&section=${section}&seatNumber=${selectedSeat}`,
+                  );
+                }}
               >
                 선택하기
               </button>
