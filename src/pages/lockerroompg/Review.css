@@ -291,6 +291,18 @@
   border-radius: 100px;
 }
 
+/* 삭제 X */ 
+.removeBtn{
+    position: absolute; 
+    right: 10px; 
+    top: 10px; 
+    width: 24px; 
+    height: 24px; 
+    border-radius: 50%; 
+    border: 0; 
+    background: inherit; 
+    cursor: pointer;
+}
 
 .mediaRec-box{
   overflow: hidden;
