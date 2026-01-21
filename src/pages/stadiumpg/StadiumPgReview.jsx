@@ -289,7 +289,7 @@ export default function StadiumPgReview() {
                   onClick={() => setFilterKey(active ? null : s.key)}
                   type="button"
                 >
-                  <span className="sr-pillIcon">{s.icon}</span>
+                  <span className={`sr-pillIcon ${s.key === "view" ? "ic-eyes" : ""}`}>{s.icon}</span>
                   <span className="sr-pillText">{s.label}</span>
                   <span className="sr-pillCount">
                     {s.count.toLocaleString()}
