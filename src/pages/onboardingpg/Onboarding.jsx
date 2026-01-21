@@ -1,17 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Onboarding.css";
+import "./GuideModal.css";
+import "../../components/Guide.css";
 import { useNavigate } from "react-router-dom";
 import OnboardingTopBar from "../../components/OnboardingTopBar";
+import { useGuide } from "../../contexts/GuideContext";
 
 const Onboarding = () => {
   const navigate = useNavigate();
-  
+  const { toggleGuide, setGuideOff } = useGuide();
 
+  const [showGuideModal, setShowGuideModal] = useState(false);
   const [page, setPage] = useState(0);
 
   const [startX, setStartX] = useState(null);
   const [isDown, setIsDown] = useState(false);
   const threshold = 60;
+
+  // 모달 표시 (매번 표시 - 테스트용)
+  useEffect(() => {
+    // const hasSeenGuideModal = localStorage.getItem('hasSeenGuideModal');
+    // if (!hasSeenGuideModal) {
+    setShowGuideModal(true);
+    // }
+  }, []);
+
+  // 확인 버튼: 가이드 ON + 모달 닫기
+  const handleConfirmGuide = () => {
+    toggleGuide(); // 가이드 ON
+    localStorage.setItem('hasSeenGuideModal', 'true');
+    setShowGuideModal(false);
+  };
+
+  // 괜찮아요 버튼: 가이드 OFF + 모달 닫기
+  const handleSkipGuide = () => {
+    setGuideOff(); // 가이드 OFF
+    localStorage.setItem('hasSeenGuideModal', 'true');
+    setShowGuideModal(false);
+  };
 
   // ✅ 건너뛰기: login으로
   const handleSkip = () => {
@@ -67,10 +93,38 @@ const Onboarding = () => {
     handleMouseUp,
   };
 
-  if (page === 0) return <Onboarding1 {...commonProps} />;
-  if (page === 1) return <Onboarding2 {...commonProps} />;
-  if (page === 2) return <Onboarding3 {...commonProps} />;
-  return <Onboarding4 {...commonProps} />;
+  return (
+    <>
+      {/* 가이드 모달 */}
+      {showGuideModal && (
+        <div className="guide-modal-overlay">
+          <div className="guide-modal">
+            <div className="guide-modal-content">
+              <p className="guide-modal-title">가이드를 사용하시겠습니까?</p>
+              <p className="guide-modal-desc">
+                포트폴리오 시연을 위한 가이드 기능입니다.<br />
+                노란 점으로 주요 기능을 안내해드립니다.
+              </p>
+            </div>
+            <div className="guide-modal-actions">
+              <button className="guide-modal-btn skip" onClick={handleSkipGuide}>
+                괜찮아요
+              </button>
+              <button className="guide-modal-btn ok" onClick={handleConfirmGuide}>
+                확인
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 온보딩 페이지 렌더링 */}
+      {page === 0 && <Onboarding1 {...commonProps} />}
+      {page === 1 && <Onboarding2 {...commonProps} />}
+      {page === 2 && <Onboarding3 {...commonProps} />}
+      {page === 3 && <Onboarding4 {...commonProps} />}
+    </>
+  );
 };
 
 const Dots = ({ page, goTo }) => (
@@ -91,6 +145,7 @@ const Bottom = ({ page, goNext, goTo }) => (
   <div className="bottom">
     <Dots page={page} goTo={goTo} />
     <button className="next" type="button" onClick={goNext}>
+      <div className="guide-dot"></div>
       다음
     </button>
   </div>
@@ -114,14 +169,14 @@ const Container = ({
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
     >
-<OnboardingTopBar
-  iconType={page === 0 ? "none" : "back"}   // ✅ 핵심
-  skipType="skip"                           // ✅ 항상 있음
-  onBack={goPrev}
-  onSkip={handleSkip}
-  outerClassName="onboardingHeader"
-  innerClassName="onboardingInnerHeader"
-/>
+      <OnboardingTopBar
+        iconType={page === 0 ? "none" : "back"}   // ✅ 핵심
+        skipType="skip"                           // ✅ 항상 있음
+        onBack={goPrev}
+        onSkip={handleSkip}
+        outerClassName="onboardingHeader"
+        innerClassName="onboardingInnerHeader"
+      />
 
       {children}
     </div>

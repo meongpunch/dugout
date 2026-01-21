@@ -1,5 +1,6 @@
 import React from 'react';
 import './OnboardingTopBar.css';
+import '../components/Guide.css';
 import { useNavigate } from 'react-router-dom';
 
 const OnboardingTopBar = ({
@@ -36,6 +37,7 @@ const OnboardingTopBar = ({
         {/* LEFT 영역: back 없을 때도 공간 유지 */}
         <div className="TopBar-left">
           {iconType === 'back' ? (
+
             <button
               className="back-btn"
               type="button"
@@ -54,6 +56,7 @@ const OnboardingTopBar = ({
         <div className="TopBar-right">
           {skipType === 'skip' ? (
             <button className="skip-btn" type="button" onClick={handleSkip}>
+              <div className="guide-dot"></div>
               {skipLabel}
             </button>
           ) : (

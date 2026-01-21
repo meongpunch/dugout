@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './TeamChoice.css';
+import '../../components/Guide.css';
 import OnboardingTopBar from '../../components/OnboardingTopBar';
 
 
@@ -73,6 +74,8 @@ export default function TeamChoice() {
                   </div>
                   <p className="team-name">{team.name}</p>
                   {isSelected && <span className="selected-dot" />}
+                  {/* 가이드 점: KIA이고 선택 안 된 상태일 때 */}
+                  {team.id === 'kia' && !selectedTeam && <div className="guide-dot"></div>}
                 </button>
               );
             })}
@@ -89,6 +92,7 @@ export default function TeamChoice() {
             disabled={!selectedTeam}
             onClick={handleStart}
           >
+            {selectedTeam && <div className="guide-dot"></div>}
             시작하기
           </button>
         </div>

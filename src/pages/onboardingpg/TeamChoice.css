@@ -2,12 +2,18 @@
    Page Layout
 ========================= */
 .TeamChoice-container {
-  height: 100dvh; /* 모바일 주소창 대응 */
-  overflow: hidden; /* 페이지 자체 스크롤 금지 */
-  background: #111111; /* ✅ 전체 배경 톤 통일 */
-  --cta-h: 56px; /* 버튼 높이 */
-  --cta-gap: 16px; /* 버튼 위/아래 여유 */
-  --cta-bottom: clamp(12px, 2.2vh, 20px); /* 작은폰에서 내려가는 여백 최소화 */
+  height: 100dvh;
+  /* 모바일 주소창 대응 */
+  overflow: hidden;
+  /* 페이지 자체 스크롤 금지 */
+  background: #111111;
+  /* ✅ 전체 배경 톤 통일 */
+  --cta-h: 56px;
+  /* 버튼 높이 */
+  --cta-gap: 16px;
+  /* 버튼 위/아래 여유 */
+  --cta-bottom: clamp(12px, 2.2vh, 20px);
+  /* 작은폰에서 내려가는 여백 최소화 */
 }
 
 .TeamChoice-container .inner {
@@ -70,10 +76,9 @@
    - 마지막 스크롤 끝 여백 조절하고 싶으면 50px만 수정
 */
 .scroll-spacer {
-  height: calc(
-    var(--cta-h) + 140px + var(--cta-gap) + env(safe-area-inset-bottom)
-  );
+  height: calc(var(--cta-h) + 140px + var(--cta-gap) + env(safe-area-inset-bottom));
 }
+
 /* =========================
    Title
 ========================= */
@@ -108,7 +113,8 @@
 }
 
 .team-card {
-  background: #1a1a1a; /* ✅ 배경과 같은 계열로 통일 */
+  background: #1a1a1a;
+  /* ✅ 배경과 같은 계열로 통일 */
   border: 2px solid transparent;
   border-radius: 12px;
   padding: 12px 10px;
@@ -187,24 +193,26 @@
   bottom: calc(85px + env(safe-area-inset-bottom));
 
   z-index: 10;
-  pointer-events: none;}
+  pointer-events: none;
+}
 
-  /* ✅ [추가] 버튼 위치부터 화면 끝까지 덮는 검은 막대 생성 */
-  .cta-fixed::after {
-    content: "";
-    position: absolute;
+/* ✅ [추가] 버튼 위치부터 화면 끝까지 덮는 검은 막대 생성 */
+.cta-fixed::after {
+  content: "";
+  position: absolute;
 
-    /* 버튼의 맨 위부터 시작 */
-    top: 0;
-    left: 0;
-    right: 0;
+  /* 버튼의 맨 위부터 시작 */
+  top: 0;
+  left: 0;
+  right: 0;
 
-    /* 아래로 아주 길게 늘려서 바닥 공간을 다 덮어버림 */
-    height: 500px;
+  /* 아래로 아주 길게 늘려서 바닥 공간을 다 덮어버림 */
+  height: 500px;
 
-    background: #111111;
-    z-index: -1; /* 버튼 글씨나 그라데이션보다 뒤로 가도록 */
-  }
+  background: #111111;
+  z-index: -1;
+  /* 버튼 글씨나 그라데이션보다 뒤로 가도록 */
+}
 }
 
 .cta-fixed::before {
@@ -214,17 +222,16 @@
   right: 0;
 
   bottom: var(--cta-h);
-  height: 140px; /* ✅ 170 -> 140으로 줄여 작은 폰 확보 */
+  height: 140px;
+  /* ✅ 170 -> 140으로 줄여 작은 폰 확보 */
   pointer-events: none;
   z-index: 0;
 
-  background: linear-gradient(
-    to top,
-    rgba(17, 17, 17, 0.98) 0%,
-    rgba(17, 17, 17, 0.85) 35%,
-    rgba(17, 17, 17, 0.45) 65%,
-    rgba(17, 17, 17, 0) 100%
-  );
+  background: linear-gradient(to top,
+      rgba(17, 17, 17, 0.98) 0%,
+      rgba(17, 17, 17, 0.85) 35%,
+      rgba(17, 17, 17, 0.45) 65%,
+      rgba(17, 17, 17, 0) 100%);
 }
 
 /* ✅ CTA쪽 그라데이션(40px) / sticky CTA 등 중복 요소는 제거한 최종본 */
@@ -236,15 +243,18 @@
   height: 56px;
   border-radius: 6px;
   border: none;
+  position: relative;
 
   font-size: 16px;
   font-weight: 700;
 
-  background: #1a1a1a; /* ✅ 카드/배경 계열로 통일 */
+  background: #1a1a1a;
+  /* ✅ 카드/배경 계열로 통일 */
   color: rgba(255, 255, 255, 0.4);
   cursor: not-allowed;
 
-  pointer-events: auto; /* 버튼만 클릭 가능 */
+  pointer-events: auto;
+  /* 버튼만 클릭 가능 */
   z-index: 1;
   overflow: hidden;
 }
@@ -256,6 +266,7 @@
 }
 
 @media (max-height: 740px) {
+
   /* 타이틀 영역 살짝 압축 */
   .contents {
     margin-top: 18px;
@@ -265,6 +276,7 @@
   .contents h2 {
     font-size: 28px;
   }
+
   .contents h3 {
     font-size: 14px;
   }
@@ -283,6 +295,7 @@
   .team-logo-wrap {
     height: 62px;
   }
+
   .team-logo {
     max-width: 82px;
     height: 82px;

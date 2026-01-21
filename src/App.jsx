@@ -24,11 +24,12 @@ import Calendar from "./pages/lockerroompg/Calendar";
 import Review from "./pages/lockerroompg/Review";
 import ChatbotWidget from "./components/ChatbotWidget";
 import ReviewComplete from "./pages/lockerroompg/ReviewComplete";
-import Ticket from"./pages/lockerroompg/Ticket";
+import Ticket from "./pages/lockerroompg/Ticket";
+import { GuideProvider } from "./contexts/GuideContext";
 
 const App = () => {
   return (
-    <>
+    <GuideProvider>
       <ScrollToTop />
       <ChatbotWidget />
       <Routes>
@@ -62,7 +63,7 @@ const App = () => {
         </Route>
       </Routes>
 
-    </>
+    </GuideProvider>
   );
 };
 

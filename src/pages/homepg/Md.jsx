@@ -94,6 +94,7 @@ export default function Md() {
             onClick={() => setLiked(!liked)}
             aria-label="찜하기"
           >
+            <div className="guide-dot"></div>
             <img
               src={
                 liked
@@ -123,6 +124,7 @@ export default function Md() {
       {/* ===== 하단 고정 버튼 ===== */}
       <div className="bottom-bar">
         <button className="cart-btn btn" onClick={addToCart}>
+          <div className="guide-dot"></div>
           장바구니
         </button>
       </div>

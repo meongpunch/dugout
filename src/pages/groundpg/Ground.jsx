@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Ground.css";
+import "../../components/Guide.css";
 import MainPgHeader from "../../components/MainPgHeader";
 
 // Swiper
@@ -199,6 +200,7 @@ const Ground = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
+                    <div className="guide-dot"></div>
                     <img src="/img/ground_sns_icon1.svg" alt="sns유튜브" />
                   </a>
                   <a
@@ -206,6 +208,7 @@ const Ground = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
+                    <div className="guide-dot"></div>
                     <img src="/img/ground_sns_icon2.svg" alt="snsX" />
                   </a>
                   <a
@@ -213,6 +216,7 @@ const Ground = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
+                    <div className="guide-dot"></div>
                     <img src="/img/ground_sns_icon3.svg" alt="sns인스타그램" />
                   </a>
                 </div>
@@ -259,6 +263,7 @@ const Ground = () => {
                 >
                   <article className="sns-card">
                     <div className="sns-thumb">
+                      <div className="guide-dot"></div>
                       <img src={card.img} alt={card.title} />
                     </div>
                     <div className="sns-body">
@@ -297,6 +302,7 @@ const Ground = () => {
             {popularTopics.map((item) => (
               <article key={item.id} className="topic-card">
                 <Link to={"/topic"} className="topic-card-link">
+                  <div className="guide-dot"></div>
                   <div className="topic-card-bg">
                     <img src={item.coverImg} alt="" />
                   </div>
@@ -318,9 +324,8 @@ const Ground = () => {
                           return (
                             <span
                               key={idx}
-                              className={`topic-chip ${
-                                isActive ? "is-active" : ""
-                              }`}
+                              className={`topic-chip ${isActive ? "is-active" : ""
+                                }`}
                               onClick={(e) => {
                                 e.preventDefault();
                                 setActiveReactions((prev) => {
@@ -340,6 +345,7 @@ const Ground = () => {
                                 });
                               }}
                             >
+                              {idx === 0 && <div className="guide-dot"></div>}
                               <span className="topic-chip-ic">{r.icon}</span>
                               <span className="topic-chip-count">
                                 {reactionCounts[idx].toLocaleString()}
@@ -365,6 +371,7 @@ const Ground = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
+          <div className="guide-dot"></div>
           <div className="ground-banner_bg">
             <img src="/img/ground_banner.jpg" alt="" />
           </div>

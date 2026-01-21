@@ -1,0 +1,97 @@
+/* 가이드 토글 버튼 */
+.guide-toggle-btn {
+    position: fixed;
+    right: max(var(--fab-gap, 8px), calc((100vw - var(--app-w, 430px)) / 2 + var(--fab-gap, 8px)));
+    bottom: calc(var(--fab-gap, 8px) + var(--bottom-nav-h, 122px) + env(safe-area-inset-bottom, 0px) + 60px + 10px);
+    /* 챗봇 버튼(60px) + 간격(10px) 위 */
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    z-index: 2147483647;
+    border: 0;
+    border-radius: 50%;
+    background: #aa0000;
+    /* 빨간색 */
+    color: #fff;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    line-height: 1.2;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    white-space: nowrap;
+}
+
+.guide-toggle-btn:hover {
+    transform: scale(1.05);
+    background: #cc0000;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.guide-toggle-btn:active {
+    transform: scale(0.98);
+}
+
+/* 가이드 텍스트 스타일 */
+.guide-label {
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.guide-status {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* 가이드 점 기본 스타일 */
+.guide-dot {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: #F2FF43;
+    border-radius: 50%;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    animation: pulse-guide 1.5s ease-in-out infinite;
+}
+
+/* 펄스 애니메이션 */
+@keyframes pulse-guide {
+    0% {
+        box-shadow: 0 0 0 0 rgba(242, 255, 67, 0.7);
+    }
+
+    50% {
+        box-shadow: 0 0 0 10px rgba(242, 255, 67, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(242, 255, 67, 0);
+    }
+}
+
+/* 가이드 OFF 상태 */
+body:not(.guide-on) .guide-dot {
+    display: none;
+}
+
+/* 특정 위치 조정 */
+.heart-btn .guide-dot {
+    top: -2px;
+    right: -2px;
+}
+
+.hero-swiper-wrap .mySwiper .hero-slide:nth-child(1) {
+    position: relative;
+}
+
+.title-like .guide-dot {
+    top: 0px;
+    right: 0px;
+}

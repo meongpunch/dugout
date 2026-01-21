@@ -34,4 +34,21 @@
 
   font: inherit;
   cursor: pointer;
+  position: relative;
+}
+
+/* 건너뛰기 버튼 가이드 점 */
+.skip-btn .guide-dot {
+  top: -5px;
+  right: -5px;
+}
+
+/* 다음 버튼 가이드 점 */
+.next .guide-dot {
+  top: 10px;
+  right: 10px;
+}
+
+button {
+  position: relative;
 }
