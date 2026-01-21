@@ -58,7 +58,7 @@ const match = TIMELINE_ITEMS.find((m) => m.id === id);
 
   const SEAT_KEYWORDS = [
     { id: 1, icon: "👀", label: "시야가 좋아요" },
-    { id: 2, icon: "⚾", label: "경기 흐름이 잘 보여요" },
+    { id: 2, icon: "⚾️", label: "경기 흐름이 잘 보여요" },
     { id: 3, icon: "🔍", label: "선수가 가까워요" },
     { id: 4, icon: "🎯", label: "타구가 잘 보여요" },
     { id: 5, icon: "🔥", label: "현장감이 좋아요" },
@@ -73,7 +73,7 @@ const match = TIMELINE_ITEMS.find((m) => m.id === id);
     { id: 3, icon: "📏", label: "선수가 멀어요" },
     { id: 4, icon: "⚡", label: "시야 가림이 있어요" },
     { id: 5, icon: "📣", label: "응원해야 해요" },
-    { id: 6, icon: "⚾", label: "파울볼이 많이 와요" },
+    { id: 6, icon: "⚾️", label: "파울볼이 많이 와요" },
     { id: 7, icon: "🎆", label: "천장이 없어요" },
     { id: 8, icon: "🌞", label: "해가 늦게까지 들어와요" },
   ];
@@ -220,9 +220,8 @@ const onChangeReview = (e) => {
                   className={`seatKeyword-chip ${selected[k.id] ? "is-active" : ""}`}
                   onClick={() => toggle(k.id)}
                   role="button"
-                  tabIndex={0}
-                >
-                  <span className="seatKeyword-chip-ic">{k.icon}</span>
+                  tabIndex={0}>
+                  <span className={`seatKeyword-chip-ic ${k.id === 1 ? "lh-fix" : ""}`}>{k.icon}</span>
                   <span className="seatKeyword-chip-txt">{k.label}</span>
                 </span>
               ))}

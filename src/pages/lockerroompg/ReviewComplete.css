@@ -1,7 +1,13 @@
+.completePg{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .review-done{
     background: url(/img/review-complete-bg.png) center/cover no-repeat;
     height: 293px;
-    margin-bottom: 0;
+    margin-bottom: 0px;
 }
 .inner{
     height: 100%;
@@ -33,26 +39,29 @@
 }
 
 
-
+/* 중간 콘텐츠가 남은 공간을 먹게 */
+.done-info{
+  flex: 1;
+}
 /* 카드 */
 .done-card{
   margin: 0 auto;
   width: 100%;
   padding: 30px 16px;
   border-radius: 6px;
-  background: rgba(255,255,255,0.10);
-  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(36, 36, 36, 1);
+  border: 1px solid rgba(255,255,255,0.05);
   text-align: center;
   box-sizing: border-box;
 }
 
 /* 안내 문구 */
 .done-desc{
-  margin: 0 0 18px;
+  margin-bottom: 32px;
   color: rgba(255,255,255,0.92);
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 600;
-  line-height: 1.45;
+  line-height: 1.6;
 }
 
 /* 좌석 칩 */
@@ -60,11 +69,48 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: 12px;
   border-radius: 6px;
-  background: rgba(0,0,0,0.25);
+  background: rgba(255, 255, 255, 0.1);
   color: rgba(255,255,255,0.9);
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 600;
-  letter-spacing: -0.1px;
+}
+
+
+/*  하단 버튼 영역  */
+.done-footer{
+  margin-bottom: 48px;
+}
+
+/* inner 안에서 가운데 정렬 */
+.done-footer .inner{
+  display: flex;
+  justify-content: center;
+}
+
+/* 완료 버튼(= Link 스타일링) */
+.done-btn{
+  width: 100%;
+  height: 58px;
+  border-radius: 6px;
+  background: #b30000;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;  
+  box-sizing: border-box;
+}
+
+/* hover 효과 */
+.done-btn:hover{
+  background: #aa0000;
+}
+
+/* 눌렀을 때 미세 피드백 */
+.done-btn:active{
+  transform: scale(0.99);
 }

@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import "./ReviewComplete.css";
 
 const TIMELINE_ITEMS = [
@@ -83,6 +83,14 @@ const ReviewComplete = () => {
             </p>
             <div className="seat-chip">{seatLabel}</div>
           </div>
+        </div>
+      </section>
+
+      <section className="done-footer">
+        <div className="inner">
+          <Link to="/lockerroom/calendar" className="done-btn">
+            완료
+          </Link>
         </div>
       </section>
     </div>
