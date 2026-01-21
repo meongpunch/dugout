@@ -109,6 +109,8 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  position: relative;
+  /* 가이드 점 기준 */
 
   height: 34px;
   padding: 8px 16px;
@@ -145,4 +147,10 @@
 
 .groundTopic .topic-chip:active {
   transform: scale(0.96);
+}
+
+/* 가이드 점 위치 미세 조정 */
+.groundTopic .topic-chip .guide-dot {
+  top: -2px;
+  right: -2px;
 }

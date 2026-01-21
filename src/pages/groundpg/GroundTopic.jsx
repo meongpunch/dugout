@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import BackButton from "../../components/Backbutton";
 import { Link } from "react-router-dom";
 import "./GroundTopic.css";
+import "../../components/Guide.css";
 
 const voteTopics = [
   {
@@ -124,6 +125,7 @@ const GroundTopic = () => {
                                 });
                               }}
                             >
+                              {idx === 0 && <div className="guide-dot"></div>}
                               <span className="topic-chip-ic">{r.icon}</span>
                               <span className="topic-chip-count">
                                 {currentCount.toLocaleString()}

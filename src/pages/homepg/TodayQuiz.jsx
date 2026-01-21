@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import confetti from "canvas-confetti";
 import "./TodayQuiz.css";
+import "../../components/Guide.css";
 
 const TodayQuiz = () => {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const TodayQuiz = () => {
     return () => clearTimeout(t);
   }, [toastOpen]);
 
-const triggerConfetti = () => {
+  const triggerConfetti = () => {
     // 1. 이모지 모양 정의
     const baseball = confetti.shapeFromText({ text: '⚾', scalar: 3 });
     const party = confetti.shapeFromText({ text: '🎉', scalar: 3 });
@@ -50,7 +51,7 @@ const triggerConfetti = () => {
     confetti({
       ...defaults,
       particleCount: 80, // 이모지 개수를 100개로 넉넉하게!
-      shapes: [baseball, party], 
+      shapes: [baseball, party],
       scalar: 2, // 이모지는 커야 잘 보입니다
     });
 
@@ -121,15 +122,14 @@ const triggerConfetti = () => {
           {quizData.options.map((option) => (
             <button
               key={option.id}
-              className={`option-btn ${
-                selectedOption === option.id ? "active" : ""
-              }`}
+              className={`option-btn ${selectedOption === option.id ? "active" : ""
+                }`}
               onClick={() => handleOptionClick(option.id)}
-              disabled={isCorrectSelected && option.id !== 2} 
+              disabled={isCorrectSelected && option.id !== 2}
             >
               <span className="option-text">{option.name}</span>
               {option.id === 2 && !isCorrectSelected && (
-                <span className="hint-dot"></span>
+                <div className="guide-dot"></div>
               )}
             </button>
           ))}
@@ -138,6 +138,7 @@ const triggerConfetti = () => {
         {isCorrectSelected && (
           <div className="confirm-area">
             <button className="confirm-btn btn" onClick={() => navigate("/")}>
+              <div className="guide-dot"></div>
               확인
             </button>
           </div>
