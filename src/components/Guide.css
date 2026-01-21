@@ -1,9 +1,9 @@
 /* 가이드 토글 버튼 */
 .guide-toggle-btn {
     position: fixed;
-    right: 8px;
-    bottom: 200px;
-    /* 챗봇 위 */
+    right: max(var(--fab-gap, 8px), calc((100vw - var(--app-w, 430px)) / 2 + var(--fab-gap, 8px)));
+    bottom: calc(var(--fab-gap, 8px) + var(--bottom-nav-h, 122px) + env(safe-area-inset-bottom, 0px) + 60px + 10px);
+    /* 챗봇 버튼(60px) + 간격(10px) 위 */
     width: 60px;
     height: 60px;
     padding: 0;
@@ -23,7 +23,7 @@
     gap: 2px;
     line-height: 1.2;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
     white-space: nowrap;
 }
 

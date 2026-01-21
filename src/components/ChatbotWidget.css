@@ -1,17 +1,24 @@
+:root {
+    --app-w: 430px;
+    --fab-gap: 8px;
+    --bottom-nav-h: 122px;
+}
+
 /* ===== Floating Button ===== */
 .cb-fab {
     position: fixed;
-    right: 8px;
+    right: max(var(--fab-gap), calc((100vw - var(--app-w)) / 2 + var(--fab-gap)));
     width: 60px;
     height: 60px;
-    bottom: 130px;
+    bottom: calc(var(--fab-gap) + var(--bottom-nav-h) + env(safe-area-inset-bottom, 0px));
     z-index: 2147483647;
     border: 0;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.7);
     cursor: pointer;
     filter: backdrop-filter(20px);
-
+    display: grid;
+    place-items: center;
 }
 
 /* ===== Overlay ===== */
@@ -45,8 +52,10 @@
 /* ===== Panel ===== */
 .cb-panel {
     position: fixed;
-    right: 16px;
-    bottom: 122px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: calc(var(--bottom-nav-h) + env(safe-area-inset-bottom, 0px));
     width: min(398px, calc(100vw - 32px));
     height: min(600px, 80vh);
     /* Fixed height as requested */
