@@ -1,9 +1,10 @@
 .profile {
-  margin: 0 16px 72px; 
+  margin: 0 16px 72px;
 
 }
+
 .profile .inner {
-  margin: 0 auto; 
+  margin: 0 auto;
   padding: 31px 0;
   width: 100%;
   background-image: url(/img/lockerroom-bg.png);
@@ -19,6 +20,7 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .profile .profile-top-text .edit {
   position: relative;
 }
@@ -28,6 +30,7 @@
   text-align: center;
   align-items: center;
 }
+
 .profile .profile-top-text .user-name {
   font-size: 18px;
   font-weight: 600;
@@ -53,6 +56,7 @@
   font-weight: 600;
   margin-bottom: 12px;
 }
+
 .profile .profile-bottom-text .data .value {
   font-size: 14px;
   font-weight: 600;
@@ -73,7 +77,8 @@
   width: 230px;
   height: 265px;
   border-radius: 6px;
-  overflow: hidden; /* 🔥 이게 제일 중요 */
+  overflow: hidden;
+  /* 🔥 이게 제일 중요 */
   background: #111;
 }
 
@@ -90,6 +95,7 @@
   overflow: visible;
   position: relative;
 }
+
 .calendar .tiltSwiper .swiper-slide {
   margin: 0 12px;
 }
@@ -98,6 +104,7 @@
   transform: translateY(10px) rotate(-8deg) scale(0.9);
   transition: all 0.2s ease;
 }
+
 .calendar .tiltSwiper .swiper-slide-next {
   transform: translateY(10px) rotate(8deg) scale(0.9);
   transition: all 0.2s ease;
@@ -105,14 +112,16 @@
 
 /* Swiper 컨테이너(파란 박스) 높이 맞추기 */
 .calendar .hero-swiper-wrap .swiper {
-  height: 320px; /* ✅ 265 * 1.07 ≈ 284 + 위/아래 여유 */
+  height: 320px;
+  /* ✅ 265 * 1.07 ≈ 284 + 위/아래 여유 */
 }
 
 /*  페이지네이션: 카드 아래 중앙 고정 */
 .cal-pagination {
   position: absolute;
   left: 50%;
-  bottom: 14px; /* 필요하면 10~18로 조절 */
+  bottom: 14px;
+  /* 필요하면 10~18로 조절 */
   transform: translateX(-50%);
   display: flex;
   align-items: center;
@@ -148,6 +157,7 @@
   width: 100%;
   opacity: 0.7;
 }
+
 .cal-arrow.next img {
   transform: rotate(180deg);
 }
@@ -171,7 +181,8 @@
 
 /* 현재 페이지 숫자 */
 .cal-page .now {
-  font-size: 14px; /* ✅ 더 크게 */
+  font-size: 14px;
+  /* ✅ 더 크게 */
   font-weight: 500;
 }
 
@@ -183,13 +194,15 @@
 
 
 /* 메뉴 */
-.locker-menu .inner{
+.locker-menu .inner {
   display: flex;
   flex-direction: column;
-  gap: 18px;   /* 카드 사이 기본 간격 */
+  gap: 18px;
+  /* 카드 사이 기본 간격 */
 }
+
 /* 카드 공통 */
-.menu-card{
+.menu-card {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 6px;
   padding: 20px 16px;
@@ -197,23 +210,24 @@
 }
 
 
-.menu-card.quick-menu{
+.menu-card.quick-menu {
   padding: 16px;
   margin-bottom: 0;
 }
 
 .menu-card.quick-menu {
-  margin-bottom: 30px; /* 필요하면 조절 */
+  margin-bottom: 30px;
+  /* 필요하면 조절 */
 }
 
 /* 상단 퀵메뉴 */
-.quick-menu{
+.quick-menu {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
 }
 
-.quick-item{
+.quick-item {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -221,10 +235,12 @@
   text-align: center;
 }
 
-.quick-item .menu-icon{ margin-bottom: 8px; }
+.quick-item .menu-icon {
+  margin-bottom: 8px;
+}
 
 /* 구분선 */
-.quick-item:not(:last-child)::after{
+.quick-item:not(:last-child)::after {
   content: "";
   position: absolute;
   right: 0;
@@ -236,26 +252,26 @@
 }
 
 /* 아이콘 + 텍스트 */
-.menu-icon{
+.menu-icon {
   width: 24px;
   height: 24px;
   object-fit: contain;
   display: block;
 }
 
-.menu-text{
+.menu-text {
   font-size: 16px;
   font-weight: 500;
 }
 
 /* 서비스 카드 */
-.card-header{
+.card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.locker-menu .card-title{
+.locker-menu .card-title {
   margin-bottom: 18px;
   font-size: 14px;
   font-weight: 400;
@@ -263,14 +279,14 @@
 }
 
 /* 서비스 2열  */
-.service-grid{
+.service-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   row-gap: 18px;
 }
 
 
-.service-item{
+.service-item {
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -280,10 +296,12 @@
 
 
 
-.service-item .menu-icon{ margin-right: 12px; }
+.service-item .menu-icon {
+  margin-right: 12px;
+}
 
 /* 리스트형 카드 (주문/나의콘텐츠/고객지원) */
-.list-menu{
+.list-menu {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -291,10 +309,42 @@
   row-gap: 18px;
 }
 
-.list-item{
+.list-item {
   display: flex;
   align-items: center;
   gap: 12px;
   text-decoration: none;
   color: #fff;
+}
+
+/* Guide Dots Positioning */
+.profile .profile-top-text .edit a {
+  position: relative;
+  display: block;
+}
+
+.profile .profile-top-text .edit a .guide-dot {
+  top: -2px;
+  right: -2px;
+}
+
+.calendar .hero-slide a {
+  position: relative;
+  display: block;
+}
+
+.calendar .hero-slide .guide-dot {
+  top: 10px;
+  right: 10px;
+  z-index: 5;
+}
+
+.cal-arrow.next {
+  position: relative;
+  overflow: visible;
+}
+
+.cal-arrow.next .guide-dot {
+  top: -2px;
+  right: -2px;
 }

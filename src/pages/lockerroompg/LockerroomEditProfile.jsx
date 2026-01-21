@@ -123,7 +123,9 @@ const LockerroomEditProfile = () => {
               <p className="player-name">양현종</p>
             </div>
             <div className="change-box">
+
               <Link to="/teamchoice" className="club">
+                <div className="guide-dot"></div>
                 구단 변경
               </Link>
               <Link to="#" className="palyer">

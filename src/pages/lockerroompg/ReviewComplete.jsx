@@ -89,6 +89,7 @@ const ReviewComplete = () => {
       <section className="done-footer">
         <div className="inner">
           <Link to="/lockerroom/calendar" className="done-btn">
+            <div className="guide-dot"></div>
             완료
           </Link>
         </div>

@@ -1,12 +1,13 @@
-.calendarPg .header{
-    margin-bottom: 28px;
+.calendarPg .header {
+  margin-bottom: 28px;
 }
-.calendarPg .header .inner{
-    height: 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 16px;
+
+.calendarPg .header .inner {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
 }
 
 
@@ -32,6 +33,7 @@
   color: rgba(255, 255, 255, 0.85);
   font-size: 20px;
   cursor: pointer;
+  position: relative;
 }
 
 .mc-title {
@@ -75,6 +77,7 @@
 .mc-cell.inMonth {
   background: #5f5f5f;
 }
+
 .mc-cell.outMonth {
   background: #3b3b3b;
 }
@@ -83,6 +86,7 @@
 .mc-cell.eventDay {
   cursor: pointer;
 }
+
 .mc-cell.noEvent {
   cursor: default;
 }
@@ -110,13 +114,16 @@
   color: rgba(255, 255, 255, 0.35);
 }
 
-.mc-eventImg{
+.mc-eventImg {
   position: absolute;
-  inset: 0;              /* top/right/bottom/left = 0 */
+  inset: 0;
+  /* top/right/bottom/left = 0 */
   width: 100%;
   height: 100%;
-  border-radius: 2px;    /* 셀 radius랑 동일하게 */
-  object-fit: cover;     /* 꽉 채우되 비율 유지(잘림) */
+  border-radius: 2px;
+  /* 셀 radius랑 동일하게 */
+  object-fit: cover;
+  /* 꽉 채우되 비율 유지(잘림) */
   z-index: 0;
 }
 
@@ -125,34 +132,34 @@
 /* =========================
    GAUGE 컨테이너
 ========================= */
-.summary .title{
-    margin-bottom: 28px;
+.summary .title {
+  margin-bottom: 28px;
 }
 
-.gauge{
-    margin: 0 auto;
-    position: relative;
-    width: 230px;
+.gauge {
+  margin: 0 auto;
+  position: relative;
+  width: 230px;
 }
 
-.gauge .deco-text{
-    text-align: center;
-    width: 230px;
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 30px;
+.gauge .deco-text {
+  text-align: center;
+  width: 230px;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 30px;
 }
 
 
 
-.gauge .gauge-box{
-    width: 230px;
-    align-items: center;
+.gauge .gauge-box {
+  width: 230px;
+  align-items: center;
 
 }
 
 /* 게이지 이미지 */
-.gauge.arcImg{
+.gauge.arcImg {
   width: 100%;
   height: auto;
   display: block;
@@ -160,18 +167,18 @@
 
 
 
-.gauge .baseball-icon{
-text-align: center;
-margin-top: -70px;
+.gauge .baseball-icon {
+  text-align: center;
+  margin-top: -70px;
 }
 
 
 
-.gauge .result{
-    text-align: center;
+.gauge .result {
+  text-align: center;
 }
 
-.gauge .percent{
+.gauge .percent {
   display: block;
   font-size: 24px;
   font-weight: 600;
@@ -179,25 +186,25 @@ margin-top: -70px;
   margin-bottom: 4px;
 }
 
-.gauge .comment{
+.gauge .comment {
   font-size: 20px;
 }
 
 /* 버튼 래퍼 */
-.gauge-btn{
+.gauge-btn {
   margin-top: 28px;
   display: flex;
   justify-content: center;
 }
 
 /* 링크 버튼 */
-.gauge-cta{
+.gauge-cta {
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 16px ;
+  padding: 16px;
   border-radius: 6px;
   background: #222;
   color: #fff;
@@ -208,22 +215,23 @@ margin-top: -70px;
 }
 
 /* hover */
-.gauge-cta:hover{
+.gauge-cta:hover {
   background: #2a2a2a;
 }
 
 /* 텍스트 래퍼(p) */
-.btn-txt{
+.btn-txt {
   display: inline-flex;
   align-items: center;
-  margin: 0;          /* p 기본 여백 제거 */
+  margin: 0;
+  /* p 기본 여백 제거 */
   color: #fff;
   font-size: 16px;
 }
 
 /* 아이콘 래퍼 */
-.cta-icon{
-    margin-left: 12px;
+.cta-icon {
+  margin-left: 12px;
   display: inline-flex;
   align-items: center;
 }
@@ -234,68 +242,71 @@ margin-top: -70px;
    (네 기존 캘린더/게이지 사이즈 톤 맞춤)
 ========================= */
 
-.timeline{
-  margin-top: 40px; /* 위 섹션이랑 간격 */
+.timeline {
+  margin-top: 40px;
+  /* 위 섹션이랑 간격 */
 }
 
-.timeline .title{
+.timeline .title {
   margin-bottom: 20px;
 }
 
 /* 리스트 래퍼 */
-.timeline-list{
+.timeline-list {
   display: flex;
   flex-direction: column;
-  gap: 26px; /* 카드 사이 간격 */
+  gap: 26px;
+  /* 카드 사이 간격 */
 }
 
 
 
 /* ===== 왼쪽 날짜 ===== */
-.timeline-date{
+.timeline-date {
   display: flex;
   align-items: center;
   margin-bottom: 16px;
 }
 
-.timeline-mmdd{
+.timeline-mmdd {
   margin: 0;
   font-size: 18px;
   font-weight: 700;
   color: #fff;
 }
 
-.timeline-day{
+.timeline-day {
   margin-left: 4px;
   font-size: 14px;
   font-weight: 600;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 /* ===== 오른쪽 카드 ===== */
-.timeline-card{
+.timeline-card {
   position: relative;
   padding: 0;
   color: #fff;
 }
 
 /* ✅ 카드 내부 2컬럼: (로고+라인) / (콘텐츠) */
-.timeline-card .card-grid{
+.timeline-card .card-grid {
   display: grid;
-  grid-template-columns: 28px 1fr; /* 로고 폭(너 logo 28px라서 맞춤) */
+  grid-template-columns: 28px 1fr;
+  /* 로고 폭(너 logo 28px라서 맞춤) */
   gap: 10px;
   align-items: start;
 }
 
 /* ✅ 왼쪽: 로고 + 세로라인 */
-.timeline-card .card-left{
+.timeline-card .card-left {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 /* 로고(기존 그대로 유지) */
-.timeline-logo{
+.timeline-logo {
   width: 28px;
   height: 28px;
   border-radius: 6px;
@@ -303,22 +314,23 @@ margin-top: -70px;
 }
 
 /* ✅ 세로라인: 로고 아래로 이어짐 */
-.timeline-card .vline{
-    width: 2px;
-    height: 142px;
-    margin-top: 10px;
-    background: rgba(255,255,255,0.2);
-    border-radius: 10px;
-  min-height: 120px; /* 내용 적어도 라인 유지 */
+.timeline-card .vline {
+  width: 2px;
+  height: 142px;
+  margin-top: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  min-height: 120px;
+  /* 내용 적어도 라인 유지 */
 }
 
 /* ✅ 오른쪽 콘텐츠 */
-.timeline-card .card-right{
+.timeline-card .card-right {
   min-width: 0;
 }
 
 /* 카드 상단(팀vs팀 + 더보기) */
-.timeline-head{
+.timeline-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -328,21 +340,21 @@ margin-top: -70px;
 
 
 /* 팀 vs 팀 */
-.timeline-match-txt{
+.timeline-match-txt {
   margin: 0;
   font-size: 20px;
   font-weight: 600;
 }
 
-.timeline-match-txt .vs{
+.timeline-match-txt .vs {
   margin: 0 8px;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.6);
   font-weight: 600;
   font-size: 16px;
 }
 
 /* 더보기 버튼 */
-.timeline-more{
+.timeline-more {
   width: 24px;
   height: 24px;
   display: grid;
@@ -353,50 +365,50 @@ margin-top: -70px;
   border-radius: 6px;
 }
 
-.timeline-more:hover{
-  background: rgba(255,255,255,0.06);
+.timeline-more:hover {
+  background: rgba(255, 255, 255, 0.06);
 }
 
 /* ===== 카드 본문 ===== */
-.timeline-body{
+.timeline-body {
   position: relative;
   padding-top: 12px;
 }
 
 
 /* 본문 텍스트들 */
-.timeline-stadium{
+.timeline-stadium {
   margin-bottom: 8px;
   font-size: 16px;
   font-weight: 600;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.85);
 }
 
-.timeline-meta{
+.timeline-meta {
   display: flex;
   align-items: center;
   gap: 8px;
   margin-bottom: 8px;
 }
 
-.timeline-time{
+.timeline-time {
   font-size: 18px;
   font-weight: 600;
   color: #fff;
 }
 
-.timeline-meta .timeline-dots{
-  color: rgba(255,255,255,0.6);
+.timeline-meta .timeline-dots {
+  color: rgba(255, 255, 255, 0.6);
   font-size: 14px;
 }
 
-.timeline-sub{
+.timeline-sub {
   font-size: 14px;
   font-weight: 500;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.6);
 }
 
-.timeline-seat{
+.timeline-seat {
   margin-bottom: 12px;
   font-size: 16px;
   font-weight: 400;
@@ -404,14 +416,14 @@ margin-top: -70px;
 }
 
 /* 액션 영역 */
-.timeline-actions{
+.timeline-actions {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
 /* 리뷰 버튼 */
-.timeline-review{
+.timeline-review {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -426,12 +438,29 @@ margin-top: -70px;
 }
 
 
-.timeline-review:hover{
+.timeline-review:hover {
   background: #2a2a2a;
 }
 
-.timeline-review img{
+.timeline-review img {
   width: 18px;
   height: 18px;
   display: block;
+}
+
+/* Guide Dots Positioning */
+.mc-header .mc-arrow:last-child .guide-dot {
+  top: 2px;
+  right: 2px;
+}
+
+.mc-cell .guide-dot {
+  top: 4px;
+  right: 4px;
+  z-index: 5;
+}
+
+.timeline-review .guide-dot {
+  top: 5px;
+  right: 5px;
 }

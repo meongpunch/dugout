@@ -95,3 +95,13 @@ body:not(.guide-on) .guide-dot {
     top: 0px;
     right: 0px;
 }
+
+.edit .guide-dot {
+    top: -5px !important;
+    right: -5px !important;
+}
+
+.club .guide-dot {
+    top: 5px;
+    right: 48px;
+}
