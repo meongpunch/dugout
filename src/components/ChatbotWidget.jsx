@@ -483,14 +483,11 @@ export default function ChatbotWidget() {
                                     </button>
                                     {showMenu && (
                                         <div className="cb-menu">
-                                            <button onClick={resetChat}>
-                                                <span className="cb-menu-icon" ><img src="/img/chatbot-plus.svg" alt="" /></span> 새 채팅 시작하기
+                                            <button onClick={askEndChat}>
+                                                <span className="cb-menu-icon"><img src="/img/chatbot-plus.svg" alt="" /></span> 새 대화 시작하기
                                             </button>
                                             <button onClick={handleRecentChats}>
                                                 <span className="cb-menu-icon"><img src="/img/chatbot-clock.svg" alt="" /></span> 최근 대화한 채팅
-                                            </button>
-                                            <button onClick={askEndChat}>
-                                                <span className="cb-menu-icon"><img src="/img/chatbot-close.svg" alt="" /></span> 채팅 종료하기
                                             </button>
                                         </div>
                                     )}
