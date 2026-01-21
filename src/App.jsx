@@ -36,7 +36,7 @@ const App = () => {
         <Route path="/splash" element={<Splash />} />
         <Route path="/onboarding" element={<Onboarding />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/TeamChoice" element={<TeamChoice />} />
+        <Route path="/teamchoice" element={<TeamChoice />} />
         <Route path="/onboardingtopbar" element={<OnboardingTopBar iconType="back" skipType="skip" />} />
         <Route path="/lockerroom/review/:id" element={<Review />} />
         <Route path="/lockerroom/review/complete/:id" element={<ReviewComplete />} />

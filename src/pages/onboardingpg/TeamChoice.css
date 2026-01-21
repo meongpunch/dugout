@@ -213,7 +213,6 @@
   z-index: -1;
   /* 버튼 글씨나 그라데이션보다 뒤로 가도록 */
 }
-}
 
 .cta-fixed::before {
   content: "";
