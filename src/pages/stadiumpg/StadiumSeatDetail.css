@@ -9,13 +9,6 @@
   padding-bottom: calc(var(--tabbar-h) + 16px + env(safe-area-inset-bottom));
 }
 
-.stadium-name {
-  font-size: 24px;
-  font-weight: bold;
-  display: block;
-  padding: 8px 16px;
-}
-
 .detail-map-wrap {
   position: relative;
 }
@@ -28,7 +21,7 @@
   touch-action: none;
   user-select: none;
   cursor: grab;
-  margin: 30px 0 48px 0;
+  margin: 64px 0 48px 0;
 }
 
 .mapViewport.dragging {

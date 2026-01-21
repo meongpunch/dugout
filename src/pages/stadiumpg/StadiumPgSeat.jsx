@@ -36,7 +36,7 @@ const StadiumSeat = () => {
           <MainPgHeader logoType="back" btnType="ticket" />
         </header>
 
-        <div className="stadium-title">
+        <div className="stadium-title zone">
           {selectedStadium}
           <p className="caption">원하는 구역을 선택해주세요.</p>
         </div>
