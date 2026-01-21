@@ -17,16 +17,19 @@ const snsCards = [
     profileImg: "/img/ground_sns_logo.svg",
     profileName: "Always_Kia_Tigers",
     extraIcon: "/img/ground_sns_logo2.svg",
+    linkUrl:
+      "https://x.com/kiatigers/status/2008369049512915061?s=46&t=OEx_hEu0TAZ_fq8bxjWzmA",
   },
   {
     id: 2,
     img: "/img/ground_sns_2.jpg",
-    badge: "⚾ 오프 더 가코드",
+    badge: "⚾️ 오프 더 가코드",
     title: "선수들은 내일을 향해 달리는 중",
     desc: "In Okinawa ⭐",
     profileImg: "/img/ground_sns_logo.svg",
     profileName: "Always_Kia_Tigers",
     extraIcon: "/img/ground_sns_logo2.svg",
+    linkUrl: "https://www.instagram.com/p/DRYxa92EjUs/?igsh=cjd4dG9wenQ2bGp0",
   },
   {
     id: 3,
@@ -37,6 +40,8 @@ const snsCards = [
     profileImg: "/img/ground_sns_logo.svg",
     profileName: "Always_Kia_Tigers",
     extraIcon: "/img/ground_sns_logo2.svg",
+    linkUrl:
+      "https://x.com/kiatigers/status/1976925628403535935?s=46&t=OEx_hEu0TAZ_fq8bxjWzmA",
   },
   {
     id: 4,
@@ -47,6 +52,7 @@ const snsCards = [
     profileImg: "/img/ground_sns_logo.svg",
     profileName: "Always_Kia_Tigers",
     extraIcon: "/img/ground_sns_logo2.svg",
+    linkUrl: "https://www.instagram.com/p/DRYxa92EjUs/?igsh=cjd4dG9wenQ2bGp0",
   },
 ];
 
@@ -246,9 +252,10 @@ const Ground = () => {
             {snsCards.map((card) => (
               <SwiperSlide key={card.id}>
                 <a
-                  href="#"
+                  href={card.linkUrl}
                   className="sns-card-link"
-                  onClick={(e) => e.preventDefault()}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <article className="sns-card">
                     <div className="sns-thumb">
