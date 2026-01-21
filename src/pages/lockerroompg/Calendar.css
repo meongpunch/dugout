@@ -424,16 +424,7 @@ margin-top: -70px;
   font-size: 14px;
   font-weight: 700;
 }
-.timeline-review::before{
-  content: "";
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #F2FF43;
-  top: 4px;
-  right: 4px;
-}
+
 
 .timeline-review:hover{
   background: #2a2a2a;
