@@ -197,8 +197,16 @@
   border: 1px solid rgba(255,255,255,0.3);
 }
 
-.seatKeyword-chip-txt{ font-size: 14px; }
-.seatKeyword-chip-ic{ font-size: 14px; }
+.seatKeyword-chip-txt{
+  font-size: 14px;
+}
+.seatKeyword-chip-ic{
+  font-size: 14px;
+}
+
+.seatKeyword-chip-ic.lh-fix{
+  line-height: 0.8;
+}
 
 .seatKeyword-chip.is-active{
   background: #aa0000;
