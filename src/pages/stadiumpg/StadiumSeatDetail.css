@@ -15,7 +15,7 @@
 
 .mapViewport {
   width: 100%;
-  height: clamp(420px, 62vh, 480px);
+  height: clamp(420px, 62vh, 521px);
   position: relative;
   overflow: hidden;
   touch-action: none;

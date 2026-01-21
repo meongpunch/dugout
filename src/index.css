@@ -4,6 +4,14 @@
   padding: 0;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
 body {
   display: flex;
   justify-content: center;
