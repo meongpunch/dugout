@@ -75,7 +75,7 @@ const mockReviews = [
     ],
     text: "잠실구장 풍경 보고 싶고, 내야 외야 한 눈에 보고 싶고, 무엇보다 열정적으로🔥 응원하는 자리 좋아하는 분들이라면 이 자리 강추.. 얼마나 열정적이냐? 야푸 먹을 시간이 없습니다.",
     chips: ["사진 잘 나와요", "응원하기 좋아요", "좌석 좁아요"],
-    counts: { photo: 985, family: 546, safe: 123 },
+    counts: { photo: 985, family: 546, safe: 521 },
   },
 ];
 
@@ -289,7 +289,11 @@ export default function StadiumPgReview() {
                   onClick={() => setFilterKey(active ? null : s.key)}
                   type="button"
                 >
-                  <span className={`sr-pillIcon ${s.key === "view" ? "ic-eyes" : ""}`}>{s.icon}</span>
+                  <span
+                    className={`sr-pillIcon ${s.key === "view" ? "ic-eyes" : ""}`}
+                  >
+                    {s.icon}
+                  </span>
                   <span className="sr-pillText">{s.label}</span>
                   <span className="sr-pillCount">
                     {s.count.toLocaleString()}
