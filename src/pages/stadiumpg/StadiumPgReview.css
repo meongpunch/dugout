@@ -7,6 +7,7 @@
   --pill: rgba(255, 255, 255, 0.1);
   --pillOn: rgba(255, 255, 255, 0.18);
 }
+
 .sr-page {
   background: var(--bg);
   min-height: 100dvh;
@@ -92,7 +93,9 @@
   font-size: 14px;
   cursor: pointer;
   line-height: 1;
+  position: relative;
 }
+
 
 .sr-pill.isActive {
   background: #aa0000;
@@ -111,6 +114,11 @@
   color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
   padding: 0 16px;
+}
+
+.sr-sortBtn .guide-dot {
+  top: 4px;
+  right: 8px;
 }
 
 .sr-sortBtn::before {

@@ -51,7 +51,9 @@ const StadiumSeat = () => {
               className={`section-hit hit-${sec}`}
               onClick={() => goSection(sec)}
               aria-label={`${sec} 구역 선택`}
-            />
+            >
+              {sec === 219 && <div className="guide-dot"></div>}
+            </button>
           ))}
         </div>
 

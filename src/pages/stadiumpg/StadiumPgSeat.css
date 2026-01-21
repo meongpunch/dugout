@@ -21,6 +21,7 @@
   aspect-ratio: 430 / 546;
   width: 100%;
   overflow: hidden;
+  height: 480px;
 }
 
 .seat-map img {
@@ -62,18 +63,21 @@
   width: 30%;
   height: 11.5%;
 }
+
 .hit-221 {
   left: 26%;
   top: 35%;
   width: 54%;
   height: 11.5%;
 }
+
 .hit-220 {
   left: 30%;
   top: 48%;
   width: 56%;
   height: 13.5%;
 }
+
 .hit-219 {
   left: 34%;
   top: 64%;

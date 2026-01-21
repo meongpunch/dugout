@@ -2,6 +2,7 @@
 import React, { useMemo, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Calendar.css";
+import "../../components/Guide.css";
 
 /* ✅ 타임라인 데이터: 여기만 추가/수정하면 됨 */
 const TIMELINE_ITEMS = [
@@ -147,6 +148,7 @@ export default function Calendar({
                 className="mc-arrow"
                 aria-label="next"
               >
+                <div className="guide-dot"></div>
                 <img src="/img/lockerroom-chevron-2.svg" alt="" />
               </button>
             </div>
@@ -181,12 +183,15 @@ export default function Calendar({
                     <span className="mc-dayNum">{cell.day}</span>
 
                     {ev?.imageUrl && (
-                      <img
-                        src={ev.imageUrl}
-                        alt=""
-                        draggable={false}
-                        className="mc-eventImg"
-                      />
+                      <>
+                        <img
+                          src={ev.imageUrl}
+                          alt=""
+                          draggable={false}
+                          className="mc-eventImg"
+                        />
+                        <div className="guide-dot"></div>
+                      </>
                     )}
                   </button>
                 );
@@ -241,67 +246,68 @@ export default function Calendar({
       </section>
 
       {/* ✅ 타임라인 */}
-<section className="timeline">
-  <div className="inner">
-    <h2 className="title">타임라인</h2>
+      <section className="timeline">
+        <div className="inner">
+          <h2 className="title">타임라인</h2>
 
-    <div className="timeline-list">
-      {timelineItems.map((it) => (
-        <div key={it.id} className="timeline-row">
+          <div className="timeline-list">
+            {timelineItems.map((it) => (
+              <div key={it.id} className="timeline-row">
 
-          {/* ===== 왼쪽 날짜 ===== */}
-          <div className="timeline-date">
-            <p className="timeline-mmdd">{formatMMDD(it.date)}</p>
-            <p className="timeline-day">{it.day}</p>
+                {/* ===== 왼쪽 날짜 ===== */}
+                <div className="timeline-date">
+                  <p className="timeline-mmdd">{formatMMDD(it.date)}</p>
+                  <p className="timeline-day">{it.day}</p>
+                </div>
+
+                {/* ===== 오른쪽 카드 ===== */}
+                <article className="timeline-card">
+                  <div className="card-grid">
+                    {/* ✅ 왼쪽: 로고 + 세로라인 묶음 */}
+                    <div className="card-left" aria-hidden="true">
+                      <img className="timeline-logo" src={it.teamLogo} alt="" />
+                      <span className="vline"></span>
+                    </div>
+
+                    {/* ✅ 오른쪽: 제목 + 본문 묶음 */}
+                    <div className="card-right">
+                      <div className="timeline-head">
+                        <p className="timeline-match-txt">
+                          {it.homeTeam} <span className="vs">vs</span> {it.awayTeam}
+                        </p>
+
+                        <button type="button" className="timeline-more" aria-label="more">
+                          <img src="/img/lockerroom-dots-vertical.svg" alt="" />
+                        </button>
+                      </div>
+
+                      <div className="timeline-body">
+                        <p className="timeline-stadium">{it.stadium}</p>
+
+                        <div className="timeline-meta">
+                          <strong className="timeline-time">{it.time}</strong>
+                          <span className="timeline-dots">•</span>
+                          <span className="timeline-sub">{it.meta}</span>
+                        </div>
+
+                        <p className="timeline-seat">{it.seat}</p>
+
+                        <div className="timeline-actions">
+                          <Link to={`/lockerroom/review/${it.id}`} className="timeline-review">
+                            <div className="guide-dot"></div>
+                            <img src="/img/lockerroom-calendar-review.svg" alt="" />
+                            리뷰 쓰기
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            ))}
           </div>
-
-          {/* ===== 오른쪽 카드 ===== */}
-            <article className="timeline-card">
-            <div className="card-grid">
-                {/* ✅ 왼쪽: 로고 + 세로라인 묶음 */}
-                <div className="card-left" aria-hidden="true">
-                <img className="timeline-logo" src={it.teamLogo} alt="" />
-                <span className="vline"></span>
-                </div>
-
-                {/* ✅ 오른쪽: 제목 + 본문 묶음 */}
-                <div className="card-right">
-                <div className="timeline-head">
-                    <p className="timeline-match-txt">
-                    {it.homeTeam} <span className="vs">vs</span> {it.awayTeam}
-                    </p>
-
-                    <button type="button" className="timeline-more" aria-label="more">
-                    <img src="/img/lockerroom-dots-vertical.svg" alt="" />
-                    </button>
-                </div>
-
-                <div className="timeline-body">
-                    <p className="timeline-stadium">{it.stadium}</p>
-
-                    <div className="timeline-meta">
-                    <strong className="timeline-time">{it.time}</strong>
-                    <span className="timeline-dots">•</span>
-                    <span className="timeline-sub">{it.meta}</span>
-                    </div>
-
-                    <p className="timeline-seat">{it.seat}</p>
-
-                    <div className="timeline-actions">
-                    <Link to={`/lockerroom/review/${it.id}`} className="timeline-review">
-                      <img src="/img/lockerroom-calendar-review.svg" alt="" />
-                      리뷰 쓰기
-                    </Link>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </article>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
     </div>
   );
 }

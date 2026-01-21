@@ -1,5 +1,6 @@
 :root {
-  --tabbar-h: 80px; /* 하단 탭바 실제 높이에 맞게 조절 */
+  --tabbar-h: 80px;
+  /* 하단 탭바 실제 높이에 맞게 조절 */
 }
 
 .seat-detail {
@@ -15,13 +16,13 @@
 
 .mapViewport {
   width: 100%;
-  height: clamp(420px, 62vh, 521px);
+  height: clamp(420px, 62vh, 0px);
   position: relative;
   overflow: hidden;
   touch-action: none;
   user-select: none;
   cursor: grab;
-  margin: 64px 0 48px 0;
+  margin: 64px 0 40px 0;
 }
 
 .mapViewport.dragging {

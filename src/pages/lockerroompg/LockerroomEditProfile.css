@@ -1,7 +1,8 @@
-.editCover{
+.editCover {
     margin-bottom: 0;
 }
-.editCover .inner{
+
+.editCover .inner {
     background-image: url(/img/editProfile-bg.png);
     width: 100%;
     height: 200px;
@@ -10,7 +11,7 @@
     background-repeat: no-repeat;
 }
 
-.editCover .inner .editCover-top{
+.editCover .inner .editCover-top {
     height: 80px;
     display: flex;
     justify-content: space-between;
@@ -18,21 +19,21 @@
     padding: 0 16px;
 }
 
-.editCover .inner .editCover-top .back{
+.editCover .inner .editCover-top .back {
     position: relative;
 }
 
-.editCover .inner .editCover-top .editCover-btn{
+.editCover .inner .editCover-top .editCover-btn {
     cursor: pointer;
 }
 
-.edit-info{
+.edit-info {
     width: 100%;
     position: relative;
     padding: 66px 16px 0;
 }
 
-.avatar{
+.avatar {
     background: rgba(17, 17, 17, 1);
     display: inline-block;
     position: absolute;
@@ -43,40 +44,40 @@
     top: 0;
 }
 
-.avatar .edit-photo{
+.avatar .edit-photo {
     position: absolute;
     right: 0;
     bottom: 0;
     cursor: pointer;
 }
 
-.avatar .avatar-img{
+.avatar .avatar-img {
     width: 80px;
     height: 80px;
 }
 
-.settingGroup{
-  margin-bottom: 12px;
+.settingGroup {
+    margin-bottom: 12px;
 }
 
-.settingGroup:last-child{
-  margin-bottom: 0;
+.settingGroup:last-child {
+    margin-bottom: 0;
 }
 
-.settingGroup.nickname{
-  margin-bottom: 24px;
+.settingGroup.nickname {
+    margin-bottom: 24px;
 }
 
 
 .settingTitle {
     font-size: 14px;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255, 255, 255, 0.4);
     margin-bottom: 8px;
 }
 
 /* 카드 박스 */
 .settingCard {
-    background: rgba(255,255,255,0.06);
+    background: rgba(255, 255, 255, 0.06);
     border-radius: 6px;
     padding: 12px 16px;
 }
@@ -102,10 +103,11 @@
 }
 
 
-.edit-info .inner{
+.edit-info .inner {
     width: 100%;
 }
-.edit-info .inner .change-team{
+
+.edit-info .inner .change-team {
     background: url(/img/editProfile-changeteam.png);
     height: 180px;
     padding: 26px 28px 16px;
@@ -115,39 +117,40 @@
     margin-bottom: 18px;
 }
 
-.edit-info .inner .change-team .top-box{
+.edit-info .inner .change-team .top-box {
     display: flex;
     align-items: center;
 }
 
-.edit-info .inner .change-team .top-box .logo-img{
+.edit-info .inner .change-team .top-box .logo-img {
     height: 52px;
     margin-right: 20px;
 }
 
-.edit-info .inner .change-team .top-box .player-name{
+.edit-info .inner .change-team .top-box .player-name {
     font-size: 24px;
     font-weight: 700;
     margin: 0;
 }
 
-.edit-info .inner .change-team .change-box{
+.edit-info .inner .change-team .change-box {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
-.edit-info .inner .change-team .change-box a{
+.edit-info .inner .change-team .change-box a {
     flex: 1;
     text-align: center;
-    font-size: 16px;           
+    font-size: 16px;
     font-weight: 500;
     margin: 0;
     position: relative;
-    padding: 14px 0;      
+    padding: 14px 0;
 }
 
-.edit-info .inner .change-team .change-box a:first-child::after{
+.edit-info .inner .change-team .change-box a:first-child::after {
     content: "";
     position: absolute;
     right: 0;
@@ -155,7 +158,6 @@
     transform: translateY(-50%);
     width: 2px;
     height: 28px;
-    background: rgba(255,255,255,0.25);
+    background: rgba(255, 255, 255, 0.25);
     border-radius: 10px;
 }
-

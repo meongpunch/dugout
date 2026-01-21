@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import MainPgHeader from "../../components/MainPgHeader";
+import "../../components/Guide.css";
 import "./Lockerroom.css";
 
 // Swiper
@@ -10,23 +11,23 @@ import "swiper/css";
 
 const Lockerroom = () => {
   const profileStats = [
-  {
-    id: 'prediction-rate',
-    label: '나의 직관 승률',
-    value: '12전 8승 4패 66.7%',
-  },
-  {
-    id: 'followers',
-    label: '팔로워',
-    value: 18,
-  },
-  {
-    id: 'following',
-    label: '팔로우',
-    value: 8,
-  },
+    {
+      id: 'prediction-rate',
+      label: '나의 직관 승률',
+      value: '12전 8승 4패 66.7%',
+    },
+    {
+      id: 'followers',
+      label: '팔로워',
+      value: 18,
+    },
+    {
+      id: 'following',
+      label: '팔로우',
+      value: 8,
+    },
   ];
-  
+
   const swiperRef = useRef(null);
   const [active, setActive] = useState(0);
 
@@ -40,39 +41,39 @@ const Lockerroom = () => {
   ];
 
   const quickMenus = [
-  { label: "구단 순위", icon: "/img/lockerroom-club-ranking.svg", to: "null" },
-  { label: "내가 쓴 글", icon: "/img/lockerroom-my-post.svg", to: "null" },
-  { label: "하이라이트", icon: "/img/lockerroom-highlight.svg", to: "null" },
+    { label: "구단 순위", icon: "/img/lockerroom-club-ranking.svg", to: "null" },
+    { label: "내가 쓴 글", icon: "/img/lockerroom-my-post.svg", to: "null" },
+    { label: "하이라이트", icon: "/img/lockerroom-highlight.svg", to: "null" },
   ];
 
   const serviceMenus = [
-  { label: "스타디움", icon: "/img/lockerroom-stadium.svg"},
-  { label: "그라운드", icon: "/img/lockerroom-ground.svg"},
-  { label: "경기 일정", icon: "/img/lockerroom-Schedule.svg" },
-  { label: "기록 & 스탯 분석", icon: "/img/lockerroom-stats.svg" },
-  { label: "구매 내역", icon: "/img/lockerroom-orders.svg" },
-  { label: "하이라이트 모아보기", icon: "/img/lockerroom-highlight.svg" },
+    { label: "스타디움", icon: "/img/lockerroom-stadium.svg" },
+    { label: "그라운드", icon: "/img/lockerroom-ground.svg" },
+    { label: "경기 일정", icon: "/img/lockerroom-Schedule.svg" },
+    { label: "기록 & 스탯 분석", icon: "/img/lockerroom-stats.svg" },
+    { label: "구매 내역", icon: "/img/lockerroom-orders.svg" },
+    { label: "하이라이트 모아보기", icon: "/img/lockerroom-highlight.svg" },
   ];
 
   const orderMenus = [
-  { label: "구매 내역", icon: "/img/lockerroom-orders.svg", to: "" },
-  { label: "찜 목록", icon: "/img/lockerroom-wishlist.svg", to: "" },
-  { label: "주소 관리", icon: "/img/lockerroom-pin.svg", to: "" },
-  { label: "이벤트", icon: "/img/lockerroom-event.svg", to: "" },
+    { label: "구매 내역", icon: "/img/lockerroom-orders.svg", to: "" },
+    { label: "찜 목록", icon: "/img/lockerroom-wishlist.svg", to: "" },
+    { label: "주소 관리", icon: "/img/lockerroom-pin.svg", to: "" },
+    { label: "이벤트", icon: "/img/lockerroom-event.svg", to: "" },
   ];
 
-const myContentMenus = [
-  { label: "내가 작성한 게시글", icon: "/img/lockerroom-my-post.svg", to: "" },
-  { label: "좋아요한 게시글", icon: "/img/lockerroom-liked.svg", to: "" },
-  { label: "직관 기록", icon: "/img/lockerroom-attendance.svg", to: "" },
-  { label: "퀴즈 · 참여 기록", icon: "/img/lockerroom-quizhistory.svg", to: "" },
+  const myContentMenus = [
+    { label: "내가 작성한 게시글", icon: "/img/lockerroom-my-post.svg", to: "" },
+    { label: "좋아요한 게시글", icon: "/img/lockerroom-liked.svg", to: "" },
+    { label: "직관 기록", icon: "/img/lockerroom-attendance.svg", to: "" },
+    { label: "퀴즈 · 참여 기록", icon: "/img/lockerroom-quizhistory.svg", to: "" },
   ];
 
-const csMenus = [
-  { label: "공지사항", icon: "/img/lockerroom-notices.svg", to: "" },
-  { label: "고객센터", icon: "/img/lockerroom-support.svg", to: "" },
-  { label: "문의하기", icon: "/img/lockerroom-contact.svg", to: "" },
-  { label: "약관 및 정책", icon: "/img/lockerroom-Legal.svg", to: "" },
+  const csMenus = [
+    { label: "공지사항", icon: "/img/lockerroom-notices.svg", to: "" },
+    { label: "고객센터", icon: "/img/lockerroom-support.svg", to: "" },
+    { label: "문의하기", icon: "/img/lockerroom-contact.svg", to: "" },
+    { label: "약관 및 정책", icon: "/img/lockerroom-Legal.svg", to: "" },
   ];
 
   return (
@@ -91,6 +92,7 @@ const csMenus = [
             </div>
             <div className="edit">
               <Link to={"/lockerroom/edit"} >
+                <div className="guide-dot"></div>
                 <img src="/img/lockerroom-edit.svg" alt="" />
               </Link>
             </div>
@@ -107,7 +109,7 @@ const csMenus = [
           </div>
         </div>
       </section>
-      
+
       {/* 직관 캘린더 */}
       <section className="calendar">
         <h2 className="section-title">직관 캘린더</h2>
@@ -133,16 +135,17 @@ const csMenus = [
             observeParents
             className="mySwiper tiltSwiper"
           >
-          {slides.map((s) => (
-            <SwiperSlide key={s.id} className="hero-slide">
-              <Link to="/lockerroom/calendar">
-                <div className="img-box">
-                  <img src={s.img} alt={s.name} />
-                </div>
-              </Link>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+            {slides.map((s, index) => (
+              <SwiperSlide key={s.id} className="hero-slide">
+                <Link to="/lockerroom/calendar">
+                  <div className="img-box">
+                    <img src={s.img} alt={s.name} />
+                  </div>
+                  {active === index && <div className="guide-dot"></div>}
+                </Link>
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
           {/* 페이지네이션 */}
           <div className="cal-pagination">
@@ -157,7 +160,7 @@ const csMenus = [
 
             <div className="cal-page">
               <span className="now">{active + 1}</span>
-              <span className="divider">|</span> 
+              <span className="divider">|</span>
               <span className="total">{slides.length}</span>
             </div>
 
@@ -167,6 +170,7 @@ const csMenus = [
               aria-label="next"
               onClick={() => swiperRef.current?.slideNext()}
             >
+              <div className="guide-dot"></div>
               <img src="/img/lockerroom-chevron.svg" alt="" />
             </button>
           </div>
@@ -211,7 +215,7 @@ const csMenus = [
             <ul className="list-menu">
               {orderMenus.map((m) => (
                 <li key={m.label}>
-                  <Link to={m.to || ""} className="list-item" onClick={(e)=>e.preventDefault()}>
+                  <Link to={m.to || ""} className="list-item" onClick={(e) => e.preventDefault()}>
                     <img className="menu-icon" src={m.icon} alt="" />
                     <span className="menu-text">{m.label}</span>
                   </Link>
@@ -227,7 +231,7 @@ const csMenus = [
             <ul className="list-menu">
               {myContentMenus.map((m) => (
                 <li key={m.label}>
-                  <Link to={m.to || ""} className="list-item" onClick={(e)=>e.preventDefault()}>
+                  <Link to={m.to || ""} className="list-item" onClick={(e) => e.preventDefault()}>
                     <img className="menu-icon" src={m.icon} alt="" />
                     <span className="menu-text">{m.label}</span>
                   </Link>
@@ -243,7 +247,7 @@ const csMenus = [
             <ul className="list-menu">
               {csMenus.map((m) => (
                 <li key={m.label}>
-                  <Link to={m.to || ""} className="list-item" onClick={(e)=>e.preventDefault()}>
+                  <Link to={m.to || ""} className="list-item" onClick={(e) => e.preventDefault()}>
                     <img className="menu-icon" src={m.icon} alt="" />
                     <span className="menu-text">{m.label}</span>
                   </Link>
