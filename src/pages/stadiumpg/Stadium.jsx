@@ -33,6 +33,74 @@ const Stadium = () => {
     "창원 NC파크": "/img/stadium-main-image-changwon.jpg",
   };
 
+  // ✅ 경기장별 태그 3개 (원하는 문구로 바꿔도 됨)
+  const stadiumTagMap = {
+    "광주 챔피언스필드": [
+      {
+        icon: "🤸‍♀",
+        text: "온가족이 함께",
+        preset: { seatType: "프리미엄석", zone: "중앙" },
+      },
+      {
+        icon: "🌭",
+        text: "야푸 푸짐하게 즐기기",
+        preset: { seatType: "테이블석", zone: "1루" },
+      },
+      {
+        icon: "🤩",
+        text: "뉴비추천",
+        preset: { seatType: "오렌지석", zone: "3루" },
+      },
+    ],
+    "서울 잠실야구장": [
+      { icon: "🔥", text: "응원열기 최고" },
+      { icon: "👨‍👩‍👧‍👦", text: "가족 추천" },
+      { icon: "🎉", text: "직관 입문" },
+    ],
+    "고척 스카이돔": [
+      { icon: "☔️", text: "비와도OK" },
+      { icon: "❄️", text: "사계절 쾌적" },
+      { icon: "👶", text: "아이동반 추천" },
+    ],
+
+    "대구 라이온즈파크": [
+      { icon: "💥", text: "홈런 맛집" },
+      { icon: "📣", text: "응원 분위기" },
+      { icon: "🌙", text: "야경 감성" },
+    ],
+
+    "대전 한화생명 볼파크": [
+      { icon: "💸", text: "가성비 좌석" },
+      { icon: "🍗", text: "먹거리 추천" },
+      { icon: "🙂", text: "뉴비 친화" },
+    ],
+
+    "부산 사직야구장": [
+      { icon: "🔥", text: "응원 레전드" },
+      { icon: "🎶", text: "분위기 최고" },
+      { icon: "🏟️", text: "직관 필수" },
+    ],
+
+    "수원 KT위즈파크": [
+      { icon: "👨‍👩‍👧", text: "가족 관람" },
+      { icon: "🪑", text: "좌석 편안" },
+      { icon: "👀", text: "시야 좋음" },
+    ],
+
+    "인천 랜더스필드": [
+      { icon: "🌅", text: "석양 명소" },
+      { icon: "💑", text: "커플 추천" },
+      { icon: "🌬️", text: "바닷바람" },
+    ],
+
+    "창원 NC파크": [
+      { icon: "👁️", text: "시야 깔끔" },
+      { icon: "🚶‍♂️", text: "동선 편리" },
+      { icon: "✨", text: "뉴비 추천" },
+    ],
+  };
+
+  const tags = stadiumTagMap[stadiumName] ?? [];
   // 배경 계산
   const stadiumBg =
     stadiumBgMap[stadiumName] ?? "/img/stadium-main-image-gwangju.jpg";
@@ -75,6 +143,13 @@ const Stadium = () => {
       openSheetSmoothly();
     }
   };
+
+  useEffect(() => {
+    if (!sheetOpen) {
+      setSeatType(null);
+      setZone(null);
+    }
+  }, [sheetOpen, setSeatType, setZone]);
 
   const startYRef = useRef(0);
   const draggingRef = useRef(false);
@@ -126,8 +201,12 @@ const Stadium = () => {
   const openSheetSmoothly = () => {
     if (!sheetRef.current) return;
 
+    // ✅ 드래그 잔여 transition 제거 (중요)
+    sheetRef.current.style.transition = "none";
+
     const animate = () => {
-      currentYRef.current += (0 - currentYRef.current) * 0.12;
+      // ✅ 숫자만으로 속도 조절 (0.05 → 0.07 정도 추천)
+      currentYRef.current += (0 - currentYRef.current) * 0.07;
 
       sheetRef.current.style.transform = `translateY(${currentYRef.current}px)`;
 
@@ -136,13 +215,14 @@ const Stadium = () => {
       } else {
         sheetRef.current.style.transform = "";
         currentYRef.current = 0;
+
+        // ✅ 여기서 open 상태 확정
         setSheetOpen(true);
       }
     };
 
     requestAnimationFrame(animate);
   };
-
   useEffect(() => {
     const tick = () => {
       if (draggingRef.current && sheetRef.current) {
@@ -171,6 +251,30 @@ const Stadium = () => {
     });
   };
 
+  useEffect(() => {
+    const handleMove = (e) => {
+      if (!draggingRef.current) return;
+      onDragMove(e);
+    };
+
+    const handleEnd = (e) => {
+      if (!draggingRef.current) return;
+      onDragEnd(e); // ✅ 여기서 false로 바꾸지 말기 (onDragEnd가 처리함)
+    };
+
+    window.addEventListener("mousemove", handleMove);
+    window.addEventListener("mouseup", handleEnd);
+    window.addEventListener("touchmove", handleMove, { passive: false });
+    window.addEventListener("touchend", handleEnd);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMove);
+      window.removeEventListener("mouseup", handleEnd);
+      window.removeEventListener("touchmove", handleMove);
+      window.removeEventListener("touchend", handleEnd);
+    };
+  }, []);
+
   return (
     <>
       <section
@@ -194,12 +298,12 @@ const Stadium = () => {
         >
           <div className="inner">
             <div
-              className="stadium-topbar"
+              className="stadium-titlebar"
               onClick={(e) => e.stopPropagation()}
             >
               <a
                 href="#"
-                className={`topbar-location ${stadiumOpen ? "is-open" : ""}`}
+                className={`stadium-title ${stadiumOpen ? "is-open" : ""}`}
                 role="button"
                 aria-expanded={stadiumOpen}
                 onClick={(e) => {
@@ -215,6 +319,31 @@ const Stadium = () => {
                   className="chevron-icon"
                 />
               </a>
+
+              <div
+                className="stadium-tags"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {tags.map((t) => (
+                  <button
+                    key={t.text}
+                    type="button"
+                    className="info-tag"
+                    onClick={() => {
+                      // ✅ 태그에 설정된 추천값 자동 선택
+                      if (t.preset) {
+                        setSeatType(t.preset.seatType);
+                        setZone(t.preset.zone);
+                      }
+
+                      // ✅ 바텀시트 열기
+                      setSheetOpen(true); // openSheet() 쓰고 있으면 그걸로 바꿔도 됨
+                    }}
+                  >
+                    {t.icon} {t.text}
+                  </button>
+                ))}
+              </div>
 
               {stadiumOpen && (
                 <div
@@ -247,6 +376,13 @@ const Stadium = () => {
             </div>
 
             <div className="bottom-fixed">
+              {sheetOpen && (
+                <div
+                  className="sheet-backdrop"
+                  onClick={() => setSheetOpen(false)}
+                />
+              )}
+
               <div
                 ref={sheetRef}
                 className={`bottom-box ${sheetOpen ? "open" : "closed"}`}
@@ -255,12 +391,7 @@ const Stadium = () => {
                   className="sheet-head"
                   onClick={toggle}
                   onMouseDown={onDragStart}
-                  onMouseMove={onDragMove}
-                  onMouseUp={onDragEnd}
-                  onMouseLeave={onDragEnd}
                   onTouchStart={onDragStart}
-                  onTouchMove={onDragMove}
-                  onTouchEnd={onDragEnd}
                 >
                   <div className="handle" />
                   <h2 className="title">구역찾기</h2>
@@ -268,7 +399,10 @@ const Stadium = () => {
                 </div>
 
                 {sheetOpen && (
-                  <div className="sheet-body">
+                  <div
+                    className="sheet-body"
+                    onClick={(e) => e.stopPropagation()}
+                  >
                     <h3 className="sheet-title">구역별</h3>
                     <div className="sheet-grid">
                       {seatTypeOptions.map((opt) => (

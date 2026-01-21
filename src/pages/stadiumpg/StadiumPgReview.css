@@ -29,15 +29,6 @@
   z-index: 10;
 }
 
-.detail-title--onHero {
-  padding: 0;
-  position: absolute;
-  left: 0;
-  top: clamp(64px, 10vh, 92px);
-  z-index: 10;
-  font-weight: bold;
-}
-
 .sr-heroShade {
   position: absolute;
   inset: 0;

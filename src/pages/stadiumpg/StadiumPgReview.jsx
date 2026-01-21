@@ -264,8 +264,8 @@ export default function StadiumPgReview() {
           </div>
 
           {/*여기 경기장 이름이 “선택한 값”으로 바뀜 */}
-          <div className="detail-title detail-title--onHero">
-            <p className="stadium-name">{stadiumName}</p>
+          <div className="stadium-titlebar">
+            <p className="stadium-title">{stadiumName}</p>
           </div>
 
           <div className="sr-heroShade" />

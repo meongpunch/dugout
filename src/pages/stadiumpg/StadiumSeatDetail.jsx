@@ -509,34 +509,36 @@ const StadiumSeatDetail = () => {
           <MainPgHeader logoType="back" btnType="ticket" />
         </header>
 
-        <div className="detail-title">
-          <p className="stadium-name">{stadiumName}</p>
+        <div className="stadium-titlebar">
+          <p className="stadium-title">{stadiumName}</p>
         </div>
 
         <div className="detail-map-wrap">
           <div className="mapViewport" ref={viewportRef}>
-            <div
-              className="mapStage"
-              ref={stageRef}
-              style={{ transformOrigin: "0 0" }}
-            >
+            <div className="mapStageOffset">
               <div
-                ref={svgRef}
-                className="mapContent svg-container"
-                style={{ pointerEvents: "auto", display: "inline-block" }}
-              />
+                className="mapStage"
+                ref={stageRef}
+                style={{ transformOrigin: "0 0" }}
+              >
+                <div
+                  ref={svgRef}
+                  className="mapContent svg-container"
+                  style={{ pointerEvents: "auto", display: "inline-block" }}
+                />
+              </div>
             </div>
-          </div>
 
-          {/* 미니맵은 map-wrap 내부에 있어야 absolute가 정상 */}
-          <div className="minimap" ref={minimapRef} aria-hidden="true">
-            <img
-              className="minimapImg"
-              src="/img/stadium-seating-detail.svg"
-              alt=""
-              draggable={false}
-            />
-            <div className="minimapRect" ref={rectRef} />
+            {/* 미니맵은 map-wrap 내부에 있어야 absolute가 정상 */}
+            <div className="minimap" ref={minimapRef} aria-hidden="true">
+              <img
+                className="minimapImg"
+                src="/img/stadium-seating-detail.svg"
+                alt=""
+                draggable={false}
+              />
+              <div className="minimapRect" ref={rectRef} />
+            </div>
           </div>
         </div>
 
