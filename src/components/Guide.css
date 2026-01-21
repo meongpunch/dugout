@@ -55,7 +55,7 @@
     height: 5px;
     background-color: #F2FF43;
     border-radius: 50%;
-    top: 10px;
+    top: 7px;
     right: 10px;
     z-index: 10;
     animation: pulse-guide 1.5s ease-in-out infinite;
@@ -104,4 +104,36 @@ body:not(.guide-on) .guide-dot {
 .club .guide-dot {
     top: 5px;
     right: 48px;
+}
+
+.info-tag .guide-dot {
+    top: 0px;
+    right: -2px;
+}
+
+.stadium-title .guide-dot {
+    top: 0px;
+    right: 10px;
+}
+
+.stadium-option .guide-dot {
+    top: 0px;
+    right: 5px;
+}
+
+/* Stadium Pg Seat (Section Select) */
+.hit-219 .guide-dot {
+    top: 50%;
+    left: 50%;
+    transform: translate(45px, -5px);
+}
+
+.confirm .guide-dot {
+    top: 10px;
+    right: 10px;
+}
+
+.sr-pill .guide-dot {
+    top: -2px;
+    right: -2px;
 }

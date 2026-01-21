@@ -298,6 +298,7 @@ export default function StadiumPgReview() {
                   <span className="sr-pillCount">
                     {s.count.toLocaleString()}
                   </span>
+                  {s.key === "view" && <div className="guide-dot"></div>}
                 </button>
               );
             })}
@@ -317,6 +318,7 @@ export default function StadiumPgReview() {
               onClick={() => setSort("최신순")}
             >
               최신순
+              <div className="guide-dot"></div>
             </button>
           </div>
 

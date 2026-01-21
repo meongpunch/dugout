@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./Stadium.css";
+import "../../components/Guide.css";
 import MainPgHeader from "../../components/MainPgHeader";
 import Footer from "../../components/Footer";
 
@@ -410,6 +411,7 @@ const Stadium = () => {
                 }}
               >
                 {stadiumName}
+                <div className="guide-dot"></div>
                 <img
                   src="/img/stadium-chevron-bottom.svg"
                   alt="∨"
@@ -421,7 +423,7 @@ const Stadium = () => {
                 className="stadium-tags"
                 onClick={(e) => e.stopPropagation()}
               >
-                {tags.map((t) => (
+                {tags.map((t, i) => (
                   <button
                     key={t.text}
                     type="button"
@@ -438,6 +440,7 @@ const Stadium = () => {
                     }}
                   >
                     {t.icon} {t.text}
+                    {i === 0 && <div className="guide-dot"></div>}
                   </button>
                 ))}
               </div>
@@ -453,9 +456,8 @@ const Stadium = () => {
                     <button
                       key={name}
                       type="button"
-                      className={`stadium-option ${
-                        stadiumName === name ? "active" : ""
-                      }`}
+                      className={`stadium-option ${stadiumName === name ? "active" : ""
+                        }`}
                       onClick={(e) => {
                         e.stopPropagation();
                         setStadiumName(name);
@@ -466,6 +468,7 @@ const Stadium = () => {
                       }}
                     >
                       {name}
+                      {name === "서울 잠실야구장" && <div className="guide-dot"></div>}
                     </button>
                   ))}
                 </div>
@@ -502,7 +505,7 @@ const Stadium = () => {
                   >
                     <h3 className="sheet-title">구역별</h3>
                     <div className="sheet-grid">
-                      {seatTypeOptions.map((opt) => (
+                      {seatTypeOptions.map((opt, i) => (
                         <button
                           key={opt}
                           type="button"
@@ -510,13 +513,14 @@ const Stadium = () => {
                           onClick={() => setSeatType(opt)}
                         >
                           {opt}
+                          {i === 0 && !seatType && <div className="guide-dot"></div>}
                         </button>
                       ))}
                     </div>
 
                     <h3 className="sheet-title">좌석별</h3>
                     <div className="sheet-grid small">
-                      {zoneOptions.map((opt) => (
+                      {zoneOptions.map((opt, i) => (
                         <button
                           key={opt}
                           type="button"
@@ -526,9 +530,12 @@ const Stadium = () => {
                           }
                         >
                           {opt}
+                          {i === 0 && !zone && <div className="guide-dot"></div>}
                         </button>
                       ))}
                     </div>
+
+
 
                     <button
                       type="button"
@@ -537,6 +544,7 @@ const Stadium = () => {
                       disabled={!seatType || !zone}
                     >
                       확인
+                      {seatType && zone && <div className="guide-dot"></div>}
                     </button>
                   </div>
                 )}
@@ -544,7 +552,7 @@ const Stadium = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       <Footer />
     </>

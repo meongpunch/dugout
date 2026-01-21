@@ -16,6 +16,7 @@ const StadiumSeatDetail = () => {
   const stageRef = useRef(null);
   const minimapRef = useRef(null);
   const rectRef = useRef(null);
+  const captionRef = useRef(null);
 
   const posRef = useRef({ x: 0, y: 0 });
   const scaleRef = useRef(1);
@@ -65,20 +66,37 @@ const StadiumSeatDetail = () => {
 
   const syncMini = useCallback(() => {
     const viewport = viewportRef.current;
-    const minimap = minimapRef.current;
+    const wrapper = minimapRef.current;
     const rect = rectRef.current;
+    const caption = captionRef.current;
     const size = getImgSize();
-    if (!viewport || !minimap || !rect || !size) return;
+
+    if (!viewport || !wrapper || !rect || !size) return;
+
+    // ✅ 줌 상태인지 확인하여 표시 여부 결정
+    const s = scaleRef.current;
+    // baseScale보다 조금이라도 크면 줌 상태로 간주
+    const isZoomed = s > (baseScaleRef.current || 1) + 0.05;
+
+    if (isZoomed) {
+      wrapper.classList.add("visible");
+      caption?.classList.add("visible");
+    } else {
+      wrapper.classList.remove("visible");
+      caption?.classList.remove("visible");
+    }
+
+    const minimapInner = wrapper.querySelector(".minimap");
+    if (!minimapInner) return;
 
     const { iw, ih } = size;
 
     const vw = viewport.clientWidth;
     const vh = viewport.clientHeight;
 
-    const miniW = minimap.clientWidth;
-    const miniH = minimap.clientHeight;
+    const miniW = minimapInner.clientWidth;
+    const miniH = minimapInner.clientHeight;
 
-    const s = scaleRef.current;
     const cw = iw * s;
     const ch = ih * s;
 
@@ -89,8 +107,9 @@ const StadiumSeatDetail = () => {
     const maxMoveY = Math.max(1, ch - vh);
 
     const { x, y } = posRef.current;
-    const left = (-x / maxMoveX) * (miniW - rectW);
-    const top = (-y / maxMoveY) * (miniH - rectH);
+    // 0 devide 방지
+    const left = maxMoveX > 1 ? (-x / maxMoveX) * (miniW - rectW) : 0;
+    const top = maxMoveY > 1 ? (-y / maxMoveY) * (miniH - rectH) : 0;
 
     rect.style.width = `${rectW}px`;
     rect.style.height = `${rectH}px`;
@@ -509,8 +528,11 @@ const StadiumSeatDetail = () => {
           <MainPgHeader logoType="back" btnType="ticket" />
         </header>
 
-        <div className="stadium-titlebar">
-          <p className="stadium-title">{stadiumName}</p>
+
+        <div className="stadium-title zone">{stadiumName}
+          <p className="caption" ref={captionRef}>
+            원하는 좌석을 선택해주세요.
+          </p>
         </div>
 
         <div className="detail-map-wrap">
@@ -526,26 +548,28 @@ const StadiumSeatDetail = () => {
                   className="mapContent svg-container"
                   style={{ pointerEvents: "auto", display: "inline-block" }}
                 />
+                <div className="guide-dot"></div>
               </div>
             </div>
 
             {/* 미니맵은 map-wrap 내부에 있어야 absolute가 정상 */}
-            <div className="minimap" ref={minimapRef} aria-hidden="true">
-              <img
-                className="minimapImg"
-                src="/img/stadium-seating-detail.svg"
-                alt=""
-                draggable={false}
-              />
-              <div className="minimapRect" ref={rectRef} />
+            <div className="minimap-wrapper" ref={minimapRef}>
+              <div className="minimap" aria-hidden="true">
+                <img
+                  className="minimapImg"
+                  src="/img/stadium-seating-detail.svg"
+                  alt=""
+                  draggable={false}
+                />
+                <div className="minimapRect" ref={rectRef} />
+              </div>
             </div>
           </div>
         </div>
 
         <div
-          className={`detail-bottom ${
-            selectedSeat ? "is-selected" : "is-idle"
-          }`}
+          className={`detail-bottom ${selectedSeat ? "is-selected" : "is-idle"
+            }`}
         >
           <p className="seat-info">
             {seatType} {section}구역
@@ -580,6 +604,7 @@ const StadiumSeatDetail = () => {
                 }}
               >
                 선택하기
+                <div className="guide-dot"></div>
               </button>
             </>
           ) : (
@@ -644,7 +669,7 @@ const StadiumSeatDetail = () => {
             </>
           )}
         </div>
-      </section>
+      </section >
       <Footer />
     </>
   );
