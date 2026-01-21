@@ -21,16 +21,7 @@
 .editCover .inner .editCover-top .back{
     position: relative;
 }
-.editCover .inner .editCover-top .back::after{
-    content: "";
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: #f2ff43;
-    right:-4px;
-    top: 0;
-    border-radius: 50%;
-}
+
 .editCover .inner .editCover-top .editCover-btn{
     cursor: pointer;
 }
@@ -168,13 +159,3 @@
     border-radius: 10px;
 }
 
-.edit-info .inner .change-team .change-box a:first-child::before{
-    content: "";
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    right: 44px;
-    top: 8px;
-    background: #f2ff43;
-    border-radius: 50%;
-}
