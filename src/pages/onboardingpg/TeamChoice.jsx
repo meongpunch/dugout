@@ -43,7 +43,7 @@ export default function TeamChoice() {
         <OnboardingTopBar
           iconType="back"
           skipType="none"
-          onBack={() => navigate('/login')}
+          onBack={() => navigate(-1)}
         />
 
         {/* ✅ Title은 픽스드(스크롤 밖) */}
