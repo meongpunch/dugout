@@ -1,9 +1,6 @@
-.stadium-title {
-  font-size: 24px;
-  font-weight: bold;
+.stadium-title.zone {
   display: block;
-  padding: 8px 16px;
-  color: #fff;
+  margin-bottom: 30px;
 }
 
 .stadium-title .caption {
