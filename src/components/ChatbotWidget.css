@@ -537,20 +537,16 @@
 }
 
 .cb-modal-btn {
+
     flex: 1;
-    height: 38px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 48px;
+    border: 0;
+    border-radius: 8px;
     font-size: 15px;
     font-weight: 600;
-    line-height: 1;
-    border-radius: 30px;
-    border: none;
     cursor: pointer;
-    transition: 0.2s;
-    margin: 0 !important;
+    transition: all 0.2s ease;
+
     /* Force reset margins */
 }
 
@@ -563,11 +559,11 @@
     background: #4a4a4a;
 }
 
-.cb-modal-btn.confirm {
+.cb-modal-btn.ok {
     background: #aa0000;
     color: #fff;
 }
 
-.cb-modal-btn.confirm:hover {
+.cb-modal-btn.ok:hover {
     background: #c20000;
 }

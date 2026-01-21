@@ -1,5 +1,6 @@
 import React from "react";
 import "./Login.css";
+import "../../components/Guide.css";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -22,16 +23,19 @@ const Login = () => {
 
       <div className="login-bottom">
         <button className="login-btn kakao" type="button" onClick={goTeamChoice}>
+          <div className="guide-dot"></div>
           <img className="login-icon" src="/img/Login-kakao.svg" alt="" />
           카카오로 로그인
         </button>
 
         <button className="login-btn google" type="button" onClick={goTeamChoice}>
+          <div className="guide-dot"></div>
           <img className="login-icon" src="/img/Login-google.svg" alt="" />
           구글로 로그인
         </button>
 
         <button className="login-btn apple" type="button" onClick={goTeamChoice}>
+          <div className="guide-dot"></div>
           <img className="login-icon" src="/img/Login-apple.svg" alt="" />
           애플로 로그인
         </button>

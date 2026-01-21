@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "./ChatbotWidget.css";
+import { useGuide } from "../contexts/GuideContext";
 
 const QUICK = ["실시간 스코어", "경기 결과", "경기 일정", "선수 기록", "팀 순위"];
 
@@ -341,6 +342,7 @@ const FAQ_RULES = [
 
 export default function ChatbotWidget() {
     const location = useLocation();
+    const { isGuideOn, toggleGuide } = useGuide(); // 가이드 상태 가져오기
 
     const [open, setOpen] = useState(false);
     const [closing, setClosing] = useState(false);
@@ -461,9 +463,22 @@ export default function ChatbotWidget() {
     return (
         <div className="wrap">
             {!open && (
-                <button className="cb-fab" onClick={() => setOpen(true)} aria-label="챗봇 열기">
-                    <img src="/img/ai.svg" alt="" />
-                </button>
+                <>
+                    {/* 가이드 토글 버튼 */}
+                    <button
+                        className="guide-toggle-btn"
+                        onClick={toggleGuide}
+                        aria-label={isGuideOn ? "가이드 끄기" : "가이드 켜기"}
+                        title={isGuideOn ? "가이드 끄기" : "가이드 켜기"}
+                    >
+                        <span className="guide-label">가이드</span>
+                        <span className="guide-status">{isGuideOn ? "OFF" : "ON"}</span>
+                    </button>
+
+                    <button className="cb-fab" onClick={() => setOpen(true)} aria-label="챗봇 열기">
+                        <img src="/img/ai.svg" alt="" />
+                    </button>
+                </>
             )}
 
             {open && <div className={`cb-overlay ${closing ? "is-closing" : ""}`} onClick={handleClose} />}
@@ -585,7 +600,7 @@ export default function ChatbotWidget() {
                                 </div>
                                 <div className="cb-modal-actions">
                                     <button className="cb-modal-btn cancel" onClick={cancelEndChat}>취소</button>
-                                    <button className="cb-modal-btn confirm" onClick={confirmEndChat}>종료하기</button>
+                                    <button className="cb-modal-btn ok" onClick={confirmEndChat}>종료하기</button>
                                 </div>
                             </div>
                         </div>

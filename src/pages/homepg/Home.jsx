@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 
 import "./Home.css";
+import "../../components/Guide.css";
 
 const Home = () => {
   // 선수 카드 스와이프 시 데이터 변경
@@ -260,10 +261,12 @@ const Home = () => {
               >
                 {/* 카드 클릭 시 상세 페이지 이동 */}
                 <Link to={`/player/${player.id}`} className="card-link">
+
                   <div
                     className="img-box card-img box
                   "
                   >
+                    <div className="guide-dot"></div>
                     <img src={player.img} alt={player.name} />
                   </div>
                 </Link>
@@ -380,6 +383,7 @@ const Home = () => {
                 target="blank"
                 className="tving-btn btn"
               >
+                <div className="guide-dot"></div>
                 TVING 바로가기
               </a>
             </div>
@@ -398,6 +402,7 @@ const Home = () => {
               >
                 <div className="highlight-card">
                   <div className="img-box box">
+                    <div className="guide-dot"></div>
                     <img src={item.img} alt={item.title} />
                   </div>
                   <div className="play-icon">
@@ -461,6 +466,7 @@ const Home = () => {
           </ul>
           <div className="gradient-box"></div>
           <Link to={"/teamrank"} className="more btn">
+            <div className="guide-dot"></div>
             더보기
           </Link>
         </div>
@@ -488,6 +494,7 @@ const Home = () => {
               </div>
             </div>
             <Link to={"/Quiz"} className="btn">
+              <div className="guide-dot"></div>
               내 생각 남기기
             </Link>
           </div>
@@ -509,6 +516,7 @@ const Home = () => {
               <p className="text">귀여움도 팬심도 놓칠 수 없다면</p>
               <p className="title">입덕템 1순위 하랑이 봉제 인형</p>
             </div>
+            <div className="guide-dot"></div>
           </Link>
           <Link to={"/shop"} className="product">
             <div className="left box">
@@ -523,6 +531,7 @@ const Home = () => {
                   <p className="title">입덕템 아스코트 봉제인형</p>
                   {/* 하트 버튼 부분 */}
                   <div className="heart-btn" onClick={toggleLike}>
+                    <div className="guide-dot"></div>
                     <img
                       // isLiked가 true면 빨간 하트, false면 빈 하트
                       src={
