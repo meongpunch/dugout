@@ -288,6 +288,7 @@ const Review = () => {
                   role="button"
                   tabIndex={0}
                 >
+                  <div className="guide-dot"></div>
                   <img src={it.src} alt={it.alt} className="addedImg" />
 
                   {coverId === it.id && <span className="coverBadge">대표</span>}
