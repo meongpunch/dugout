@@ -327,6 +327,7 @@
 
 .mediaRec-box {
   overflow: hidden;
+  position: relative;
 }
 
 .mediaRec-box .mediaReco-txt .top-txt-box {

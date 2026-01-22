@@ -111,6 +111,14 @@ const Ticket = () => {
       </section>
 
       <section className="ticket">
+        <div
+          className="guide-click"
+          style={{
+            top: "38%",
+            right: "10%",
+            zIndex: 100,
+          }}
+        />
         <div className="inner">
           <div
             className="ticket-card"
@@ -129,6 +137,7 @@ const Ticket = () => {
               {/* FRONT */}
               <div className="ticket-face ticket-front">
                 <div className="ticket-visual">
+
                   {/* ✅ 상단 날짜 */}
                   <p className="ticket-date">{formatDotDate(item.date)}</p>
 
@@ -198,7 +207,7 @@ const Ticket = () => {
                   <p className="ticket-date back">{formatDotDate(item.date)}</p>
 
                   {/* ✅ 뒷면 로고도 홈팀 로고로 넣고 싶으면 */}
-                  <img className="kia-logo" src={backLogo} alt="기아 타이거즈 로고"/>
+                  <img className="kia-logo" src={backLogo} alt="기아 타이거즈 로고" />
                 </div>
               </div>
             </div>

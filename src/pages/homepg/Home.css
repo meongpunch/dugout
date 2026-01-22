@@ -60,6 +60,7 @@
 /* 선수 카드 swiper */
 .hero-swiper-wrap {
   width: 100%;
+  position: relative;
 }
 
 .hero-swiper-wrap .mySwiper {
@@ -94,7 +95,7 @@
 .section-title {
   font-size: 28px;
   margin-bottom: 28px;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .box {
@@ -118,7 +119,9 @@
 /* comment-section */
 .comment {
   width: 100%;
+  position: relative;
 }
+
 
 .comment-container {
   display: flex;

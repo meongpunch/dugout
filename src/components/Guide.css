@@ -53,7 +53,7 @@
     position: absolute;
     width: 5px;
     height: 5px;
-    background-color: #F2FF43;
+    background-color: #FFD900;
     border-radius: 50%;
     top: 7px;
     right: 10px;
@@ -136,4 +136,83 @@ body:not(.guide-on) .guide-dot {
 .sr-pill .guide-dot {
     top: -2px;
     right: -2px;
+}
+
+/* ============================
+   새로운 가이드 커서 (Swiper & Click)
+   ============================ */
+
+/* 공통 비활성화 처리 */
+body:not(.guide-on) .guide-swiper,
+body:not(.guide-on) .guide-click {
+    display: none;
+}
+
+/* 1. Guide Swiper (좌우 모션) */
+.guide-swiper {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: url('/img/guide-swiper.svg') no-repeat center/contain;
+    z-index: 50;
+    pointer-events: none;
+    /* 클릭 방해 안 함 */
+    animation: swipe-motion 1.5s ease-in-out infinite;
+    /* 위치는 사용하는 곳에서 top/left 지정 */
+}
+
+@keyframes swipe-motion {
+    0% {
+        transform: translateX(-10px);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: translateX(10px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-10px);
+        opacity: 0.8;
+    }
+}
+
+/* 2. Guide Click (클릭 유도) */
+.guide-click {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url('/img/guide-click.svg') no-repeat center/contain;
+    z-index: 50;
+    pointer-events: none;
+    animation: click-motion 1.2s ease-in-out infinite;
+    /* 위치는 사용하는 곳에서 지정 */
+}
+
+@keyframes click-motion {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(0.9);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.login-btn .guide-dot {
+    top: -5px;
+    right: -5px;
+}
+
+.post-card .guide-dot {
+    top: 10px;
+    right: 10px;
 }

@@ -230,6 +230,7 @@ const Home = () => {
         </div>
         {/* swpier 선수카드 */}
         <div className="hero-swiper-wrap">
+          <div className="guide-swiper" style={{ top: '20%', left: '80%', marginLeft: '-30px', marginTop: '20px' }}></div>
           <Swiper
             key={rawCommentsTop.length}
             effect={"coverflow"}
@@ -262,10 +263,7 @@ const Home = () => {
                 {/* 카드 클릭 시 상세 페이지 이동 */}
                 <Link to={`/player/${player.id}`} className="card-link">
 
-                  <div
-                    className="img-box card-img box
-                  "
-                  >
+                  <div className="img-box card-img box">
                     <div className="guide-dot"></div>
                     <img src={player.img} alt={player.name} />
                   </div>
@@ -276,6 +274,14 @@ const Home = () => {
         </div>
       </section>
       <section className="comment">
+        <div
+          className="guide-click"
+          style={{
+            bottom: "-15%",
+            left: "5%",
+            zIndex: 100000000,
+          }}
+        />
         <div className="inner">
           <h3 className="section-title">응원 댓글</h3>
         </div>

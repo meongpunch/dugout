@@ -496,6 +496,16 @@ const Stadium = () => {
                   <div className="handle" />
                   <h2 className="title">구역찾기</h2>
                   <p className="desc">원하는 필터를 선택하세요.</p>
+                  {!sheetOpen && (
+                    <div
+                      className="guide-click"
+                      style={{
+                        top: "10px",
+                        left: "60%",
+                        zIndex: 100,
+                      }}
+                    />
+                  )}
                 </div>
 
                 {sheetOpen && (

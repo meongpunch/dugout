@@ -536,6 +536,7 @@ const StadiumSeatDetail = () => {
         </div>
 
         <div className="detail-map-wrap">
+          {!selectedSeat && <div className="guide-click" style={{ top: '20%', left: '80%', marginLeft: '-30px', marginTop: '20px' }}></div>}
           <div className="mapViewport" ref={viewportRef}>
             <div className="mapStageOffset">
               <div
@@ -548,7 +549,7 @@ const StadiumSeatDetail = () => {
                   className="mapContent svg-container"
                   style={{ pointerEvents: "auto", display: "inline-block" }}
                 />
-                <div className="guide-dot"></div>
+
               </div>
             </div>
 
