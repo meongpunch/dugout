@@ -94,7 +94,7 @@ const popularPosts = [
   {
     id: 3,
     img: "/img/ground_post_2.jpg",
-    title: "나 진짜 우리직 까까가 자랑...",
+    title: "나 진짜 우리집 끼기가 자랑...",
     size: "md",
   },
   {
@@ -243,7 +243,15 @@ const Ground = () => {
       <section className="ground-sns">
         <div className="inner">
           <h3 className="section-title">구단 SNS</h3>
-          <div className="guide-swiper" style={{ top: '20%', left: '70%', marginLeft: '-30px', marginTop: '20px' }}></div>
+          <div
+            className="guide-swiper"
+            style={{
+              top: "20%",
+              left: "70%",
+              marginLeft: "-30px",
+              marginTop: "20px",
+            }}
+          ></div>
           <Swiper
             className="sns-swiper"
             spaceBetween={16}
@@ -326,8 +334,9 @@ const Ground = () => {
                           return (
                             <span
                               key={idx}
-                              className={`topic-chip ${isActive ? "is-active" : ""
-                                }`}
+                              className={`topic-chip ${
+                                isActive ? "is-active" : ""
+                              }`}
                               onClick={(e) => {
                                 e.preventDefault();
                                 setActiveReactions((prev) => {

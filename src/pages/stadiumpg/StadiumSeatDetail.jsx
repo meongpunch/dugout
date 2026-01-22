@@ -528,15 +528,25 @@ const StadiumSeatDetail = () => {
           <MainPgHeader logoType="back" btnType="ticket" />
         </header>
 
-
-        <div className="stadium-title zone">{stadiumName}
+        <div className="stadium-title zone">
+          {stadiumName}
           <p className="caption" ref={captionRef}>
             원하는 좌석을 선택해주세요.
           </p>
         </div>
 
         <div className="detail-map-wrap">
-          {!selectedSeat && <div className="guide-click" style={{ top: '20%', left: '80%', marginLeft: '-30px', marginTop: '20px' }}></div>}
+          {!selectedSeat && (
+            <div
+              className="guide-click"
+              style={{
+                top: "20%",
+                left: "80%",
+                marginLeft: "-30px",
+                marginTop: "20px",
+              }}
+            ></div>
+          )}
           <div className="mapViewport" ref={viewportRef}>
             <div className="mapStageOffset">
               <div
@@ -549,7 +559,6 @@ const StadiumSeatDetail = () => {
                   className="mapContent svg-container"
                   style={{ pointerEvents: "auto", display: "inline-block" }}
                 />
-
               </div>
             </div>
 
@@ -569,8 +578,9 @@ const StadiumSeatDetail = () => {
         </div>
 
         <div
-          className={`detail-bottom ${selectedSeat ? "is-selected" : "is-idle"
-            }`}
+          className={`detail-bottom ${
+            selectedSeat ? "is-selected" : "is-idle"
+          }`}
         >
           <p className="seat-info">
             {seatType} {section}구역
@@ -670,7 +680,7 @@ const StadiumSeatDetail = () => {
             </>
           )}
         </div>
-      </section >
+      </section>
       <Footer />
     </>
   );
