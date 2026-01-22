@@ -5,7 +5,7 @@ import "./Calendar.css";
 import "../../components/Guide.css";
 
 /* ✅ 타임라인 데이터: 여기만 추가/수정하면 됨 */
-const TIMELINE_ITEMS = [
+export const TIMELINE_ITEMS = [
   {
     id: "1",
     date: "2025-07-26",
@@ -16,7 +16,7 @@ const TIMELINE_ITEMS = [
     stadium: "서울 잠실 야구장",
     time: "14:00",
     meta: "2차전 • 96번째 경기",
-    seat: "3루 블루석 116블록 4열 40번",
+    seat: "3루 블루석\n116블록 4열 40번",
   },
   {
     id: "2",
@@ -28,7 +28,7 @@ const TIMELINE_ITEMS = [
     stadium: "서울 잠실 야구장",
     time: "18:30",
     meta: "2차전 • 94번째 경기",
-    seat: "1루 레드석 210블록 7열 12번",
+    seat: "1루 레드석\n210블록 7열 12번",
   },
   {
     id: "3",
@@ -40,7 +40,7 @@ const TIMELINE_ITEMS = [
     stadium: "인천 SSG랜더스필드",
     time: "19:00",
     meta: "1차전 • 70번째 경기",
-    seat: "외야 필드석 108B구역 B열 22번",
+    seat: "외야 필드석\n108B구역 B열 22번",
   },
 ];
 
@@ -53,19 +53,12 @@ function formatMMDD(dateStr) {
 export default function Calendar({
   initialYear = 2025,
   initialMonth = 6, // ✅ 처음 화면: 7월(0=1월)
+
+  // ✅ events는 "캘린더 칸에 넣는 이미지"만 관리
   events = {
-    "2025-07-26": {
-      imageUrl: "/img/lockerroom-calendar-bg-1.png",
-      link: "/lockerroom/calendar/ticket",
-    },
-    "2025-07-12": {
-      imageUrl: "/img/lockerroom-calendar-bg-2.png",
-      link: "/lockerroom/calendar/ticket",
-    },
-    "2025-06-29": {
-      imageUrl: "/img/lockerroom-calendar-bg-3.png",
-      link: "/lockerroom/calendar/ticket",
-    },
+    "2025-07-26": { imageUrl: "/img/lockerroom-calendar-bg-1.png" },
+    "2025-07-12": { imageUrl: "/img/lockerroom-calendar-bg-2.png" },
+    "2025-06-29": { imageUrl: "/img/lockerroom-calendar-bg-3.png" },
   },
 }) {
   const navigate = useNavigate();
@@ -99,18 +92,19 @@ export default function Calendar({
   const title = `${ym.y}.${String(ym.m + 1).padStart(2, "0")}`;
   const weekDays = ["일", "월", "화", "수", "목", "금", "토"];
 
-  // ✅ 어떤 날짜든 선택은 되고, 이벤트 있는 날만 이동
+  // ✅ 이벤트(사진) 있는 날만 티켓 상세로 이동
   const handleCellClick = (cell) => {
     setSelectedKey(cell.key);
-    const link = events[cell.key]?.link;
-    if (link) navigate(link);
+
+    const ev = events[cell.key];
+    if (!ev) return; // 이미지 없는 날은 이동 X
+
+    navigate(`/lockerroom/calendar/ticket/${cell.key}`);
   };
 
-  // ✅ 타임라인: 날짜별 묶지 않고 그대로 리스트 렌더
+  // ✅ 타임라인 최신순
   const timelineItems = useMemo(() => {
-    // 최신 날짜가 위로 오게 하고 싶으면 아래 sort 유지
     return [...TIMELINE_ITEMS].sort((a, b) => (a.date < b.date ? 1 : -1));
-    // 정렬 필요 없으면: return TIMELINE_ITEMS;
   }, []);
 
   return (
@@ -253,7 +247,6 @@ export default function Calendar({
           <div className="timeline-list">
             {timelineItems.map((it) => (
               <div key={it.id} className="timeline-row">
-
                 {/* ===== 왼쪽 날짜 ===== */}
                 <div className="timeline-date">
                   <p className="timeline-mmdd">{formatMMDD(it.date)}</p>
@@ -263,13 +256,11 @@ export default function Calendar({
                 {/* ===== 오른쪽 카드 ===== */}
                 <article className="timeline-card">
                   <div className="card-grid">
-                    {/* ✅ 왼쪽: 로고 + 세로라인 묶음 */}
                     <div className="card-left" aria-hidden="true">
                       <img className="timeline-logo" src={it.teamLogo} alt="" />
                       <span className="vline"></span>
                     </div>
 
-                    {/* ✅ 오른쪽: 제목 + 본문 묶음 */}
                     <div className="card-right">
                       <div className="timeline-head">
                         <p className="timeline-match-txt">
@@ -298,6 +289,16 @@ export default function Calendar({
                             <img src="/img/lockerroom-calendar-review.svg" alt="" />
                             리뷰 쓰기
                           </Link>
+
+                          {/* ✅ 타임라인에서도 티켓으로 이동시키고 싶으면 */}
+                          {/* 
+                          <button
+                            type="button"
+                            onClick={() => navigate(`/lockerroom/calendar/ticket/${it.date}`)}
+                          >
+                            티켓 보기
+                          </button>
+                          */}
                         </div>
                       </div>
                     </div>

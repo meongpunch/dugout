@@ -47,7 +47,7 @@ const App = () => {
           path="/lockerroom/review/complete/:id"
           element={<ReviewComplete />}
         />
-        <Route path="/lockerroom/calendar/ticket" element={<Ticket />} />
+        <Route path="/lockerroom/calendar/ticket/:date" element={<Ticket />} />
 
         <Route path="/stadium" element={<Stadium />} />
         <Route path="/stadium/seat" element={<StadiumPgSeat />} />

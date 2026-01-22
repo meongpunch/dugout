@@ -454,15 +454,23 @@ export default function ChatbotWidget() {
         setShowEndChatModal(false);
     };
 
+
     // 온보딩 페이지 및 리뷰 페이지에서는 챗봇 숨기기
-    const hiddenRoutes = ['/', '/onboarding', '/login', '/teamchoice', '/lockerroom/calendar/ticket'];
-
+    const hiddenRoutes = ['/', '/onboarding', '/login', '/teamchoice'];
     // 동적 라우트(리뷰 관련) 처리
-    const isReviewPage = location.pathname.startsWith('/lockerroom/review/');
+    const hiddenDynamicRoutes = [
+    '/lockerroom/review/',
+    '/lockerroom/calendar/ticket/',
+    ];
 
-    if (hiddenRoutes.includes(location.pathname) || isReviewPage) {
-        return null;
+    const isHiddenDynamicRoute = hiddenDynamicRoutes.some((route) =>
+    location.pathname.startsWith(route)
+    );
+
+    if (hiddenRoutes.includes(location.pathname) || isHiddenDynamicRoute) {
+    return null;
     }
+
 
     return (
         <div className="wrap">
