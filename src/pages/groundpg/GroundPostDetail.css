@@ -104,6 +104,7 @@
   display: block;
   object-fit: cover;
   margin-bottom: 25px;
+  border-radius: 6px;
 }
 
 /* actions */
@@ -194,12 +195,13 @@
   left: 50%;
   transform: translateX(-50%);
   bottom: 104px;
-  width: min(100vw, 398px);
+  width: min(100vw, 410px);
   padding: 12px 16px;
   z-index: 60;
   display: flex;
   align-items: center;
   gap: 10px;
+  background: #111;
 }
 .gpd-inputbar input {
   flex: 1;
