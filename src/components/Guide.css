@@ -221,3 +221,13 @@ body:not(.guide-on) .guide-click {
     top: 5px;
     right: 5px;
 }
+
+.gpd-comment-delete .guide-dot {
+    top: -5px;
+    right: -5px;
+}
+
+.gpd-action-btn .guide-dot {
+    top: 0px;
+    right: 17px;
+}

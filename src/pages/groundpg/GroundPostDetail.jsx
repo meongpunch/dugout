@@ -150,7 +150,7 @@ export default function GroundPostDetail() {
             loadedComments = true;
           }
         }
-      } catch (e) {}
+      } catch (e) { }
     }
     if (!loadedComments) setComments(post.comments);
 
@@ -170,7 +170,7 @@ export default function GroundPostDetail() {
             loadedLike = true;
           }
         }
-      } catch (e) {}
+      } catch (e) { }
     }
     if (!loadedLike) {
       setLiked(false);
@@ -217,7 +217,7 @@ export default function GroundPostDetail() {
                 likeCount: nextCount,
               }),
             );
-          } catch (e) {}
+          } catch (e) { }
         }
 
         return nextCount;
@@ -251,7 +251,7 @@ export default function GroundPostDetail() {
       if (commentsStorageKey) {
         try {
           localStorage.setItem(commentsStorageKey, JSON.stringify(next));
-        } catch (e) {}
+        } catch (e) { }
       }
 
       return next;
@@ -275,7 +275,7 @@ export default function GroundPostDetail() {
       if (commentsStorageKey) {
         try {
           localStorage.setItem(commentsStorageKey, JSON.stringify(next));
-        } catch (e) {}
+        } catch (e) { }
       }
 
       return next;
@@ -289,6 +289,7 @@ export default function GroundPostDetail() {
       </header>
 
       <main className="gpd-body">
+
         <div className="gpd-author">
           <img className="gpd-avatar" src={post.author.avatar} alt="" />
           <div>
@@ -312,6 +313,7 @@ export default function GroundPostDetail() {
             onClick={onToggleLike}
             type="button"
           >
+            <div className="guide-dot"></div>
             <img
               src={
                 liked
@@ -344,6 +346,7 @@ export default function GroundPostDetail() {
             onClick={() => inputRef.current?.focus()}
             type="button"
           >
+
             <img
               src="/img/ground-comment-icon.png"
               alt="댓글"
@@ -380,6 +383,7 @@ export default function GroundPostDetail() {
                       }}
                       aria-label="댓글 삭제"
                     >
+                      <div className="guide-dot"></div>
                       <img
                         src="/img/lockerroom-x-close.svg" // ← 네 X 이미지 경로
                         alt="댓글 삭제"
@@ -399,6 +403,7 @@ export default function GroundPostDetail() {
       </main>
 
       <div className="gpd-inputbar">
+        <div className="guide-click" style={{ bottom: "-40%", left: "10%" }}></div>
         <input
           ref={inputRef}
           value={commentText}
