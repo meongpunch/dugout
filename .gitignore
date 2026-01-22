@@ -8,3 +8,4 @@ dist/
 # 내 컴퓨터 환경설정 비밀파일 무시하기
 .env
 .DS_Store
+.vercel
