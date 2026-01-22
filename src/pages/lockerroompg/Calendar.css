@@ -7,7 +7,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 16px;
 }
 
 
@@ -39,7 +38,7 @@
 .mc-title {
   text-align: center;
   color: #fff;
-  font-weight: 800;
+  font-weight: 600;
   font-size: 16px;
 }
 
@@ -53,7 +52,7 @@
   text-align: center;
   color: rgba(255, 255, 255, 0.75);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 300;
 }
 
 .mc-grid {
@@ -103,7 +102,8 @@
   top: 6px;
   left: 6px;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 300;
+  font-family: "Pretendard", sans-serif;
   color: rgba(255, 255, 255, 0.95);
   user-select: none;
   z-index: 2;
@@ -146,7 +146,7 @@
   text-align: center;
   width: 230px;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: 30px;
 }
 
@@ -181,13 +181,14 @@
 .gauge .percent {
   display: block;
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 500;
   color: #fff;
   margin-bottom: 4px;
 }
 
 .gauge .comment {
   font-size: 20px;
+  font-weight: 600;
 }
 
 /* 버튼 래퍼 */
@@ -224,9 +225,9 @@
   display: inline-flex;
   align-items: center;
   margin: 0;
-  /* p 기본 여백 제거 */
   color: #fff;
   font-size: 16px;
+  font-weight: 300;
 }
 
 /* 아이콘 래퍼 */
@@ -271,14 +272,14 @@
 .timeline-mmdd {
   margin: 0;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   color: #fff;
 }
 
 .timeline-day {
   margin-left: 4px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 400;
   color: rgba(255, 255, 255, 0.6);
 }
 
@@ -404,7 +405,7 @@
 
 .timeline-sub {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
   color: rgba(255, 255, 255, 0.6);
 }
 
@@ -434,7 +435,7 @@
   color: #fff;
   text-decoration: none;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 

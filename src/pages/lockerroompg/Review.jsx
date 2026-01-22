@@ -169,7 +169,7 @@ const Review = () => {
                 <img src="/img/review-top.png" alt="" />
               </div>
               <div className="reviewTop-txt">
-                <p className="season">2026 시즌</p>
+                <p className="season">2025 시즌</p>
                 <p className="count">벌써 12번째 직관이네요</p>
               </div>
             </div>

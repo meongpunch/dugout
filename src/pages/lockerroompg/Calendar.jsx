@@ -8,7 +8,7 @@ import "../../components/Guide.css";
 const TIMELINE_ITEMS = [
   {
     id: "1",
-    date: "2026-07-11",
+    date: "2025-07-26",
     day: "토",
     teamLogo: "/img/lockerroom-calendar-team-kia.png",
     homeTeam: "기아 타이거즈",
@@ -20,8 +20,8 @@ const TIMELINE_ITEMS = [
   },
   {
     id: "2",
-    date: "2026-07-05",
-    day: "일",
+    date: "2025-07-12",
+    day: "토",
     teamLogo: "/img/lockerroom-calendar-team-kia.png",
     homeTeam: "기아 타이거즈",
     awayTeam: "LG 트윈스",
@@ -32,8 +32,8 @@ const TIMELINE_ITEMS = [
   },
   {
     id: "3",
-    date: "2026-06-15",
-    day: "토",
+    date: "2025-06-29",
+    day: "일",
     teamLogo: "/img/lockerroom-calendar-team-kia.png",
     homeTeam: "SSG 랜더스",
     awayTeam: "기아 타이거즈",
@@ -51,18 +51,18 @@ function formatMMDD(dateStr) {
 }
 
 export default function Calendar({
-  initialYear = 2026,
+  initialYear = 2025,
   initialMonth = 6, // ✅ 처음 화면: 7월(0=1월)
   events = {
-    "2026-07-11": {
+    "2025-07-26": {
       imageUrl: "/img/lockerroom-calendar-bg-1.png",
       link: "/lockerroom/calendar/ticket",
     },
-    "2026-06-15": {
+    "2025-07-12": {
       imageUrl: "/img/lockerroom-calendar-bg-2.png",
       link: "/lockerroom/calendar/ticket",
     },
-    "2026-07-05": {
+    "2025-06-29": {
       imageUrl: "/img/lockerroom-calendar-bg-3.png",
       link: "/lockerroom/calendar/ticket",
     },
