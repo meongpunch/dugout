@@ -455,7 +455,7 @@ export default function ChatbotWidget() {
     };
 
     // 온보딩 페이지 및 리뷰 페이지에서는 챗봇 숨기기
-    const hiddenRoutes = ['/splash', '/onboarding', '/login', '/teamchoice', '/lockerroom/calendar/ticket'];
+    const hiddenRoutes = ['/', '/onboarding', '/login', '/teamchoice', '/lockerroom/calendar/ticket'];
 
     // 동적 라우트(리뷰 관련) 처리
     const isReviewPage = location.pathname.startsWith('/lockerroom/review/');

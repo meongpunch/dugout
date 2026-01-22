@@ -112,6 +112,7 @@
   display: block;
   background: #aa0000;
   position: relative;
+  cursor: pointer;
 }
 
 /* comment-section */

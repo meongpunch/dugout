@@ -48,8 +48,10 @@ const App = () => {
         <Route path="/stadium/seat/section" element={<StadiumSeatDetail />} />
         <Route path="/stadium/seat/review" element={<StadiumPgReview />} />
 
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+        <Route path="/" element={<Splash />} />
+
+        <Route element={<Layout />}>
+          <Route path="/home" element={<Home />} />
 
           <Route path="/ground" element={<Ground />} />
           <Route path="/topic" element={<GroundTopic />} />
