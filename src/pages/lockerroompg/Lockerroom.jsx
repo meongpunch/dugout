@@ -112,6 +112,7 @@ const Lockerroom = () => {
 
       {/* 직관 캘린더 */}
       <section className="calendar">
+        <div className="guide-swiper" style={{ top: '35%', right: '10%', marginLeft: '-30px', marginTop: '20px' }}></div>
         <h2 className="section-title">직관 캘린더</h2>
         <div className="hero-swiper-wrap">
           <Swiper
