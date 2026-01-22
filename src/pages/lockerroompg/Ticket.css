@@ -2,173 +2,184 @@
    Ticket.css (오른쪽으로만 회전)
 ========================= */
 
-.ticketPg{
+.ticketPg {
   background: url(/img/ticket-bg.png) center no-repeat;
   min-height: 100vh;
 }
 
-.top-btn .inner{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  height:80px;
+.top-btn .inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
 }
+
 .top-btn .inner .link-btn,
-.top-btn .inner .colse-btn{ cursor:pointer; }
+.top-btn .inner .colse-btn {
+  cursor: pointer;
+}
 
 /* flip card */
-.ticket-card{
-  width:360px;
-  height:620px;
-  margin:0 auto;
-  perspective:1200px;
-  cursor:pointer;
+.ticket-card {
+  width: 360px;
+  height: 620px;
+  margin: 0 auto;
+  perspective: 1200px;
+  cursor: pointer;
 }
 
-.ticket-cardInner{
-  position:relative;
-  width:100%;
-  height:100%;
-  transform-style:preserve-3d;
-  transition:transform .7s ease;
+.ticket-cardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform .7s ease;
 }
 
-.ticket-face{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  backface-visibility:hidden;
-  -webkit-backface-visibility:hidden;
+.ticket-face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
-.ticket-back{ transform: rotateY(180deg); }
+.ticket-back {
+  transform: rotateY(180deg);
+}
 
 /* front */
-.ticket-visual{
-  position:relative;
-  width:100%;
-  height:100%;
-  margin:0;
-  background:url(/img/ticket.svg) center/contain no-repeat;
-  display:flex;
-  flex-direction:column;
+.ticket-visual {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background: url(/img/ticket.svg) center/contain no-repeat;
+  display: flex;
+  flex-direction: column;
 }
 
-.ticket-visual .ticket-date{
-  position:absolute;
-  right:24px;
-  top:40px;
+.ticket-visual .ticket-date {
+  position: absolute;
+  right: 24px;
+  top: 40px;
 }
 
-.ticket-info{ color:#000; margin:auto 16px 58px; }
-
-.ticket-info .stadium{
-  font-size:18px;
-  font-weight:600;
-  margin-bottom:8px;
+.ticket-info {
+  color: #000;
+  margin: auto 16px 58px;
+  position: relative;
 }
 
-.ticket-info .home-team{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:24px;
+.ticket-info .stadium {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.ticket-info .home-team {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
 }
 
 .ticket-info .home-team .home-kia .home-name,
-.ticket-info .home-team .away .away-name{
-  font-size:14px;
-  font-weight:700;
-  text-align:center;
+.ticket-info .home-team .away .away-name {
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
 }
 
-.ticket-info .home-team .vs{
-  font-size:28px;
-  font-weight:700;
+.ticket-info .home-team .vs {
+  font-size: 28px;
+  font-weight: 700;
 }
 
-.ticket-info .ticket-schedule{
-  display:flex;
-  justify-content:space-between;
-  padding:0 14px;
-  margin-bottom:24px;
+.ticket-info .ticket-schedule {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 14px;
+  margin-bottom: 24px;
 }
 
-.ticket-info .ticket-schedule .schedule-label{
-  font-size:16px;
-  font-weight:400;
-  margin-bottom:4px;
-  color:rgba(17,17,17,.6);
+.ticket-info .ticket-schedule .schedule-label {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 4px;
+  color: rgba(17, 17, 17, .6);
 }
 
-.ticket-info .ticket-schedule .match-date{
-  font-size:28px;
-  font-weight:700;
-  display:flex;
-  align-items:center;
+.ticket-info .ticket-schedule .match-date {
+  font-size: 28px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
 }
 
-.ticket-info .ticket-schedule .match-date em.sub{
-  font-size:14px;
-  font-weight:600;
-  font-style:normal;
-  margin-left:4px;
+.ticket-info .ticket-schedule .match-date em.sub {
+  font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+  margin-left: 4px;
 }
 
-.ticket-info .ticket-bottom{
-  display:flex;
-  justify-content:space-between;
-  padding:0 14px;
+.ticket-info .ticket-bottom {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 14px;
 }
 
-.ticket-info .ticket-bottom .ticket-seat .seat-label{
-  font-size:16px;
-  font-weight:400;
-  margin-bottom:4px;
-  color:rgba(17,17,17,.6);
+.ticket-info .ticket-bottom .ticket-seat .seat-label {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 4px;
+  color: rgba(17, 17, 17, .6);
 }
 
-.ticket-info .ticket-bottom .ticket-seat .seat-text{
-  font-size:16px;
-  font-weight:600;
+.ticket-info .ticket-bottom .ticket-seat .seat-text {
+  font-size: 16px;
+  font-weight: 600;
   white-space: pre-line;
 }
 
-.ticket-info .ticket-bottom .qr{
-    width:60px;
+.ticket-info .ticket-bottom .qr {
+  width: 60px;
 }
-.ticket-info .ticket-bottom .qr .qr-img{
-    width:100%;
+
+.ticket-info .ticket-bottom .qr .qr-img {
+  width: 100%;
 }
-.ticket-info .ticket-bottom .qr .qr-code{
-  font-size:12px;
-  font-weight:400;
+
+.ticket-info .ticket-bottom .qr .qr-code {
+  font-size: 12px;
+  font-weight: 400;
 }
 
 /* back */
-.ticket-backVisual{
-    width:100%;
-    height:100%;
+.ticket-backVisual {
+  width: 100%;
+  height: 100%;
 }
 
-.ticket-backImg{
-  width:100%;
-  height:100%;
-  display:block;
-  object-fit:contain;
+.ticket-backImg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
 }
 
 
-.ticket-back .ticket-date.back{
-  position:absolute;
-  right:24px;
-  top:40px;
+.ticket-back .ticket-date.back {
+  position: absolute;
+  right: 24px;
+  top: 40px;
   color: #111;
 }
 
-.ticket-back .kia-logo{
-    position: absolute;
-    right: 8px;
-    bottom: 24px;
+.ticket-back .kia-logo {
+  position: absolute;
+  right: 8px;
+  bottom: 24px;
 }

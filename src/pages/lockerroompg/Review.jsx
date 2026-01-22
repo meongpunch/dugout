@@ -314,6 +314,16 @@ const Review = () => {
 
           {/* ===== 추천 영역 ===== */}
           <div className="mediaRec-box">
+            {!picked.length && !addedItems.length && (
+              <div
+                className="guide-click"
+                style={{
+                  bottom: "-2%",
+                  left: "2%",
+                  zIndex: 100,
+                }}
+              />
+            )}
             <div className="mediaReco-txt">
               <div className="top-txt-box">
                 <p className="reco-txt">추천 사진/영상</p>

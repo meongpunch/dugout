@@ -34,7 +34,7 @@ const App = () => {
       <ScrollToTop />
       <ChatbotWidget />
       <Routes>
-        <Route path="/splash" element={<Splash />} />
+        <Route path="/" element={<Splash />} />
         <Route path="/onboarding" element={<Onboarding />} />
         <Route path="/login" element={<Login />} />
         <Route path="/teamchoice" element={<TeamChoice />} />
@@ -53,8 +53,6 @@ const App = () => {
         <Route path="/stadium/seat" element={<StadiumPgSeat />} />
         <Route path="/stadium/seat/section" element={<StadiumSeatDetail />} />
         <Route path="/stadium/seat/review" element={<StadiumPgReview />} />
-
-        <Route path="/" element={<Splash />} />
 
         <Route element={<Layout />}>
           <Route path="/home" element={<Home />} />

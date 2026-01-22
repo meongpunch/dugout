@@ -243,6 +243,7 @@ const Ground = () => {
       <section className="ground-sns">
         <div className="inner">
           <h3 className="section-title">구단 SNS</h3>
+          <div className="guide-swiper" style={{ top: '20%', left: '70%', marginLeft: '-30px', marginTop: '20px' }}></div>
           <Swiper
             className="sns-swiper"
             spaceBetween={16}
@@ -325,9 +326,8 @@ const Ground = () => {
                           return (
                             <span
                               key={idx}
-                              className={`topic-chip ${
-                                isActive ? "is-active" : ""
-                              }`}
+                              className={`topic-chip ${isActive ? "is-active" : ""
+                                }`}
                               onClick={(e) => {
                                 e.preventDefault();
                                 setActiveReactions((prev) => {
@@ -463,6 +463,7 @@ const Ground = () => {
                       }
                     >
                       <div className={`post-thumb is-${item.size}`}>
+                        <div className="guide-dot" />
                         <img src={item.img} alt={item.title} />
                         <div className="post-dim" />
                         <p className="post-title">{item.title}</p>
@@ -487,6 +488,7 @@ const Ground = () => {
                       }
                     >
                       <div className={`post-thumb is-${item.size}`}>
+                        <div className="guide-dot" />
                         <img src={item.img} alt={item.title} />
                         <div className="post-dim" />
                         <p className="post-title">{item.title}</p>
