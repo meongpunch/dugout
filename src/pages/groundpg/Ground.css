@@ -141,14 +141,20 @@
 
 .ground_infobar {
   width: 4px;
-  height: 14px;
+  height: 18px;
   background: #aa0000;
   display: inline-block;
+  border-radius: 6px;
 }
 
 .ground_infoLabel {
   color: #aa0000;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 600;
+}
+.ground_infoText{
+  font-size: 14px;
+  font-weight: 300;
 }
 
 /* ground_sns */
@@ -201,19 +207,21 @@
 }
 
 .sns-badge {
-  display: inline-block;
-  margin-bottom: 6px;
+  display: block;
+  margin-bottom: 12px;
   font-size: 16px;
   font-weight: 600;
 }
 
 .sns-title {
   font-size: 14px;
-  margin-bottom: 6px;
+  font-weight: 300;
+  margin-bottom: 4px;
 }
 
 .sns-desc {
   font-size: 14px;
+  font-weight: 300;
 }
 
 .sns-footer {
@@ -233,12 +241,16 @@
 
 .sns-profile-name {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   color: #fff;
   white-space: nowrap;
 }
 
 /* ground_topic */
+.ground-topic{
+  margin-bottom: 60px;
+}
+
 .ground-topic-head {
   display: flex;
   align-items: center;
@@ -255,6 +267,7 @@
 .ground-topic-more {
   line-height: 1;
   font-size: 14px;
+  font-weight: 300;
   color: #888888;
 }
 
@@ -295,10 +308,12 @@
   position: absolute;
   inset: 0;
   z-index: 2;
-  padding: 18px;
+  padding: 30px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 .topic-card-top {
@@ -324,22 +339,22 @@
 .topic-nickname {
   margin: 0;
   font-size: 16px;
+  font-weight: 500;
 }
 
 .topic-card-bottom {
   display: flex;
   flex-direction: column;
-  gap: 12px;
 }
 
 .topic-title {
-  margin: 0;
+  margin-bottom:  4px;
   font-size: 20px;
   font-weight: 600;
 }
 
 .topic-time {
-  margin: 0;
+  margin-bottom:  16px;
   font-size: 14px;
 }
 
@@ -347,9 +362,7 @@
   display: flex;
   flex-wrap: wrap;
   /* 줄바꿈 허용 */
-  gap: 10px 12px;
-  margin-top: 10px;
-
+  gap: 8px;
   justify-content: flex-start;
   /* 왼쪽부터 */
   align-items: center;
@@ -388,7 +401,7 @@
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum";
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .topic-chip.is-active {
@@ -432,33 +445,39 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 6px;
 }
 
 .ground-banner__title {
-  margin: 0;
+  margin-bottom: 4px;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .ground-banner__sub {
-  margin: 0;
+  margin-bottom: 8px;
   font-size: 14px;
   font-weight: 300;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 .ground-banner__meta {
   display: flex;
   align-items: center;
-  gap: 8px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
-.ground-banner__date,
+.ground-banner__date{
+  margin-right: 6px;
+}
 .ground-banner__time {
-  opacity: 0.9;
+  margin-right: 4px;
+  opacity: 0.8;
+}
+
+.ground-banner__live{
+  font-weight: 300;
+  opacity: 0.8;
 }
 
 /* ground_moment */
@@ -493,6 +512,7 @@
 
 .moment-title {
   font-size: 18px;
+  padding: 0 4px;
 }
 
 .moment-card-link:active {
@@ -581,9 +601,11 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
   padding-top: 10px;
   color: #fff;
+  font-family: "Pretendard", sans-serif;
+  font-weight: 300;
 }
 
 .post-card {
@@ -661,20 +683,21 @@
   display: block;
   font-size: 14px;
   color: #9d9d9d;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
 }
 
 .mdzon-title {
   margin: 0;
   font-size: 16px;
-  color: #e7e7e7;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .mdzon-price {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 400;
   color: #fff;
-  margin: 6px 0 0;
+  margin-top: 4px;
 }
 
 /* 가이드 점 위치 미세 조정 */
