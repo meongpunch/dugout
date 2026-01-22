@@ -109,6 +109,13 @@ export default function GroundPostDetail() {
   const num = String(raw ?? "").match(/\d+/)?.[0];
   const postKey = num ? `p${num}` : "";
 
+  // 🔑 localStorage key
+  const commentsStorageKey = postKey ? `ground_comments_${postKey}` : "";
+  const likeStorageKey = postKey ? `ground_like_${postKey}` : "";
+
+  // 🔑 내 댓글 식별자
+  const MY_AUTHOR_ID = "me";
+
   const post = useMemo(() => {
     if (!postKey) return FALLBACK_POST;
     return POST_DETAIL_MAP[postKey] ?? FALLBACK_POST;
@@ -124,20 +131,62 @@ export default function GroundPostDetail() {
   const inputRef = useRef(null);
   const commentsRef = useRef(null);
 
+  /* =====================
+     게시글 진입 시 로드
+     ===================== */
   useEffect(() => {
-    setLikeCount(post.likeCount);
-    setComments(post.comments);
     setCommentText("");
-    setLiked(false);
     setBursts([]);
-  }, [post]);
 
+    // 댓글 로드 (localStorage 우선)
+    let loadedComments = false;
+    if (commentsStorageKey) {
+      try {
+        const saved = localStorage.getItem(commentsStorageKey);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed)) {
+            setComments(parsed);
+            loadedComments = true;
+          }
+        }
+      } catch (e) {}
+    }
+    if (!loadedComments) setComments(post.comments);
+
+    // 좋아요 로드 (localStorage 우선)
+    let loadedLike = false;
+    if (likeStorageKey) {
+      try {
+        const savedLike = localStorage.getItem(likeStorageKey);
+        if (savedLike) {
+          const parsed = JSON.parse(savedLike);
+          if (
+            typeof parsed?.liked === "boolean" &&
+            typeof parsed?.likeCount === "number"
+          ) {
+            setLiked(parsed.liked);
+            setLikeCount(parsed.likeCount);
+            loadedLike = true;
+          }
+        }
+      } catch (e) {}
+    }
+    if (!loadedLike) {
+      setLiked(false);
+      setLikeCount(post.likeCount);
+    }
+  }, [post, commentsStorageKey, likeStorageKey]);
+
+  /* =====================
+     좋아요 파티클
+     ===================== */
   const spawnHearts = useCallback(() => {
     const now = Date.now();
 
     const newHearts = Array.from({ length: 6 }).map((_, i) => ({
       id: `${now}-${i}`,
-      x: Math.random() * 16 - 8, // 가운데로 더 모이게 (-8~8)
+      x: Math.random() * 16 - 8,
       s: 0.85 + Math.random() * 0.6,
       d: 700 + Math.random() * 350,
     }));
@@ -154,37 +203,82 @@ export default function GroundPostDetail() {
   const onToggleLike = useCallback(() => {
     setLiked((prev) => {
       const next = !prev;
-      setLikeCount((c) => (next ? c + 1 : Math.max(0, c - 1)));
+
+      setLikeCount((c) => {
+        const nextCount = next ? c + 1 : Math.max(0, c - 1);
+
+        // ✅ localStorage 저장
+        if (likeStorageKey) {
+          try {
+            localStorage.setItem(
+              likeStorageKey,
+              JSON.stringify({
+                liked: next,
+                likeCount: nextCount,
+              }),
+            );
+          } catch (e) {}
+        }
+
+        return nextCount;
+      });
+
+      // ✅ 좋아요 켤 때만 슝슝
       if (next) spawnHearts();
+
       return next;
     });
-  }, [spawnHearts]);
+  }, [spawnHearts, likeStorageKey]);
 
   const onSubmitComment = () => {
     if (!commentText.trim()) return;
 
-    setComments((prev) => [
-      {
-        id: `c-${Date.now()}`,
-        author: {
-          name: "냉철한 야구분석가",
-          avatar: "/img/lockerroom-profile.svg",
-        },
-        time: "방금",
-        text: commentText,
+    const newComment = {
+      id: `c-${Date.now()}`,
+      authorId: MY_AUTHOR_ID,
+      author: {
+        name: "냉철한 야구분석가",
+        avatar: "/img/lockerroom-profile.svg",
       },
-      ...prev,
-    ]);
+      time: "방금",
+      text: commentText,
+    };
+
+    setComments((prev) => {
+      const next = [newComment, ...prev];
+
+      // localStorage 저장
+      if (commentsStorageKey) {
+        try {
+          localStorage.setItem(commentsStorageKey, JSON.stringify(next));
+        } catch (e) {}
+      }
+
+      return next;
+    });
 
     setCommentText("");
     inputRef.current?.blur();
 
-    // ✅ 댓글 등록 후 댓글 영역으로 이동 (여기 안에 있어야 함!)
     requestAnimationFrame(() => {
       commentsRef.current?.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
+    });
+  };
+  const deleteMyComment = (commentId) => {
+    setComments((prev) => {
+      const next = prev.filter((c) => String(c.id) !== String(commentId));
+
+      // localStorage도 같이 갱신
+      if (commentsStorageKey) {
+        try {
+          localStorage.setItem(commentsStorageKey, JSON.stringify(next));
+        } catch (e) {}
+      }
+
+      return next;
     });
   };
 
@@ -267,9 +361,34 @@ export default function GroundPostDetail() {
           {comments.map((c) => (
             <div key={c.id} className="gpd-comment">
               <img className="gpd-avatar sm" src={c.author.avatar} alt="" />
-              <div>
-                <p className="name">{c.author.name}</p>
-                <div className="time">{c.time}</div>
+
+              <div className="gpd-comment-body">
+                <div className="gpd-comment-top">
+                  <div>
+                    <p className="name">{c.author.name}</p>
+                    <div className="time">{c.time}</div>
+                  </div>
+
+                  {/* 내 댓글 삭제 버튼 */}
+                  {c.authorId === MY_AUTHOR_ID && (
+                    <button
+                      type="button"
+                      className="gpd-comment-delete"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        deleteMyComment(c.id);
+                      }}
+                      aria-label="댓글 삭제"
+                    >
+                      <img
+                        src="/img/lockerroom-x-close.svg" // ← 네 X 이미지 경로
+                        alt="댓글 삭제"
+                        className="gpd-comment-delete-icon"
+                      />
+                    </button>
+                  )}
+                </div>
+
                 <p className="text">{c.text}</p>
               </div>
             </div>

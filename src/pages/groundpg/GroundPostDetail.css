@@ -293,3 +293,36 @@
     transform: translateY(-46px) scale(1.35);
   }
 }
+
+.gpd-comment-top {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.gpd-comment-delete {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  line-height: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.gpd-comment-delete:hover {
+  opacity: 1;
+}
+
+.gpd-comment-delete-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+.gpd-comment-delete img {
+  width: 100%;
+}
+
+.gpd-comment-body {
+  width: 347px;
+}
