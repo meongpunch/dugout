@@ -2,9 +2,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 // 1. 방금 만든 CSS 파일 연결하기
-import "./BackButton.css";
+import "./Backbutton.css";
 
-const BackButton = ({ title }) => {
+const Backbutton = ({ title }) => {
   const navigate = useNavigate();
 
   return (
@@ -24,4 +24,4 @@ const BackButton = ({ title }) => {
   );
 };
 
-export default BackButton;
+export default Backbutton;
