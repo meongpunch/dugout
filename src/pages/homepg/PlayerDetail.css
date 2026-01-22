@@ -204,6 +204,7 @@ section.player-hero {
 .sub-description {
   color: #fff;
   font-size: 14px;
+  font-weight: 300;
   margin-top: 4px;
   line-height: 1.32;
   letter-spacing: -0.02rem;
@@ -254,6 +255,7 @@ section.player-hero {
   transform: translateX(-50%);
   color: #ffffff;
   font-size: 14px;
+  font-weight: 300;
   white-space: nowrap;
 
   opacity: 0;

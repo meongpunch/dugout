@@ -5,7 +5,7 @@
 .groundTopic .ground-topic-list {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 48px;
 }
 
 /* card */
@@ -43,7 +43,6 @@
   position: absolute;
   inset: 0;
   z-index: 2;
-  padding: 18px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -79,17 +78,16 @@
 .groundTopic .topic-card-bottom {
   display: flex;
   flex-direction: column;
-  gap: 12px;
 }
 
 .groundTopic .topic-title {
-  margin: 0;
+  margin-bottom: 8px;
   font-size: 20px;
   font-weight: 600;
 }
 
 .groundTopic .topic-time {
-  margin: 0;
+  margin-bottom: 16px;
   font-size: 14px;
 }
 
@@ -97,9 +95,7 @@
 .groundTopic .topic-reactions {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 12px;
-  margin-top: 10px;
-
+  gap: 8px;
   justify-content: flex-start;
   align-items: center;
 }
