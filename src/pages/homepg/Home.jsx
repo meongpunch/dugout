@@ -279,7 +279,7 @@ const Home = () => {
           style={{
             bottom: "-15%",
             left: "5%",
-            zIndex: 100000000,
+            zIndex: 10,
           }}
         />
         <div className="inner">
