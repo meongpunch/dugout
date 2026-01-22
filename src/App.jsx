@@ -26,6 +26,7 @@ import ChatbotWidget from "./components/ChatbotWidget";
 import ReviewComplete from "./pages/lockerroompg/ReviewComplete";
 import Ticket from "./pages/lockerroompg/Ticket";
 import { GuideProvider } from "./contexts/GuideContext";
+import GroundPostDetail from "./pages/groundpg/GroundPostDetail";
 
 const App = () => {
   return (
@@ -37,11 +38,16 @@ const App = () => {
         <Route path="/onboarding" element={<Onboarding />} />
         <Route path="/login" element={<Login />} />
         <Route path="/teamchoice" element={<TeamChoice />} />
-        <Route path="/onboardingtopbar" element={<OnboardingTopBar iconType="back" skipType="skip" />} />
+        <Route
+          path="/onboardingtopbar"
+          element={<OnboardingTopBar iconType="back" skipType="skip" />}
+        />
         <Route path="/lockerroom/review/:id" element={<Review />} />
-        <Route path="/lockerroom/review/complete/:id" element={<ReviewComplete />} />
+        <Route
+          path="/lockerroom/review/complete/:id"
+          element={<ReviewComplete />}
+        />
         <Route path="/lockerroom/calendar/ticket" element={<Ticket />} />
-
 
         <Route path="/stadium" element={<Stadium />} />
         <Route path="/stadium/seat" element={<StadiumPgSeat />} />
@@ -52,6 +58,7 @@ const App = () => {
           <Route index element={<Home />} />
 
           <Route path="/ground" element={<Ground />} />
+          <Route path="/ground/post" element={<GroundPostDetail />} />
           <Route path="/topic" element={<GroundTopic />} />
           <Route path="/lockerroom" element={<Lockerroom />} />
           <Route path="/player/:id" element={<PlayerDetail />} />
@@ -62,7 +69,6 @@ const App = () => {
           <Route path="/lockerroom/calendar" element={<Calendar />} />
         </Route>
       </Routes>
-
     </GuideProvider>
   );
 };
