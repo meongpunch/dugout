@@ -116,8 +116,8 @@ export default function Md() {
         </div>
 
         <div className="desc">
-          <p>사이즈: 23cm(높이)</p>
-          <small>* 하랑이 가방걸이 인형은 출시 예정입니다.</small>
+          <p className="size-text">사이즈: 23cm(높이)</p>
+          <p className="notice-text">* 하랑이 가방걸이 인형은 출시 예정입니다.</p>
         </div>
       </div>
 

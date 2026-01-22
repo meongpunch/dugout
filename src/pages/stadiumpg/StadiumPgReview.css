@@ -44,11 +44,12 @@
 .sr-seatTitle {
   margin: 48px 0 8px 0;
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .sr-price {
   font-size: 16px;
+  font-weight: 300;
   color: rgba(255, 255, 255, 0.6);
   margin-bottom: 76px;
 }
@@ -91,6 +92,7 @@
   align-items: center;
   gap: 5px;
   font-size: 14px;
+  font-weight: 300;
   cursor: pointer;
   line-height: 1;
   position: relative;
@@ -111,6 +113,7 @@
   border: 0;
   background: transparent;
   font-size: 16px;
+  font-weight: 300;
   color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
   padding: 0 16px;
@@ -126,6 +129,7 @@
   position: absolute;
   left: 0;
   top: 50%;
+  font-weight: bold;
   transform: translateY(-50%);
   color: rgba(255, 255, 255, 0.6);
 }
@@ -176,6 +180,7 @@
 
 .sr-userMeta {
   font-size: 14px;
+  font-weight: 300;
   color: var(--muted);
   display: flex;
   align-items: center;
@@ -183,12 +188,12 @@
 }
 
 .sr-dot {
-  opacity: 0.5;
+  opacity: 0.6;
+  font-weight: bold;
 }
 
 .sr-rating {
   color: rgba(255, 255, 255, 0.78);
-  font-weight: bold;
 }
 
 .sr-photoSwiper {
@@ -243,8 +248,9 @@
 }
 
 .sr-text {
-  line-height: 150%;
+  line-height: 1.4;
   font-size: 16px;
+  font-weight: 300;
   color: #fff;
   margin-bottom: 28px;
 }
@@ -266,12 +272,10 @@
   align-items: center;
   gap: 5px;
   font-size: 14px;
-  line-height: 1;
 }
 
 .sr-actionIcon {
   font-size: 14px;
-  line-height: 1;
 }
 
 .sr-actionLabel {
@@ -284,6 +288,8 @@
   opacity: 0.8;
 }
 
-.sr-pillIcon.ic-eyes {
+
+
+.sr-pillIcon.ic-eyes, .sr-actionIcon.ic-eyes {
   line-height: 0.8;
 }

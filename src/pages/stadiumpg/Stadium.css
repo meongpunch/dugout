@@ -30,7 +30,7 @@
 
 .stadium-title {
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 600;
   display: inline-flex;
   align-items: center;
   margin: 0;
@@ -203,7 +203,7 @@
 
 .bottom-box .title {
   font-size: 28px;
-  font-weight: 800;
+  font-weight: 600;
   color: #fff;
   margin-bottom: 10px;
 
@@ -211,6 +211,7 @@
 
 .bottom-box .desc {
   font-size: 16px;
+  font-weight: 300;
   color: #a8a8a8;
   margin-top: 0;
 }

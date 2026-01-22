@@ -109,13 +109,13 @@
 
 .seat-info {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 600;
   margin-bottom: 8px;
 }
 
 .detail-bottom .price {
   font-size: 16px;
-  font-weight: normal;
+  font-weight: 300;
   color: rgba(255, 255, 255, 0.6);
   margin: 0 0 28px 0;
 }
@@ -142,11 +142,12 @@
   background: #aa0000;
   color: #fff;
   font-size: 14px;
+  font-weight: 300;
 }
 
 .info-title {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 600;
   margin-bottom: 28px;
 }
 
@@ -199,7 +200,7 @@
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 16px;
-}
+} 
 
 .card-desc-1 {
   margin-bottom: 6px;
@@ -208,6 +209,7 @@
 .card-desc-1,
 .card-desc-2 {
   font-size: 14px;
+  font-weight: 300;
 }
 
 .confirm {
@@ -223,5 +225,6 @@
   background: #aa0000;
   color: #fff;
   font-size: 14px;
+  font-weight: 500;
   margin-bottom: calc(var(--tabbar-h) + 16px + env(safe-area-inset-bottom));
 }

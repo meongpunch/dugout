@@ -356,7 +356,7 @@ export default function StadiumPgReview() {
                         type="button"
                         className="sr-actionPill"
                       >
-                        <span className="sr-actionIcon">{found?.icon}</span>
+                        <span className={`sr-actionIcon ${found?.key === "view" ? "ic-eyes" : ""}`}>{found?.icon}</span>
                         <span className="sr-actionLabel">{label}</span>
                         <span className="sr-actionCount">{cnt}</span>
                       </button>
