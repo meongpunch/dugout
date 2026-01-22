@@ -106,8 +106,8 @@ export default function GroundPostDetail() {
   const { state } = useLocation();
 
   const raw = state?.postId;
-  const num = String(raw ?? "").match(/\d+/)?.[0]; // 숫자만 뽑기
-  const postKey = num ? `p${num}` : ""; // p1 형태로 고정
+  const num = String(raw ?? "").match(/\d+/)?.[0];
+  const postKey = num ? `p${num}` : "";
 
   const post = useMemo(() => {
     if (!postKey) return FALLBACK_POST;
@@ -122,13 +122,14 @@ export default function GroundPostDetail() {
   const [bursts, setBursts] = useState([]);
 
   const inputRef = useRef(null);
+  const commentsRef = useRef(null);
 
   useEffect(() => {
     setLikeCount(post.likeCount);
     setComments(post.comments);
     setCommentText("");
-    setLiked(false); // 게시글 바뀌면 좋아요 상태 리셋
-    setBursts([]); // 파티클도 리셋
+    setLiked(false);
+    setBursts([]);
   }, [post]);
 
   const spawnHearts = useCallback(() => {
@@ -136,9 +137,9 @@ export default function GroundPostDetail() {
 
     const newHearts = Array.from({ length: 6 }).map((_, i) => ({
       id: `${now}-${i}`,
-      x: Math.random() * 40 - 20, // -20 ~ 20px
-      s: 0.85 + Math.random() * 0.6, // 0.85 ~ 1.45
-      d: 700 + Math.random() * 350, // 700 ~ 1050ms
+      x: Math.random() * 16 - 8, // 가운데로 더 모이게 (-8~8)
+      s: 0.85 + Math.random() * 0.6,
+      d: 700 + Math.random() * 350,
     }));
 
     setBursts((prev) => [...prev, ...newHearts]);
@@ -150,13 +151,25 @@ export default function GroundPostDetail() {
     }, 1200);
   }, []);
 
+  const onToggleLike = useCallback(() => {
+    setLiked((prev) => {
+      const next = !prev;
+      setLikeCount((c) => (next ? c + 1 : Math.max(0, c - 1)));
+      if (next) spawnHearts();
+      return next;
+    });
+  }, [spawnHearts]);
+
   const onSubmitComment = () => {
     if (!commentText.trim()) return;
 
     setComments((prev) => [
       {
         id: `c-${Date.now()}`,
-        author: { name: "나", avatar: "/img/profile-default.jpg" },
+        author: {
+          name: "냉철한 야구분석가",
+          avatar: "/img/lockerroom-profile.svg",
+        },
         time: "방금",
         text: commentText,
       },
@@ -165,21 +178,15 @@ export default function GroundPostDetail() {
 
     setCommentText("");
     inputRef.current?.blur();
-  };
 
-  const onToggleLike = useCallback(() => {
-    setLiked((prev) => {
-      const next = !prev;
-
-      // 좋아요 토글 시 카운트 증감
-      setLikeCount((c) => (next ? c + 1 : Math.max(0, c - 1)));
-
-      // 켤 때만 파티클
-      if (next) spawnHearts();
-
-      return next;
+    // ✅ 댓글 등록 후 댓글 영역으로 이동 (여기 안에 있어야 함!)
+    requestAnimationFrame(() => {
+      commentsRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     });
-  }, [spawnHearts]);
+  };
 
   return (
     <section className="gpd">
@@ -252,7 +259,9 @@ export default function GroundPostDetail() {
           </button>
         </div>
 
-        <div className="gpd-comments-head">댓글 {comments.length}개</div>
+        <div ref={commentsRef} className="gpd-comments-head">
+          댓글 {comments.length}개
+        </div>
 
         <div className="gpd-comments">
           {comments.map((c) => (
@@ -266,6 +275,7 @@ export default function GroundPostDetail() {
             </div>
           ))}
         </div>
+
         <div className="gpd-bottom-space" />
       </main>
 
@@ -277,13 +287,13 @@ export default function GroundPostDetail() {
           placeholder="댓글을 입력해 주세요."
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              e.preventDefault(); // 엔터 줄바꿈 방지
-              onSubmitComment(); // 기존 댓글 등록 로직 호출
+              e.preventDefault();
+              onSubmitComment();
             }
           }}
         />
-        <button onClick={onSubmitComment}>
-          <img src="/img/chatbot-send.svg" alt="send" />{" "}
+        <button onClick={onSubmitComment} type="button">
+          <img src="/img/chatbot-send.svg" alt="send" />
         </button>
       </div>
     </section>
