@@ -36,13 +36,10 @@
   font-weight: 700;
   letter-spacing: -0.2px;
 }
-.gpd-top-left,
-.gpd-top-right {
-}
 
 /* body scroll */
 .gpd-body {
-  padding: 84px 16px 0;
+  padding: 30px 16px 0;
   height: 100vh;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -58,7 +55,9 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  margin-bottom: 30px;
 }
+
 .gpd-avatar {
   width: 44px;
   height: 44px;
@@ -78,117 +77,115 @@
   gap: 2px;
 }
 .gpd-author-name {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.92);
+  margin-bottom: 4px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
 }
+
 .gpd-author-time {
-  margin: 0;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.45);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.4);
 }
 
 /* title */
 .gpd-title {
-  margin: 14px 0 14px;
+  margin-bottom: 15px;
   font-size: 18px;
-  font-weight: 800;
-  letter-spacing: -0.2px;
+  font-weight: normal;
 }
 
 /* hero image */
 .gpd-hero {
-  border-radius: 10px;
   overflow: hidden;
-  background: #151515;
-  border: 1px solid rgba(255, 255, 255, 0.06);
 }
+
 .gpd-hero img {
   width: 100%;
   display: block;
   object-fit: cover;
+  margin-bottom: 25px;
 }
 
 /* actions */
 .gpd-actions {
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 12px 2px 10px;
-}
-.gpd-action {
-  border: 0;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.75);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  padding: 6px 4px;
-}
-.gpd-ico {
-  font-size: 22px;
-  line-height: 1;
-  transform: translateY(-1px);
-}
-.gpd-count {
-  font-size: 14px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.55);
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
-.gpd-divider {
-  height: 1px;
-  background: rgba(255, 255, 255, 0.08);
-  margin: 0 -16px;
+.gpd-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+  overflow: visible;
+}
+
+.gpd-action-icon {
+  width: 22px;
+  height: 22px;
+  display: block;
+  object-fit: contain;
+  fill: currentColor;
+}
+
+.gpd-action-btn.is-liked .gpd-action-icon {
+  color: #aa0000;
+}
+
+/* liked 상태: 핑크 */
+.gpd-action-btn.is-liked .gpd-action-icon {
+  filter: none;
+}
+
+.gpd-action-count {
+  color: inherit;
+  font-size: 14px;
+  line-height: 1;
 }
 
 /* comments */
 .gpd-comments-head {
-  padding: 14px 0 10px;
-}
-.gpd-comments-title {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.92);
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 22px;
 }
 
 .gpd-comments {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
+  padding-bottom: 40px;
 }
 .gpd-comment {
   display: flex;
   gap: 12px;
   align-items: flex-start;
 }
-.gpd-comment-body {
-  flex: 1;
-  min-width: 0;
+.gpd-comment .name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2px;
 }
-.gpd-comment-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+.gpd-comment .time {
+  font-size: 11px;
+  color: #888;
 }
-.gpd-comment-name {
+.gpd-comment .text {
   font-size: 14px;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.92);
-}
-.gpd-comment-time {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.45);
-}
-.gpd-comment-text {
-  margin: 8px 0 0;
-  font-size: 14px;
+  color: #ddd;
   line-height: 1.4;
-  color: rgba(255, 255, 255, 0.9);
   white-space: pre-wrap;
+  margin-top: 4px;
 }
 
 /* input bar (fixed above bottom nav) */
@@ -196,55 +193,101 @@
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 72px;
-  width: min(100vw, 430px);
-  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  bottom: 104px;
+  width: min(100vw, 398px);
+  padding: 12px 16px;
   z-index: 60;
-  background: linear-gradient(
-    to top,
-    rgba(15, 15, 15, 0.95),
-    rgba(15, 15, 15, 0.6)
-  );
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-.gpd-inputwrap {
-  height: 44px;
-  border-radius: 10px;
-  background: #1b1b1b;
-  border: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 0 10px 0 12px;
 }
-.gpd-input {
+.gpd-inputbar input {
   flex: 1;
-  height: 100%;
+  background: #222;
   border: 0;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.92);
+  border-radius: 4px;
+  height: 40px;
+  padding: 0 12px;
+  color: #fff;
   font-size: 14px;
   outline: none;
 }
-.gpd-input::placeholder {
-  color: rgba(255, 255, 255, 0.35);
+.gpd-inputbar input::placeholder {
+  color: #666;
 }
-
-.gpd-send {
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
-  border: 0;
+.gpd-inputbar button {
   background: transparent;
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 18px;
+  border: 0;
+  padding: 0;
   cursor: pointer;
-  display: grid;
-  place-items: center;
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  display: flex; /* Center the icon */
+  align-items: center; /* Center the icon */
+  justify-content: center; /* Center the icon */
 }
 
 /* bottom spacing so last comment isn't hidden */
 .gpd-bottom-space {
   height: 170px; /* inputbar + nav */
+}
+
+/* 좋아요 눌릴 때 하트 "뿅" */
+.gpd-action-btn.is-liked .gpd-action-icon {
+  animation: gpdPop 180ms ease-out;
+}
+
+@keyframes gpdPop {
+  0% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 파티클 기준점 */
+.gpd-action-btn {
+  position: relative;
+}
+
+/* 슝슝 레이어 */
+.gpd-burst-layer {
+  position: absolute;
+  left: 4px; /* 하트 아이콘 근처 */
+  top: 4px;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+/* 파티클(하트 이미지로 하고 싶으면 아래 주석 버전 사용) */
+.gpd-burst-heart {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 14px;
+  height: 14px;
+  background: url("/img/ground-heart-icon-on.svg") center/contain no-repeat;
+  opacity: 0;
+  animation: gpdHeartFly 900ms ease-out forwards;
+  filter: drop-shadow(0 2px 6px rgba(255, 77, 109, 0.35));
+}
+
+@keyframes gpdHeartFly {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.8);
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-46px) scale(1.35);
+  }
 }
