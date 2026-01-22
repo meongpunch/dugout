@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Ground.css";
 import "../../components/Guide.css";
 import MainPgHeader from "../../components/MainPgHeader";
@@ -168,6 +168,7 @@ const mdZonItems = [
 ];
 
 const Ground = () => {
+  const navigate = useNavigate();
   const [activeReactions, setActiveReactions] = useState([]);
   const [reactionCounts, setReactionCounts] = useState(
     popularTopics[0].reactions.map((r) => r.count),
@@ -324,8 +325,9 @@ const Ground = () => {
                           return (
                             <span
                               key={idx}
-                              className={`topic-chip ${isActive ? "is-active" : ""
-                                }`}
+                              className={`topic-chip ${
+                                isActive ? "is-active" : ""
+                              }`}
                               onClick={(e) => {
                                 e.preventDefault();
                                 setActiveReactions((prev) => {
@@ -453,36 +455,43 @@ const Ground = () => {
                 .filter((_, idx) => idx % 2 === 0)
                 .map((item) => (
                   <li key={item.id}>
-                    <a
-                      href="#"
+                    <button
+                      type="button"
                       className="post-card"
-                      onClick={(e) => e.preventDefault()}
+                      onClick={() =>
+                        navigate("/ground/post", { state: { postId: item.id } })
+                      }
                     >
                       <div className={`post-thumb is-${item.size}`}>
                         <img src={item.img} alt={item.title} />
                         <div className="post-dim" />
                         <p className="post-title">{item.title}</p>
                       </div>
-                    </a>
+                    </button>
                   </li>
                 ))}
             </ul>
+
             <ul className="ground-post-col">
               {popularPosts
                 .filter((_, idx) => idx % 2 === 1)
                 .map((item) => (
                   <li key={item.id}>
-                    <a
-                      href="#"
+                    <button
+                      type="button"
                       className="post-card"
-                      onClick={(e) => e.preventDefault()}
+                      onClick={() =>
+                        navigate("/ground/post", {
+                          state: { postId: `p${item.id}` },
+                        })
+                      }
                     >
                       <div className={`post-thumb is-${item.size}`}>
                         <img src={item.img} alt={item.title} />
                         <div className="post-dim" />
                         <p className="post-title">{item.title}</p>
                       </div>
-                    </a>
+                    </button>
                   </li>
                 ))}
             </ul>
