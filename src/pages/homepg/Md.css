@@ -19,7 +19,7 @@
 .header-title {
   margin: 0;
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .header-btn {
@@ -179,32 +179,23 @@
 .price {
   margin-top: 16px;
   font-size: 24px;
-  font-weight: bold;
-  line-height: 1.32;
-  letter-spacing: -0.02rem;
+  font-weight: 600;
 }
 .price span {
   font-size: 20px;
-  font-weight: 600;
-  line-height: 1.32;
-  letter-spacing: -0.02rem;
+  font-weight: 400;
 }
 
 .desc {
   margin-top: 28px;
   font-size: 14px;
+  font-weight: 300;
   color: #fff;
-  line-height: 1.32;
-  letter-spacing: 0.02rem;
 }
 
-.desc p {
+.desc p.size-text {
   margin-bottom: 4px;
-  font-style: 16px;
-  font-weight: 400;
-  color: #fff;
-  line-height: 1.32;
-  letter-spacing: 0.02rem;
+  font-size: 16px;
 }
 
 /* ===== 하단 고정 버튼 ===== */
