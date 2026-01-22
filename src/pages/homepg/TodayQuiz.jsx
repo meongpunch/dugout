@@ -137,7 +137,7 @@ const TodayQuiz = () => {
 
         {isCorrectSelected && (
           <div className="confirm-area">
-            <button className="confirm-btn btn" onClick={() => navigate("/")}>
+            <button className="confirm-btn btn" onClick={() => navigate(-1)}>
               <div className="guide-dot"></div>
               확인
             </button>

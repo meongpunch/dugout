@@ -55,9 +55,9 @@ const Footer = () => {
     <nav className="gnb">
       {/* 1. 홈 */}
       <Link
-        to="/"
+        to="/home"
         className={`gnb-item ${activeTab === "home" ? "active" : ""}`}
-        onClick={(e) => handleTabClick(e, "/")}
+        onClick={(e) => handleTabClick(e, "/home")}
       >
         <div className="icon-box">
           <img

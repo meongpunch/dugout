@@ -33,7 +33,7 @@ export default function TeamChoice() {
   const handleStart = () => {
     if (!selectedTeam) return;
     localStorage.setItem('favoriteTeamId', selectedTeam.id);
-    navigate('/');
+    navigate('/home');
   };
 
   return (
