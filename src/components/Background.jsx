@@ -6,14 +6,19 @@ const Background = () => {
             {/* 왼쪽 영역 */}
             <div className="bg-container bg-left">
                 <div className="bg-logo"><img src="img/dugout-logo.png" alt="덕아웃 로고" /></div>
+                <div className="bg-text-box">
+                    <div className="bg-title point">DUGOUT</div>
+                    <div className="bg-subtit">The 10th Player</div>
+                </div>
             </div>
 
             {/* 오른쪽 영역 */}
             <div className="bg-container bg-right">
-                <div className="bg-title point">DUGOUT</div>
+                <div className="bg-title">MOBILE FANDOM APP</div>
                 <div className="bg-text-box">
-                    <div className="bg-subtit">The 10th Player </div>
-
+                    <p className="bg-date">20260102 - 20260126</p>
+                    <p className="bg-subtit">2026 UX / UI DESIDN TEAM PROJECT</p>
+                    <p className="bg-team-name">권체운 김의성 김혜원 백진우 신명진 유수진 정주리</p>
                 </div>
             </div>
         </>

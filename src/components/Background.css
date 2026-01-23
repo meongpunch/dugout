@@ -3,20 +3,20 @@
     top: 50%;
     transform: translateY(-50%);
     z-index: -1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
     opacity: 0.4;
 }
 
 /* 왼쪽 영역 */
 .bg-left {
-    left: 300px;
+    left: 108px;
+    top: 170px
 }
 
 /* 오른쪽 영역 */
 .bg-right {
-    right: 300px;
+    right: 108px;
+    top: 660px;
 }
 
 .bg-logo img {
@@ -25,24 +25,52 @@
     object-fit: cover;
 }
 
-.bg-text-box {
+.bg-left {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    gap: 12px;
 }
 
-.bg-right .bg-title {
-    font-size: 150px;
+.bg-left .bg-title {
+    font-size: 100px;
     letter-spacing: 4px;
     font-weight: 500;
     line-height: 90%;
+
 }
 
-.bg-right .bg-subtit {
-    font-size: 22px;
+.bg-left .bg-subtit {
+    font-size: 15px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     font-weight: bold;
+}
+
+.bg-right {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.bg-right .bg-title {
+    font-size: 35px;
+    letter-spacing: -1px;
+
+    font-weight: 500;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 14px;
+    margin-bottom: 30px;
+}
+
+.bg-right p {
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.bg-right .bg-date {
+    margin-bottom: 8px;
 }
 
 /* 모바일에서는 숨기기 */
