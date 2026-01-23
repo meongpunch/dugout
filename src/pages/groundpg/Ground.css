@@ -216,7 +216,6 @@
 .sns-title {
   font-size: 14px;
   font-weight: 300;
-  margin-bottom: 4px;
 }
 
 .sns-desc {
@@ -354,7 +353,7 @@
 }
 
 .topic-time {
-  margin-bottom:  16px;
+  margin-bottom:  20px;
   font-size: 14px;
 }
 
@@ -362,7 +361,7 @@
   display: flex;
   flex-wrap: wrap;
   /* 줄바꿈 허용 */
-  gap: 8px;
+  gap: 10px;
   justify-content: flex-start;
   /* 왼쪽부터 */
   align-items: center;
@@ -448,16 +447,16 @@
 }
 
 .ground-banner__title {
-  margin-bottom: 4px;
+  margin-bottom: 2px;
   font-size: 20px;
   font-weight: 600;
 }
 
 .ground-banner__sub {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-size: 14px;
   font-weight: 300;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .ground-banner__meta {
@@ -465,19 +464,19 @@
   align-items: center;
   font-size: 14px;
   font-weight: 500;
+  opacity: 0.9;
 }
 
 .ground-banner__date{
   margin-right: 6px;
 }
 .ground-banner__time {
-  margin-right: 4px;
-  opacity: 0.8;
+  margin-right: 2px;
+
 }
 
 .ground-banner__live{
   font-weight: 300;
-  opacity: 0.8;
 }
 
 /* ground_moment */
@@ -684,6 +683,7 @@
   font-size: 14px;
   color: #9d9d9d;
   margin-bottom: 10px;
+  font-weight: 300;
 }
 
 .mdzon-title {
@@ -691,13 +691,13 @@
   font-size: 16px;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2px;
 }
 
 .mdzon-price {
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 500;
   color: #fff;
-  margin-top: 4px;
 }
 
 /* 가이드 점 위치 미세 조정 */

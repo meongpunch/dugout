@@ -4,6 +4,36 @@ import "./GroundPostDetail.css";
 import BackButton from "../../components/Backbutton";
 
 /*
+ * ✅ 요구사항 반영
+ * 1) time 문자열 대신 createdAt(타임스탬프) 기반으로 "방금/1분 전/..." 자동 변경
+ * 2) 브라우저(탭) 닫았다 다시 켜면 댓글/좋아요 초기화되게: localStorage → sessionStorage
+ * 3) 삭제 버튼 누르면 확인 모달 + 확인 시 입력창 위 토스트 2초
+ */
+
+function formatRelativeTime(createdAt) {
+  const diff = Date.now() - createdAt;
+  const sec = Math.floor(diff / 1000);
+
+  if (sec < 60) return "방금";
+
+  const min = Math.floor(sec / 60);
+  if (min < 60) return `${min}분 전`;
+
+  const hour = Math.floor(min / 60);
+  if (hour < 24) return `${hour}시간 전`;
+
+  const day = Math.floor(hour / 24);
+  if (day === 1) return "어제";
+  return `${day}일 전`;
+}
+
+function getDisplayTime(obj) {
+  if (typeof obj?.createdAt === "number") return formatRelativeTime(obj.createdAt);
+  if (typeof obj?.time === "string") return obj.time; // 기존 더미 데이터 호환
+  return "";
+}
+
+/*
  * Ground에서는 숫자 id만 전달
  * Detail에서 p{id} 형태로 매핑
  */
@@ -105,11 +135,12 @@ const FALLBACK_POST = {
 export default function GroundPostDetail() {
   const { state } = useLocation();
 
+
   const raw = state?.postId;
   const num = String(raw ?? "").match(/\d+/)?.[0];
   const postKey = num ? `p${num}` : "";
 
-  // 🔑 localStorage key
+  // 🔑 sessionStorage key (탭/브라우저 닫으면 초기화됨)
   const commentsStorageKey = postKey ? `ground_comments_${postKey}` : "";
   const likeStorageKey = postKey ? `ground_like_${postKey}` : "";
 
@@ -131,6 +162,27 @@ export default function GroundPostDetail() {
   const inputRef = useRef(null);
   const commentsRef = useRef(null);
 
+  // ✅ 삭제 모달/토스트 상태
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [pendingDeleteId, setPendingDeleteId] = useState(null);
+
+  const [showToast, setShowToast] = useState(false);
+  const [toastMsg, setToastMsg] = useState("");
+
+  const modalRef = useRef(null);
+  useEffect(() => {
+  if (showDeleteModal) {
+    modalRef.current?.focus();
+  }
+}, [showDeleteModal]);
+
+  // ✅ 1분마다 리렌더해서 "방금/1분 전..." 자동 업데이트
+  const [, forceTick] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => forceTick((x) => x + 1), 60 * 1000);
+    return () => clearInterval(t);
+  }, []);
+
   /* =====================
      게시글 진입 시 로드
      ===================== */
@@ -138,11 +190,11 @@ export default function GroundPostDetail() {
     setCommentText("");
     setBursts([]);
 
-    // 댓글 로드 (localStorage 우선)
+    // 댓글 로드 (sessionStorage 우선)
     let loadedComments = false;
     if (commentsStorageKey) {
       try {
-        const saved = localStorage.getItem(commentsStorageKey);
+        const saved = sessionStorage.getItem(commentsStorageKey);
         if (saved) {
           const parsed = JSON.parse(saved);
           if (Array.isArray(parsed)) {
@@ -150,15 +202,15 @@ export default function GroundPostDetail() {
             loadedComments = true;
           }
         }
-      } catch (e) { }
+      } catch (e) {}
     }
     if (!loadedComments) setComments(post.comments);
 
-    // 좋아요 로드 (localStorage 우선)
+    // 좋아요 로드 (sessionStorage 우선)
     let loadedLike = false;
     if (likeStorageKey) {
       try {
-        const savedLike = localStorage.getItem(likeStorageKey);
+        const savedLike = sessionStorage.getItem(likeStorageKey);
         if (savedLike) {
           const parsed = JSON.parse(savedLike);
           if (
@@ -170,7 +222,7 @@ export default function GroundPostDetail() {
             loadedLike = true;
           }
         }
-      } catch (e) { }
+      } catch (e) {}
     }
     if (!loadedLike) {
       setLiked(false);
@@ -207,17 +259,17 @@ export default function GroundPostDetail() {
       setLikeCount((c) => {
         const nextCount = next ? c + 1 : Math.max(0, c - 1);
 
-        // ✅ localStorage 저장
+        // ✅ sessionStorage 저장 (탭 닫으면 초기화)
         if (likeStorageKey) {
           try {
-            localStorage.setItem(
+            sessionStorage.setItem(
               likeStorageKey,
               JSON.stringify({
                 liked: next,
                 likeCount: nextCount,
               }),
             );
-          } catch (e) { }
+          } catch (e) {}
         }
 
         return nextCount;
@@ -240,18 +292,18 @@ export default function GroundPostDetail() {
         name: "냉철한 야구분석가",
         avatar: "/img/lockerroom-profile.svg",
       },
-      time: "방금",
+      createdAt: Date.now(), // ✅ 진짜 시간 저장
       text: commentText,
     };
 
     setComments((prev) => {
       const next = [newComment, ...prev];
 
-      // localStorage 저장
+      // sessionStorage 저장
       if (commentsStorageKey) {
         try {
-          localStorage.setItem(commentsStorageKey, JSON.stringify(next));
-        } catch (e) { }
+          sessionStorage.setItem(commentsStorageKey, JSON.stringify(next));
+        } catch (e) {}
       }
 
       return next;
@@ -267,19 +319,37 @@ export default function GroundPostDetail() {
       });
     });
   };
+
   const deleteMyComment = (commentId) => {
     setComments((prev) => {
       const next = prev.filter((c) => String(c.id) !== String(commentId));
 
-      // localStorage도 같이 갱신
+      // sessionStorage도 같이 갱신
       if (commentsStorageKey) {
         try {
-          localStorage.setItem(commentsStorageKey, JSON.stringify(next));
-        } catch (e) { }
+          sessionStorage.setItem(commentsStorageKey, JSON.stringify(next));
+        } catch (e) {}
       }
 
       return next;
     });
+  };
+
+  // ✅ 모달에서 "삭제하기" 눌렀을 때 실행
+  const confirmDeleteComment = () => {
+    if (!pendingDeleteId) return;
+
+    deleteMyComment(pendingDeleteId);
+
+    setShowDeleteModal(false);
+    setPendingDeleteId(null);
+
+    setToastMsg("댓글이 삭제되었습니다.");
+    setShowToast(true);
+
+    setTimeout(() => {
+      setShowToast(false);
+    }, 2000);
   };
 
   return (
@@ -289,12 +359,11 @@ export default function GroundPostDetail() {
       </header>
 
       <main className="gpd-body">
-
         <div className="gpd-author">
           <img className="gpd-avatar" src={post.author.avatar} alt="" />
-          <div>
+          <div className="gpd-author-profile">
             <p className="gpd-author-name">{post.author.name}</p>
-            <p className="gpd-author-time">{post.time}</p>
+            <p className="gpd-author-time">{getDisplayTime(post)}</p>
           </div>
         </div>
 
@@ -313,19 +382,20 @@ export default function GroundPostDetail() {
             onClick={onToggleLike}
             type="button"
           >
-            <div className="guide-dot"></div>
-            <img
-              src={
-                liked
-                  ? "/img/ground-heart-icon-on.svg"
-                  : "/img/ground-heart-icon.svg"
-              }
-              alt="좋아요"
-              className="gpd-action-icon"
-            />
+            <div className="heart">
+              <div className="guide-dot"></div>
+              <img
+                src={
+                  liked
+                    ? "/img/ground-heart-icon-on.svg"
+                    : "/img/ground-heart-icon.svg"
+                }
+                alt="좋아요"
+                className="gpd-action-icon"
+              />
+            </div>
             <span className="gpd-action-count">{likeCount}</span>
 
-            {/* 슝슝 파티클 */}
             <span className="gpd-burst-layer" aria-hidden="true">
               {bursts.map((h) => (
                 <span
@@ -346,7 +416,6 @@ export default function GroundPostDetail() {
             onClick={() => inputRef.current?.focus()}
             type="button"
           >
-
             <img
               src="/img/ground-comment-icon.png"
               alt="댓글"
@@ -363,36 +432,39 @@ export default function GroundPostDetail() {
         <div className="gpd-comments">
           {comments.map((c) => (
             <div key={c.id} className="gpd-comment">
-              <img className="gpd-avatar sm" src={c.author.avatar} alt="" />
-
-              <div className="gpd-comment-body">
-                <div className="gpd-comment-top">
-                  <div>
+              <div className="gpd-comment-head">
+                <div className="gpd-profile">
+                  <img className="gpd-avatar sm" src={c.author.avatar} alt="" />
+                  <div className="gpd-meta">
                     <p className="name">{c.author.name}</p>
-                    <div className="time">{c.time}</div>
+                    <p className="time">{getDisplayTime(c)}</p>
                   </div>
+                </div>
 
-                  {/* 내 댓글 삭제 버튼 */}
+                <div className="gpd-comment-top">
                   {c.authorId === MY_AUTHOR_ID && (
                     <button
                       type="button"
                       className="gpd-comment-delete"
                       onClick={(e) => {
                         e.stopPropagation();
-                        deleteMyComment(c.id);
+                        setPendingDeleteId(c.id);
+                        setShowDeleteModal(true);
                       }}
                       aria-label="댓글 삭제"
                     >
                       <div className="guide-dot"></div>
                       <img
-                        src="/img/lockerroom-x-close.svg" // ← 네 X 이미지 경로
+                        src="/img/lockerroom-x-close.svg"
                         alt="댓글 삭제"
                         className="gpd-comment-delete-icon"
                       />
                     </button>
                   )}
                 </div>
+              </div>
 
+              <div className="gpd-comment-body">
                 <p className="text">{c.text}</p>
               </div>
             </div>
@@ -402,24 +474,80 @@ export default function GroundPostDetail() {
         <div className="gpd-bottom-space" />
       </main>
 
-      <div className="gpd-inputbar">
-        <div className="guide-click" style={{ bottom: "-40%", left: "10%" }}></div>
-        <input
-          ref={inputRef}
-          value={commentText}
-          onChange={(e) => setCommentText(e.target.value)}
-          placeholder="댓글을 입력해 주세요."
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              e.preventDefault();
-              onSubmitComment();
-            }
-          }}
-        />
-        <button onClick={onSubmitComment} type="button">
-          <img src="/img/chatbot-send.svg" alt="send" />
-        </button>
-      </div>
+      {/* ✅ 토스트: 입력창 위에 */}
+      {showToast && <div className="gpd-delete-toast">{toastMsg}</div>}
+
+    <div className="gpd-inputbar">
+      <div
+        className="guide-click"
+        style={{ bottom: "-3%", left: "10%" }}
+      ></div>
+
+      <input
+        ref={inputRef}
+        value={commentText}
+        onChange={(e) => setCommentText(e.target.value)}
+        placeholder="댓글을 입력해 주세요."
+        onKeyDown={(e) => {
+          if (
+            e.key === "Enter" &&
+            !e.nativeEvent.isComposing
+          ) {
+            e.preventDefault();
+            onSubmitComment();
+          }
+        }}
+      />
+
+  <button onClick={onSubmitComment} type="button">
+    <img src="/img/chatbot-send.svg" alt="send" />
+  </button>
+</div>
+
+        {/* ✅ 삭제 확인 모달 */}
+        {showDeleteModal && (
+          <div
+            className="gpd-modal-backdrop"
+            onClick={() => setShowDeleteModal(false)}
+          >
+            <div
+              className="gpd-modal"
+              ref={modalRef}
+              tabIndex={-1}                 // ✅ 포커스 가능하게
+              onClick={(e) => e.stopPropagation()}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {    // ✅ Enter = 삭제
+                  e.preventDefault();
+                  confirmDeleteComment();
+                }
+                if (e.key === "Escape") {   // ✅ ESC = 닫기 (옵션)
+                  e.preventDefault();
+                  setShowDeleteModal(false);
+                }
+              }}
+            >
+              <h3>댓글을 삭제하시겠습니까?</h3>
+              <p>삭제하면 복구할 수 없습니다.</p>
+
+              <div className="gpd-modal-actions">
+                <button
+                  className="btn-cancel"
+                  onClick={() => setShowDeleteModal(false)}
+                  type="button"
+                >
+                  취소
+                </button>
+                <button
+                  className="btn-danger"
+                  onClick={confirmDeleteComment}
+                  type="button"
+                >
+                  삭제하기
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
     </section>
   );
 }

@@ -64,7 +64,7 @@
     background: #282828;
     /* User requested transparent */
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 14px;
+    border-radius: 6px;
     overflow: hidden;
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
     animation: slideUp 0.3s ease-out forwards;
@@ -502,7 +502,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 14px;
+    border-radius: 6px;
     /* Match panel radius */
 }
 
@@ -550,7 +550,7 @@
     flex: 1;
     height: 48px;
     border: 0;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;

@@ -57,6 +57,11 @@
   gap: 12px;
   margin-bottom: 30px;
 }
+.gpd-author .gpd-author-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 .gpd-avatar {
   width: 44px;
@@ -71,29 +76,31 @@
   height: 40px;
 }
 
-.gpd-author-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
+
 .gpd-author-name {
   margin-bottom: 4px;
   font-size: 16px;
+  font-weight: 500;
   color: rgba(255, 255, 255, 0.9);
 }
 
 .gpd-author-time {
   font-size: 14px;
+  font-weight: 300;
   color: rgba(255, 255, 255, 0.4);
 }
 
 /* title */
 .gpd-title {
-  margin-bottom: 15px;
+  margin-bottom: 16px;
   font-size: 18px;
-  font-weight: normal;
+  font-weight: 400;
 }
 
+
+.gpd-comment-body{
+  margin: 0 20px 0  52px;
+}
 /* hero image */
 .gpd-hero {
   overflow: hidden;
@@ -113,6 +120,7 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 20px;
+  padding: 0 4px;
 }
 
 .gpd-action-btn {
@@ -128,6 +136,9 @@
   font-size: 14px;
   line-height: 1;
   overflow: visible;
+}
+.gpd-action-btn .heart{
+  position: relative;
 }
 
 .gpd-action-icon {
@@ -168,12 +179,25 @@
 }
 .gpd-comment {
   display: flex;
-  gap: 12px;
-  align-items: flex-start;
+  flex-direction: column;
 }
+.gpd-comment .gpd-comment-head{
+  display: flex;
+  justify-content: space-between;
+}
+.gpd-comment-head .gpd-profile img{
+  margin-right: 12px;
+}
+
+.gpd-comment .gpd-comment-head .gpd-profile{
+  display: flex;
+  align-items: center;
+}
+
+
 .gpd-comment .name {
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 600;
   color: #fff;
   margin-bottom: 2px;
 }
@@ -181,9 +205,10 @@
   font-size: 11px;
   color: #888;
 }
+
+
 .gpd-comment .text {
   font-size: 14px;
-  color: #ddd;
   line-height: 1.4;
   white-space: pre-wrap;
   margin-top: 4px;
@@ -195,8 +220,8 @@
   left: 50%;
   transform: translateX(-50%);
   bottom: 104px;
-  width: min(100vw, 410px);
-  padding: 12px 16px;
+  width: min(430px, calc(100vw));
+  padding: 12px 16px 24px;
   z-index: 60;
   display: flex;
   align-items: center;
@@ -298,7 +323,7 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .gpd-comment-delete {
@@ -306,8 +331,6 @@
   border: none;
   cursor: pointer;
   line-height: 0;
-  display: flex;
-  justify-content: center;
 }
 
 .gpd-comment-delete:hover {
@@ -323,6 +346,90 @@
   width: 100%;
 }
 
-.gpd-comment-body {
-  width: 347px;
+
+.gpd-delete-toast {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  /* ✅ inputbar가 bottom:104px 이면, 토스트는 그 위로 */
+  bottom: 170px;
+
+  width: min(430px, calc(100vw - 32px));
+  text-align: center;
+
+  background: rgba(20, 20, 20, 0.95);
+  color: #fff;
+  padding: 12px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  z-index: 1000;
+}
+
+/* =========================
+   삭제 확인 모달
+   ========================= */
+.gpd-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.gpd-modal {
+  width: 80%;
+  max-width: 280px;
+  background: #282828;
+  color: #fff;
+  border-radius: 6px;
+  padding: 24px 20px 20px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gpd-modal h3 {
+  margin-bottom:8px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.gpd-modal p {
+  margin: 0;
+  font-size: 13px;
+  opacity: 0.75;
+  line-height: 1.35;
+}
+
+.gpd-modal-actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 12px;
+}
+
+.btn-cancel,
+.btn-danger {
+  flex: 1;
+  border: 0;
+  padding: 12px 10px;
+  border-radius: 6px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.btn-cancel {
+  background: #393939;
+  color: #fff;
+}
+.btn-cancel:hover{
+  background: #a4a4a4;
+}
+
+.btn-danger {
+  background: #aa0000;
+  color: #fff;
+}
+.btn-danger:hover{
+  background: #c20000;
 }

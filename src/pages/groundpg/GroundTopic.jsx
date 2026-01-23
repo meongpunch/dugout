@@ -13,12 +13,12 @@ const voteTopics = [
     title: "내가 먹어본 야구장 최고 야푸는!?",
     timeAgo: "4시간 전",
     reactions: [
-      { icon: "🍺", count: 1528 },
-      { icon: "🥨", count: 1020 },
-      { icon: "🍗", count: 985 },
+      { icon: "🍗", count: 1528 },
+      { icon: "🌭", count: 1020 },
+      { icon: "🍺", count: 985 },
       { icon: "🍦", count: 852 },
-      { icon: "🍟", count: 521 },
-      { icon: "🔥", count: 57 },
+      { icon: "🍱", count: 521 },
+      { icon: "🍟", count: 57 },
     ],
   },
   {

@@ -65,12 +65,12 @@ const popularTopics = [
     profileImg: "/img/ground_topic_profile.jpg", // 원형 프로필
     nickname: "남양주일찐김의성",
     title: "내가 먹어본 야구장 최고 야푸는!?",
-    timeAgo: "15시간 전",
+    timeAgo: "4시간 전",
     reactions: [
       { icon: "🍗", count: 1528 },
       { icon: "🌭", count: 1020 },
-      { icon: "☕", count: 985 },
-      { icon: "🥡", count: 852 },
+      { icon: "🍺", count: 985 },
+      { icon: "🍦", count: 852 },
       { icon: "🍱", count: 521 },
       { icon: "🍟", count: 57 },
     ],
