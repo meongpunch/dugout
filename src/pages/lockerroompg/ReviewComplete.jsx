@@ -53,17 +53,19 @@ const ReviewComplete = () => {
         <div className="inner">
           <div className="review-container">
             <div className="colse-btn">
-              <img
-                className="colse-btn-img"
-                src="/img/lockerroom-x-close.svg"
-                alt="닫기"
-                onClick={() => navigate("/lockerroom/calendar")}
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ")
-                    navigate("/lockerroom/calendar");
-                }}
-              />
+              <div className="colse-btn-img">
+                <img
+                  className="btn-img"
+                  src="/img/lockerroom-x-close.svg"
+                  alt="닫기"
+                  onClick={() => navigate("/lockerroom/calendar")}
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ")
+                      navigate("/lockerroom/calendar");
+                  }}
+                />
+              </div>
             </div>
 
             <div className="review-tit-box">

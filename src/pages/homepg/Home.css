@@ -82,6 +82,7 @@
   overflow: hidden;
   opacity: 0.7;
   position: relative;
+  border-radius: 6px;
 }
 
 .card-img img {
@@ -294,6 +295,7 @@
 .highlight-card .img-box {
   width: 100%;
   height: 100%;
+  border-radius: 6px;
 }
 
 .highlight-card .img-box img {
@@ -398,7 +400,7 @@
   background: #1d1d1d;
 }
 
-.rank-item {  
+.rank-item {
   display: flex;
   justify-content: space-between;
   padding: 16px;
@@ -517,11 +519,13 @@
   font-weight: 600;
   margin-bottom: 4px;
 }
-.quiz-content .topBox .left{
+
+.quiz-content .topBox .left {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
+
 .quiz-content .topBox .left .con-text {
   font-size: 16px;
   font-weight: 3400;
@@ -590,6 +594,7 @@
   overflow: hidden;
   width: 100%;
   height: 398px;
+
 }
 
 .MD .img-box img {
@@ -623,6 +628,8 @@
 .MD .product .left {
   width: 142px;
   height: 146px;
+  overflow: hidden;
+  border-radius: 6px;
 }
 
 .MD .product .left img {
@@ -663,7 +670,7 @@
   margin-bottom: 6px;
 }
 
-.MD .product .right .price .price-won{
+.MD .product .right .price .price-won {
   font-size: 16px;
   font-weight: 400;
   margin-left: 1px;

@@ -29,6 +29,11 @@
 
 .review-done .colse-btn .colse-btn-img {
   cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .review-done .review-tit-box {

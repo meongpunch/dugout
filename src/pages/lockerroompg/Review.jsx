@@ -321,7 +321,7 @@ const Review = () => {
                 style={{
                   bottom: "-2%",
                   left: "2%",
-                  zIndex: 100,
+                  zIndex: 10,
                 }}
               />
             )}
