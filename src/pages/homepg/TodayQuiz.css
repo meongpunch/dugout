@@ -48,9 +48,9 @@
 /* 질문 텍스트 */
 .quiz-question {
   font-size: 20px;
-  line-height: 1.32;
+  line-height: 1.2;
   font-weight: 300;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   white-space: pre-line; /* 줄바꿈 적용 */
   padding-left: 4px;
 }

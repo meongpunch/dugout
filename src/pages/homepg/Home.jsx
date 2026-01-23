@@ -255,21 +255,24 @@ const Home = () => {
             modules={[EffectCoverflow]}
             className="mySwiper"
           >
-            {players.map((player, index) => (
-              <SwiperSlide
-                key={`hero-${player.id}-${index}`}
-                className="hero-slide"
-              >
-                {/* 카드 클릭 시 상세 페이지 이동 */}
-                <Link to={`/player/${player.id}`} className="card-link">
+          {players.map((player, index) => (
+            <SwiperSlide
+              key={`hero-${player.id}-${index}`}
+              className="hero-slide"
+            >
+              <Link to={`/player/${player.id}`} className="card-link">
+                <div className="img-box card-img box">
 
-                  <div className="img-box card-img box">
+                  {/* ✅ 1번, 4번만 도트 */}
+                  {(index === 0 || index === 3) && (
                     <div className="guide-dot"></div>
-                    <img src={player.img} alt={player.name} />
-                  </div>
-                </Link>
-              </SwiperSlide>
-            ))}
+                  )}
+
+                  <img src={player.img} alt={player.name} />
+                </div>
+              </Link>
+            </SwiperSlide>
+          ))}
           </Swiper>
         </div>
       </section>
@@ -552,7 +555,7 @@ const Home = () => {
                 <p className="subtit">팬심 소장템 🎁</p>
               </div>
               <div className="bottom">
-                <p className="price">27,000</p>
+                <p className="price">27,000<span className="price-won">원</span></p>
                 <p className="txt">
                   응원 만족도
                   <span>
