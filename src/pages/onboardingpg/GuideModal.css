@@ -1,6 +1,6 @@
-/* 가이드 모달 오버레이 */
+/* 가이드 모달 오버레이 - 앱 영역만 덮음 */
 .guide-modal-overlay {
-    position: fixed;
+    position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.7);
     z-index: 10000;
@@ -23,7 +23,7 @@
 /* 가이드 모달 박스 */
 .guide-modal {
     background: #1f1f1f;
-    border-radius: 12px;
+    border-radius: 6px;
     width: 90%;
     max-width: 320px;
     padding: 24px;

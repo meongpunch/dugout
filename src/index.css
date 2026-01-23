@@ -33,6 +33,7 @@ a {
   background-color: #111;
   position: relative;
   color: #fff;
+
 }
 
 li {
@@ -53,4 +54,21 @@ section {
 .point {
   font-family: "Humane", sans-serif;
   line-height: 100%;
+}
+
+@media (min-width: 431px) {
+  body {
+    background-image: url('/img/dugout-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    /* 배경 고정 - 스크롤해도 움직이지 않음 */
+  }
+}
+
+:root {
+  --desktop-content-width: 1400px;
+  /* 배경+앱 전체 너비 */
 }

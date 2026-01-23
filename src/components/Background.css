@@ -1,0 +1,53 @@
+.bg-container {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.4;
+}
+
+/* 왼쪽 영역 */
+.bg-left {
+    left: 300px;
+}
+
+/* 오른쪽 영역 */
+.bg-right {
+    right: 300px;
+}
+
+.bg-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.bg-text-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bg-right .bg-title {
+    font-size: 150px;
+    letter-spacing: 4px;
+    font-weight: 500;
+    line-height: 90%;
+}
+
+.bg-right .bg-subtit {
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+/* 모바일에서는 숨기기 */
+@media (max-width: 1400px) {
+    .bg-container {
+        display: none;
+    }
+}

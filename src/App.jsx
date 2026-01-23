@@ -27,10 +27,12 @@ import ReviewComplete from "./pages/lockerroompg/ReviewComplete";
 import Ticket from "./pages/lockerroompg/Ticket";
 import { GuideProvider } from "./contexts/GuideContext";
 import GroundPostDetail from "./pages/groundpg/GroundPostDetail";
+import Background from "./components/Background";
 
 const App = () => {
   return (
     <GuideProvider>
+      <Background />
       <ScrollToTop />
       <ChatbotWidget />
       <Routes>
