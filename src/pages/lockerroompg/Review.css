@@ -103,7 +103,7 @@
 
 .match-info {
   padding: 30px 16px;
-  background: #242424;
+  background: #1d1d1d;
   border-radius: 6px;
   margin-bottom: 40px;
 }
@@ -160,7 +160,7 @@
 }
 
 .seatKeyword-box {
-  background: #2a2a2a;
+  background: #1d1d1d;
   border-radius: 6px;
   padding: 18px 16px;
 }
@@ -182,7 +182,7 @@
 .seatKeyword-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
 }
 
 .seatKeyword-chip {
@@ -194,9 +194,8 @@
   height: 34px;
   padding: 8px 14px;
   border-radius: 100px;
-
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: #fff;
 
   transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.08s ease;
@@ -257,7 +256,7 @@
 }
 
 .review-media .upload-box {
-  background: rgba(36, 36, 36, 0.7);
+  background: #1d1d1d;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
@@ -289,7 +288,7 @@
   position: relative;
   border-radius: 6px;
   overflow: hidden;
-  background: rgba(36, 36, 36, 0.7);
+  background: #1d1d1d;
   aspect-ratio: 1 / 1;
 }
 
@@ -446,7 +445,7 @@
 }
 
 .reviewText-box {
-  background: rgba(36, 36, 36, 0.7);
+  background: #1d1d1d;
   border-radius: 6px;
   padding: 30px 16px;
 }
@@ -524,7 +523,7 @@
   height: 58px;
   border-radius: 6px;
   margin-top: 14px;
-  background: #b30000;
+  background: #AA0000;
   color: #fff;
   font-size: 18px;
   font-weight: 500;

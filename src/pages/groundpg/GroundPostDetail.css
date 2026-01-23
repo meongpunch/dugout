@@ -69,7 +69,7 @@
   border-radius: 999px;
   object-fit: cover;
   background: #2a2a2a;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.01);
 }
 .gpd-avatar.sm {
   width: 40px;
@@ -230,7 +230,7 @@
 }
 .gpd-inputbar input {
   flex: 1;
-  background: #222;
+  background: #1d1d1d;
   border: 0;
   border-radius: 4px;
   height: 40px;
@@ -354,14 +354,14 @@
   /* ✅ inputbar가 bottom:104px 이면, 토스트는 그 위로 */
   bottom: 170px;
 
-  width: min(430px, calc(100vw - 32px));
+  width: min(430px, calc(100vw));
   text-align: center;
 
-  background: rgba(20, 20, 20, 0.95);
+  background: #111;
   color: #fff;
   padding: 12px 14px;
-  border-radius: 999px;
   font-size: 14px;
+  font-weight: 400;
   z-index: 1000;
 }
 
@@ -381,7 +381,7 @@
 .gpd-modal {
   width: 80%;
   max-width: 280px;
-  background: #282828;
+  background: #1d1d1d;
   color: #fff;
   border-radius: 6px;
   padding: 24px 20px 20px;
@@ -392,14 +392,14 @@
 .gpd-modal h3 {
   margin-bottom:8px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .gpd-modal p {
   margin: 0;
-  font-size: 13px;
-  opacity: 0.75;
-  line-height: 1.35;
+  font-size: 14px;
+  color: #aeaeae;
+  line-height: 1.4;
 }
 
 .gpd-modal-actions {
@@ -412,18 +412,20 @@
 .btn-danger {
   flex: 1;
   border: 0;
-  padding: 12px 10px;
+  font-size: 14px;
+  padding: 16px 10px;
   border-radius: 6px;
-  font-weight: 800;
+  font-weight: 600;
   cursor: pointer;
+  font-family: "Pretendard", sans-serif;
 }
 
 .btn-cancel {
-  background: #393939;
+  background: #282828;
   color: #fff;
 }
 .btn-cancel:hover{
-  background: #a4a4a4;
+  background: #2e2e2e;
 }
 
 .btn-danger {

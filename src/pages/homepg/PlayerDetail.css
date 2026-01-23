@@ -130,7 +130,7 @@ section.player-hero {
 
 /* 개별 박스 디자인 */
 .stat-box {
-  background-color: #1a1a1a;
+  background-color: #1d1d1d;
   /* 이미지가 없을 때 기본 배경색 (어두운 회색) */
   border-radius: 8px;
   /* 둥근 모서리 */
@@ -172,7 +172,6 @@ section.player-hero {
 
 /* 전체 섹션 배경 및 설정 */
 .legend-scale-section {
-  background-color: #0d0d0d;
   color: #ffffff;
   font-family: "Pretendard", sans-serif;
   display: flex;

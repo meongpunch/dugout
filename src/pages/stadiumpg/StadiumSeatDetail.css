@@ -133,6 +133,7 @@
   gap: 8px;
   flex-wrap: wrap;
   margin-bottom: 48px;
+  font-family: "Pretendard", sans-serif;
 }
 
 .tag {
@@ -143,6 +144,7 @@
   color: #fff;
   font-size: 14px;
   font-weight: 300;
+  font-family: "Pretendard", sans-serif;
 }
 
 .info-title {

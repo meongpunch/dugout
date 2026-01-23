@@ -267,13 +267,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
   transition:
-    background 0.18s ease,
-    transform 0.18s ease;
+  background 0.18s ease,
+  transform 0.18s ease;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: "Pretendard", sans-serif;
 }
 
 .chip:hover {
-  background: #262626;
+  background: #2a2a2a;
   transform: translateY(-1px);
 }
 
@@ -322,6 +323,7 @@
   background: #aa0000;
   color: #fff;
   cursor: pointer;
+  font-family: "Pretendard", sans-serif;
 }
 
 .confirm:not(:disabled):active {
