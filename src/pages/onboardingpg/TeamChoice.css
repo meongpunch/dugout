@@ -106,6 +106,7 @@
    Grid
 ========================= */
 .choice-box {
+  padding-top: 2px;
   box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -113,10 +114,10 @@
 }
 
 .team-card {
-  background: #1a1a1a;
+  background: #1d1d1d;
   /* ✅ 배경과 같은 계열로 통일 */
   border: 2px solid transparent;
-  border-radius: 12px;
+  border-radius: 6px;
   padding: 12px 10px;
   cursor: pointer;
   transition: 0.15s ease;
@@ -186,7 +187,8 @@
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  width: min(390px, 93%);
+  width: min(430px, calc(100vw));
+  padding: 0 16px;
   box-sizing: border-box;
 
   /* ✅ 기본(430 기준) 원래 위치로 복귀 */
@@ -221,7 +223,7 @@
   right: 0;
 
   bottom: var(--cta-h);
-  height: 140px;
+  height: 120px;
   /* ✅ 170 -> 140으로 줄여 작은 폰 확보 */
   pointer-events: none;
   z-index: 0;
@@ -247,7 +249,7 @@
   font-size: 16px;
   font-weight: 700;
 
-  background: #1a1a1a;
+  background: #1d1d1d;
   /* ✅ 카드/배경 계열로 통일 */
   color: rgba(255, 255, 255, 0.4);
   cursor: not-allowed;

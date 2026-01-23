@@ -61,7 +61,7 @@
     /* Fixed height as requested */
     z-index: 2147483647;
 
-    background: #282828;
+    background: #1d1d1d;
     /* User requested transparent */
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 6px;
@@ -297,7 +297,7 @@
 .cb-quick {
     padding: 24px 24px;
 
-    background: #282828;
+    background: #1d1d1d;
 
     display: flex;
     flex-wrap: wrap;
@@ -318,6 +318,8 @@
     font-weight: 500;
     cursor: pointer;
     white-space: nowrap;
+    font-family: "Pretendard", sans-serif;
+
 }
 
 /* Yellow dot */
@@ -349,8 +351,7 @@
 .cb-footer-container {
     display: flex;
     flex-direction: column;
-    background: #111;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    background: #1d1d1d;
 }
 
 /* Notice Bar */
@@ -358,7 +359,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: rgba(255, 255, 255, 0.4);
+    background: #282828;
     color: #fff;
     padding: 10px 16px;
     font-size: 14px;
@@ -389,7 +390,7 @@
 
 .cb-recent-body {
     flex: 1;
-    background: #282828;
+    background: #1d1d1d;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -454,7 +455,8 @@
     align-items: center;
     gap: 8px;
     padding: 10px 12px;
-    background: #2a2a2a;
+    background: #1d1d1d;
+    border-top: 1px solid #282828;
     /* Darker background from image */
 }
 
@@ -507,12 +509,12 @@
 }
 
 .cb-modal {
-    background: #282828;
+    background: #1d1d1d;
     /* Match panel background */
     width: 80%;
     max-width: 280px;
     padding: 24px 20px 20px;
-    border-radius: 12px;
+    border-radius: 6px;
     text-align: center;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -527,7 +529,7 @@
 .cb-modal-title {
     color: #fff;
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 600;
     margin-bottom: 8px;
 }
 
@@ -551,21 +553,22 @@
     height: 48px;
     border: 0;
     border-radius: 6px;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
+    font-family: "Pretendard", sans-serif;
 
     /* Force reset margins */
 }
 
 .cb-modal-btn.cancel {
-    background: #393939;
-    color: #fff;
+    background: #282828;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .cb-modal-btn.cancel:hover {
-    background: #4a4a4a;
+    background: #2e2e2e;
 }
 
 .cb-modal-btn.ok {

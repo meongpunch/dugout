@@ -77,12 +77,12 @@ const Home = () => {
 
   // ✅ localStorage에서 불러와 초기값 세팅
   const [rawCommentsTop, setRawCommentsTop] = useState(() => {
-    const saved = localStorage.getItem("commentsTop");
-    return saved ? JSON.parse(saved) : DEFAULT_TOP;
-  });
+  const saved = sessionStorage.getItem("commentsTop");
+  return saved ? JSON.parse(saved) : DEFAULT_TOP;
+});
 
   const [rawCommentsBottom, setRawCommentsBottom] = useState(() => {
-    const saved = localStorage.getItem("commentsBottom");
+    const saved = sessionStorage.getItem("commentsBottom");
     return saved ? JSON.parse(saved) : DEFAULT_BOTTOM;
   });
   //여기까지
@@ -106,11 +106,11 @@ const Home = () => {
   const [commentInput, setCommentInput] = useState("");
 
   useEffect(() => {
-    localStorage.setItem("commentsTop", JSON.stringify(rawCommentsTop));
+    sessionStorage.setItem("commentsTop", JSON.stringify(rawCommentsTop));
   }, [rawCommentsTop]);
 
   useEffect(() => {
-    localStorage.setItem("commentsBottom", JSON.stringify(rawCommentsBottom));
+    sessionStorage.setItem("commentsBottom", JSON.stringify(rawCommentsBottom));
   }, [rawCommentsBottom]);
 
   // ✅ 댓글 등록(전송) 함수: 작성하면 윗줄(top)에 맨 앞에 추가

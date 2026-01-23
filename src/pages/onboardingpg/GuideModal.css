@@ -22,13 +22,14 @@
 
 /* 가이드 모달 박스 */
 .guide-modal {
-    background: #1f1f1f;
+    background: #1d1d1d;
     border-radius: 6px;
     width: 90%;
     max-width: 320px;
     padding: 24px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     animation: slideUp 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @keyframes slideUp {
@@ -50,16 +51,16 @@
 }
 
 .guide-modal-title {
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 600;
     color: #fff;
-    margin: 0 0 12px 0;
+    margin: 0 0 8px 0;
 }
 
 .guide-modal-desc {
     font-size: 14px;
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.7);
+    color: aeaeae;
     line-height: 1.5;
     margin: 0;
 }
@@ -68,26 +69,28 @@
 .guide-modal-actions {
     display: flex;
     gap: 12px;
+
 }
 
 .guide-modal-btn {
     flex: 1;
     height: 48px;
     border: 0;
-    border-radius: 8px;
-    font-size: 15px;
+    border-radius: 6px;
+    font-size: 14px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
+    font-family: "Pretendard", sans-serif;
 }
 
 .guide-modal-btn.skip {
-    background: rgba(255, 255, 255, 0.1);
+    background: #282828;
     color: rgba(255, 255, 255, 0.7);
 }
 
 .guide-modal-btn.skip:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: #2e2e2e;
     color: rgba(255, 255, 255, 0.9);
 }
 
@@ -97,7 +100,7 @@
 }
 
 .guide-modal-btn.ok:hover {
-    background: #cc0000;
+    background: #c20000;
 }
 
 .guide-modal-btn:active {

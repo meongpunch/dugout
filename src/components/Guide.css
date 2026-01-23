@@ -25,11 +25,12 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
     white-space: nowrap;
+    font-family: "Pretendard", sans-serif;
 }
 
 .guide-toggle-btn:hover {
     transform: scale(1.05);
-    background: #cc0000;
+    background: #c20000;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }
 
