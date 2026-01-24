@@ -16,7 +16,7 @@
 /* 오른쪽 영역 */
 .bg-right {
     right: 108px;
-    top: 660px;
+    top: 780px;
 }
 
 .bg-logo img {
@@ -71,6 +71,10 @@
 
 .bg-right .bg-date {
     margin-bottom: 8px;
+}
+
+.bg-right .copyright {
+    margin-top: 8px;
 }
 
 /* 모바일에서는 숨기기 */
