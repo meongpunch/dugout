@@ -18,7 +18,8 @@ const Background = () => {
                 <div className="bg-text-box">
                     <p className="bg-date">20260102 - 20260126</p>
                     <p className="bg-subtit">2026 UX / UI DESIDN TEAM PROJECT</p>
-                    <p className="bg-team-name">권체운 김의성 김혜원 백진우 신명진 유수진 정주리</p>
+                    <p className="bg-team-name">권채운 김의성 김혜원 백진우 신명진 유수진 정주리</p>
+                    <p className="copyright">덕아웃의 이미지는 기아타이거즈와 생성형AI에서 발췌되었습니다.</p>
                 </div>
             </div>
         </>

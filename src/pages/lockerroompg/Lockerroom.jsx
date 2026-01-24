@@ -256,6 +256,7 @@ const Lockerroom = () => {
               ))}
             </ul>
           </div>
+          <p className="copyright">덕아웃의 이미지는 기아타이거즈와 생성형AI에서 발췌되었습니다.</p>
 
 
 
